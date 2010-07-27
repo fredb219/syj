@@ -1,0 +1,51 @@
+/*  This file is part of Syj, Copyright (c) 2010 Arnaud Renevier,
+    and is published under the AGPL license. */
+body {
+    margin: 0px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.desc {
+    border: 1px solid gray;
+    margin: 40px 15% 40px 15%;
+    padding: 20px 30px 15px 30px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+#pending_validate, #pending_cancel {
+    margin-top: 15px;
+}
+
+.success {
+    width: 50%;
+    margin: auto;
+}
+.success strong {
+    font-size: 130%;
+    color: #808000;
+    text-decoration: underline;
+}
+
+.message.success{
+    border-color: green;
+}
+.message.warn{
+    border-color: #FF8C00;
+}
+.message.error{
+    border-color: red;
+}
+.message {
+    text-align: center;
+    position: absolute;
+    bottom: 30px;
+    width: 50%;
+    border: 1px solid black;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 25px 0px 25px 0px;
+}

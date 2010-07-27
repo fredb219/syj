@@ -1,0 +1,17 @@
+<?php
+    $this->redirectLinks = false;
+
+    $title = "";
+    foreach ($this->headTitle() as $item) {
+        $title .= $item;
+    }
+
+    echo '<h1>' . $title . '</h1>' . PHP_EOL;
+
+    print '<p class="center success">';
+    print $this->translate('You have validated your account.');
+    print ' ';
+    print $this->translate('You can now') . ' ' .
+          $this->anchor($this->baseUrl(), $this->translate('go to main page'));
+    print '</p>';
+?>

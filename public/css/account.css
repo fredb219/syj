@@ -1,0 +1,22 @@
+/*  This file is part of Syj, Copyright (c) 2010 Arnaud Renevier,
+    and is published under the AGPL license. */
+
+/*
+ * form
+ */
+#account_email {
+    margin-bottom: 1em;
+}
+#account_password_confirm {
+    margin-bottom: 1em;
+}
+#account_password_current {
+    margin-bottom: 1em;
+}
+form {
+    clear: left;
+    margin: 3em 1em 1em 1em;
+}
+fieldset {
+    margin: 20px 30px 0px 30px;
+}

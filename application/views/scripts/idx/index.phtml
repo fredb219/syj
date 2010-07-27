@@ -1,0 +1,73 @@
+    <noscript>
+        <style type="text/css">
+            #map, #message, #data_controls, #login_controls, #user_area, #login_area, #newpwd_area {
+                display: none;
+            }
+        </style>
+
+        <p><?php echo $this->translate('SYJ needs javascript. Please activate scripts in your browser.');?></p>
+    </noscript>
+
+    <div id="map"></div>
+
+    <div id="message" class="message info">
+    <?php if (!$this->path and !$this->loggedUser()) {?>
+    <?php echo $this->translate('Welcome on Syj.')?>
+    <br/>
+    <?php echo $this->translate('To create a journey, just click on the map to add points to your route. You can zoom and move map with controls upper left.')?>
+    <br/>
+    <?php echo $this->translate('When you have finished a path, press "save", button.')?>
+    <?php }?>
+    </div>
+
+    <div id="data_controls">
+    <input id="edit-btn" name="edit-btn" type="button" value="<?php echo $this->translate('edit')?>">
+
+    <?php
+        print $this->geomform;
+    ?>
+
+    </div>
+
+    <div id="login_controls">
+        <div>
+            <?php
+                echo $this->anchor('login', $this->translate('login'), array('id' => 'login_control_anchor', 'class' => 'login-anchor'));
+                echo $this->anchor('', $this->translate('create an account'), array('id' => 'user_control_anchor', 'class' => 'login-anchor'));
+            ?>
+        </div>
+        <div>
+            <?php echo $this->logoutLink(); ?>
+        </div>
+    </div>
+
+    <div id="newpwd_area" class="modal">
+        <div id="newpwd_message" class="message"></div>
+        <?php
+            print $this->newpwdform;
+        ?>
+    </div>
+
+    <div id="user_area" class="modal">
+        <div id="user_message" class="message"></div>
+        <?php
+            print $this->userform;
+        ?>
+    </div>
+
+      <div id="login_area" class="modal">
+         <div id="login_message" class="message"></div>
+
+      <?php
+        print $this->loginform;
+      ?>
+
+      <p id="login_area_create"><a id="login_area_create_anchor" href=""><?php echo $this->translate('create an account')?></a></p>
+
+      </div>
+
+      <div id="termsofusearea" class="modal">
+        <iframe id="termsofuseiframe" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
+
+<?php echo $this->localeSwitcher(); ?>

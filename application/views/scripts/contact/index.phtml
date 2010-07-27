@@ -1,0 +1,11 @@
+<?php
+    print $this->localeSwitcher();
+    print $this->form;
+
+    if ($this->sendError) {
+        $to = Zend_Controller_Front::getInstance()->getParam('webmasterEmail');
+        print '<p class="error message">';
+        print $this->translate('There was an unkwown message when sending the message. Please try again later, or send a mail directly to <a href="mailto:%s">%s</a>', $this->escape($to), $this->escape($to));
+        print "</p>" . PHP_EOL;
+    }
+?>

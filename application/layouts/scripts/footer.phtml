@@ -1,0 +1,80 @@
+<?php
+echo '<div id="footer">' . PHP_EOL;
+echo '<div id="footer-padding"></div>' . PHP_EOL;
+
+/*
+ * main page link
+ */
+$page = new Zend_Navigation_Page_Mvc(array(
+    'route' => 'idx',
+    'params' => array(
+        'action'     => 'index',
+        'controller' => 'idx',
+        'url' => '')));
+
+$front = Zend_Controller_Front::getInstance();
+$reqParams = $front->getRequest()->getParams();
+if ($reqParams['controller'] == 'idx' and (!isset($reqParams['url']))) {
+    $current = true;
+} else {
+    $current = false;
+}
+
+$mainpage = $current;
+
+$content = $this->translate("main page");
+$link = ($current) ? $this->escape($content) : $this->anchor($page->getHRef(), $content, array('class' => 'footer-anchor'));
+echo '<div class="footer-link">' . $link . '</div>' . PHP_EOL;
+
+/*
+ * contact page link
+ */
+echo $this->footerLink(array(
+        'action'     => 'index',
+        'controller' => 'contact',
+        'route' => 'contact'),
+    $this->translate("contact"),
+    isset($this->redirectLinks) ? $this->redirectLinks : true);
+
+/*
+ * login, logout, account links
+ */
+if ($this->loggedUser()) {
+    echo $this->footerLink(array(
+            'route' => 'account',
+            'action'     => 'index',
+            'controller' => 'account'),
+        $this->translate("my account"));
+    if (!$mainpage) {
+        echo $this->footerLink(array(
+            'route' => 'logout',
+            'action'     => 'logout',
+            'controller' => 'login'),
+        $this->translate("logout"),
+        false);
+    }
+} else {
+    if (!$mainpage) {
+        echo $this->footerLink(array(
+            'route' => 'login',
+            'action'     => 'login',
+            'controller' => 'login'),
+        $this->translate("login"),
+        isset($this->redirectLinks) ? $this->redirectLinks : true
+        );
+    }
+}
+
+/*
+ * termsofuse
+ */
+echo $this->footerLink(array(
+    'route' => 'termsofuse',
+    'action'     => 'index',
+    'controller' => 'termsofuse'),
+    $this->translate("terms of use"),
+    false);
+
+echo '</div>' . PHP_EOL;
+
+?>

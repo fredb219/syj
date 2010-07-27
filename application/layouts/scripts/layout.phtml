@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="<?php echo $this->localeShort();?>">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+
+<?php
+
+    if ($this->jslocales) {
+        $syjStrings = new phptojs\JsObject('SyjStrings');
+        foreach ($this->jslocales as $prop => $value) {
+            if (is_array($value)) {
+                $syjStrings->$prop = call_user_func_array(array($this, 'translate'), $value);
+            } else {
+                $syjStrings->$prop = $this->translate($value);
+            }
+        }
+        $this->headScript()->prependScript((string) $syjStrings);
+    }
+
+    echo $this->headBase()->setIndent(4) . PHP_EOL;
+    echo $this->headTitle()->setIndent(4) . PHP_EOL;
+    echo $this->headLink()->setIndent(4) . PHP_EOL;
+    echo $this->headScript()->setIndent(4) . PHP_EOL;
+
+?>
+
+</head>
+<body>
+<?php
+    echo $this->render('header.phtml');
+?>
+
+<?php
+    echo $this->layout()->content;
+?>
+
+<?php
+    echo $this->render('footer.phtml');
+?>
+</body>
+</html>

@@ -1,0 +1,100 @@
+/*  This file is part of Syj, Copyright (c) 2010 Arnaud Renevier,
+    and is published under the AGPL license. */
+
+/*
+ * generic rules
+ */
+.message {
+    text-align: center;
+}
+
+.disabled {
+    color: #A9A9A9;
+}
+noscript {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+noscript p {
+    margin-top: 4em;
+}
+
+.success {
+    color: green;
+    border-color: green;
+    font-weight: bold;
+    background-color: white;
+}
+
+.warn {
+    color: #FF8C00;
+    border-color: #FF8C00;
+    font-weight: bold;
+    background-color: white;
+}
+
+.error {
+    border-color: red;
+    font-weight: bold;
+    background-color: #FFFF33;
+    color: red;
+}
+
+.info {
+    border-color: black;
+    color: black;
+    background-color: white;
+}
+
+.center {
+    text-align: center;
+}
+label {
+    font-weight: bold;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+/*
+ * footer
+ */
+#footer {
+    position: absolute;
+    bottom: 0px;
+    left: 0px; right: 0px;
+    height: 2em;
+    text-align: center;
+    border-top: 1px solid gray;
+    *background-color: white;
+}
+#footer-padding {
+    height: 5px;
+}
+.footer-link {
+    display: inline;
+    margin: 0px 10px 0px 10px;
+}
+.footer-anchor {
+    text-decoration: none;
+}
+
+/*
+ * locale switcher
+ */
+#other-language {
+    float: right;
+    padding: 5px;
+    margin: 10px 10px 20px 20px;
+}
+.other-language-anchor:hover {
+    background-color: #BBBBFF;
+}
+.other-language-anchor {
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: #1E90FF 1px solid;
+}

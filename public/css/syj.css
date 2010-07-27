@@ -1,0 +1,136 @@
+/*  This file is part of Syj, Copyright (c) 2010 Arnaud Renevier,
+    and is published under the AGPL license. */
+body, html {
+    margin: 0; padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/*
+ * map rules
+ */
+#map {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    bottom: 2em;
+    *width: 100%;
+    *height: 100%;
+}
+
+.olControlAttribution {
+    bottom: 0.5em;
+    left: 0.5em;
+}
+
+/*
+ * main message rules
+ */
+
+#message {
+    position: absolute;
+    bottom: 3.5em;
+    width: 40%;
+    margin: 0px 45% 0px 15%;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+    text-align: center;
+    border-width: 2px;
+    border-style: solid;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/*
+ * controls rules
+ */
+#data_controls {
+    position: absolute;
+    right: 0.5em;
+    bottom: 3em;
+    text-align: center;
+    background-color: white;
+    padding: 25px 45px 20px 45px;
+    opacity: 0.85;
+    filter:alpha(opacity=85);
+    border: 1px solid gray;
+}
+#geom_title {
+    margin-top: 0.7em;
+    background-color: #FDFDFD; /* work around webkit bug #42985 */
+}
+#geom_submit {
+    margin-top: 0.7em;
+}
+
+#login_controls {
+    margin-top: 8px;
+    margin-left: 3em;
+}
+
+.login-anchor {
+    display: block;
+    float: left;
+    position: relative;
+    background-color: white;
+    margin: 0px 10px 0px 10px;
+    text-decoration: none;
+    color: #0000EE;
+    border: #1E90FF 2px solid;
+    padding: 2px 15px 2px 15px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: white;
+    opacity: 0.85;
+    filter:alpha(opacity=85);
+}
+.login-anchor:hover {
+    background-color: #BBBBFF;
+}
+
+/*
+ * login rules
+ */
+.modal {
+    background-color: white;
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 21px;
+    border: 1px solid gray;
+    opacity: 0.85;
+    filter:alpha(opacity=85);
+}
+
+.form-table-elem {
+    display: block;
+    width: 100%;
+}
+.modal .message {
+    margin: 0 35px 12px 35px;
+}
+#login_area_create {
+    text-align: right;
+}
+
+#user_email-desc {
+    margin: 0px 0px 12px 0px;
+    padding: 8px 2px 8px 2px;
+    background-color: #D3D3D3; /* lightgrey */
+}
+
+#termsofusearea {
+    height: 50%;
+}
+
+#other-language {
+    opacity: 0.85;
+    filter:alpha(opacity=85);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: white;
+    padding: 5px 1px 5px 1px;
+    margin: 0;
+}

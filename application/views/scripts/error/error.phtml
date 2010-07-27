@@ -1,0 +1,32 @@
+<?php
+    $this->redirectLinks = false;
+?>
+  <h1><?php echo $this->translate('An error occurred')?></h1>
+  <h2><?php echo $this->message ?></h2>
+
+  <?php if (isset($this->exception)): ?>
+
+  <h3>Exception information:</h3>
+  <p>
+      <b>Message:</b> <?php echo $this->exception->getMessage() ?>
+  </p>
+
+  <h3>Stack trace:</h3>
+  <pre><?php echo $this->exception->getTraceAsString() ?>
+  </pre>
+
+  <h3>Request Parameters:</h3>
+  <pre><?php echo var_export($this->request->getParams(), true) ?>
+  </pre>
+  <?php endif ?>
+
+    <p id="message">
+    <?php
+        if ($this->isServerError) {
+            echo $this->translate('Please try again later');
+        } else {
+            echo $this->anchor($this->baseUrl(), $this->translate('go to main page'));
+        }
+        ?>
+
+    </p>

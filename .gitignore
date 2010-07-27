@@ -1,0 +1,4 @@
+application/languages/*.mo
+application/languages/*.po~
+scripts/jslint.js
+generated/mails.txt

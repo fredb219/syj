@@ -1,0 +1,18 @@
+[submodule "public/openlayers"]
+	path = public/openlayers
+	url = http://github.com/ccnmtl/openlayers.git
+[submodule "public/modifiablepath"]
+	path = public/modifiablepath
+	url = git://github.com/arenevier/ModifiablePath.git
+[submodule "library/gisconverter"]
+	path = library/gisconverter
+	url = git://github.com/arenevier/gisconverter.php
+[submodule "public/prototype"]
+	path = public/prototype
+	url = /var/www/syj/public/prototype
+[submodule "library/Zend"]
+	path = library/Zend
+	url = /var/www/syj/library/Zend
+[submodule "public/simplebox"]
+	path = public/simplebox
+	url = /var/www/syj/public/simplebox

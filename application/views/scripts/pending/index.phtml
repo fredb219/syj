@@ -1,0 +1,19 @@
+<?php
+    $this->redirectLinks = false;
+    echo $this->localeSwitcher();
+
+    $title = "";
+    foreach ($this->headTitle() as $item) {
+        $title .= $item;
+    }
+
+
+    echo '<h1>' . $title . '</h1>' . PHP_EOL;
+
+    print $this->form;
+
+    print '<p class="center">';
+    print $this->translate("If you need more informations, please") . ' ' .
+          $this->anchor("contact", $this->translate("contact us"));
+    print '</p>';
+?>
