@@ -7,8 +7,7 @@ class ContactController extends Zend_Controller_Action
 
     public function init() {
         $this->view->headScript()->appendFile('js/prototype.js');
-        $this->view->headScript()->appendFile('js/forms.js');
-        $this->view->headScript()->appendFile('js/highlight.js');
+        $this->view->headScript()->appendFile('js/utils.js');
         $this->view->headScript()->appendFile('js/contact.js');
         $this->view->headLink()->appendStylesheet('css/generic.css');
         $this->view->headLink()->appendStylesheet('css/contact.css');
