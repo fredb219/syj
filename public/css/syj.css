@@ -58,7 +58,6 @@ body, html {
 }
 #geom_title {
     margin-top: 0.7em;
-    background-color: #FDFDFD; /* work around webkit bug #42985 */
 }
 #geom_submit {
     margin-top: 0.7em;

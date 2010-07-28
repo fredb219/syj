@@ -1,6 +1,11 @@
 /*  This file is part of Syj, Copyright (c) 2010 Arnaud Renevier,
     and is published under the AGPL license. */
 
+body, html {
+    background-color: white;
+    color: black;
+}
+
 /*
  * generic rules
  */
@@ -60,6 +65,13 @@ input {
     /* transitions for highlight effects */
     -webkit-transition: background-color 0.3s ease-out;
     -moz-transition: background-color 0.3s ease-out;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    /* work around webkit bug #42985 */
+    input {
+        background-color: #FEFEFE;
+    }
 }
 
 /*
