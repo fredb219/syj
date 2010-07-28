@@ -593,7 +593,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
             return false;
         }
 
-        if (!($("user_pseudo").value.match(/[a-zA-Z0-9_.]+$/))) {
+        if (!($("user_pseudo").value.match(/^[a-zA-Z0-9_.]+$/))) {
             this.messenger.setMessage(SyjStrings.invalidPseudo, "warn");
             $("user_pseudo").highlight('#F08080').focus();
             $("user_pseudo").select();
