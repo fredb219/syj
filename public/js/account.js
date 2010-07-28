@@ -11,13 +11,7 @@ document.observe("dom:loaded", function() {
 
         $$('.error').invoke('remove');
 
-        errorElements = $$('#account_email, #account_password').findAll(
-            function(elt) {
-                return (!elt.check(function() {
-                    return !this.value.strip().empty();
-                }, SyjStrings.notEmptyField));
-            });
-
+        errorElements = this.checkEmptyElements(SyjStrings.notEmptyField);
 
         if (!errorElements.length) {
             control = $("account_password");

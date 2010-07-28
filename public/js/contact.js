@@ -10,12 +10,7 @@ document.observe("dom:loaded", function() {
 
         $$('.error').invoke('remove');
 
-        errorElements = $$('input:not([type="submit"]),textarea').findAll(
-            function(elt) {
-                return (!elt.check(function() {
-                    return !this.value.strip().empty();
-                }, SyjStrings.notEmptyField));
-            });
+        errorElements = this.checkEmptyElements(SyjStrings.notEmptyField);
 
         if (!errorElements.length) {
             control = $("contact_email");

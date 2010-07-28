@@ -41,7 +41,7 @@ class Syj_Form_Account extends Zend_Form
         $pass_confirm = array('Password', 'account_password_confirm', array(
                 'label' => __("confirm password"),
                 'validators' => array($identicalValidator),
-                'required' => true
+                'allowEmpty' => false
         ));
 
         $pass_current = array('Password', 'account_password_current', array(
