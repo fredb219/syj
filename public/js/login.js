@@ -6,9 +6,12 @@ document.observe("dom:loaded", function() {
     form.focus();
 
     form.observe("submit", function(evt) {
+        var loginput = $("login_user");
         $$('.error').invoke('remove');
 
-        if (!$("login_user").check(function() { return !this.value.strip().empty(); }, SyjStrings.userEmptyWarn)) {
+        if (!loginput.check(function() { return !this.value.strip().empty(); }, SyjStrings.userEmptyWarn)) {
+            loginput.highlight('#F08080').focus();
+            loginput.select();
             evt.stop();
             return;
         }

@@ -12,6 +12,9 @@ Element.addMethods('form', {
             tofocus = form.down('input:not([readonly],[disabled]),textarea:not([readonly][disabled])');
         }
         if (tofocus) {
+            if (error && (typeof tofocus.highlight == "function")) {
+                tofocus.highlight('#F08080');
+            }
             tofocus.focus();
             tofocus.select();
         }
@@ -23,8 +26,6 @@ Element.addMethods(['input', 'textarea'], {
         if (callback.call(control)) {
             return true;
         }
-        control.focus();
-        control.select();
         control.insert({
             after: new Element("div", {className: 'error'}).update(errorMessage)
         });

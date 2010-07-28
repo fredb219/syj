@@ -30,7 +30,7 @@ document.observe("dom:loaded", function() {
          * if there are errors, cancel submission
          */
         if (errorElements.length) {
-            errorElements[0].focus();
+            errorElements[0].highlight('#F08080').focus();
             errorElements[0].select();
             evt.stop();
         }

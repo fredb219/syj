@@ -491,7 +491,7 @@ var SYJModalClass = Class.create({
     checkNotEmpty: function(input, message) {
         if ($(input).value.strip().empty()) {
             this.messenger.setMessage(message, "warn");
-            $(input).focus();
+            $(input).highlight('#F08080').focus();
             return false;
         }
         return true;
@@ -543,7 +543,7 @@ var SYJModalClass = Class.create({
 
         this.messenger.setMessage(message, "error");
         input = this.area.select('input[type="text"]')[0];
-        input.focus();
+        input.highlight('#F08080').focus();
         input.select();
     },
 
@@ -595,7 +595,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
 
         if (!($("user_pseudo").value.match(/[a-zA-Z0-9_.]+$/))) {
             this.messenger.setMessage(SyjStrings.invalidPseudo, "warn");
-            $("user_pseudo").focus();
+            $("user_pseudo").highlight('#F08080').focus();
             $("user_pseudo").select();
             return false;
         }
@@ -606,14 +606,14 @@ var SYJUserClass = Class.create(SYJModalClass, {
 
         if ($("user_password").value.length < 6) {
             $("user_password-desc").setMessageStatus("warn");
-            $("user_password").focus();
+            $("user_password").highlight('#F08080').focus();
             $("user_password").select();
             return false;
         }
 
         if ($("user_password").value !== $("user_password_confirm").value) {
             this.messenger.setMessage(SyjStrings.passwordNoMatchWarn, "warn");
-            $("user_password").focus();
+            $("user_password").highlight('#F08080').focus();
             $("user_password").select();
             return false;
         }
@@ -624,7 +624,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
 
         if (!$("user_accept").checked) {
             this.messenger.setMessage(SyjStrings.acceptTermsofuseWarn, "warn");
-            $("user_accept").focus();
+            $("user_accept").highlight('#F08080').focus();
             return false;
         }
 
@@ -676,7 +676,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
         if (message) {
             this.messenger.setMessage(message, "error");
             if (focusInput) {
-                focusInput.focus();
+                focusInput.highlight('#F08080').focus();
                 focusInput.select();
             }
             return;
@@ -737,7 +737,7 @@ var SYJLoginClass = Class.create(SYJModalClass, {
         if (message) {
             this.messenger.setMessage(message, "error");
             if (focusInput) {
-                focusInput.focus();
+                focusInput.highlight('#F08080').focus();
                 focusInput.select();
             }
             return;

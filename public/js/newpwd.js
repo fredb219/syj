@@ -24,7 +24,7 @@ document.observe("dom:loaded", function() {
         $$('.error').invoke('remove');
         if ($('newpwd_email').value.strip().empty()) {
             insertErrorBefore($('newpwdform').select('table')[0], SyjStrings.notEmptyField);
-            $('newpwd_email').focus();
+            $('newpwd_email').highlight('#F08080').focus();
             $('newpwd_email').select();
             evt.stop();
         }
