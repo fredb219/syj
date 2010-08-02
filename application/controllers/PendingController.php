@@ -52,10 +52,7 @@ class PendingController extends Zend_Controller_Action
 
                     $title = $this->view->translate("password changed");
                     $this->_helper->ViewRenderer->setViewScriptPathSpec(':controller/password_validate.:suffix');
-
-                    // logout
-                    Zend_Session::start();
-                    Zend_Session::destroy();
+                    $this->_helper->SyjSession->logout();
 
                 } else if (array_key_exists('pending_cancel', $formData)) {
                     if (!$pending->cancel()) {

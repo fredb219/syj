@@ -47,9 +47,7 @@ class UserController extends Zend_Controller_Action
             }
         }
 
-        $auth = Zend_Auth::getInstance();
-        $auth->getStorage()->write(array('user' => $user->id));
-        Zend_Session::rememberMe(); // zend default expiration delay is 2 weeks. Ok, use that value
+        $this->_helper->SyjSession->login($user->id);
         $this->_helper->SyjApi->setCode(200);
     }
 }

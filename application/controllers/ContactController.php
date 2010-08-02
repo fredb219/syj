@@ -84,7 +84,7 @@ class ContactController extends Zend_Controller_Action
         }
 
         if (empty($formData)) {
-            $user = $this->view->loggedUser();
+            $user = $this->_helper->SyjSession->user();
             if ($user) {
                 $form->contact_email->setValue($user->email)
                                     ->setAttrib('readonly', 'true');

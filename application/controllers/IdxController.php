@@ -54,31 +54,21 @@ class IdxController extends Zend_Controller_Action
         $this->view->loginform = $loginform;
         $this->view->userform = $userform;
         $this->view->newpwdform = $newpwdform;
+        $this->view->loggedUser = $this->_helper->SyjSession->user();
     }
 
     protected function _jsLoggedInfo(Syj_Model_Path $path = null) {
         $loggedinfo = new phptojs\JsObject('gLoggedInfo', array('connections' => 0));
 
-        $sessionStorage = Zend_Auth::getInstance()->getStorage();
-        $sessionData = $sessionStorage->read();
-
-        if ($sessionStorage->isEmpty()) {
-            $loggedinfo->logged = false;
+        $user = $this->_helper->SyjSession->user();
+        if ($user) {
+            $loggedinfo->logged = true;
         } else {
-            $userMapper = new Syj_Model_UserMapper();
-            $obj = new Syj_Model_User();
-            if ($userMapper->find($sessionData['user'], $obj)) {
-                $loggedinfo->logged = true;
-            } else {
-                // non existent user
-                Zend_Session::start();
-                Zend_Session::destroy();
-                $loggedinfo->logged = false;
-            }
+            $loggedinfo->logged = false;
         }
 
         if (isset($path)) {
-            if ($path->owner->id == $sessionData['user']) {
+            if ($user and $path->owner->id == $user->id) {
                 $loggedinfo->isowner = true;
             } else {
                 $loggedinfo->isowner = false;

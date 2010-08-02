@@ -51,9 +51,7 @@ class LoginController extends Zend_Controller_Action
         }
 
         $userid = $authAdapter->getResultRowObject('id')->id;
-        $auth->getStorage()->write(array('user' => $userid));
-        Zend_Session::rememberMe(); // zend default expiration delay is 2 weeks. Ok, use that value
-
+        $this->_helper->SyjSession->login($userid);
 
         if ($httprequest) {
             $api = $this->_helper->SyjApi->setCode(200);
@@ -79,8 +77,7 @@ class LoginController extends Zend_Controller_Action
     }
 
     public function logoutAction() {
-        Zend_Session::start();
-        Zend_Session::destroy();
+        $this->_helper->SyjSession->logout();
         $this->redirect();
     }
 

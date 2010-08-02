@@ -7,17 +7,8 @@ class PathController extends Zend_Controller_Action
     public function indexAction() {
         $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_Geom');
 
-        $sessionStorage = Zend_Auth::getInstance()->getStorage();
-        if ($sessionStorage->isEmpty()) {
-            throw new Syj_Exception_Forbidden();
-        }
-        $sessionData = $sessionStorage->read();
-
-        $user = new Syj_Model_User();
-        $userMapper = new Syj_Model_UserMapper();
-        if (!$userMapper->find($sessionData['user'], $user)) {
-            // we could also throw a forbidden exception, but client session
-            // should not contain reference to a non existent user. So, it's considered a bug.
+        $user = $this->_helper->SyjSession->user();
+        if (!$user) {
             throw new Syj_Exception_Forbidden();
         }
 

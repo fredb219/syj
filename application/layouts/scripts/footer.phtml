@@ -31,7 +31,7 @@ echo $this->footerLink(array(
 /*
  * login, logout, account links
  */
-if ($this->loggedUser()) {
+if ($this->loggedUser) {
     echo $this->footerLink(array(
             'route' => 'account',
             'action'     => 'index',

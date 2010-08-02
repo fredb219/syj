@@ -15,7 +15,7 @@ class AccountController extends Zend_Controller_Action
     }
 
     public function indexAction() {
-        $user = $this->view->loggedUser();
+        $user = $this->_helper->SyjSession->user();
         $request = $this->getRequest();
 
         if ($user === null) {
