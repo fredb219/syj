@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-23 10:53+0200\n"
+"POT-Creation-Date: 2010-08-02 11:52+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "X-Poedit-Bookmarks: -1,-1,-1,-1,13,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: application\n"
 
-#: application/views/scripts/error/error.phtml:1
+#: application/views/scripts/error/error.phtml:4
 msgid "An error occurred"
 msgstr "Il s'est produit une erreur"
 
-#: application/views/scripts/error/error.phtml:23
+#: application/views/scripts/error/error.phtml:26
 msgid "Please try again later"
 msgstr "Veuillez réessayer plus tard"
 
-#: application/views/scripts/error/error.phtml:25
+#: application/views/scripts/error/error.phtml:28
 #: application/views/scripts/pending/password_cancel.phtml:15
 #: application/views/scripts/pending/creation_validate.phtml:15
 #: application/views/scripts/pending/creation_cancel.phtml:15
@@ -35,7 +35,7 @@ msgstr "Veuillez réessayer plus tard"
 msgid "go to main page"
 msgstr "aller à la page d'accueil"
 
-#: application/views/scripts/contact/index.phtml:7
+#: application/views/scripts/contact/index.phtml:8
 #, php-format
 msgid "There was an unkwown message when sending the message. Please try again later, or send a mail directly to <a href=\"mailto:%s\">%s</a>"
 msgstr "Il s'est produit une erreur inconnue lors de l'envoi du message. Merci de réessayer plus tard, ou d'écrire directement à <a href=\"mailto:%s\">%s</a>"
@@ -48,56 +48,56 @@ msgstr "L'email a été envoyé avec succès"
 msgid "SYJ needs javascript. Please activate scripts in your browser."
 msgstr "SYJ a besoin de javascript pour fonctionner. Veuillez activer les scripts dans votre navigateur."
 
-#: application/views/scripts/idx/index.phtml:14
+#: application/views/scripts/idx/index.phtml:15
+msgid "Welcome on Syj."
+msgstr "Bienvenue sur Syj."
+
+#: application/views/scripts/idx/index.phtml:17
+msgid "To create a journey, just click on the map to add points to your route. You can zoom and move map with controls upper left."
+msgstr "Pour créer un trajet, cliquez simplement sur la carte pour ajouter des points à votre tracé. Vous pouvez zoomer et bouger la carte avec les boutons en haut à gauche."
+
+#: application/views/scripts/idx/index.phtml:19
+msgid "When you have finished a path, press \"save\", button."
+msgstr "Lorsque vous avez fini votre tracé, pressez le bouton \"enregistrer\"."
+
+#: application/views/scripts/idx/index.phtml:24
+msgid "edit"
+msgstr "modifier"
+
+#: application/views/scripts/idx/index.phtml:35
 #: application/controllers/LoginController.php:8
-#: application/layouts/scripts/footer.phtml:61
+#: application/layouts/scripts/footer.phtml:54
 #: application/forms/Login.php:26
 msgid "login"
 msgstr "connexion"
 
-#: application/views/scripts/idx/index.phtml:17
-#: application/views/scripts/idx/index.phtml:69
+#: application/views/scripts/idx/index.phtml:36
+#: application/views/scripts/idx/index.phtml:65
 msgid "create an account"
 msgstr "créer un compte"
 
-#: application/views/scripts/idx/index.phtml:30
-msgid "Welcome on Syj."
-msgstr "Bienvenue sur Syj."
-
-#: application/views/scripts/idx/index.phtml:32
-msgid "To create a journey, just click on the map to add points to your route. You can zoom and move map with controls upper left."
-msgstr "Pour créer un trajet, cliquez simplement sur la carte pour ajouter des points à votre tracé. Vous pouvez zoomer et bouger la carte avec les boutons en haut à gauche."
-
-#: application/views/scripts/idx/index.phtml:34
-msgid "When you have finished a path, press \"save\", button."
-msgstr "Lorsque vous avez fini votre tracé, pressez le bouton \"enregistrer\"."
-
-#: application/views/scripts/idx/index.phtml:40
-msgid "edit"
-msgstr "modifier"
-
-#: application/views/scripts/termsofuse/index.phtml:2
+#: application/views/scripts/termsofuse/index.phtml:3
 msgid "Show Your Journey is a site whose goal is to allow anyone to publish routes, for example, hiking itinerary, bicycle trip, travel itinerary or whatever."
 msgstr "Show Your Journey est un site dont le but est de permettre à quiconque de publier des itinéraires, par exemples, des itinéraires de randonnées, des trajets cyclistes, des itinéraires de voyages, ou n'importe quoi d'autre."
 
-#: application/views/scripts/termsofuse/index.phtml:6
+#: application/views/scripts/termsofuse/index.phtml:7
 msgid "In order to publish a route, you must first create an account.  A valid email is asked for, and ip address of account creation is stored on the server. Those informations will not be divulged to anyone without the user explicit permission."
 msgstr "Pour publier un itinéraire, vous devez tout d'abord créer un compte. Un email valide est demandé, et l'adresse ip de création du compte est enregistrée sur le serveur. Ces informations ne seront divulguées à personne sans la permission explicite de l'utilisateur."
 
-#: application/views/scripts/termsofuse/index.phtml:10
+#: application/views/scripts/termsofuse/index.phtml:11
 msgid "When you create a route, you accept that it's available under a <a href=\"http://creativecommons.org/licenses/by/2.0/\">creative commons <strong>by</strong> license</a>. This means you accept that anyone can reproduce and republish your itinerary, or a modified version of it, under the condition that he specify the proper creator of this work. This also means you need to get appropriate permissions from the creator if you want to upload a route you didn't create yourself."
 msgstr "Lorsque vous créez un itinéraire, vous acceptez qu'il soit disponible sous <a href=\"http://creativecommons.org/licenses/by/2.0/\">licence creative commons <strong>by</strong></a>. Cela veut dire que n'importe qui peut reproduire et redistribuer votre itinéraire, ou une version modifiée de celui-ci, à la condition qu'il indique correctement l'auteur de l'œuvre.  Cela veut également dire que vous devez obtenir les autorisations nécessaires si vous voulez publier un itinéraire dont vous n'êtes pas l'auteur."
 
-#: application/views/scripts/termsofuse/index.phtml:14
+#: application/views/scripts/termsofuse/index.phtml:15
 msgid "Show Your Journey is not responsible for the accuracy of the routes published.  It's the user responsibility to check that a route is accessible and safe."
 msgstr "Show Your Journey n'est pas responsable de l'exactitude des itinéraires publiés. Il appartient à l'utilisateur de vérifier qu'un chemin est praticable et sécurisé."
 
-#: application/views/scripts/termsofuse/index.phtml:18
+#: application/views/scripts/termsofuse/index.phtml:19
 msgid "Sources of the software running the website are <a href=\"http://dev.renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The map used to display the routes comes from <a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 msgstr "Les sources du logiciel qui fait tourner le site web sont <a href=\"http://dev.renevier.net/?p=syj.git\">disponibles publiquement</a> sous une licence agpl. La carte utilisée pour l'affichage des itinéraires vient d'<a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 
 #: application/views/scripts/newpwd/success.phtml:4
-#: application/controllers/IdxController.php:119
+#: application/controllers/IdxController.php:106
 msgid "A link to reset your password has been emailed to you"
 msgstr "Un email contenant un lien pour réinitialiser votre mot de passe vous a été envoyé"
 
@@ -118,11 +118,11 @@ msgstr "Vous pouvez maintenant"
 msgid "You have validated your account."
 msgstr "Vous avez validé votre compte."
 
-#: application/views/scripts/pending/index.phtml:15
+#: application/views/scripts/pending/index.phtml:16
 msgid "If you need more informations, please"
 msgstr "Si vous avez besoin de plus d'informations, veuillez"
 
-#: application/views/scripts/pending/index.phtml:16
+#: application/views/scripts/pending/index.phtml:17
 msgid "contact us"
 msgstr "nous contacter"
 
@@ -144,7 +144,7 @@ msgid "Your account was modified successfully"
 msgstr "Votre compte a bien été modifié."
 
 #: application/views/helpers/LogoutLink.php:12
-#: application/layouts/scripts/footer.phtml:52
+#: application/layouts/scripts/footer.phtml:45
 msgid "logout"
 msgstr "déconnexion"
 
@@ -303,8 +303,8 @@ msgstr ""
 "\n"
 "L'équipe de Syj"
 
-#: application/controllers/LoginController.php:95
-#: application/controllers/IdxController.php:105
+#: application/controllers/LoginController.php:101
+#: application/controllers/IdxController.php:92
 msgid "you must enter a login name"
 msgstr "vous devez entrer un nom d'utilisateur"
 
@@ -324,165 +324,165 @@ msgstr "validation de la création du compte"
 msgid "password changed"
 msgstr "mot de passe modifié"
 
-#: application/controllers/PendingController.php:64
+#: application/controllers/PendingController.php:61
 msgid "request canceled"
 msgstr "requête annulée"
 
-#: application/controllers/PendingController.php:68
+#: application/controllers/PendingController.php:65
 msgid "password reset validation"
 msgstr "validation de la réinitialisation du mot de passe"
 
-#: application/controllers/ContactController.php:13
+#: application/controllers/ContactController.php:14
 msgid "contact form"
 msgstr "formulaire de contact"
 
-#: application/controllers/ContactController.php:112
+#: application/controllers/ContactController.php:113
 msgid "Hi,"
 msgstr "Bonjour,"
 
-#: application/controllers/ContactController.php:121
-#: application/controllers/NewpwdController.php:68
-#: application/controllers/AccountController.php:74
+#: application/controllers/ContactController.php:122
+#: application/controllers/NewpwdController.php:69
+#: application/controllers/AccountController.php:83
 #: application/forms/Contact.php:27
 msgid "Value is required and can't be empty"
 msgstr "Le champ est requis, et ne doit pas être vide"
 
-#: application/controllers/ContactController.php:122
+#: application/controllers/ContactController.php:123
 #: application/forms/Contact.php:32
 #: application/validate/EmailAddress.php:13
 msgid "Invalid email"
 msgstr "Email invalide"
 
-#: application/controllers/ErrorController.php:55
+#: application/controllers/ErrorController.php:61
 msgid "Oups, something went wrong"
 msgstr "Oups, il y a eu un souci"
 
 #: application/controllers/TermsofuseController.php:12
-#: application/layouts/scripts/footer.phtml:74
+#: application/layouts/scripts/footer.phtml:67
 #: application/forms/User.php:41
 msgid "terms of use"
 msgstr "conditions d'utilisation"
 
-#: application/controllers/AccountController.php:13
-#: application/layouts/scripts/footer.phtml:46
+#: application/controllers/AccountController.php:14
+#: application/layouts/scripts/footer.phtml:39
 msgid "my account"
 msgstr "mon compte"
 
-#: application/controllers/AccountController.php:34
+#: application/controllers/AccountController.php:43
 msgid "Wrong password"
 msgstr "Mauvais mot de passe"
 
-#: application/controllers/AccountController.php:47
-#: application/controllers/IdxController.php:117
+#: application/controllers/AccountController.php:56
+#: application/controllers/IdxController.php:104
 msgid "an user is already registered with this email"
 msgstr "il y'a déjà un utilisateur enregistré avec cet email"
 
-#: application/controllers/AccountController.php:75
-#: application/controllers/IdxController.php:111
+#: application/controllers/AccountController.php:84
+#: application/controllers/IdxController.php:98
 #: application/forms/Account.php:40
 msgid "Password do not match"
 msgstr "Les mots de passe ne correspondent pas"
 
-#: application/controllers/AccountController.php:76
+#: application/controllers/AccountController.php:85
 #: application/forms/Account.php:33
 #: application/forms/User.php:18
 #, php-format
 msgid "At least %d characters"
 msgstr "Au moins %d caractères"
 
-#: application/controllers/AccountController.php:77
+#: application/controllers/AccountController.php:86
 msgid "You have made no change"
 msgstr "Vous n'avez fait aucun changement"
 
-#: application/controllers/IdxController.php:98
+#: application/controllers/IdxController.php:85
 msgid "save took place successfully"
 msgstr "La sauvegarde s'est déroulée correctement"
 
-#: application/controllers/IdxController.php:99
+#: application/controllers/IdxController.php:86
 msgid "server did not understood request. That's probably caused by a bug in SYJ"
 msgstr "Le serveur n'a pas compris la requête. Il s'agit probablement d'un bug dans SYJ"
 
-#: application/controllers/IdxController.php:100
+#: application/controllers/IdxController.php:87
 msgid "path did not exist in the server. May be it has been already deleted"
 msgstr "Le chemin n'existait pas sur le serveur. Il a peut-être supprimé"
 
-#: application/controllers/IdxController.php:101
+#: application/controllers/IdxController.php:88
 msgid "similar path seems to already exist. Please do not create two exactly identical paths"
 msgstr "Il semble qu'il y ait déjà un chemin similaire. Veuillez ne pas créer deux chemins exactement identiques"
 
-#: application/controllers/IdxController.php:102
+#: application/controllers/IdxController.php:89
 msgid "server could not be reached"
 msgstr "serveur inaccessible"
 
-#: application/controllers/IdxController.php:103
+#: application/controllers/IdxController.php:90
 msgid "there was a server error"
 msgstr "Il s'est produit une erreur serveur"
 
-#: application/controllers/IdxController.php:104
+#: application/controllers/IdxController.php:91
 msgid "there was an unknown error"
 msgstr "Il s'est produit une erreur inconnue"
 
-#: application/controllers/IdxController.php:106
+#: application/controllers/IdxController.php:93
 msgid "Login correct"
 msgstr "Vous êtes connectés"
 
-#: application/controllers/IdxController.php:107
+#: application/controllers/IdxController.php:94
 msgid "Wrong login/password"
 msgstr "Mauvais nom d'utilisateur ou mot de passe"
 
-#: application/controllers/IdxController.php:108
+#: application/controllers/IdxController.php:95
 msgid "You need to login before retrying to save"
 msgstr "Vous devez vous connecter avant de réesayer de sauvegarder"
 
-#: application/controllers/IdxController.php:109
+#: application/controllers/IdxController.php:96
 msgid "You need to have cookies enabled to login to SYJ"
 msgstr "Vous devez activer les cookies pour pouvoir vous connecter à SYJ"
 
-#: application/controllers/IdxController.php:110
+#: application/controllers/IdxController.php:97
 msgid "you must enter a password"
 msgstr "vous devez entrer un mot de passe"
 
-#: application/controllers/IdxController.php:112
+#: application/controllers/IdxController.php:99
 msgid "You must accept terms of use"
 msgstr "Vous devez accepter les conditions d'utilisation"
 
-#: application/controllers/IdxController.php:113
+#: application/controllers/IdxController.php:100
 msgid "you must enter an email"
 msgstr "vous devez entrer un email"
 
-#: application/controllers/IdxController.php:114
+#: application/controllers/IdxController.php:101
 msgid "invalid email"
 msgstr "email invalide"
 
-#: application/controllers/IdxController.php:115
+#: application/controllers/IdxController.php:102
 msgid "pseudo must only contain letters, digits, dots or underscores"
 msgstr "le pseudo ne peut contenir que des lettres, des chiffres, des points ou des soulignés"
 
-#: application/controllers/IdxController.php:116
+#: application/controllers/IdxController.php:103
 msgid "unavailable pseudo"
 msgstr "pseudo non disponible"
 
-#: application/controllers/IdxController.php:118
+#: application/controllers/IdxController.php:105
 msgid "Account created"
 msgstr "Compte créé"
 
-#: application/controllers/IdxController.php:120
+#: application/controllers/IdxController.php:107
 msgid "Now, you can retry to save"
 msgstr "Maintenant, vous pouvez réessayer de sauvegarder"
 
-#: application/controllers/IdxController.php:121
+#: application/controllers/IdxController.php:108
 msgid "route by"
 msgstr "tracé par"
 
-#: application/controllers/IdxController.php:122
+#: application/controllers/IdxController.php:109
 msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 msgstr "Carte par <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 
-#: application/layouts/scripts/footer.phtml:24
-msgid "main page"
-msgstr "page d'accueil"
+#: application/layouts/scripts/footer.phtml:17
+msgid "create a route"
+msgstr "créer un itinéraire"
 
-#: application/layouts/scripts/footer.phtml:35
+#: application/layouts/scripts/footer.phtml:28
 msgid "contact"
 msgstr "contact"
 
@@ -599,6 +599,9 @@ msgstr "supprimer"
 #: application/forms/Pending/ValidateCreation.php:24
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "Pour annuler la création du compte, pressez le bouton suivant. Le compte ainsi que toutes ses données seront supprimés."
+
+#~ msgid "main page"
+#~ msgstr "page d'accueil"
 
 #, fuzzy
 #~ msgid "reset password"

@@ -14,7 +14,7 @@ if ($reqParams['controller'] == 'idx' and (!isset($reqParams['url']))) {
     $mainpage = false;
 }
 
-$content = $this->translate("main page");
+$content = $this->translate("create a route");
 $link = ($mainpage) ? $this->escape($content) : $this->anchor($this->baseUrl(), $content, array('class' => 'footer-anchor'));
 echo '<div class="footer-link">' . $link . '</div>' . PHP_EOL;
 
