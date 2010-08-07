@@ -93,6 +93,10 @@ msgid "Show Your Journey is not responsible for the accuracy of the routes publi
 msgstr "Show Your Journey is not responsible for the accuracy of the routes published.  It's the user responsibility to check that a route is accessible and safe."
 
 #: application/views/scripts/termsofuse/index.phtml:19
+msgid "Show Your Journey service is provided \"as is\" with no guarantee for accuracy or accessibility."
+msgstr "Show Your Journey service is provided \"as is\" with no guarantee for accuracy or accessibility."
+
+#: application/views/scripts/termsofuse/index.phtml:23
 msgid "Sources of the software running the website are <a href=\"http://dev.renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The map used to display the routes comes from <a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 msgstr "Sources of the software running the website are <a href=\"http://dev.renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The map used to display the routes comes from <a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 

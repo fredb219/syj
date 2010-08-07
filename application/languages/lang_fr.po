@@ -2,7 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2010-08-02 11:52+0200\n"
+=======
+"POT-Creation-Date: 2010-08-07 09:23+0200\n"
+>>>>>>> d6dc392... terms of use about service availibity
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -93,6 +97,10 @@ msgid "Show Your Journey is not responsible for the accuracy of the routes publi
 msgstr "Show Your Journey n'est pas responsable de l'exactitude des itinéraires publiés. Il appartient à l'utilisateur de vérifier qu'un chemin est praticable et sécurisé."
 
 #: application/views/scripts/termsofuse/index.phtml:19
+msgid "Show Your Journey service is provided \"as is\" with no guarantee for accuracy or accessibility."
+msgstr "Show Your Journey est proposé sans garantie de fiabilité ou de disponibilité."
+
+#: application/views/scripts/termsofuse/index.phtml:23
 msgid "Sources of the software running the website are <a href=\"http://dev.renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The map used to display the routes comes from <a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 msgstr "Les sources du logiciel qui fait tourner le site web sont <a href=\"http://dev.renevier.net/?p=syj.git\">disponibles publiquement</a> sous une licence agpl. La carte utilisée pour l'affichage des itinéraires vient d'<a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 
