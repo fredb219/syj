@@ -68,14 +68,12 @@ class IdxController extends Zend_Controller_Action
         }
 
         if (isset($path)) {
-            if ($user and $path->owner->id == $user->id) {
-                $loggedinfo->isowner = true;
-            } else {
-                $loggedinfo->isowner = false;
+            $loggedinfo->iscreator = $path->isCreator($user);
+            if ($path->creator) {
+                $loggedinfo->creatorname = $this->view->escape((string)$path->creator->pseudo);
             }
-            $loggedinfo->ownername = $this->view->escape((string)$path->owner->pseudo);
         } else {
-            $loggedinfo->isowner = true;
+            $loggedinfo->iscreator = true;
         }
 
         $this->view->headScript()->prependScript((string) $loggedinfo);
@@ -93,8 +91,6 @@ class IdxController extends Zend_Controller_Action
             'userEmptyWarn' => __("you must enter a login name"),
             'loginSuccess' => __("Login correct"),
             'loginFailure' => __("Wrong login/password"),
-            'loginNeeded' => __("You need to login before retrying to save"),
-            'cookiesNeeded' => __("You need to have cookies enabled to login to SYJ"),
             'passwordEmptyWarn' => __("you must enter a password"),
             'passwordNoMatchWarn' => __("Password do not match"),
             'acceptTermsofuseWarn' => __("You must accept terms of use"),

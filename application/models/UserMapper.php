@@ -51,8 +51,7 @@ class Syj_Model_UserMapper
             ->setPassword($row->password)
             ->setPseudo($row->pseudo)
             ->setEmail($row->email)
-            ->setLang($row->lang)
-            ->setCreationAddr($row->creation_addr);
+            ->setLang($row->lang);
     }
 
     public function save (Syj_Model_User $user) {
@@ -60,8 +59,7 @@ class Syj_Model_UserMapper
             'pseudo'=> (string) $user->pseudo,
             'password'=> (string)$user->password,
             'email'=> (string) $user->email,
-            'lang'=> (string) $user->lang,
-            'creation_addr'=> (string) $user->creationAddr
+            'lang'=> (string) $user->lang
         );
         if (null === ($id = $user->getId())) {
             $user->id = $this->getDbTable()->insert($data);

@@ -4,7 +4,7 @@ Element.addMethods('input', {
     observe : Element.Methods.observe.wrap(function(proceed, element, eventName, handler) {
         if (eventName === "contentchange") {
             proceed(element, 'keyup', function(evt) {
-                if (evt.keyCode == 13) {
+                if (evt.keyCode === 13) {
                     return;
                 }
                 handler.apply(null, arguments);
@@ -47,8 +47,7 @@ var SyjSaveUI = {
         }
         this.enableSubmit();
         $("geom_title").disabled = false;
-        $("geom_title").focus();
-        $("geom_title").select();
+        $("geom_title").activate();
         $("geomform").removeClassName("disabled");
         this.status = "enabled";
         return this;
@@ -253,8 +252,8 @@ var SYJView = {
         layerOptions = {format:     OpenLayers.Format.WKT,
                         projection: WGS84,
                         styleMap:   styleMap.view};
-        if (gLoggedInfo.ownername) {
-            layerOptions.attribution = SyjStrings.routeBy + ' ' + '<strong>' + gLoggedInfo.ownername + '</strong>';
+        if (gLoggedInfo.creatorname) {
+            layerOptions.attribution = SyjStrings.routeBy + ' ' + '<strong>' + gLoggedInfo.creatorname + '</strong>';
         }
 
         this.viewLayer = new OpenLayers.Layer.Vector("View Layer", layerOptions);
@@ -308,6 +307,13 @@ var SYJView = {
     },
 
     prepareForm: function(form) {
+        if (!loginMgr.logged && !$("geom_accept").checked) {
+            this.messenger.setMessage(SyjStrings.acceptTermsofuseWarn, "warn");
+            $("geom_accept_container").highlight('#F08080');
+            $("geom_accept").activate();
+            return false;
+        }
+
         var line, realPoints, idx, handler;
 
         line = new OpenLayers.Geometry.LineString();
@@ -328,6 +334,7 @@ var SYJView = {
         this.needsFormResubmit = false;
         SyjSaveUI.disable.bind(SyjSaveUI).defer();
         this.messenger.hide();
+        return true;
     },
 
     editMode: function() {
@@ -434,16 +441,6 @@ var SYJView = {
                     }
                 }
             break;
-            case 403:
-                message = "";
-                this.needsFormResubmit = true;
-                if (loginMgr.hasAlreadyConnected()) {
-                    SYJLogin.messenger.setMessage(SyjStrings.cookiesNeeded, "warn");
-                } else {
-                    SYJLogin.messenger.setMessage(SyjStrings.loginNeeded, "warn");
-                }
-                SYJLogin.modalbox.show();
-            break;
             case 500:
                 message = SyjStrings.serverError;
                 this.needsFormResubmit = true;
@@ -492,7 +489,7 @@ var SYJModalClass = Class.create({
     checkNotEmpty: function(input, message) {
         if ($(input).value.strip().empty()) {
             this.messenger.setMessage(message, "warn");
-            $(input).highlight('#F08080').focus();
+            $(input).highlight('#F08080').activate();
             return false;
         }
         return true;
@@ -506,8 +503,7 @@ var SYJModalClass = Class.create({
             if (simplebox === this.modalbox) {
                 input = this.area.select('input[type="text"]')[0];
                 (function () {
-                    input.focus();
-                    input.select();
+                    input.activate();
                 }).defer();
             } else {
                 this.modalbox.hide();
@@ -544,8 +540,7 @@ var SYJModalClass = Class.create({
 
         this.messenger.setMessage(message, "error");
         input = this.area.select('input[type="text"]')[0];
-        input.highlight('#F08080').focus();
-        input.select();
+        input.highlight('#F08080').activate();
     },
 
     reset: function() {
@@ -562,7 +557,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
         $super();
         $("termsofusearea").hide();
 
-        $("user_termsofuse_anchor").observe("click", function(evt) {
+        $$("#user_termsofuse_anchor, #geom_termsofuse_anchor").invoke('observe', "click", function(evt) {
             if (!this.toubox) {
                 $("termsofusearea").show();
                 $("termsofuseiframe").setAttribute("src", evt.target.href);
@@ -587,6 +582,19 @@ var SYJUserClass = Class.create(SYJModalClass, {
                 $("user_password-desc").setMessageStatus("success");
             }
         }.bindAsEventListener(this));
+
+        $("account-info").hide();
+        $("account-info-bullet").observe('click', function(evt) {
+            var elt = $("account-info");
+            if (elt.visible()) {
+                evt.target.src = "icons/bullet_arrow_right.png";
+                elt.hide();
+            } else {
+                evt.target.src = "icons/bullet_arrow_down.png";
+                elt.show();
+            }
+            evt.stop();
+        });
     },
 
     presubmit: function() {
@@ -596,8 +604,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
 
         if (!($("user_pseudo").value.match(/^[a-zA-Z0-9_.]+$/))) {
             this.messenger.setMessage(SyjStrings.invalidPseudo, "warn");
-            $("user_pseudo").highlight('#F08080').focus();
-            $("user_pseudo").select();
+            $("user_pseudo").highlight('#F08080').activate();
             return false;
         }
 
@@ -607,15 +614,13 @@ var SYJUserClass = Class.create(SYJModalClass, {
 
         if ($("user_password").value.length < 6) {
             $("user_password-desc").setMessageStatus("warn");
-            $("user_password").highlight('#F08080').focus();
-            $("user_password").select();
+            $("user_password").highlight('#F08080').activate();
             return false;
         }
 
         if ($("user_password").value !== $("user_password_confirm").value) {
             this.messenger.setMessage(SyjStrings.passwordNoMatchWarn, "warn");
-            $("user_password").highlight('#F08080').focus();
-            $("user_password").select();
+            $("user_password").highlight('#F08080').activate();
             return false;
         }
 
@@ -625,7 +630,8 @@ var SYJUserClass = Class.create(SYJModalClass, {
 
         if (!$("user_accept").checked) {
             this.messenger.setMessage(SyjStrings.acceptTermsofuseWarn, "warn");
-            $("user_accept").highlight('#F08080').focus();
+            $("user_accept_container").highlight('#F08080');
+            $("user_accept").activate();
             return false;
         }
 
@@ -639,7 +645,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
         this.modalbox.hide();
         if (SYJView.needsFormResubmit) {
             SYJView.messenger.addMessage(SyjStrings.canResubmit);
-            $("geom_submit").focus();
+            $("geom_submit").activate();
         }
     },
 
@@ -677,8 +683,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
         if (message) {
             this.messenger.setMessage(message, "error");
             if (focusInput) {
-                focusInput.highlight('#F08080').focus();
-                focusInput.select();
+                focusInput.highlight('#F08080').activate();
             }
             return;
         }
@@ -714,7 +719,7 @@ var SYJLoginClass = Class.create(SYJModalClass, {
         this.modalbox.hide();
         if (SYJView.needsFormResubmit) {
             SYJView.messenger.addMessage(SyjStrings.canResubmit);
-            $("geom_submit").focus();
+            $("geom_submit").activate();
         }
     },
 
@@ -738,8 +743,7 @@ var SYJLoginClass = Class.create(SYJModalClass, {
         if (message) {
             this.messenger.setMessage(message, "error");
             if (focusInput) {
-                focusInput.highlight('#F08080').focus();
-                focusInput.select();
+                focusInput.highlight('#F08080').activate();
             }
             return;
         }
@@ -776,30 +780,25 @@ var loginMgr = Object.extend(gLoggedInfo, {
         }
         if (this.logged) {
             this.controlsdeck.setIndex(1);
+            $("geom_accept_container").hide();
         } else {
             this.controlsdeck.setIndex(0);
+            $("geom_accept_container").show();
         }
 
-        if (this.isowner) {
+        if (this.iscreator) {
             $("data_controls").show();
         } else {
             $("data_controls").hide();
         }
     },
 
-    login: function(aIsOwner) {
-        if (typeof aIsOwner === "boolean") {
-            this.isowner = aIsOwner;
+    login: function(aIsCreator) {
+        if (typeof aIsCreator === "boolean") {
+            this.iscreator = aIsCreator;
         }
         this.logged = true;
-        this.connections++;
         this.updateUI();
-    },
-
-    // needed in case of 403 errors: if user has already connected successfully
-    // before, it probably means he has cookies disabled
-    hasAlreadyConnected: function() {
-        return (this.connections >= 1);
     }
 });
 

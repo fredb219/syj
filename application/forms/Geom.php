@@ -20,12 +20,23 @@ class Syj_Form_Geom extends Zend_Form
             'attribs' => array('maxlength' => '40', 'size' => '20'),
             'validators' => array(new Zend_Validate_StringLength(0, 40))
             ));
+
+        $translator = $this->getTranslator();
+        $anchor = $this->getView()->Anchor("termsofuse", $translator->translate("terms of use"), array('id' => 'geom_termsofuse_anchor'));
+        $text = $translator->translate("I've read and accepted %s");
+        $text = vsprintf($text, $anchor);
+        $touaccept = array('Checkbox', 'geom_accept', array("label" => $text,
+                            'decorators' => array(
+                                  'ViewHelper',
+                                  'label',
+                                  array('HtmlTag', array('tag' => 'div', 'id' => 'geom_accept_container')))));
+
         $submit = array('Submit', 'geom_submit', array('label' => __("save")));
 
-        $this->addElements(array($id, $data, $title, $submit));
+        $this->addElements(array($id, $data, $title, $touaccept, $submit));
 
-        // fieldset around title
-        //$this->addDisplayGroup(array('geom_title'), 'metadata', array('decorators' => array('FormElements', 'Fieldset')));
+        $decorator = $this->geom_accept->getDecorator('Zend_Form_Decorator_Label');
+        $decorator->setOption('escape', false);
 
         $this->geom_title->addDecorator('HtmlTag', array('tag' => 'br', 'openOnly' => true))->
             addDecorator('label');

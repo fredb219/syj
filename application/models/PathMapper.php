@@ -58,8 +58,9 @@ class Syj_Model_PathMapper
     public function save (Syj_Model_Path $path) {
         $data = array(
             'geom'=> (string)$path->geom,
-            'owner'=> $path->owner->id,
-            'title'=> $path->title
+            'creator'=> $path->creator->id,
+            'title'=> $path->title,
+            'creator_ip'=> $path->creatorIp
         );
         if (null === ($id = $path->getId())) {
             $path->id = $this->getDbTable()->insert($data);
@@ -75,13 +76,14 @@ class Syj_Model_PathMapper
         $item->setId($row->id)->
             setGeom($geom)->
             setTitle($row->title)->
-            setUrlComp($row->urlcomp);
+            setUrlComp($row->urlcomp)->
+            setCreatorIp($row->creator_ip);
 
-        if (!$item->getOwner()) {
+        if (!$item->getCreator()) {
             $user = new Syj_Model_User();
             $userMapper = new Syj_Model_UserMapper();
-            if ($userMapper->find($row->owner, $user)) {
-                $item->setOwner($user);
+            if ($userMapper->find($row->creator, $user)) {
+                $item->setCreator($user);
             }
         }
         return $item;
@@ -99,7 +101,7 @@ class Syj_Model_PathMapper
     protected function _select() {
         $table = $this->getDbTable();
         $select = $table->select();
-        $select->from($table, array('id', 'ST_AsText(geom) AS wkt', 'owner', 'title', 'urlcomp'));
+        $select->from($table, array('id', 'ST_AsText(geom) AS wkt', 'creator', 'title', 'urlcomp', 'creator_ip'));
         return $select;
     }
 

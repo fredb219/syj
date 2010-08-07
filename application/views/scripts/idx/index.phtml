@@ -33,7 +33,10 @@
         <div>
             <?php
                 echo $this->anchor('login', $this->translate('login'), array('id' => 'login_control_anchor', 'class' => 'login-anchor'));
-                echo $this->anchor('', $this->translate('create an account'), array('id' => 'user_control_anchor', 'class' => 'login-anchor'));
+                $anchortext = sprintf("%s<img id=\"account-info-bullet\" src=\"icons/bullet_arrow_right.png\"><span id=\"account-info\"><br>%s</span>",
+                                      $this->translate('create an account'),
+                                      $this->translate('Whith an account, you can manage and modify your routes'));
+                echo $this->anchor('', $anchortext, array('id' => 'user_control_anchor', 'class' => 'login-anchor'), false);
             ?>
         </div>
         <div>

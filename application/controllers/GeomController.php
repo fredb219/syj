@@ -24,8 +24,12 @@ class GeomController extends Zend_Controller_Action
             return;
         }
 
-        $api->setCheckIfNoneMatch(true)->setBody(json_encode(
-            array('owner' => (string)$path->owner->pseudo, 'geom' => (string)$path->geom)
-        ));
+        $data = array('geom' => (string)$path->geom,
+                  'title' => (string)$path->displayTitle);
+        if ($path->creator) {
+            $data['creator'] = (string)$path->creator->pseudo;
+        }
+
+        $api->setCheckIfNoneMatch(true)->setBody(json_encode($data));
     }
 }

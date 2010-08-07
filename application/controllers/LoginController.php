@@ -63,13 +63,13 @@ class LoginController extends Zend_Controller_Action
                 if (!$pathMapper->find((int)$login_geom_id, $path)) {
                     throw new Syj_Exception_Request();
                 }
-                if ($path->owner->id === $userid) {
-                    $api->setBody("1"); // owner of displayed geometry
+                if ($path->creator->id === $userid) {
+                    $api->setBody("1"); // creator of displayed geometry
                 } else {
                     $api->setBody("0");
                 }
             } else {
-                $api->setBody("1"); // no geometry displayed: owner of the (future) geometry
+                $api->setBody("1"); // no geometry displayed: creator of the (future) geometry
             }
         } else {
             $this->redirect();

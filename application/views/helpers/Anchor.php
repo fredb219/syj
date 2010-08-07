@@ -4,7 +4,7 @@
 
 class Syj_View_Helper_Anchor extends Zend_View_Helper_HtmlElement
 {
-    public function Anchor($href, $text = null, array $attribs=array()) {
+    public function Anchor($href, $text = null, array $attribs=array(), $escape = true) {
         $lang = Zend_Controller_Front::getInstance()->getRequest()->getQuery('lang');
         if ($lang) {
             $translator = Zend_Registry::get('Zend_Translate');
@@ -18,7 +18,8 @@ class Syj_View_Helper_Anchor extends Zend_View_Helper_HtmlElement
         if (!isset($text)) {
             $text = $href;
         }
-        $html = '<a' . $this->_htmlAttribs($attribs) . '>' . $this->view->escape($text) . '</a>';
+        $content = $escape ? $this->view->escape($text) : $text;
+        $html = '<a' . $this->_htmlAttribs($attribs) . '>' . $content . '</a>';
         return $html;
     }
 }

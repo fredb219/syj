@@ -143,8 +143,7 @@ Element.addMethods('form', {
             if (error && (typeof tofocus.highlight === "function")) {
                 tofocus.highlight('#F08080');
             }
-            tofocus.focus();
-            tofocus.select();
+            tofocus.activate();
         }
     },
 

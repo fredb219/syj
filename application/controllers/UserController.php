@@ -19,7 +19,6 @@ class UserController extends Zend_Controller_Action
         $user->pseudo = $formData["user_pseudo"];
         $user->password = sha1($formData["user_password"]);
         $user->email = $formData["user_email"];
-        $user->creationAddr = $this->getRequest()->getClientIp(true);
 
         if (Zend_Registry::isRegistered('Zend_Translate')) {
             $translator = Zend_Registry::get('Zend_Translate');

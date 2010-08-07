@@ -89,6 +89,12 @@ body, html {
     background-color: #BBBBFF;
 }
 
+#account-info-bullet {
+    /* in firefox, in image inside an anchor has a border */
+    border: none;
+    vertical-align: middle;
+}
+
 /*
  * login rules
  */

@@ -10,8 +10,7 @@ CREATE TABLE users (
     pseudo VARCHAR(20) UNIQUE NOT NULL CHECK (pseudo ~ '^[a-zA-Z0-9_.]+$'),
     email VARCHAR(320) UNIQUE NOT NULL,
     lang VARCHAR(3),
-    creation_time TIMESTAMP NOT NULL DEFAULT NOW(),
-    creation_addr INET NOT NULL
+    creation_time TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 ---
@@ -101,21 +100,25 @@ DROP TABLE IF EXISTS paths CASCADE;
 CREATE TABLE paths (
     id INTEGER PRIMARY KEY DEFAULT nextval('paths_id_seq'),
     geom GEOGRAPHY (LINESTRING, 4326) NOT NULL,
-    owner INTEGER NOT NULL REFERENCES users ON DELETE CASCADE,
+    creator INTEGER REFERENCES users ON DELETE CASCADE,
+    creator_ip INET NOT NULL,
     title VARCHAR(40),
+    last_update TIMESTAMP NOT NULL DEFAULT NOW(),
     urlcomp VARCHAR(20) UNIQUE CHECK (urlcomp ~ '^[a-z][a-zA-Z0-9_]*$') -- ~: matches regular expression; case sensitive
 );
 
--- unique (geom, owner) constraint will not work: first because of postgis
--- #541; then because equality is checked by comparing bbox instead of real
--- geometries. So, we implement that constraint in a trigger
 CREATE OR REPLACE FUNCTION tg_paths_bu() RETURNS TRIGGER AS $$
 DECLARE res INTEGER;
 BEGIN
-    SELECT INTO res COUNT(*) FROM paths WHERE ST_AsBinary(geom) = ST_AsBinary(NEW.geom) AND owner = NEW.owner AND id != NEW.id;
+    SELECT INTO res COUNT(*) FROM paths WHERE ST_AsBinary(geom) = ST_AsBinary(NEW.geom) AND creator = NEW.creator AND id != NEW.id;
+    -- unique (geom, creator) constraint will not work: first because of postgis
+    -- #541; then because equality is checked by comparing bbox instead of real
+    -- geometries. So, we implement that constraint in a trigger
     IF res >= 1 THEN
         RAISE 'duplicate key paths_geom_key' using ERRCODE = 'unique_violation';
     ELSE
+        -- update last_update TIMESTAMP
+        NEW.last_update = NOW();
         RETURN NEW;
     END IF;
 END;

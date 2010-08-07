@@ -10,8 +10,7 @@ document.observe("dom:loaded", function() {
         $$('.error').invoke('remove');
 
         if (!loginput.check(function() { return !this.value.strip().empty(); }, SyjStrings.userEmptyWarn)) {
-            loginput.highlight('#F08080').focus();
-            loginput.select();
+            loginput.highlight('#F08080').activate();
             evt.stop();
             return;
         }

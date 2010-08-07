@@ -9,7 +9,6 @@ class Syj_Model_User extends Syj_Model_Generic
     protected $_password;
     protected $_email;
     protected $_lang;
-    protected $_creation_addr;
 
     public function setId($id) {
         $this->_id = (int) $id;
@@ -54,15 +53,6 @@ class Syj_Model_User extends Syj_Model_Generic
 
     public function getLang() {
         return $this->_lang;
-    }
-
-    public function setCreationAddr($creation_addr) {
-        $this->_creation_addr = (string) $creation_addr;
-        return $this;
-    }
-
-    public function getCreationAddr() {
-        return $this->_creation_addr;
     }
 
     public function notifyPendings() {

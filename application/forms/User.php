@@ -45,7 +45,7 @@ class Syj_Form_User extends Syj_Form_TableAbstract
                             'decorators' => array(
                                   'ViewHelper',
                                   'label',
-                                  array('HtmlTag', array('tag' => 'div'))),
+                                  array('HtmlTag', array('tag' => 'div', 'id' => 'user_accept_container'))),
                             'validators' => array(new Zend_Validate_Identical('1'))));
 
         $decorator = $this->user_accept->getDecorator('Zend_Form_Decorator_Label');

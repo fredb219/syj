@@ -6,12 +6,6 @@ class PathController extends Zend_Controller_Action
 {
     public function indexAction() {
         $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_Geom');
-
-        $user = $this->_helper->SyjSession->user();
-        if (!$user) {
-            throw new Syj_Exception_Forbidden();
-        }
-
         $decoder = new gisconverter\WKT();
 
         try {
@@ -32,16 +26,24 @@ class PathController extends Zend_Controller_Action
             }
         }
         $path->geom = $geom;
+
+        $user = $this->_helper->SyjSession->user();
+        if (!$user and !$formData["geom_accept"]) {
+            throw new Syj_Exception_Request();
+        }
+
         if ($path->getId()) {
-            if ($path->owner->id != $user->id) {
-                throw new Syj_Exception_Forbidden();
+            if (!$path->isCreator($user)) {
+                throw new Syj_Exception_Request();
             }
         } else {
-            $path->owner = $user;
+            $path->creator = $user;
         }
+
         if (isset($formData["geom_title"])) {
             $path->title = $formData["geom_title"];
         }
+        $path->creatorIp = $this->getRequest()->getClientIp(true);
         try {
             $pathMapper->save ($path);
         } catch(Zend_Db_Statement_Exception $e) {

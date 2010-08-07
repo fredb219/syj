@@ -16,16 +16,14 @@ document.observe("dom:loaded", function() {
         tofocus = $$('form input:not([readonly],[disabled])')[0];
     }
     if (tofocus) {
-        tofocus.focus();
-        tofocus.select();
+        tofocus.activate();
     }
 
     $("newpwdform").observe('submit', function(evt) {
         $$('.error').invoke('remove');
         if ($('newpwd_email').value.strip().empty()) {
             insertErrorBefore($('newpwdform').select('table')[0], SyjStrings.notEmptyField);
-            $('newpwd_email').highlight('#F08080').focus();
-            $('newpwd_email').select();
+            $('newpwd_email').highlight('#F08080').activate();
             evt.stop();
         }
     });
