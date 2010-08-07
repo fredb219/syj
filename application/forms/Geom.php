@@ -29,7 +29,7 @@ class Syj_Form_Geom extends Zend_Form
                             'decorators' => array(
                                   'ViewHelper',
                                   'label',
-                                  array('HtmlTag', array('tag' => 'div', 'id' => 'geom_accept_container')))));
+                                  array('HtmlTag', array('tag' => 'div', 'id' => 'geom_accept_container', 'class' => 'logged-hide')))));
 
         $submit = array('Submit', 'geom_submit', array('label' => __("save")));
 

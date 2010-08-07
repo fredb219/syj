@@ -780,10 +780,12 @@ var loginMgr = Object.extend(gLoggedInfo, {
         }
         if (this.logged) {
             this.controlsdeck.setIndex(1);
-            $("geom_accept_container").hide();
+            $$(".logged-hide").invoke('hide');
+            $$(".logged-show").invoke('show');
         } else {
             this.controlsdeck.setIndex(0);
-            $("geom_accept_container").show();
+            $$(".logged-hide").invoke('show');
+            $$(".logged-show").invoke('hide');
         }
 
         if (this.iscreator) {

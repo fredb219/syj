@@ -29,24 +29,30 @@ echo $this->footerLink(array(
     isset($this->redirectLinks) ? $this->redirectLinks : true);
 
 /*
- * login, logout, account links
+ * account link
  */
-if ($this->loggedUser) {
+if ($mainpage or $this->loggedUser) {
     echo $this->footerLink(array(
             'route' => 'account',
             'action'     => 'index',
             'controller' => 'account'),
-        $this->translate("my account"));
-    if (!$mainpage) {
+        $this->translate("my account"), true,
+        'logged-show');
+}
+
+/*
+ * login or logout links
+ */
+if (!$mainpage) {
+    if ($this->loggedUser) {
+
         echo $this->footerLink(array(
             'route' => 'logout',
             'action'     => 'logout',
             'controller' => 'login'),
         $this->translate("logout"),
         false);
-    }
-} else {
-    if (!$mainpage) {
+    } else {
         echo $this->footerLink(array(
             'route' => 'login',
             'action'     => 'login',
