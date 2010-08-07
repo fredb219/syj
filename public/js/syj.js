@@ -9,6 +9,7 @@ Element.addMethods('input', {
                 }
                 handler.apply(null, arguments);
             });
+            proceed(element, 'paste', handler);
             return proceed(element, 'change', handler);
         }
         return proceed(element, eventName, handler);
