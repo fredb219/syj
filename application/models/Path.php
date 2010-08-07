@@ -58,7 +58,8 @@ class Syj_Model_Path extends Syj_Model_Generic
         if ($this->_title) {
             return $this->_title;
         } else if ($this->_id) {
-            return "journey number " . (string)$this->_id;
+            $title = $this->getTranslator()->translate("route number %d");
+            return str_replace('%d', (string)$this->id, $title);
         } else {
             return "";
         }
