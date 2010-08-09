@@ -72,57 +72,107 @@ Element.addMethods({
     }
 });
 
+Ajax.TimedRequest = Class.create(Ajax.Request, {
+    timeout: null,
+    delay: null,
+
+    abort: function() {
+        // see http://blog.pothoven.net/2007/12/aborting-ajax-requests-for-prototypejs.html
+        this.transport.onreadystatechange = Prototype.emptyFunction;
+        this.transport.abort();
+        Ajax.activeRequestCount--;
+    },
+
+    initialize: function($super, url, delay, options) {
+        this.delay = delay;
+
+        options.onSuccess = options.onSuccess.wrap(function(proceed, transport, json) {
+            if (this.timeout) {
+                window.clearTimeout(this.timeout);
+                this.timeout = null;
+            }
+            if (transport.getStatus() === 0) {
+                this.options.onFailure(transport, json);
+            } else {
+                proceed(transport, json);
+            }
+        }).bind(this);
+
+        options.onFailure = options.onFailure.wrap(function(proceed, transport, json) {
+            if (this.timeout) {
+                window.clearTimeout(this.timeout);
+                this.timeout = null;
+            }
+            proceed(transport, json);
+        }).bind(this);
+
+        $super(url, options);
+    },
+
+    request: function($super, url) {
+        this.timeout = (function() {
+            this.options.onFailure(null);
+            this.abort();
+        }).bind(this).delay(this.delay);
+        $super(url);
+    }
+});
+
+Ajax.Responders.register({
+    // needed for Ajax.TimedRequest.abort to work: see
+    // http://blog.pothoven.net/2007/12/aborting-ajax-requests-for-prototypejs.html
+    // again
+    onComplete: function() {
+        Ajax.activeRequestCount--;
+        if (Ajax.activeRequestCount < 0) {
+            Ajax.activeRequestCount = 0;
+        }
+    }
+});
+
 // wrapper around Form.request that sets up the submit listener, stops the
 // submit event, calls presubmit function, calls Form.request and calls a
 // postsubmit function
 Element.addMethods('form', {
     ajaxize : function(form, options) {
-        var reqoptions, timeout;
+        var reqoptions;
 
-        options = Object.clone(options);
-        reqoptions = Object.clone(options);
-        timeout = null;
-
-        function onSuccess(transport, json) {
-            if (timeout) {
-                window.clearTimeout(timeout);
-                timeout = null;
-            }
-            if (transport.getStatus() === 0) {
-                options.onFailure(transport, json);
-            } else {
-                options.onSuccess(transport, json);
-            }
-        }
-
-        function onFailure(transport, json) {
-            if (timeout) {
-                window.clearTimeout(timeout);
-                timeout = null;
-            }
-            options.onFailure(transport, json);
-        }
-
-        delete(reqoptions.presubmit);
-        delete(reqoptions.postsubmit);
+        options = Object.clone(options || {});
 
         $(form).observe('submit', function(evt) {
-            var req;
-
             evt.stop(); // cancel form submission
+
+            reqoptions = Object.clone(options);
+            delete(reqoptions.presubmit);
+            delete(reqoptions.postsubmit);
+            delete(reqoptions.delay);
+
             if (Object.isFunction(options.presubmit)) {
                 if (options.presubmit(this) === false) {
                     return;
                 }
             }
-            req = this.request(Object.extend(reqoptions, {
-                onSuccess: onSuccess,
-                onFailure: onFailure
-            }));
-            timeout = (function() {
-                options.onFailure(null);
-                req.abort();
-            }).delay(options.timeout || 20);
+
+            var params = reqoptions.parameters, action = this.readAttribute('action') || '';
+
+            if (action.blank()) {
+                action = window.location.href;
+            }
+            reqoptions.parameters = this.serialize(true);
+
+            if (params) {
+                if (Object.isString(params)) {
+                    params = params.toQueryParams();
+                }
+                Object.extend(reqoptions.parameters, params);
+            }
+
+            if (this.hasAttribute('method') && !reqoptions.method) {
+                reqoptions.method = this.method;
+            }
+
+            new Ajax.TimedRequest(action, options.delay || 20, reqoptions);
+
             if (Object.isFunction(options.postsubmit)) {
                 options.postsubmit(this);
             }
