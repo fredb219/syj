@@ -80,10 +80,6 @@ var SyjSaveUI = {
 };
 
 var SyjEditUI = {
-    init: function() {
-        return this;
-    },
-
     hide: function() {
         $("edit-btn").blur();
         $("edit-btn").hide();
@@ -263,7 +259,6 @@ var SYJView = {
             this.messenger.hide();
             this.editMode();
         }).bind(this));
-        SyjEditUI.init().hide();
 
         $("geomform").ajaxize({
                 presubmit: this.prepareForm.bind(this),
@@ -290,11 +285,9 @@ var SYJView = {
             // XXX: ie has not guessed height of map main div yet during map
             // initialisation. Now, it will read it correctly.
             this.map.updateSize();
-            SyjEditUI.show();
         } else {
             extent = new OpenLayers.Bounds(gMaxExtent.minlon, gMaxExtent.minlat, gMaxExtent.maxlon, gMaxExtent.maxlat)
                                          .transform(WGS84, Mercator);
-            this.editMode();
         }
         this.map.zoomToExtent(extent);
         document.observe('simplebox:shown', this.observer.bindAsEventListener(this));

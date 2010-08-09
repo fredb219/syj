@@ -21,7 +21,9 @@
     </div>
 
     <div id="data_controls">
-    <input id="edit-btn" name="edit-btn" type="button" value="<?php echo $this->translate('edit')?>">
+    <input id="edit-btn" name="edit-btn" type="button" value="<?php
+        echo isset($this->path) ? $this->translate('edit'): $this->translate('start');
+    ?>">
 
     <?php
         print $this->geomform;
