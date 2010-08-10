@@ -227,7 +227,7 @@ var SYJView = {
     needsFormResubmit: false,
 
     init: function() {
-        var externalGraphic, baseURL, baseLayer, layerOptions, extent = null, hidemessenger;
+        var externalGraphic, baseURL, baseLayer, layerOptions, extent, hidemessenger;
 
         // is svg context, opera does not resolve links with base element is svg context
         externalGraphic = styleMap.edit.styles.select.defaultStyle.externalGraphic;
@@ -278,7 +278,6 @@ var SYJView = {
             this.messenger.hide();
         }
 
-        extent = null;
         if ($("geom_data").value) {
             this.viewLayer.addFeatures([this.wkt.read($("geom_data").value)]);
             extent = this.viewLayer.getDataExtent();
@@ -412,7 +411,6 @@ var SYJView = {
         if (transport) {
             httpCode = transport.getStatus();
         }
-        message = "";
         switch (httpCode) {
             case 0:
                 message = SyjStrings.notReachedError;
