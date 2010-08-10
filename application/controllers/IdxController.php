@@ -20,7 +20,7 @@ class IdxController extends Zend_Controller_Action
     public function indexAction() {
         $url = $this->getRequest()->getUserParam('url');
 
-        $geomform = new Syj_Form_Geom(array('name' => 'geomform', 'action' => 'path'));
+        $geomform = new Syj_Form_Geom(array('name' => 'geomform'));
         $loginform = new Syj_Form_Login(array('name' => 'loginform', 'action' => 'login'));
         $userform = new Syj_Form_User(array('name' => 'userform', 'action' => 'user'));
         $newpwdform = new Syj_Form_Newpwd(array('name' => 'newpwdform', 'action' => 'newpwd'));
@@ -35,13 +35,14 @@ class IdxController extends Zend_Controller_Action
                     throw new Syj_Exception_NotFound('Not Found', 404);
                 }
             }
+            $geomform->setAction('path/' . (string)$path->id . '/update');
             $title = $path->displayTitle;
             $this->view->path = $path;
             $geomform->geom_title->setValue($path->title);
             $geomform->geom_data->setValue((string)$path->geom);
-            $geomform->geom_id->setValue((string)$path->id);
             $loginform->login_geom_id->setValue((string)$path->id);
         } else {
+            $geomform->setAction('path');
             $extent = new phptojs\JsObject('gMaxExtent', $this->_helper->syjGeoip($this->getRequest()->getClientIp(true)));
             $this->view->headScript()->prependScript((string) $extent);
             $title = "Show your journey";
@@ -83,7 +84,7 @@ class IdxController extends Zend_Controller_Action
         $this->view->jslocales = array(
             'saveSuccess' => __("save took place successfully"),
             'requestError' => __("server did not understood request. That's probably caused by a bug in SYJ"),
-            'UnreferencedError' => __("path did not exist in the server. May be it has been already deleted"),
+            'gonePathError' => __("route has been deleted from the server."),
             'uniquePathError' => __("similar path seems to already exist. Please do not create two exactly identical paths"),
             'notReachedError' => __("server could not be reached"),
             'serverError' => __("there was a server error"),

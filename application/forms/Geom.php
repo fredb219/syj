@@ -12,7 +12,6 @@ class Syj_Form_Geom extends Zend_Form
                             );
 
     public function init() {
-        $id = array('Hidden', 'geom_id');
         $data = array('Hidden', 'geom_data', array('required' => true));
 
         $title = array('Text', 'geom_title', array(
@@ -33,7 +32,7 @@ class Syj_Form_Geom extends Zend_Form
 
         $submit = array('Submit', 'geom_submit', array('label' => __("save")));
 
-        $this->addElements(array($id, $data, $title, $touaccept, $submit));
+        $this->addElements(array($data, $title, $touaccept, $submit));
 
         $decorator = $this->geom_accept->getDecorator('Zend_Form_Decorator_Label');
         $decorator->setOption('escape', false);

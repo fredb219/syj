@@ -5,33 +5,33 @@
 class PathController extends Zend_Controller_Action
 {
     public function indexAction() {
-        $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_Geom');
-        $decoder = new gisconverter\WKT();
+        return $this->save(new Syj_Model_Path());
+    }
 
-        try {
-            $geom = $decoder->geomFromText($formData["geom_data"]);
-        } catch (gisconverter\CustomException $e) {
-            throw new Syj_Exception_Request();
-        }
-
-        if ($geom::name != "LineString") {
-            throw new Syj_Exception_Request();
-        }
-
+    public function updateAction() {
+        $idx = $this->getRequest()->getUserParam('idx');
         $path = new Syj_Model_Path();
         $pathMapper = new Syj_Model_PathMapper();
-        if (isset ($formData["geom_id"]) and $formData["geom_id"]) {
-            if (!$pathMapper->find($formData["geom_id"], $path)) {
-                throw new Syj_Exception_Request("unreferenced");
+        if (!$pathMapper->find($idx, $path)) {
+            if ($pathMapper->hasexisted($idx)) {
+                throw new Syj_Exception_NotFound('Gone', 410);
+            } else {
+                throw new Syj_Exception_NotFound('Not Found', 404);
             }
         }
-        $path->geom = $geom;
+        return $this->save($path);
+    }
 
+    public function save(Syj_Model_Path $path) {
+        $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_Geom');
+
+        /* authorization check */
         $user = $this->_helper->SyjSession->user();
         if (!$user and !$formData["geom_accept"]) {
             throw new Syj_Exception_Request();
         }
 
+        /* setting creator property */
         if ($path->getId()) {
             if (!$path->isCreator($user)) {
                 throw new Syj_Exception_Request();
@@ -39,11 +39,28 @@ class PathController extends Zend_Controller_Action
         } else {
             $path->creator = $user;
         }
+        $path->creatorIp = $this->getRequest()->getClientIp(true);
 
+        /* setting geom property */
+        $decoder = new gisconverter\WKT();
+        try {
+            $geom = $decoder->geomFromText($formData["geom_data"]);
+        } catch (gisconverter\CustomException $e) {
+            throw new Syj_Exception_Request();
+        }
+        if ($geom::name != "LineString") {
+            throw new Syj_Exception_Request();
+        }
+        $path->geom = $geom;
+
+        /* setting title property */
         if (isset($formData["geom_title"])) {
             $path->title = $formData["geom_title"];
         }
-        $path->creatorIp = $this->getRequest()->getClientIp(true);
+
+
+        /* now, saving !*/
+        $pathMapper = new Syj_Model_PathMapper();
         try {
             $pathMapper->save ($path);
         } catch(Zend_Db_Statement_Exception $e) {
@@ -61,4 +78,5 @@ class PathController extends Zend_Controller_Action
 
         $this->_helper->SyjApi->setBody($path->id);
     }
+
 }
