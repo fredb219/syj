@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-07 20:59+0200\n"
+"POT-Creation-Date: 2010-08-11 21:44+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -45,6 +45,7 @@ msgid "Email was send successfully"
 msgstr "Email was send successfully"
 
 #: application/views/scripts/idx/index.phtml:8
+#: application/views/scripts/list/index.phtml:8
 msgid "SYJ needs javascript. Please activate scripts in your browser."
 msgstr "SYJ needs javascript. Please activate scripts in your browser."
 
@@ -60,23 +61,27 @@ msgstr "To create a journey, just click on the map to add points to your route. 
 msgid "When you have finished a path, press \"save\", button."
 msgstr "When you have finished a path, press \"save\", button."
 
-#: application/views/scripts/idx/index.phtml:24
+#: application/views/scripts/idx/index.phtml:25
 msgid "edit"
 msgstr "edit"
 
-#: application/views/scripts/idx/index.phtml:35
+#: application/views/scripts/idx/index.phtml:25
+msgid "start a route"
+msgstr "start a route"
+
+#: application/views/scripts/idx/index.phtml:37
 #: application/controllers/LoginController.php:8
-#: application/layouts/scripts/footer.phtml:54
+#: application/layouts/scripts/footer.phtml:72
 #: application/forms/Login.php:26
 msgid "login"
 msgstr "login"
 
-#: application/views/scripts/idx/index.phtml:37
-#: application/views/scripts/idx/index.phtml:68
+#: application/views/scripts/idx/index.phtml:39
+#: application/views/scripts/idx/index.phtml:70
 msgid "create an account"
 msgstr "create an account"
 
-#: application/views/scripts/idx/index.phtml:38
+#: application/views/scripts/idx/index.phtml:40
 msgid "Whith an account, you can manage and modify your routes"
 msgstr "Whith an account, you can manage and modify your routes"
 
@@ -105,7 +110,7 @@ msgid "Sources of the software running the website are <a href=\"http://dev.rene
 msgstr "Sources of the software running the website are <a href=\"http://dev.renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The map used to display the routes comes from <a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 
 #: application/views/scripts/newpwd/success.phtml:4
-#: application/controllers/IdxController.php:102
+#: application/controllers/IdxController.php:103
 msgid "A link to reset your password has been emailed to you"
 msgstr "A link to reset your password has been emailed to you"
 
@@ -151,8 +156,47 @@ msgstr "Your new password is now <strong>%s</strong>. You can %s with this new p
 msgid "Your account was modified successfully"
 msgstr "Your account was modified successfully"
 
-#: application/views/helpers/LogoutLink.php:12
-#: application/layouts/scripts/footer.phtml:45
+#: application/views/scripts/list/index.phtml:17
+#: application/layouts/scripts/footer.phtml:17
+msgid "create a route"
+msgstr "create a route"
+
+#: application/views/scripts/list/index.phtml:18
+#, php-format
+msgid "you have created no route yet, you may want to %s"
+msgstr "you have created no route yet, you may want to %s"
+
+#: application/views/scripts/list/index.phtml:29
+msgid "first page"
+msgstr "first page"
+
+#: application/views/scripts/list/index.phtml:33
+msgid "previous page"
+msgstr "previous page"
+
+#: application/views/scripts/list/index.phtml:42
+msgid "next page"
+msgstr "next page"
+
+#: application/views/scripts/list/index.phtml:46
+msgid "last page"
+msgstr "last page"
+
+#: application/views/scripts/list/index.phtml:67
+msgid "modify"
+msgstr "modify"
+
+#: application/views/scripts/list/index.phtml:68
+msgid "duplicate"
+msgstr "duplicate"
+
+#: application/views/scripts/list/index.phtml:69
+#: application/forms/Pending/ValidateCreation.php:23
+msgid "delete"
+msgstr "delete"
+
+#: application/views/helpers/LogoutLink.php:10
+#: application/layouts/scripts/footer.phtml:65
 msgid "logout"
 msgstr "logout"
 
@@ -315,7 +359,7 @@ msgstr ""
 "Syj team"
 
 #: application/controllers/LoginController.php:101
-#: application/controllers/IdxController.php:90
+#: application/controllers/IdxController.php:91
 msgid "you must enter a login name"
 msgstr "you must enter a login name"
 
@@ -369,11 +413,49 @@ msgid "Oups, something went wrong"
 msgstr "Oups, something went wrong"
 
 #: application/controllers/TermsofuseController.php:12
-#: application/layouts/scripts/footer.phtml:67
-#: application/forms/Geom.php:25
+#: application/layouts/scripts/footer.phtml:85
+#: application/forms/Geom.php:24
 #: application/forms/User.php:41
 msgid "terms of use"
 msgstr "terms of use"
+
+#: application/controllers/ListController.php:18
+#: application/layouts/scripts/footer.phtml:51
+msgid "my routes"
+msgstr "my routes"
+
+#: application/controllers/ListController.php:35
+msgid "There is no undo. Delete this route definitively ?"
+msgstr "There is no undo. Delete this route definitively ?"
+
+#: application/controllers/ListController.php:36
+#: application/controllers/IdxController.php:88
+msgid "server could not be reached"
+msgstr "server could not be reached"
+
+#: application/controllers/ListController.php:37
+#: application/controllers/IdxController.php:85
+msgid "server did not understood request. That's probably caused by a bug in SYJ"
+msgstr "server did not understood request. That's probably caused by a bug in SYJ"
+
+#: application/controllers/ListController.php:38
+#: application/controllers/IdxController.php:86
+msgid "route not referenced on the server. It has probably been deleted."
+msgstr "route not referenced on the server. It has probably been deleted."
+
+#: application/controllers/ListController.php:39
+#: application/controllers/IdxController.php:89
+msgid "there was a server error"
+msgstr "there was a server error"
+
+#: application/controllers/ListController.php:40
+#: application/controllers/IdxController.php:90
+msgid "there was an unknown error"
+msgstr "there was an unknown error"
+
+#: application/controllers/ListController.php:41
+msgid "route was successfully deleted"
+msgstr "route was successfully deleted"
 
 #: application/controllers/AccountController.php:16
 #: application/layouts/scripts/footer.phtml:39
@@ -385,12 +467,12 @@ msgid "Wrong password"
 msgstr "Wrong password"
 
 #: application/controllers/AccountController.php:44
-#: application/controllers/IdxController.php:100
+#: application/controllers/IdxController.php:101
 msgid "an user is already registered with this email"
 msgstr "an user is already registered with this email"
 
 #: application/controllers/AccountController.php:72
-#: application/controllers/IdxController.php:94
+#: application/controllers/IdxController.php:95
 #: application/forms/Account.php:40
 msgid "Password do not match"
 msgstr "Password do not match"
@@ -406,85 +488,61 @@ msgstr "At least %d characters"
 msgid "You have made no change"
 msgstr "You have made no change"
 
-#: application/controllers/IdxController.php:83
+#: application/controllers/IdxController.php:84
 msgid "save took place successfully"
 msgstr "save took place successfully"
 
-#: application/controllers/IdxController.php:84
-msgid "server did not understood request. That's probably caused by a bug in SYJ"
-msgstr "server did not understood request. That's probably caused by a bug in SYJ"
-
-#: application/controllers/IdxController.php:85
-msgid "path did not exist in the server. May be it has been already deleted"
-msgstr "path did not exist in the server. May be it has been already deleted"
-
-#: application/controllers/IdxController.php:86
+#: application/controllers/IdxController.php:87
 msgid "similar path seems to already exist. Please do not create two exactly identical paths"
 msgstr "similar path seems to already exist. Please do not create two exactly identical paths"
 
-#: application/controllers/IdxController.php:87
-msgid "server could not be reached"
-msgstr "server could not be reached"
-
-#: application/controllers/IdxController.php:88
-msgid "there was a server error"
-msgstr "there was a server error"
-
-#: application/controllers/IdxController.php:89
-msgid "there was an unknown error"
-msgstr "there was an unknown error"
-
-#: application/controllers/IdxController.php:91
+#: application/controllers/IdxController.php:92
 msgid "Login correct"
 msgstr "Login correct"
 
-#: application/controllers/IdxController.php:92
+#: application/controllers/IdxController.php:93
 msgid "Wrong login/password"
 msgstr "Wrong login/password"
 
-#: application/controllers/IdxController.php:93
+#: application/controllers/IdxController.php:94
 msgid "you must enter a password"
 msgstr "you must enter a password"
 
-#: application/controllers/IdxController.php:95
+#: application/controllers/IdxController.php:96
 msgid "You must accept terms of use"
 msgstr "You must accept terms of use"
 
-#: application/controllers/IdxController.php:96
+#: application/controllers/IdxController.php:97
 msgid "you must enter an email"
 msgstr "you must enter an email"
 
-#: application/controllers/IdxController.php:97
+#: application/controllers/IdxController.php:98
 msgid "invalid email"
 msgstr "invalid email"
 
-#: application/controllers/IdxController.php:98
+#: application/controllers/IdxController.php:99
 msgid "pseudo must only contain letters, digits, dots or underscores"
 msgstr "pseudo must only contain letters, digits, dots or underscores"
 
-#: application/controllers/IdxController.php:99
+#: application/controllers/IdxController.php:100
 msgid "unavailable pseudo"
 msgstr "unavailable pseudo"
 
-#: application/controllers/IdxController.php:101
+#: application/controllers/IdxController.php:102
 msgid "Account created"
 msgstr "Account created"
 
-#: application/controllers/IdxController.php:103
+#: application/controllers/IdxController.php:104
 msgid "Now, you can retry to save"
 msgstr "Now, you can retry to save"
 
-#: application/controllers/IdxController.php:104
+#: application/controllers/IdxController.php:105
 msgid "route by"
 msgstr "route by"
 
-#: application/controllers/IdxController.php:105
+#: application/controllers/IdxController.php:106
 msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 msgstr "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
-
-#: application/layouts/scripts/footer.phtml:17
-msgid "create a route"
-msgstr "create a route"
 
 #: application/layouts/scripts/footer.phtml:28
 msgid "contact"
@@ -528,17 +586,17 @@ msgstr "Send"
 msgid "Send a message"
 msgstr "Send a message"
 
-#: application/forms/Geom.php:19
+#: application/forms/Geom.php:18
 msgid "optional title for this journey"
 msgstr "optional title for this journey"
 
-#: application/forms/Geom.php:26
+#: application/forms/Geom.php:25
 #: application/forms/User.php:42
 #, php-format
 msgid "I've read and accepted %s"
 msgstr "I've read and accepted %s"
 
-#: application/forms/Geom.php:34
+#: application/forms/Geom.php:33
 #: application/forms/Pending/ValidateCreation.php:17
 msgid "save"
 msgstr "save"
@@ -597,20 +655,16 @@ msgstr "To cancel this request, press following button. Your password will not c
 msgid "Someone, probably you, has registered an account %s with email address %s on syj. To confirm this account creation, validate with following button."
 msgstr "Someone, probably you, has registered an account %s with email address %s on syj. To confirm this account creation, validate with following button."
 
-#: application/forms/Pending/ValidateCreation.php:23
-msgid "delete"
-msgstr "delete"
-
 #: application/forms/Pending/ValidateCreation.php:24
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "To cancel account creation, press following button. The account and all its data will be deleted."
 
+#~ msgid "route has been deleted from the server."
+#~ msgstr "route has been deleted from the server."
 #~ msgid "You need to login before retrying to save"
 #~ msgstr "You need to login before retrying to save"
 #~ msgid "You need to have cookies enabled to login to SYJ"
 #~ msgstr "You need to have cookies enabled to login to SYJ"
-#~ msgid "main page"
-#~ msgstr "main page"
 #~ msgid "reset password"
 #~ msgstr "reset password"
 

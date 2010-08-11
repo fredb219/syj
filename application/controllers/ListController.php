@@ -35,7 +35,7 @@ class ListController extends Zend_Controller_Action
             'confirmDelete' => __("There is no undo. Delete this route definitively ?"),
             'notReachedError' => __("server could not be reached"),
             'requestError' => __("server did not understood request. That's probably caused by a bug in SYJ"),
-            'gonePathError' => __("route has been deleted from the server."),
+            'gonePathError' => __("route not referenced on the server. It has probably been deleted."),
             'serverError' => __("there was a server error"),
             'unknownError' => __("there was an unknown error"),
             'deleteSuccess' => __("route was successfully deleted"),

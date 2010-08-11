@@ -1,54 +1,6 @@
 var WGS84 = new OpenLayers.Projection("EPSG:4326");
 var Mercator = new OpenLayers.Projection("EPSG:900913");
 
-function deletePath(evt) {
-    evt.stop();
-    if (!confirm(SyjStrings.confirmDelete)) {
-        return;
-    }
-    var link = evt.target,
-        item = $(link).up('.item'),
-        id = item.getAttribute('data-id');
-
-    $("message").hide();
-    new Ajax.Request('path/' + id.toString() + '/delete', {
-        method: 'post',
-        onSuccess: function(transport) {
-            item.down('.title').update();
-            item.down('.geom').update().setStyle({backgroundColor: 'gray'});
-            $("message").setMessage(SyjStrings.deleteSuccess, "success");
-        },
-        onFailure: function(transport) {
-            var httpCode = 0, message = "";
-            if (transport) {
-                httpCode = transport.getStatus();
-            }
-            switch (httpCode) {
-                case 0:
-                    message = SyjStrings.notReachedError;
-                break;
-                case 400:
-                case 403:
-                    location = loginlink();
-                    return;
-                break;
-                case 404:
-                     message = SyjStrings.requestError;
-                break;
-                case 410:
-                    message = SyjStrings.gonePathError;
-                break;
-                case 500:
-                    message = SyjStrings.serverError;
-                break;
-                default:
-                    message = SyjStrings.unknownError;
-                break;
-            }
-            $("message").setMessage(message, "error");
-        }
-    });
-}
 
 document.observe("dom:loaded", function() {
     $("message").hide();
@@ -73,8 +25,71 @@ document.observe("dom:loaded", function() {
         viewLayer.addFeatures([wkt.read(geom)]);
         map.zoomToExtent(viewLayer.getDataExtent());
     });
-    $$(".delete-link").invoke('observe', 'click', deletePath);
+
+    $$(".item").each(function(elt) {
+        new item(elt);
+    });
 });
+
+function item(elt) {
+    this.deleteHandler = elt.on('click', '.delete-link', this.remove.bindAsEventListener(this));
+    this.elt = elt;
+}
+item.prototype = {
+    deleteSuccess: function() {
+        this.elt.down('.title').update();
+        this.elt.down('.geom').update().setStyle({backgroundColor: 'gray'});
+        this.deleteHandler.stop();
+        this.elt.on('click', 'a', function(evt) { evt.stop(); });
+        this.elt.select('a').invoke('setStyle', {textDecoration: 'line-through'});
+        $("message").setMessage(SyjStrings.deleteSuccess, "success");
+    },
+
+    deleteFailure: function(transport) {
+        var httpCode = 0, message = "";
+        if (transport) {
+            httpCode = transport.getStatus();
+        }
+        switch (httpCode) {
+            case 0:
+                message = SyjStrings.notReachedError;
+            break;
+            case 400:
+            case 403:
+                location = loginlink();
+                return;
+            break;
+            case 404:
+                 message = SyjStrings.requestError;
+            break;
+            case 410:
+                message = SyjStrings.gonePathError;
+            break;
+            case 500:
+                message = SyjStrings.serverError;
+            break;
+            default:
+                message = SyjStrings.unknownError;
+            break;
+        }
+        $("message").setMessage(message, "error");
+    },
+
+    remove: function(evt) {
+        evt.stop();
+        if (!confirm(SyjStrings.confirmDelete)) {
+            return;
+        }
+        var id = this.elt.getAttribute('data-id');
+
+        $("message").hide();
+        new Ajax.Request('path/' + id.toString() + '/delete', {
+            method: 'post',
+            onSuccess: this.deleteSuccess.bind(this),
+            onFailure: this.deleteFailure.bind(this)
+        });
+    }
+};
 
 function loginlink() {
     var lang;

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-07 20:59+0200\n"
+"POT-Creation-Date: 2010-08-11 21:44+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -45,6 +45,7 @@ msgid "Email was send successfully"
 msgstr "L'email a été envoyé avec succès"
 
 #: application/views/scripts/idx/index.phtml:8
+#: application/views/scripts/list/index.phtml:8
 msgid "SYJ needs javascript. Please activate scripts in your browser."
 msgstr "SYJ a besoin de javascript pour fonctionner. Veuillez activer les scripts dans votre navigateur."
 
@@ -60,23 +61,27 @@ msgstr "Pour créer un trajet, cliquez simplement sur la carte pour ajouter des 
 msgid "When you have finished a path, press \"save\", button."
 msgstr "Lorsque vous avez fini votre tracé, pressez le bouton \"enregistrer\"."
 
-#: application/views/scripts/idx/index.phtml:24
+#: application/views/scripts/idx/index.phtml:25
 msgid "edit"
 msgstr "modifier"
 
-#: application/views/scripts/idx/index.phtml:35
+#: application/views/scripts/idx/index.phtml:25
+msgid "start a route"
+msgstr "commencer un itinéraire"
+
+#: application/views/scripts/idx/index.phtml:37
 #: application/controllers/LoginController.php:8
-#: application/layouts/scripts/footer.phtml:54
+#: application/layouts/scripts/footer.phtml:72
 #: application/forms/Login.php:26
 msgid "login"
 msgstr "connexion"
 
-#: application/views/scripts/idx/index.phtml:37
-#: application/views/scripts/idx/index.phtml:68
+#: application/views/scripts/idx/index.phtml:39
+#: application/views/scripts/idx/index.phtml:70
 msgid "create an account"
 msgstr "créer un compte"
 
-#: application/views/scripts/idx/index.phtml:38
+#: application/views/scripts/idx/index.phtml:40
 msgid "Whith an account, you can manage and modify your routes"
 msgstr "Avec un compte, vous pourrez gérer et modifier vos itinéraires"
 
@@ -105,7 +110,7 @@ msgid "Sources of the software running the website are <a href=\"http://dev.rene
 msgstr "Les sources du logiciel qui fait tourner le site web sont <a href=\"http://dev.renevier.net/?p=syj.git\">disponibles publiquement</a> sous une licence agpl. La carte utilisée pour l'affichage des itinéraires vient d'<a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 
 #: application/views/scripts/newpwd/success.phtml:4
-#: application/controllers/IdxController.php:102
+#: application/controllers/IdxController.php:103
 msgid "A link to reset your password has been emailed to you"
 msgstr "Un email contenant un lien pour réinitialiser votre mot de passe vous a été envoyé"
 
@@ -151,8 +156,47 @@ msgstr "Votre nouveau mot de passe est <strong>%s</strong>. Vous pouvez %s avec 
 msgid "Your account was modified successfully"
 msgstr "Votre compte a bien été modifié."
 
-#: application/views/helpers/LogoutLink.php:12
-#: application/layouts/scripts/footer.phtml:45
+#: application/views/scripts/list/index.phtml:17
+#: application/layouts/scripts/footer.phtml:17
+msgid "create a route"
+msgstr "créer un itinéraire"
+
+#: application/views/scripts/list/index.phtml:18
+#, php-format
+msgid "you have created no route yet, you may want to %s"
+msgstr "Vous n'avez pas encore créé d'itinéraire. Voulez vous %s"
+
+#: application/views/scripts/list/index.phtml:29
+msgid "first page"
+msgstr "première page"
+
+#: application/views/scripts/list/index.phtml:33
+msgid "previous page"
+msgstr "page précédente"
+
+#: application/views/scripts/list/index.phtml:42
+msgid "next page"
+msgstr "page suivante"
+
+#: application/views/scripts/list/index.phtml:46
+msgid "last page"
+msgstr "dernière page"
+
+#: application/views/scripts/list/index.phtml:67
+msgid "modify"
+msgstr "modifier"
+
+#: application/views/scripts/list/index.phtml:68
+msgid "duplicate"
+msgstr "dupliquer"
+
+#: application/views/scripts/list/index.phtml:69
+#: application/forms/Pending/ValidateCreation.php:23
+msgid "delete"
+msgstr "supprimer"
+
+#: application/views/helpers/LogoutLink.php:10
+#: application/layouts/scripts/footer.phtml:65
 msgid "logout"
 msgstr "déconnexion"
 
@@ -317,7 +361,7 @@ msgstr ""
 "L'équipe de Syj"
 
 #: application/controllers/LoginController.php:101
-#: application/controllers/IdxController.php:90
+#: application/controllers/IdxController.php:91
 msgid "you must enter a login name"
 msgstr "vous devez entrer un nom d'utilisateur"
 
@@ -371,11 +415,49 @@ msgid "Oups, something went wrong"
 msgstr "Oups, il y a eu un souci"
 
 #: application/controllers/TermsofuseController.php:12
-#: application/layouts/scripts/footer.phtml:67
-#: application/forms/Geom.php:25
+#: application/layouts/scripts/footer.phtml:85
+#: application/forms/Geom.php:24
 #: application/forms/User.php:41
 msgid "terms of use"
 msgstr "conditions d'utilisation"
+
+#: application/controllers/ListController.php:18
+#: application/layouts/scripts/footer.phtml:51
+msgid "my routes"
+msgstr "mes itinéraires"
+
+#: application/controllers/ListController.php:35
+msgid "There is no undo. Delete this route definitively ?"
+msgstr "Vous ne pourrez pas annuler. Supprimer l'itinéraire définitivement ?"
+
+#: application/controllers/ListController.php:36
+#: application/controllers/IdxController.php:88
+msgid "server could not be reached"
+msgstr "serveur inaccessible"
+
+#: application/controllers/ListController.php:37
+#: application/controllers/IdxController.php:85
+msgid "server did not understood request. That's probably caused by a bug in SYJ"
+msgstr "Le serveur n'a pas compris la requête. Il s'agit probablement d'un bug dans SYJ"
+
+#: application/controllers/ListController.php:38
+#: application/controllers/IdxController.php:86
+msgid "route not referenced on the server. It has probably been deleted."
+msgstr "chemin non référencé sur le serveur. Il a probablement été supprimé."
+
+#: application/controllers/ListController.php:39
+#: application/controllers/IdxController.php:89
+msgid "there was a server error"
+msgstr "Il s'est produit une erreur serveur"
+
+#: application/controllers/ListController.php:40
+#: application/controllers/IdxController.php:90
+msgid "there was an unknown error"
+msgstr "Il s'est produit une erreur inconnue"
+
+#: application/controllers/ListController.php:41
+msgid "route was successfully deleted"
+msgstr "l'itinéraire a été correctement supprimé"
 
 #: application/controllers/AccountController.php:16
 #: application/layouts/scripts/footer.phtml:39
@@ -387,12 +469,12 @@ msgid "Wrong password"
 msgstr "Mauvais mot de passe"
 
 #: application/controllers/AccountController.php:44
-#: application/controllers/IdxController.php:100
+#: application/controllers/IdxController.php:101
 msgid "an user is already registered with this email"
 msgstr "il y'a déjà un utilisateur enregistré avec cet email"
 
 #: application/controllers/AccountController.php:72
-#: application/controllers/IdxController.php:94
+#: application/controllers/IdxController.php:95
 #: application/forms/Account.php:40
 msgid "Password do not match"
 msgstr "Les mots de passe ne correspondent pas"
@@ -408,85 +490,61 @@ msgstr "Au moins %d caractères"
 msgid "You have made no change"
 msgstr "Vous n'avez fait aucun changement"
 
-#: application/controllers/IdxController.php:83
+#: application/controllers/IdxController.php:84
 msgid "save took place successfully"
 msgstr "La sauvegarde s'est déroulée correctement"
 
-#: application/controllers/IdxController.php:84
-msgid "server did not understood request. That's probably caused by a bug in SYJ"
-msgstr "Le serveur n'a pas compris la requête. Il s'agit probablement d'un bug dans SYJ"
-
-#: application/controllers/IdxController.php:85
-msgid "path did not exist in the server. May be it has been already deleted"
-msgstr "Le chemin n'existait pas sur le serveur. Il a peut-être supprimé"
-
-#: application/controllers/IdxController.php:86
+#: application/controllers/IdxController.php:87
 msgid "similar path seems to already exist. Please do not create two exactly identical paths"
 msgstr "Il semble qu'il y ait déjà un chemin similaire. Veuillez ne pas créer deux chemins exactement identiques"
 
-#: application/controllers/IdxController.php:87
-msgid "server could not be reached"
-msgstr "serveur inaccessible"
-
-#: application/controllers/IdxController.php:88
-msgid "there was a server error"
-msgstr "Il s'est produit une erreur serveur"
-
-#: application/controllers/IdxController.php:89
-msgid "there was an unknown error"
-msgstr "Il s'est produit une erreur inconnue"
-
-#: application/controllers/IdxController.php:91
+#: application/controllers/IdxController.php:92
 msgid "Login correct"
 msgstr "Vous êtes connectés"
 
-#: application/controllers/IdxController.php:92
+#: application/controllers/IdxController.php:93
 msgid "Wrong login/password"
 msgstr "Mauvais nom d'utilisateur ou mot de passe"
 
-#: application/controllers/IdxController.php:93
+#: application/controllers/IdxController.php:94
 msgid "you must enter a password"
 msgstr "vous devez entrer un mot de passe"
 
-#: application/controllers/IdxController.php:95
+#: application/controllers/IdxController.php:96
 msgid "You must accept terms of use"
 msgstr "Vous devez accepter les conditions d'utilisation"
 
-#: application/controllers/IdxController.php:96
+#: application/controllers/IdxController.php:97
 msgid "you must enter an email"
 msgstr "vous devez entrer un email"
 
-#: application/controllers/IdxController.php:97
+#: application/controllers/IdxController.php:98
 msgid "invalid email"
 msgstr "email invalide"
 
-#: application/controllers/IdxController.php:98
+#: application/controllers/IdxController.php:99
 msgid "pseudo must only contain letters, digits, dots or underscores"
 msgstr "le pseudo ne peut contenir que des lettres, des chiffres, des points ou des soulignés"
 
-#: application/controllers/IdxController.php:99
+#: application/controllers/IdxController.php:100
 msgid "unavailable pseudo"
 msgstr "pseudo non disponible"
 
-#: application/controllers/IdxController.php:101
+#: application/controllers/IdxController.php:102
 msgid "Account created"
 msgstr "Compte créé"
 
-#: application/controllers/IdxController.php:103
+#: application/controllers/IdxController.php:104
 msgid "Now, you can retry to save"
 msgstr "Maintenant, vous pouvez réessayer de sauvegarder"
 
-#: application/controllers/IdxController.php:104
+#: application/controllers/IdxController.php:105
 msgid "route by"
 msgstr "tracé par"
 
-#: application/controllers/IdxController.php:105
+#: application/controllers/IdxController.php:106
 msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 msgstr "Carte par <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
-
-#: application/layouts/scripts/footer.phtml:17
-msgid "create a route"
-msgstr "créer un itinéraire"
 
 #: application/layouts/scripts/footer.phtml:28
 msgid "contact"
@@ -530,17 +588,17 @@ msgstr "Envoyer"
 msgid "Send a message"
 msgstr "Envoyer un message"
 
-#: application/forms/Geom.php:19
+#: application/forms/Geom.php:18
 msgid "optional title for this journey"
 msgstr "titre facultatif pour ce trajet"
 
-#: application/forms/Geom.php:26
+#: application/forms/Geom.php:25
 #: application/forms/User.php:42
 #, php-format
 msgid "I've read and accepted %s"
 msgstr "J'ai lu et accepté les %s"
 
-#: application/forms/Geom.php:34
+#: application/forms/Geom.php:33
 #: application/forms/Pending/ValidateCreation.php:17
 msgid "save"
 msgstr "enregistrer"
@@ -599,10 +657,6 @@ msgstr "Pour annuler la requête, pressez le bouton suivant. Votre mot de passe 
 msgid "Someone, probably you, has registered an account %s with email address %s on syj. To confirm this account creation, validate with following button."
 msgstr "Quelqu'un, probablement vous, a enregistré un compte %s avec l'adresse email %s sur syj. Pour confirmer la création du compte, validez avec le bouton suivant."
 
-#: application/forms/Pending/ValidateCreation.php:23
-msgid "delete"
-msgstr "supprimer"
-
 #: application/forms/Pending/ValidateCreation.php:24
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "Pour annuler la création du compte, pressez le bouton suivant. Le compte ainsi que toutes ses données seront supprimés."
@@ -611,8 +665,6 @@ msgstr "Pour annuler la création du compte, pressez le bouton suivant. Le compt
 #~ msgstr "Vous devez vous connecter avant de réesayer de sauvegarder"
 #~ msgid "You need to have cookies enabled to login to SYJ"
 #~ msgstr "Vous devez activer les cookies pour pouvoir vous connecter à SYJ"
-#~ msgid "main page"
-#~ msgstr "page d'accueil"
 
 #, fuzzy
 #~ msgid "reset password"

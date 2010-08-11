@@ -84,7 +84,7 @@ class IdxController extends Zend_Controller_Action
         $this->view->jslocales = array(
             'saveSuccess' => __("save took place successfully"),
             'requestError' => __("server did not understood request. That's probably caused by a bug in SYJ"),
-            'gonePathError' => __("route has been deleted from the server."),
+            'gonePathError' => __("route not referenced on the server. It has probably been deleted."),
             'uniquePathError' => __("similar path seems to already exist. Please do not create two exactly identical paths"),
             'notReachedError' => __("server could not be reached"),
             'serverError' => __("there was a server error"),
