@@ -15,12 +15,16 @@ class PathController extends Zend_Controller_Action
         $path->creator = $user;
         $path->creatorIp = $this->getRequest()->getClientIp(true);
 
-        return $this->save($path, $formData);
+        $this->save($path, $formData);
+        $data = array('redirect' => "idx/" . (string)$path->id);
+        $this->_helper->SyjApi->setCode(201)->setBodyJson($data);
     }
 
     public function updateAction() {
         $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_Geom');
-        return $this->save($this->getPath(), $formData);
+        $path = $this->getPath();
+        $this->save($path, $formData);
+        $this->_helper->SyjApi->setCode(204);
     }
 
     public function deleteAction() {
@@ -84,8 +88,6 @@ class PathController extends Zend_Controller_Action
                 throw $e;
             }
         }
-
-        $this->_helper->SyjApi->setBody($path->id);
     }
 
 }

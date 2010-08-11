@@ -30,6 +30,6 @@ class GeomController extends Zend_Controller_Action
             $data['creator'] = (string)$path->creator->pseudo;
         }
 
-        $api->setCheckIfNoneMatch(true)->setBody(json_encode($data));
+        $api->setCheckIfNoneMatch(true)->setBodyJson($data);
     }
 }

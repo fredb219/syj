@@ -37,12 +37,16 @@ function item(elt) {
 }
 item.prototype = {
     deleteSuccess: function() {
+        this.deactivate();
+        $("message").setMessage(SyjStrings.deleteSuccess, "success");
+    },
+
+    deactivate: function() {
         this.elt.down('.title').update();
         this.elt.down('.geom').update().setStyle({backgroundColor: 'gray'});
         this.deleteHandler.stop();
         this.elt.on('click', 'a', function(evt) { evt.stop(); });
         this.elt.select('a').invoke('setStyle', {textDecoration: 'line-through'});
-        $("message").setMessage(SyjStrings.deleteSuccess, "success");
     },
 
     deleteFailure: function(transport) {
@@ -63,6 +67,7 @@ item.prototype = {
                  message = SyjStrings.requestError;
             break;
             case 410:
+                this.deactivate();
                 message = SyjStrings.gonePathError;
             break;
             case 500:

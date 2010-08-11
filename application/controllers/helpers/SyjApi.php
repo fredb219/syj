@@ -27,6 +27,11 @@ class Syj_Controller_Action_Helper_SyjApi extends Zend_Controller_Action_Helper_
         $this->_contentType = $contentType;
     }
 
+    public function setBodyJson($data) {
+        $this->setBody(json_encode($data))
+             ->setContentType('application/json');
+    }
+
     public function setBody($body) {
         $this->_body = (string)$body;
         return $this;

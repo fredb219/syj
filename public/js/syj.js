@@ -225,7 +225,6 @@ var SYJView = {
     map: null,
     wkt: new OpenLayers.Format.WKT({ internalProjection: Mercator, externalProjection: WGS84 }),
     needsFormResubmit: false,
-    hasInitialGeom: false,
 
     init: function() {
         var externalGraphic, baseURL, baseLayer, layerOptions, extent, hidemessenger;
@@ -285,7 +284,6 @@ var SYJView = {
             // XXX: ie has not guessed height of map main div yet during map
             // initialisation. Now, it will read it correctly.
             this.map.updateSize();
-            this.hasInitialGeom = true;
         } else {
             extent = new OpenLayers.Bounds(gMaxExtent.minlon, gMaxExtent.minlat, gMaxExtent.maxlon, gMaxExtent.maxlat)
                                          .transform(WGS84, Mercator);
@@ -396,8 +394,8 @@ var SYJView = {
     },
 
     saveSuccess: function(transport) {
-      if (!this.hasInitialGeom) { // we have created a new path, change location
-          location = "idx/" + transport.responseText;
+      if (transport.responseJSON && (typeof transport.responseJSON.redirect === "string")) {
+          location = transport.responseJSON.redirect;
           return;
       }
 
