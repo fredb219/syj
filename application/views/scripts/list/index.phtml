@@ -1,0 +1,81 @@
+    <noscript>
+        <style type="text/css">
+            #container, #navigation, #message {
+                display: none;
+            }
+        </style>
+
+        <p><?php echo $this->translate('SYJ needs javascript. Please activate scripts in your browser.');?></p>
+    </noscript>
+
+    <div id="message"></div>
+
+
+<?php
+    print $this->localeSwitcher();
+    if ($this->paginator->count() == 0) {
+        $link = $this->Anchor($this->baseUrl(), $this->translate ("create a route"), array(), false);
+        $noroutecontent = $this->translate("you have created no route yet, you may want to %s", $link);
+
+        printf ('<div class="warn noroute">%s</div>', $noroutecontent);
+        return;
+    }
+
+    $pages = $this->paginator->getPages();
+    if (isset($pages->previous) or isset($pages->next)) {
+        print '<div id="navigation">';
+
+        if (isset($pages->previous)) {
+            $title = $this->translate("first page");
+            $href = $this->addParamToUrl($this->url(), 'page', (string)$pages->first, true);
+            printf ('<a class="page-link" title="%s" href="%s">«</a>', $title, $href);
+
+            $title = $this->translate("previous page");
+            $href = $this->addParamToUrl($this->url(), 'page', (string)$pages->previous, true);
+            printf ('<a class="page-link" title="%s" href="%s">&lt;</a>', $title, $href);
+        } else {
+            print '<span class="page-link">«</span>';
+            print '<span class="page-link">&lt;</span>';
+        }
+
+        if (isset($pages->next)) {
+            $title = $this->translate("next page");
+            $href = $this->addParamToUrl($this->url(), 'page', (string)$pages->next, true);
+            printf ('<a class="page-link" title="%s" href="%s">&gt;</a>', $title, $href);
+
+            $title = $this->translate("last page");
+            $href = $this->addParamToUrl($this->url(), 'page', (string)$pages->last, true);
+            printf ('<a class="page-link" title="%s" href="%s">»</a>', $title, $href);
+        } else {
+            print '<span class="page-link">&gt;</span>';
+            print '<span class="page-link">»</span>';
+        }
+
+        print '</div>';
+    }
+
+    print '<div id="container">';
+    foreach ($this->paginator as $item) {
+
+        $map = sprintf('<div class="map" data-geom="%s"></div>', $this->escape($item->geom));
+        $href = $this->url(array(
+            'controller' => 'idx',
+            'action' => 'index',
+            'url' => $item->id
+        ), 'idx');
+        $maplink = $this->Anchor($href, $map, array(), false);
+        $modifylink = $this->Anchor($href, $this->translate("modify"));
+        $duplicatelink = sprintf('<a href="#" class="duplicate-link">%s</a>', $this->translate("duplicate"));
+        $deletelink = sprintf('<a href="#" class="delete-link">%s</a>', $this->translate("delete"));
+
+        printf ('<div class="item" data-id="%d">
+                <div class="geom">%s</div>
+                <div class="controls">%s<br>%s<br>%s</div>
+                <div class="title">%s</div>
+                </div>
+                ',
+                (int)$item->id, $maplink, $modifylink, $duplicatelink, $deletelink, $this->escape($item->displayTitle));
+
+    }
+    print '</div>';
+?>

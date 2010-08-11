@@ -53,4 +53,26 @@ class Syj_Controller_Action_Helper_SyjSession extends Zend_Controller_Action_Hel
             return null;
         }
     }
+
+    public function needsLogin() {
+        $user = self::user();
+        if ($user) {
+            return;
+        }
+        $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+        $view = $viewRenderer->view;
+        $request = $this->getRequest();
+
+        $encodeduri = implode('/', array_map('urlencode', explode('/', $request->getRequestUri())));
+        $loginurl = $view->addParamToUrl($view->baseUrl() . '/' . 'login', 'redirect', $encodeduri);
+        $translator = Zend_Registry::get('Zend_Translate');
+        $lang = $request->getQuery('lang');
+        if ($lang) {
+            $adapter = $translator->getAdapter();
+            if ($adapter->isAvailable($lang)) {
+                $loginurl = $view->addParamToUrl($loginurl, 'lang', $lang);
+            }
+        }
+        $this->getActionController()->getHelper('Redirector')->gotoURL($loginurl, array('prependBase' => false));
+    }
 }

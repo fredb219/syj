@@ -6,6 +6,8 @@ class AccountController extends Zend_Controller_Action
 {
 
     public function init() {
+        $this->_helper->SyjSession->needsLogin();
+
         $this->view->headScript()->appendFile('js/prototype.js');
         $this->view->headScript()->appendFile('js/utils.js');
         $this->view->headScript()->appendFile('js/account.js');
@@ -17,20 +19,6 @@ class AccountController extends Zend_Controller_Action
     public function indexAction() {
         $user = $this->_helper->SyjSession->user();
         $request = $this->getRequest();
-
-        if ($user === null) {
-            $encodeduri = implode('/', array_map('urlencode', explode('/', $request->getRequestUri())));
-            $loginurl = $this->view->addParamToUrl($this->view->baseUrl() . '/' . 'login', 'redirect', $encodeduri);
-            $translator = Zend_Registry::get('Zend_Translate');
-            $lang = Zend_Controller_Front::getInstance()->getRequest()->getQuery('lang');
-            if ($lang) {
-                $adapter = $translator->getAdapter();
-                if ($adapter->isAvailable($lang)) {
-                    $loginurl = $this->view->addParamToUrl($loginurl, 'lang', $lang);
-                }
-            }
-            $this->_helper->Redirector->gotoURL($loginurl, array('prependBase' => false));
-        }
 
         $form = new Syj_Form_Account(array('name' => 'accountform'));
         $formData = $request->getPost();

@@ -41,6 +41,18 @@ if ($mainpage or $this->loggedUser) {
 }
 
 /*
+ * list link
+ */
+if ($mainpage or $this->loggedUser) {
+    echo $this->footerLink(array(
+            'route' => 'list',
+            'action'     => 'index',
+            'controller' => 'list'),
+        $this->translate("my routes"), false,
+        'logged-show');
+}
+
+/*
  * login or logout links
  */
 if (!$mainpage) {

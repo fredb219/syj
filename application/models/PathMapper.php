@@ -42,9 +42,18 @@ class Syj_Model_PathMapper
         return $this->_fetchItem($select, $path);
     }
 
-    public function fetchAll() {
+    public function fetchByCreator(Syj_Model_User $user) {
         $select = $this->_select();
+        $select->where('creator = ?', (int)$user->id)->order('id');
+        return $this->fetchAll($select);
+    }
 
+    public function fetchAll(Zend_Db_Table_Select $select) {
+        if (!isset($select)) {
+            $select = $this->_select();
+        }
+
+        $table = $this->getDbTable();
         $resultSet = $table->fetchAll($select);
 
         $entries   = array();
@@ -67,6 +76,10 @@ class Syj_Model_PathMapper
         } else {
             $this->getDbTable()->update($data, array('id = ?' => $id));
         }
+    }
+
+    public function delete (Syj_Model_Path $path) {
+        $this->getDbTable()->delete(array('id = ?' => $path->getId()));
     }
 
     protected function _itemFromRow(Syj_Model_Path $item, Zend_Db_Table_Row $row) {

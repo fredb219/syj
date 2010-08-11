@@ -419,7 +419,7 @@ var SYJView = {
             break;
             case 400:
             case 404:
-                message = SyjStrings.requestError; // default message
+                message = SyjStrings.requestError;
                 if (transport.responseJSON) {
                     switch (transport.responseJSON.message) {
                         case "uniquepath":
@@ -429,6 +429,12 @@ var SYJView = {
                         break;
                     }
                 }
+            break;
+            case 403:
+                message = "";
+                SYJLogin.messenger.setMessage(SyjStrings.loginNeeded, "warn");
+                SYJLogin.modalbox.show();
+                this.needsFormResubmit = true;
             break;
             case 410:
                 message = SyjStrings.gonePathError;

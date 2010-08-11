@@ -5,10 +5,32 @@
 class PathController extends Zend_Controller_Action
 {
     public function indexAction() {
-        return $this->save(new Syj_Model_Path());
+        $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_Geom');
+        $path = new Syj_Model_Path();
+
+        $user = $this->_helper->SyjSession->user();
+        if (!$user and !$formData["geom_accept"]) {
+            throw new Syj_Exception_Request();
+        }
+        $path->creator = $user;
+        $path->creatorIp = $this->getRequest()->getClientIp(true);
+
+        return $this->save($path, $formData);
     }
 
     public function updateAction() {
+        $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_Geom');
+        return $this->save($this->getPath(), $formData);
+    }
+
+    public function deleteAction() {
+        $path = $this->getPath();
+        $pathMapper = new Syj_Model_PathMapper();
+        $pathMapper->delete ($path);
+        $this->_helper->SyjApi->setCode(204);
+    }
+
+    public function getPath() {
         $idx = $this->getRequest()->getUserParam('idx');
         $path = new Syj_Model_Path();
         $pathMapper = new Syj_Model_PathMapper();
@@ -19,28 +41,15 @@ class PathController extends Zend_Controller_Action
                 throw new Syj_Exception_NotFound('Not Found', 404);
             }
         }
-        return $this->save($path);
+
+        $user = $this->_helper->SyjSession->user();
+        if (!$path->isCreator($user)) {
+            throw new Syj_Exception_Forbidden();
+        }
+        return $path;
     }
 
-    public function save(Syj_Model_Path $path) {
-        $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_Geom');
-
-        /* authorization check */
-        $user = $this->_helper->SyjSession->user();
-        if (!$user and !$formData["geom_accept"]) {
-            throw new Syj_Exception_Request();
-        }
-
-        /* setting creator property */
-        if ($path->getId()) {
-            if (!$path->isCreator($user)) {
-                throw new Syj_Exception_Request();
-            }
-        } else {
-            $path->creator = $user;
-        }
-        $path->creatorIp = $this->getRequest()->getClientIp(true);
-
+    public function save(Syj_Model_Path $path, $formData) {
         /* setting geom property */
         $decoder = new gisconverter\WKT();
         try {
