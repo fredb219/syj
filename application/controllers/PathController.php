@@ -24,14 +24,14 @@ class PathController extends Zend_Controller_Action
         $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_Geom');
         $path = $this->getPath();
         $this->save($path, $formData);
-        $this->_helper->SyjApi->setCode(204);
+        $this->_helper->SyjApi->setCode(200); // we should use 204, but ie mangles 204 to 1223
     }
 
     public function deleteAction() {
         $path = $this->getPath();
         $pathMapper = new Syj_Model_PathMapper();
         $pathMapper->delete ($path);
-        $this->_helper->SyjApi->setCode(204);
+        $this->_helper->SyjApi->setCode(200); // we should use 204, but ie mangles 204 to 1223
     }
 
     public function getPath() {

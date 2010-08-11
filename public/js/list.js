@@ -4,7 +4,19 @@ var Mercator = new OpenLayers.Projection("EPSG:900913");
 
 document.observe("dom:loaded", function() {
     $("message").hide();
-    $$(".map").each(function(elt) {
+
+    $$(".item").each(function(elt) {
+        new item(elt);
+    });
+});
+
+function item(elt) {
+    this.deleteHandler = elt.on('click', '.delete-link', this.remove.bindAsEventListener(this));
+    this.elt = elt;
+    this.map = this.createmap(elt.down('.map'));
+}
+item.prototype = {
+    createmap: function(elt) {
         var geom = elt.getAttribute('data-geom'),
             baseLayer = new OpenLayers.Layer.OSM("OSM"),
             map = new OpenLayers.Map(elt, { controls: [], theme: null}),
@@ -24,24 +36,16 @@ document.observe("dom:loaded", function() {
         map.addLayers([baseLayer, viewLayer]);
         viewLayer.addFeatures([wkt.read(geom)]);
         map.zoomToExtent(viewLayer.getDataExtent());
-    });
+        return map;
+    },
 
-    $$(".item").each(function(elt) {
-        new item(elt);
-    });
-});
-
-function item(elt) {
-    this.deleteHandler = elt.on('click', '.delete-link', this.remove.bindAsEventListener(this));
-    this.elt = elt;
-}
-item.prototype = {
     deleteSuccess: function() {
         this.deactivate();
         $("message").setMessage(SyjStrings.deleteSuccess, "success");
     },
 
     deactivate: function() {
+        this.map.destroy();
         this.elt.down('.title').update();
         this.elt.down('.geom').update().setStyle({backgroundColor: 'gray'});
         this.deleteHandler.stop();
