@@ -7,9 +7,11 @@ class Syj_Form_User extends Syj_Form_TableAbstract
     public function init() {
         $translator = $this->getTranslator();
 
+        $desc = $translator->translate("only letters, numbers, underscores or dots");
         $name = array('Text', 'user_pseudo', array(
             'label' => __("user name"),
-            'attribs' => array('maxlength' => '20'),
+            'attribs' => array('maxlength' => '20', 'autocomplete' => 'off'),
+            'description' => $desc,
             'validators' => array(new Zend_Validate_StringLength(0, 20),
                                  new Zend_Validate_Regex('/^[a-zA-Z0-9_\.]+$/')),
             'required' => true

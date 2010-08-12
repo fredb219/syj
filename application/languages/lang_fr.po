@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 21:44+0200\n"
+"POT-Creation-Date: 2010-08-12 14:16+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -110,7 +110,7 @@ msgid "Sources of the software running the website are <a href=\"http://dev.rene
 msgstr "Les sources du logiciel qui fait tourner le site web sont <a href=\"http://dev.renevier.net/?p=syj.git\">disponibles publiquement</a> sous une licence agpl. La carte utilisée pour l'affichage des itinéraires vient d'<a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 
 #: application/views/scripts/newpwd/success.phtml:4
-#: application/controllers/IdxController.php:103
+#: application/controllers/IdxController.php:101
 msgid "A link to reset your password has been emailed to you"
 msgstr "Un email contenant un lien pour réinitialiser votre mot de passe vous a été envoyé"
 
@@ -417,7 +417,7 @@ msgstr "Oups, il y a eu un souci"
 #: application/controllers/TermsofuseController.php:12
 #: application/layouts/scripts/footer.phtml:85
 #: application/forms/Geom.php:24
-#: application/forms/User.php:41
+#: application/forms/User.php:43
 msgid "terms of use"
 msgstr "conditions d'utilisation"
 
@@ -469,7 +469,7 @@ msgid "Wrong password"
 msgstr "Mauvais mot de passe"
 
 #: application/controllers/AccountController.php:44
-#: application/controllers/IdxController.php:101
+#: application/controllers/IdxController.php:99
 msgid "an user is already registered with this email"
 msgstr "il y'a déjà un utilisateur enregistré avec cet email"
 
@@ -481,7 +481,7 @@ msgstr "Les mots de passe ne correspondent pas"
 
 #: application/controllers/AccountController.php:73
 #: application/forms/Account.php:33
-#: application/forms/User.php:18
+#: application/forms/User.php:20
 #, php-format
 msgid "At least %d characters"
 msgstr "Au moins %d caractères"
@@ -522,29 +522,33 @@ msgstr "vous devez entrer un email"
 msgid "invalid email"
 msgstr "email invalide"
 
-#: application/controllers/IdxController.php:99
-msgid "pseudo must only contain letters, digits, dots or underscores"
-msgstr "le pseudo ne peut contenir que des lettres, des chiffres, des points ou des soulignés"
-
 #: application/controllers/IdxController.php:100
-msgid "unavailable pseudo"
-msgstr "pseudo non disponible"
-
-#: application/controllers/IdxController.php:102
 msgid "Account created"
 msgstr "Compte créé"
 
-#: application/controllers/IdxController.php:104
+#: application/controllers/IdxController.php:102
 msgid "Now, you can retry to save"
 msgstr "Maintenant, vous pouvez réessayer de sauvegarder"
 
-#: application/controllers/IdxController.php:105
+#: application/controllers/IdxController.php:103
 msgid "route by"
 msgstr "tracé par"
 
-#: application/controllers/IdxController.php:106
+#: application/controllers/IdxController.php:104
 msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 msgstr "Carte par <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
+
+#: application/controllers/IdxController.php:105
+msgid "checking availibilty"
+msgstr "vérification de la disponibilité"
+
+#: application/controllers/IdxController.php:106
+msgid "available pseudo"
+msgstr "pseudo disponible"
+
+#: application/controllers/IdxController.php:107
+msgid "unavailable pseudo"
+msgstr "pseudo non disponible"
 
 #: application/layouts/scripts/footer.phtml:28
 msgid "contact"
@@ -556,7 +560,7 @@ msgstr "utilisateur"
 
 #: application/forms/Login.php:10
 #: application/forms/Account.php:35
-#: application/forms/User.php:21
+#: application/forms/User.php:23
 msgid "password"
 msgstr "mot de passe"
 
@@ -593,7 +597,7 @@ msgid "optional title for this journey"
 msgstr "titre facultatif pour ce trajet"
 
 #: application/forms/Geom.php:25
-#: application/forms/User.php:42
+#: application/forms/User.php:44
 #, php-format
 msgid "I've read and accepted %s"
 msgstr "J'ai lu et accepté les %s"
@@ -604,13 +608,13 @@ msgid "save"
 msgstr "enregistrer"
 
 #: application/forms/Account.php:27
-#: application/forms/User.php:34
+#: application/forms/User.php:36
 #: application/forms/Newpwd.php:28
 msgid "email"
 msgstr "email"
 
 #: application/forms/Account.php:42
-#: application/forms/User.php:28
+#: application/forms/User.php:30
 msgid "confirm password"
 msgstr "confirmation du mot de passe"
 
@@ -622,15 +626,19 @@ msgstr "mot de passe actuel"
 msgid "modify my informations"
 msgstr "modifier mes informations"
 
-#: application/forms/User.php:11
+#: application/forms/User.php:10
+msgid "only letters, numbers, underscores or dots"
+msgstr "seulement des lettres, des chiffres, des soulignés ou des points"
+
+#: application/forms/User.php:12
 msgid "user name"
 msgstr "nom d'utilisateur"
 
-#: application/forms/User.php:35
+#: application/forms/User.php:37
 msgid "After creating your account, you will receive a confirmation email. You have 7 days to confirm otherwise, your account and your routes will all be deleted."
 msgstr "Après la création de votre compte, vous recevrez un mail de confirmation. Vous avez 7 jours pour confirmer sinon, votre compte et tous vos tracés seront supprimés."
 
-#: application/forms/User.php:54
+#: application/forms/User.php:56
 msgid "create account"
 msgstr "créer le compte"
 
@@ -661,6 +669,14 @@ msgstr "Quelqu'un, probablement vous, a enregistré un compte %s avec l'adresse 
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "Pour annuler la création du compte, pressez le bouton suivant. Le compte ainsi que toutes ses données seront supprimés."
 
+#~ msgid "pseudo available"
+#~ msgstr "pseudo disponible"
+#~ msgid "pseudo not available"
+#~ msgstr "pseudo non disponible"
+#~ msgid "pseudo must only contain letters, digits, dots or underscores"
+#~ msgstr ""
+#~ "le pseudo ne peut contenir que des lettres, des chiffres, des points ou "
+#~ "des soulignés"
 #~ msgid "You need to login before retrying to save"
 #~ msgstr "Vous devez vous connecter avant de réesayer de sauvegarder"
 #~ msgid "You need to have cookies enabled to login to SYJ"

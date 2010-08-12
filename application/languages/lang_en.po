@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-11 21:44+0200\n"
+"POT-Creation-Date: 2010-08-12 14:16+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -110,7 +110,7 @@ msgid "Sources of the software running the website are <a href=\"http://dev.rene
 msgstr "Sources of the software running the website are <a href=\"http://dev.renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The map used to display the routes comes from <a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 
 #: application/views/scripts/newpwd/success.phtml:4
-#: application/controllers/IdxController.php:103
+#: application/controllers/IdxController.php:101
 msgid "A link to reset your password has been emailed to you"
 msgstr "A link to reset your password has been emailed to you"
 
@@ -415,7 +415,7 @@ msgstr "Oups, something went wrong"
 #: application/controllers/TermsofuseController.php:12
 #: application/layouts/scripts/footer.phtml:85
 #: application/forms/Geom.php:24
-#: application/forms/User.php:41
+#: application/forms/User.php:43
 msgid "terms of use"
 msgstr "terms of use"
 
@@ -467,7 +467,7 @@ msgid "Wrong password"
 msgstr "Wrong password"
 
 #: application/controllers/AccountController.php:44
-#: application/controllers/IdxController.php:101
+#: application/controllers/IdxController.php:99
 msgid "an user is already registered with this email"
 msgstr "an user is already registered with this email"
 
@@ -479,7 +479,7 @@ msgstr "Password do not match"
 
 #: application/controllers/AccountController.php:73
 #: application/forms/Account.php:33
-#: application/forms/User.php:18
+#: application/forms/User.php:20
 #, php-format
 msgid "At least %d characters"
 msgstr "At least %d characters"
@@ -520,29 +520,33 @@ msgstr "you must enter an email"
 msgid "invalid email"
 msgstr "invalid email"
 
-#: application/controllers/IdxController.php:99
-msgid "pseudo must only contain letters, digits, dots or underscores"
-msgstr "pseudo must only contain letters, digits, dots or underscores"
-
 #: application/controllers/IdxController.php:100
-msgid "unavailable pseudo"
-msgstr "unavailable pseudo"
-
-#: application/controllers/IdxController.php:102
 msgid "Account created"
 msgstr "Account created"
 
-#: application/controllers/IdxController.php:104
+#: application/controllers/IdxController.php:102
 msgid "Now, you can retry to save"
 msgstr "Now, you can retry to save"
 
-#: application/controllers/IdxController.php:105
+#: application/controllers/IdxController.php:103
 msgid "route by"
 msgstr "route by"
 
-#: application/controllers/IdxController.php:106
+#: application/controllers/IdxController.php:104
 msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 msgstr "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
+
+#: application/controllers/IdxController.php:105
+msgid "checking availibilty"
+msgstr "checking availibilty"
+
+#: application/controllers/IdxController.php:106
+msgid "available pseudo"
+msgstr "available pseudo"
+
+#: application/controllers/IdxController.php:107
+msgid "unavailable pseudo"
+msgstr "unavailable pseudo"
 
 #: application/layouts/scripts/footer.phtml:28
 msgid "contact"
@@ -554,7 +558,7 @@ msgstr "user"
 
 #: application/forms/Login.php:10
 #: application/forms/Account.php:35
-#: application/forms/User.php:21
+#: application/forms/User.php:23
 msgid "password"
 msgstr "password"
 
@@ -591,7 +595,7 @@ msgid "optional title for this journey"
 msgstr "optional title for this journey"
 
 #: application/forms/Geom.php:25
-#: application/forms/User.php:42
+#: application/forms/User.php:44
 #, php-format
 msgid "I've read and accepted %s"
 msgstr "I've read and accepted %s"
@@ -602,13 +606,13 @@ msgid "save"
 msgstr "save"
 
 #: application/forms/Account.php:27
-#: application/forms/User.php:34
+#: application/forms/User.php:36
 #: application/forms/Newpwd.php:28
 msgid "email"
 msgstr "email"
 
 #: application/forms/Account.php:42
-#: application/forms/User.php:28
+#: application/forms/User.php:30
 msgid "confirm password"
 msgstr "confirm password"
 
@@ -620,15 +624,19 @@ msgstr "current password"
 msgid "modify my informations"
 msgstr "modify my informations"
 
-#: application/forms/User.php:11
+#: application/forms/User.php:10
+msgid "only letters, numbers, underscores or dots"
+msgstr "only letters, numbers, underscores or dots"
+
+#: application/forms/User.php:12
 msgid "user name"
 msgstr "user name"
 
-#: application/forms/User.php:35
+#: application/forms/User.php:37
 msgid "After creating your account, you will receive a confirmation email. You have 7 days to confirm otherwise, your account and your routes will all be deleted."
 msgstr "After creating your account, you will receive a confirmation email. You have 7 days to confirm otherwise, your account and your routes will all be deleted."
 
-#: application/forms/User.php:54
+#: application/forms/User.php:56
 msgid "create account"
 msgstr "create account"
 
@@ -659,6 +667,12 @@ msgstr "Someone, probably you, has registered an account %s with email address %
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "To cancel account creation, press following button. The account and all its data will be deleted."
 
+#~ msgid "pseudo available"
+#~ msgstr "pseudo available"
+#~ msgid "pseudo not available"
+#~ msgstr "pseudo not available"
+#~ msgid "pseudo must only contain letters, digits, dots or underscores"
+#~ msgstr "pseudo must only contain letters, digits, dots or underscores"
 #~ msgid "route has been deleted from the server."
 #~ msgstr "route has been deleted from the server."
 #~ msgid "You need to login before retrying to save"

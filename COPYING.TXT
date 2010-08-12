@@ -7,6 +7,9 @@
   Creative Commons Attribution 2.5 License. See
   http://www.famfamfam.com/lab/icons/silk/ for more informations.
 
+- pseudo-throbber.gif files has been generated with http://ajaxload.info/
+  generator and is free for use.
+
 
 
 ===============================================================================

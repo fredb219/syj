@@ -97,14 +97,15 @@ class IdxController extends Zend_Controller_Action
             'acceptTermsofuseWarn' => __("You must accept terms of use"),
             'emailEmptyWarn' => __("you must enter an email"),
             'emailInvalidWarn' => __("invalid email"),
-            'invalidPseudo' => __("pseudo must only contain letters, digits, dots or underscores"),
-            'uniqueUserError' => __("unavailable pseudo"),
             'uniqueEmailError' => __("an user is already registered with this email"),
             'userSuccess' => __("Account created"),
             'newpwdSuccess' => __("A link to reset your password has been emailed to you"),
             'canResubmit' => __("Now, you can retry to save"),
             'routeBy' => __("route by"),
-            'osmAttribution' => __("Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>")
+            'osmAttribution' => __("Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"),
+            'pseudoChecking' => __("checking availibilty"),
+            'availablePseudo' => __("available pseudo"),
+            'unavailablePseudo' => __("unavailable pseudo"),
             );
     }
 

@@ -24,6 +24,17 @@ class Syj_Model_UserMapper
         return true;
     }
 
+    public function findByPseudo($pseudo, Syj_Model_User $user) {
+        $table = $this->getDbTable();
+        $select = $table->select()->where('pseudo = ?', (string)$pseudo);
+        $row = $table->fetchRow($select);
+        if (!$row) {
+            return false;
+        }
+        $this->_itemFromRow($user, $row);
+        return true;
+    }
+
     public function findByEmail($email, Syj_Model_User $user) {
         $table = $this->getDbTable();
         $select = $table->select()->where('email = ?', (string)$email);

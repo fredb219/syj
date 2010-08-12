@@ -1,20 +1,5 @@
 /*  This file is part of Syj, Copyright (c) 2010 Arnaud Renevier,
     and is published under the AGPL license. */
-Element.addMethods('input', {
-    observe : Element.Methods.observe.wrap(function(proceed, element, eventName, handler) {
-        if (eventName === "contentchange") {
-            proceed(element, 'keyup', function(evt) {
-                if (evt.keyCode === 13) {
-                    return;
-                }
-                handler.apply(null, arguments);
-            });
-            proceed(element, 'paste', handler);
-            return proceed(element, 'change', handler);
-        }
-        return proceed(element, eventName, handler);
-    })
-});
 
 // avoid openlayers alerts
 OpenLayers.Console.userError = function(error) {
@@ -299,7 +284,7 @@ var SYJView = {
     },
 
     prepareForm: function(form) {
-        if (!loginMgr.logged && !$("geom_accept").checked) {
+        if (!LoginMgr.logged && !$("geom_accept").checked) {
             this.messenger.setMessage(SyjStrings.acceptTermsofuseWarn, "warn");
             $("geom_accept_container").highlight('#F08080');
             $("geom_accept").activate();
@@ -571,6 +556,19 @@ var SYJUserClass = Class.create(SYJModalClass, {
                 evt.stop();
             }.bindAsEventListener(this));
 
+        $("user_pseudo-desc").hide();
+        $("user_pseudo").observe('contentchange', function(evt) {
+            var value = evt.target.value;
+            PseudoChecker.reset();
+            if (value && !(value.match(/^[a-zA-Z0-9_.]+$/))) {
+                $("user_pseudo-desc").show().setMessageStatus("warn");
+            } else {
+                $("user_pseudo-desc").hide();
+            }
+        }).timedobserve(function() {
+            PseudoChecker.check();
+        });
+
         $("user_password").observe('contentchange', function(evt) {
             if (evt.target.value.length < 6) {
                 $("user_password-desc").setMessageStatus("warn");
@@ -594,12 +592,20 @@ var SYJUserClass = Class.create(SYJModalClass, {
     },
 
     presubmit: function() {
+        this.messenger.hide();
+        PseudoChecker.reset();
         if (!(this.checkNotEmpty("user_pseudo", SyjStrings.userEmptyWarn))) {
             return false;
         }
 
         if (!($("user_pseudo").value.match(/^[a-zA-Z0-9_.]+$/))) {
-            this.messenger.setMessage(SyjStrings.invalidPseudo, "warn");
+            $("user_pseudo-desc").show().setMessageStatus("warn");
+            $("user_pseudo").highlight('#F08080').activate();
+            return false;
+        }
+
+        if (PseudoChecker.exists[$("user_pseudo").value]) {
+            PseudoChecker.availableMessage(false);
             $("user_pseudo").highlight('#F08080').activate();
             return false;
         }
@@ -636,7 +642,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
     },
 
     success: function(transport) {
-        loginMgr.login();
+        LoginMgr.login();
         SYJView.messenger.setMessage(SyjStrings.userSuccess, "success");
         this.modalbox.hide();
         if (SYJView.needsFormResubmit) {
@@ -664,7 +670,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
                             focusInput = $("user_email");
                         break;
                         case "uniquepseudo":
-                            message = SyjStrings.uniqueUserError;
+                            PseudoChecker.availableMessage(false);
                             focusInput = $("user_pseudo");
                         break;
                         case "uniqueemail":
@@ -676,11 +682,11 @@ var SYJUserClass = Class.create(SYJModalClass, {
             break;
         }
 
-        if (message) {
-            this.messenger.setMessage(message, "error");
-            if (focusInput) {
-                focusInput.highlight('#F08080').activate();
+        if (focusInput) {
+            if (message) {
+                this.messenger.setMessage(message, "error");
             }
+            focusInput.highlight('#F08080').activate();
             return;
         }
 
@@ -697,6 +703,7 @@ var SYJLoginClass = Class.create(SYJModalClass, {
     },
 
     presubmit: function() {
+        this.messenger.hide();
         if (!(this.checkNotEmpty("login_user", SyjStrings.userEmptyWarn))) {
             return false;
         }
@@ -707,9 +714,9 @@ var SYJLoginClass = Class.create(SYJModalClass, {
 
     success: function(transport) {
         if (transport.responseText === "1") {
-            loginMgr.login(true);
+            LoginMgr.login(true);
         } else {
-            loginMgr.login();
+            LoginMgr.login();
         }
         SYJView.messenger.setMessage(SyjStrings.loginSuccess, "success");
         this.modalbox.hide();
@@ -767,7 +774,7 @@ var SYJNewpwdClass = Class.create(SYJModalClass, {
 });
 var SYJNewpwd = new SYJNewpwdClass();
 
-var loginMgr = Object.extend(gLoggedInfo, {
+var LoginMgr = Object.extend(gLoggedInfo, {
     controlsdeck: null,
 
     updateUI: function() {
@@ -800,10 +807,104 @@ var loginMgr = Object.extend(gLoggedInfo, {
     }
 });
 
+var PseudoChecker = {
+    req: null,
+    exists: {},
+    currentvalue: null,
+    messageelt: null,
+    throbber: null,
+
+    message: function(str, status, throbber) {
+        var row;
+        if (!this.messageelt) {
+            row = new Element('tr');
+            // we can't use row.update('<td></td><td><div></div></td>')
+            // because gecko would mangle the <td>s
+            row.insert(new Element('td'))
+               .insert((new Element('td')).update(new Element('div')));
+
+            $("user_pseudo").up('tr').insert({after: row});
+            this.messageelt = new Element('span');
+            this.throbber = new Element("img", { src: "icons/pseudo-throbber.gif"});
+            row.down('div').insert(this.throbber).insert(this.messageelt);
+        }
+        if (throbber) {
+            this.throbber.show();
+        } else {
+            this.throbber.hide();
+        }
+        this.messageelt.up().setStyle({visibility: ''});
+        this.messageelt.className = status;
+        this.messageelt.update(str);
+    },
+
+    availableMessage: function(available) {
+        var message = available ? SyjStrings.availablePseudo: SyjStrings.unavailablePseudo,
+            status = available ? "success": "warn";
+        this.message(message, status, false);
+    },
+
+    reset: function() {
+        if (this.req) {
+            this.req.abort();
+            this.req = this.currentvalue = null;
+        }
+        if (this.messageelt) {
+            this.messageelt.up().setStyle({visibility: 'hidden'});
+        }
+    },
+
+    check: function() {
+        var pseudo = $("user_pseudo").value;
+
+        this.reset();
+
+        if (!pseudo || !(pseudo.match(/^[a-zA-Z0-9_.]+$/))) {
+            return;
+        }
+
+        if (typeof this.exists[pseudo] === "boolean") {
+            this.reset();
+            this.availableMessage(!this.exists[pseudo]);
+            return;
+        }
+
+        this.message(SyjStrings.pseudoChecking, "", true);
+
+        this.currentvalue = pseudo;
+        this.req = new Ajax.TimedRequest('userexists/' + encodeURIComponent(pseudo), 20, {
+            onFailure: this.failure.bind(this),
+            onSuccess: this.success.bind(this)
+        });
+    },
+
+    failure: function(transport) {
+        var httpCode = 0, value = this.currentvalue;
+
+        if (transport) {
+            httpCode = transport.getStatus();
+        }
+        this.reset();
+        if (httpCode === 404) {
+            this.exists[value] = false;
+            this.availableMessage(true);
+        }
+
+    },
+
+    success: function(transport) {
+        var httpCode = transport.getStatus(), value = this.currentvalue;
+        this.reset();
+        this.exists[value] = true;
+        this.availableMessage(false);
+    }
+};
+
+
 document.observe("dom:loaded", function() {
     SYJLogin.init();
     SYJUser.init();
     SYJView.init();
     SYJNewpwd.init();
-    loginMgr.updateUI();
+    LoginMgr.updateUI();
 });

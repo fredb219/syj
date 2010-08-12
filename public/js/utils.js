@@ -85,8 +85,12 @@ Ajax.TimedRequest = Class.create(Ajax.Request, {
 
     initialize: function($super, url, delay, options) {
         this.delay = delay;
+        if (!options) {
+            options = {};
+        }
 
-        options.onSuccess = options.onSuccess.wrap(function(proceed, transport, json) {
+        options.onSuccess = options.onSuccess &&
+            options.onSuccess.wrap(function(proceed, transport, json) {
             if (this.timeout) {
                 window.clearTimeout(this.timeout);
                 this.timeout = null;
@@ -98,7 +102,8 @@ Ajax.TimedRequest = Class.create(Ajax.Request, {
             }
         }).bind(this);
 
-        options.onFailure = options.onFailure.wrap(function(proceed, transport, json) {
+        options.onFailure = options.onFailure &&
+            options.onFailure.wrap(function(proceed, transport, json) {
             if (this.timeout) {
                 window.clearTimeout(this.timeout);
                 this.timeout = null;
@@ -111,7 +116,9 @@ Ajax.TimedRequest = Class.create(Ajax.Request, {
 
     request: function($super, url) {
         this.timeout = (function() {
-            this.options.onFailure(null);
+            if (this.options.onFailure) {
+                this.options.onFailure(null);
+            }
             this.abort();
         }).bind(this).delay(this.delay);
         $super(url);
@@ -223,6 +230,52 @@ Element.addMethods(['input', 'textarea'], {
             after: new Element("div", {className: 'error'}).update(errorMessage)
         });
         return false;
+    },
+
+    observe : Element.Methods.observe.wrap(function(proceed, element, eventName, handler) {
+        if (eventName === "contentchange") {
+            proceed(element, 'keyup', function(evt) {
+                if (evt.keyCode === 13) {
+                    return;
+                }
+                handler.apply(null, arguments);
+            });
+            proceed(element, 'paste', handler);
+            return proceed(element, 'change', handler);
+        }
+        return proceed(element, eventName, handler);
+    }),
+
+    timedobserve: function(element, callback, delay) {
+        var timeout = null, initialvalue = element.value;
+
+        if (typeof delay !== "number") {
+            delay = 0.5;
+        }
+        delay = delay * 1000;
+
+        var canceltimer = function() {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+        };
+        var resettimer = function() {
+            canceltimer();
+            timeout = setTimeout(triggercallback, delay);
+        };
+        var triggercallback = function() {
+            canceltimer();
+            if (initialvalue !== element.value) {
+                initialvalue = element.value;
+                callback.call(element);
+            }
+        };
+
+        element.observe('blur', triggercallback).
+             observe('keyup', resettimer).
+             observe('paste', resettimer);
+        return element;
     }
 });
 

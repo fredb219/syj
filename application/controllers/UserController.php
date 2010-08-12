@@ -5,6 +5,21 @@
 class UserController extends Zend_Controller_Action
 {
 
+    public function existsAction() {
+        $name = $this->getRequest()->getUserParam('name');
+
+        $userMapper = new Syj_Model_UserMapper();
+        $user = new Syj_Model_User();
+
+        if ($userMapper->findByPseudo($name, $user)) {
+            $this->_helper->SyjApi->setCode(200);
+        } else {
+            // opera needs some body content with 404 code, otherwise, it
+            // reports a xmlhttprequest.status of 0
+            $this->_helper->SyjApi->setCode(404)->setBody(' ');
+        }
+    }
+
     public function userAction() {
         $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_User');
 
