@@ -64,17 +64,16 @@
             'url' => $item->id
         ), 'idx');
         $maplink = $this->Anchor($href, $map, array(), false);
-        $modifylink = $this->Anchor($href, $this->translate("modify"));
-        $duplicatelink = sprintf('<a href="#" class="duplicate-link">%s</a>', $this->translate("duplicate"));
+        $modifylink = $this->Anchor($href, $this->translate("modify or duplicate"));
         $deletelink = sprintf('<a href="#" class="delete-link">%s</a>', $this->translate("delete"));
 
         printf ('<div class="item" data-id="%d">
                 <div class="geom">%s</div>
-                <div class="controls">%s<br>%s<br>%s</div>
+                <div class="controls"><div class="control-link">%s</div><div class="control-link">%s</div></div>
                 <div class="title">%s</div>
                 </div>
                 ',
-                (int)$item->id, $maplink, $modifylink, $duplicatelink, $deletelink, $this->escape($item->displayTitle));
+                (int)$item->id, $maplink, $modifylink,  $deletelink, $this->escape($item->displayTitle));
 
     }
     print '</div>';

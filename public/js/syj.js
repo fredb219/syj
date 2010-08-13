@@ -66,13 +66,13 @@ var SyjSaveUI = {
 
 var SyjEditUI = {
     hide: function() {
-        $("edit-btn").blur();
-        $("edit-btn").hide();
+        $("data_controls_btns").blur();
+        $("data_controls_btns").hide();
         return this;
     },
 
     show: function() {
-        $("edit-btn").show();
+        $("data_controls_btns").show();
         return this;
     }
 };
@@ -210,6 +210,8 @@ var SYJView = {
     map: null,
     wkt: new OpenLayers.Format.WKT({ internalProjection: Mercator, externalProjection: WGS84 }),
     needsFormResubmit: false,
+    unsavedRoute: null,
+    mode: 'view',
 
     init: function() {
         var externalGraphic, baseURL, baseLayer, layerOptions, extent, hidemessenger;
@@ -240,10 +242,34 @@ var SYJView = {
         this.viewLayer = new OpenLayers.Layer.Vector("View Layer", layerOptions);
         this.map.addLayers([baseLayer, this.viewLayer]);
 
-        $("edit-btn").observe('click', (function() {
-            this.messenger.hide();
-            this.editMode();
-        }).bind(this));
+        if ($("edit-btn")) {
+            $("edit-btn").observe('click', (function() {
+                $("geom_submit").value = SyjStrings.editAction;
+                this.messenger.hide();
+                this.editMode();
+                this.mode = 'edit';
+            }).bind(this));
+        }
+
+        if ($("create-btn")) {
+            $("create-btn").observe('click', (function() {
+                $("geom_submit").value = SyjStrings.createAction;
+                this.messenger.hide();
+                this.editMode();
+                this.mode = 'create';
+            }).bind(this));
+        }
+
+        if ($("clone-btn")) {
+            $("clone-btn").observe('click', (function() {
+                $("geom_submit").value = SyjStrings.cloneAction;
+                $("geom_title").value = "";
+                this.messenger.hide();
+                this.editMode();
+                this.mode = 'create';
+                SyjSaveUI.enableSubmit();
+            }).bind(this));
+        }
 
         $("geomform").ajaxize({
                 presubmit: this.prepareForm.bind(this),
@@ -291,7 +317,7 @@ var SYJView = {
             return false;
         }
 
-        var line, realPoints, idx, handler;
+        var line, realPoints, idx;
 
         line = new OpenLayers.Geometry.LineString();
         realPoints = this.editControl.handler.realPoints;
@@ -299,19 +325,29 @@ var SYJView = {
             line.addComponent(realPoints[idx].geometry.clone());
         }
         this.viewLayer.addFeatures(new OpenLayers.Feature.Vector(line));
-        handler = this.editControl.handler;
+
+        this.viewMode();
+
+        $("geom_data").value = this.wkt.write(new OpenLayers.Feature.Vector(line));
+        if (this.mode === "edit" && typeof gLoggedInfo.pathid !== "undefined") {
+            $("geomform").setAttribute("action", "path/" + gLoggedInfo.pathid.toString() + '/update');
+        } else {
+            $("geomform").setAttribute("action", "path");
+        }
+        this.needsFormResubmit = false;
+        SyjSaveUI.disable.bind(SyjSaveUI).defer();
+        this.messenger.hide();
+        return true;
+    },
+
+    viewMode: function() {
+        var handler = this.editControl.handler;
         OpenLayers.Handler.ModifiablePath.prototype.finalize.apply(handler, arguments);
         // we need to recreate them on next createFeature; otherwise
         // they'll reference destroyed features
         delete(handler.handlers.drag);
         delete(handler.handlers.feature);
         this.editControl.deactivate();
-
-        $("geom_data").value = this.wkt.write(new OpenLayers.Feature.Vector(line));
-        this.needsFormResubmit = false;
-        SyjSaveUI.disable.bind(SyjSaveUI).defer();
-        this.messenger.hide();
-        return true;
     },
 
     editMode: function() {
@@ -334,13 +370,18 @@ var SYJView = {
                 }
                 this.editControl.handler.addPoints(pixels);
             }
+            this.unsavedRoute = {
+                features: this.viewLayer.features.invoke('clone'),
+                title: $("geom_title").value
+            };
         }
 
         this.viewLayer.destroyFeatures();
 
         SyjEditUI.hide();
         if (this.editControl.handler.realPoints && this.editControl.handler.realPoints.length >= 2) {
-            SyjSaveUI.show().disableSubmit();
+            SyjSaveUI.show();
+            SyjSaveUI.disableSubmit();
         } else {
             SyjSaveUI.show().disable();
         }
@@ -376,6 +417,29 @@ var SYJView = {
             styles = this.editControl.handler.layerOptions.styleMap.styles;
             styles.select = styles.select_for_canvas;
         }
+        new CloseBtn($("geomform"), {
+            style : {
+                marginRight: "-40px",
+                marginTop: "-20px"
+            },
+            callback: function(form) {
+                this.viewMode();
+                this.mode = 'view';
+                SyjSaveUI.hide();
+                SyjEditUI.show();
+                this.messenger.hide();
+
+                if (typeof this.unsavedRoute.features !== "undefined") {
+                    this.viewLayer.addFeatures(this.unsavedRoute.features);
+                }
+                if (typeof this.unsavedRoute.title !== "undefined") {
+                    $("geom_title").value = this.unsavedRoute.title;
+                } else {
+                    $("geom_title").value = "";
+                }
+                this.unsavedRoute = null;
+            }.bind(this)
+        });
     },
 
     saveSuccess: function(transport) {
@@ -387,6 +451,7 @@ var SYJView = {
       this.messenger.setMessage(SyjStrings.saveSuccess, "success");
       SyjSaveUI.hide();
       SyjEditUI.show();
+      this.unsavedRoute = null;
       document.title = $('geom_title').value;
     },
 
@@ -791,10 +856,12 @@ var LoginMgr = Object.extend(gLoggedInfo, {
             $$(".logged-show").invoke('hide');
         }
 
-        if (this.iscreator) {
-            $("data_controls").show();
-        } else {
-            $("data_controls").hide();
+        if ($("edit-btn")) {
+            if (this.iscreator && SYJView.mode === 'view') {
+                $("edit-btn").show();
+            } else {
+                $("edit-btn").hide();
+            }
         }
     },
 

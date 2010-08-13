@@ -73,6 +73,7 @@ class IdxController extends Zend_Controller_Action
             if ($path->creator) {
                 $loggedinfo->creatorname = $this->view->escape((string)$path->creator->pseudo);
             }
+            $loggedinfo->pathid = (string)$path->id;
         } else {
             $loggedinfo->iscreator = true;
         }
@@ -106,6 +107,9 @@ class IdxController extends Zend_Controller_Action
             'pseudoChecking' => __("checking availibilty"),
             'availablePseudo' => __("available pseudo"),
             'unavailablePseudo' => __("unavailable pseudo"),
+            'editAction' => __("edit"),
+            'createAction' => __("create"),
+            'cloneAction' => __("duplicate"),
             );
     }
 

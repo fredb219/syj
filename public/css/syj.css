@@ -56,6 +56,9 @@ body, html {
     filter:alpha(opacity=85);
     border: 1px solid gray;
 }
+#clone-btn {
+    margin-bottom: 1em;
+}
 #geom_title {
     margin-top: 0.7em;
 }

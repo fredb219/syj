@@ -21,6 +21,10 @@ var CloseBtn = Class.create({
         btn = new Element("input", { type: "image", src: imgsrc, alt: "X"}).setStyle(style);
         elt.insert({top: btn});
         btn.observe("click", function(evt) {
+            evt.stop();
+            if (typeof options.callback === "function") {
+                options.callback.call(elt);
+            }
             elt.hide();
         });
     }

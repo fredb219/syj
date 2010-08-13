@@ -21,9 +21,15 @@
     </div>
 
     <div id="data_controls">
-    <input id="edit-btn" name="edit-btn" type="button" value="<?php
-        echo isset($this->path) ? $this->translate('edit'): $this->translate('start a route');
-    ?>">
+        <div id="data_controls_btns">
+    <?php if (isset($this->path)) { ?>
+        <input id="clone-btn" name="clone-btn" type="button" value="<?php echo $this->translate('duplicate');?>">
+        <br>
+        <input id="edit-btn" name="edit-btn" type="button" value="<?php echo $this->translate('edit');?>">
+    <?php } else {?>
+        <input id="create-btn" name="create-btn" type="button" value="<?php echo $this->translate('start a route');?>">
+    <?php } ?>
+        </div>
 
     <?php
         print $this->geomform;
