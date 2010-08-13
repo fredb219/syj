@@ -110,6 +110,7 @@ class IdxController extends Zend_Controller_Action
             'editAction' => __("edit"),
             'createAction' => __("create"),
             'cloneAction' => __("duplicate"),
+            'unsavedConfirmExit' => __("You have an unsaved route"),
             );
     }
 

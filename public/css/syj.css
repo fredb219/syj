@@ -55,6 +55,7 @@ body, html {
     opacity: 0.85;
     filter:alpha(opacity=85);
     border: 1px solid gray;
+    margin: auto;
 }
 #clone-btn {
     margin-bottom: 1em;

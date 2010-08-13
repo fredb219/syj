@@ -394,9 +394,13 @@ var SYJView = {
             return;
         }
 
+        var self = this;
         this.editControl = new OpenLayers.Control.DrawFeature(new OpenLayers.Layer.Vector(), OpenLayers.Handler.SyjModifiablePath, {
             callbacks: {
                 modify: function(f, line) {
+                    if (!self.unsavedRoute) {
+                        self.unsavedRoute = {};
+                    }
                     if (this.handler.realPoints.length < 2) {
                         SyjSaveUI.show().disable();
                     } else {
@@ -429,10 +433,10 @@ var SYJView = {
                 SyjEditUI.show();
                 this.messenger.hide();
 
-                if (typeof this.unsavedRoute.features !== "undefined") {
+                if (this.unsavedRoute && typeof this.unsavedRoute.features !== "undefined") {
                     this.viewLayer.addFeatures(this.unsavedRoute.features);
                 }
-                if (typeof this.unsavedRoute.title !== "undefined") {
+                if (this.unsavedRoute && typeof this.unsavedRoute.title !== "undefined") {
                     $("geom_title").value = this.unsavedRoute.title;
                 } else {
                     $("geom_title").value = "";
@@ -443,6 +447,8 @@ var SYJView = {
     },
 
     saveSuccess: function(transport) {
+      this.unsavedRoute = null;
+
       if (transport.responseJSON && (typeof transport.responseJSON.redirect === "string")) {
           location = transport.responseJSON.redirect;
           return;
@@ -451,7 +457,6 @@ var SYJView = {
       this.messenger.setMessage(SyjStrings.saveSuccess, "success");
       SyjSaveUI.hide();
       SyjEditUI.show();
-      this.unsavedRoute = null;
       document.title = $('geom_title').value;
     },
 
@@ -975,3 +980,10 @@ document.observe("dom:loaded", function() {
     SYJNewpwd.init();
     LoginMgr.updateUI();
 });
+window.onbeforeunload = function() {
+    if (SYJView.unsavedRoute) {
+        return SyjStrings.unsavedConfirmExit;
+    } else {
+        return undefined;
+    }
+}
