@@ -3,7 +3,7 @@
 
 document.observe("dom:loaded", function() {
     var form = $("contactform");
-    form.focus();
+    form.setfocus();
 
     form.observe('submit', function(evt) {
         var control, errorElements;

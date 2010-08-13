@@ -3,7 +3,7 @@
 
 document.observe("dom:loaded", function() {
     var form = $("loginform");
-    form.focus();
+    form.setfocus();
 
     form.observe("submit", function(evt) {
         var loginput = $("login_user");

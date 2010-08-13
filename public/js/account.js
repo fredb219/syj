@@ -4,7 +4,7 @@
 document.observe("dom:loaded", function() {
     var currentmail = $("account_email").value, form = $("accountform");
 
-    form.focus();
+    form.setfocus();
 
     form.observe('submit', function(evt) {
         var control, errorElements;

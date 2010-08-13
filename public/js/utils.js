@@ -190,7 +190,7 @@ Element.addMethods('form', {
         });
     },
 
-    focus: function(form) {
+    setfocus: function(form) {
         var tofocus, error;
 
         tofocus = null;
