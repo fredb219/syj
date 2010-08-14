@@ -39,8 +39,9 @@ class IdxController extends Zend_Controller_Action
             $title = $path->displayTitle;
             $this->view->path = $path;
             $geomform->geom_title->setValue($path->title);
-            $geomform->geom_data->setValue((string)$path->geom);
             $loginform->login_geom_id->setValue((string)$path->id);
+            $jsgeom = new phptojs\JsObject('gInitialGeom', array('data' => (string) $path->geom));
+            $this->view->headScript()->prependScript((string) $jsgeom);
         } else {
             $geomform->setAction('path');
             $extent = new phptojs\JsObject('gMaxExtent', $this->_helper->syjGeoip($this->getRequest()->getClientIp(true)));

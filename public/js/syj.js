@@ -289,8 +289,8 @@ var SYJView = {
             this.messenger.hide();
         }
 
-        if ($("geom_data").value) {
-            this.viewLayer.addFeatures([this.wkt.read($("geom_data").value)]);
+        if (typeof gInitialGeom !== "undefined" && typeof gInitialGeom.data !== "undefined") {
+            this.viewLayer.addFeatures([this.wkt.read(gInitialGeom.data)]);
             extent = this.viewLayer.getDataExtent();
             // XXX: ie has not guessed height of map main div yet during map
             // initialisation. Now, it will read it correctly.
