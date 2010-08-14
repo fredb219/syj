@@ -14,18 +14,6 @@ var SyjSaveUI = {
         return this;
     },
 
-    hide: function() {
-        $("geom_submit").blur();
-        $("geom_title").blur();
-        $("geomform").hide();
-        return this;
-    },
-
-    show: function() {
-        $("geomform").show();
-        return this;
-    },
-
     enable: function() {
         if (this.status === "enabled") {
             return this;
@@ -64,18 +52,23 @@ var SyjSaveUI = {
     }
 };
 
-var SyjEditUI = {
-    hide: function() {
-        $("data_controls_btns").blur();
-        $("data_controls_btns").hide();
-        return this;
-    },
-
-    show: function() {
-        $("data_controls_btns").show();
-        return this;
+var SYJDataUi = function() {
+    var deck = null;
+    var getdeck = function() {
+        if (!deck) {
+            deck = new Deck("data_controls");
+        }
+        return deck;
     }
-};
+    return {
+        viewmode: function() {
+            getdeck().setIndex(0);
+        },
+        editmode: function() {
+            getdeck().setIndex(1);
+        }
+    }
+}();
 
 OpenLayers.Handler.SyjModifiablePath = OpenLayers.Class(OpenLayers.Handler.ModifiablePath, {
     mouseup: function(evt) {
@@ -276,7 +269,7 @@ var SYJView = {
                 onSuccess: this.saveSuccess.bind(this),
                 onFailure: this.saveFailure.bind(this)
                 });
-        SyjSaveUI.init().hide();
+        SyjSaveUI.init();
 
         this.messenger = $('message');
         hidemessenger = this.messenger.empty();
@@ -378,12 +371,11 @@ var SYJView = {
 
         this.viewLayer.destroyFeatures();
 
-        SyjEditUI.hide();
+        SYJDataUi.editmode();
         if (this.editControl.handler.realPoints && this.editControl.handler.realPoints.length >= 2) {
-            SyjSaveUI.show();
             SyjSaveUI.disableSubmit();
         } else {
-            SyjSaveUI.show().disable();
+            SyjSaveUI.disable();
         }
     },
 
@@ -401,9 +393,9 @@ var SYJView = {
                         SYJView.unsavedRoute = {};
                     }
                     if (this.handler.realPoints.length < 2) {
-                        SyjSaveUI.show().disable();
+                        SyjSaveUI.disable();
                     } else {
-                        SyjSaveUI.show().enable();
+                        SyjSaveUI.enable();
                     }
                 }
             },
@@ -428,8 +420,7 @@ var SYJView = {
             callback: function(form) {
                 this.viewMode();
                 this.mode = 'view';
-                SyjSaveUI.hide();
-                SyjEditUI.show();
+                SYJDataUi.viewmode();
                 this.messenger.hide();
 
                 if (this.unsavedRoute && typeof this.unsavedRoute.features !== "undefined") {
@@ -454,8 +445,7 @@ var SYJView = {
       }
 
       this.messenger.setMessage(SyjStrings.saveSuccess, "success");
-      SyjSaveUI.hide();
-      SyjEditUI.show();
+      SYJDataUi.viewmode();
       document.title = $('geom_title').value;
     },
 
@@ -975,6 +965,7 @@ var PseudoChecker = {
 document.observe("dom:loaded", function() {
     SYJLogin.init();
     SYJUser.init();
+    SYJDataUi.viewmode();
     SYJView.init();
     SYJNewpwd.init();
     LoginMgr.updateUI();
