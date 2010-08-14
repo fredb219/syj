@@ -311,9 +311,13 @@ Element.addMethods('div', {
 
     addMessage: function(div, message) {
         var node = (div.ownerDocument || document).createTextNode(message);
-        if (!div.empty()) {
+
+        if ($A(div.childNodes).filter(function(node) {
+                return (node.nodeType === 3 || node.tagName.toLowerCase() === 'br');
+             }).length) {
             div.insert(new Element('br'));
         }
+
         div.appendChild(node);
         return div.show();
     },
