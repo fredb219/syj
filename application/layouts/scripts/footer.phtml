@@ -37,7 +37,9 @@ if ($mainpage or $this->loggedUser) {
             'action'     => 'index',
             'controller' => 'account'),
         $this->translate("my account"), true,
-        'logged-show');
+        'logged-show logged-pseudo',
+        $this->loggedUser ?  " ({$this->loggedUser->pseudo})": " (%s)"
+        );
 }
 
 /*

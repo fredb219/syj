@@ -772,11 +772,21 @@ var SYJLoginClass = Class.create(SYJModalClass, {
     },
 
     success: function(transport) {
-        if (transport.responseText === "1") {
-            LoginMgr.login(true);
-        } else {
-            LoginMgr.login();
+        if (!transport.responseJSON ||
+            typeof transport.responseJSON.iscreator !== "boolean" ||
+            typeof transport.responseJSON.pseudo !== "string"
+            ) {
+            this.messenger.setMessage(SyjStrings.unknownError, "error");
+            return;
         }
+        LoginMgr.login(transport.responseJSON.iscreator);
+        $$('.logged-pseudo').each(function(elt) {
+            $A(elt.childNodes).filter(function(node) {
+                return (node.nodeType === 3 || node.tagName.toLowerCase() === 'br');
+            }).each(function(node) {
+                node.nodeValue = node.nodeValue.replace('%s', transport.responseJSON.pseudo);
+            });
+        });
         SYJView.messenger.setMessage(SyjStrings.loginSuccess, "success");
         this.modalbox.hide();
         if (SYJView.needsFormResubmit) {

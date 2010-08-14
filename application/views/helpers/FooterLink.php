@@ -4,7 +4,7 @@
 
 class Syj_View_Helper_FooterLink extends Zend_View_Helper_Abstract
 {
-    public function FooterLink($routeoptions, $text, $redirect=true, $extraclass=null) {
+    public function FooterLink($routeoptions, $text, $redirect=true, $extraclass=null, $extratext="") {
         $page = new Zend_Navigation_Page_Mvc($routeoptions);
         if ($page->isActive()) {
             $link = $this->view->escape($text);
@@ -20,7 +20,7 @@ class Syj_View_Helper_FooterLink extends Zend_View_Helper_Abstract
         if (isset($extraclass)) {
             $class = "$class $extraclass";
         }
-        return '<div class="' . $class . '">' . $link . '</div>' . PHP_EOL;
+        return '<div class="' . $class . '">' . $link . $extratext . '</div>' . PHP_EOL;
     }
 }
 

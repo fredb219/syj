@@ -52,9 +52,11 @@ class LoginController extends Zend_Controller_Action
 
         $userid = $authAdapter->getResultRowObject('id')->id;
         $this->_helper->SyjSession->login($userid);
+        $user = $this->_helper->SyjSession->user();
 
         if ($httprequest) {
             $api = $this->_helper->SyjApi->setCode(200);
+            $data = array('pseudo' => $user->pseudo);
 
             $login_geom_id = $formData['login_geom_id'];
             if ($login_geom_id) {
@@ -63,14 +65,11 @@ class LoginController extends Zend_Controller_Action
                 if (!$pathMapper->find((int)$login_geom_id, $path)) {
                     throw new Syj_Exception_Request();
                 }
-                if ($path->creator->id === $userid) {
-                    $api->setBody("1"); // creator of displayed geometry
-                } else {
-                    $api->setBody("0");
-                }
+                $data['iscreator'] = ($path->creator->id === $userid);
             } else {
-                $api->setBody("1"); // no geometry displayed: creator of the (future) geometry
+                $data['iscreator'] = true;
             }
+            $api->setBodyJson($data);
         } else {
             $this->redirect();
         }
