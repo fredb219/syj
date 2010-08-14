@@ -119,12 +119,12 @@ Ajax.TimedRequest = Class.create(Ajax.Request, {
     },
 
     request: function($super, url) {
-        this.timeout = (function() {
+        this.timeout = function() {
             if (this.options.onFailure) {
                 this.options.onFailure(null);
             }
             this.abort();
-        }).bind(this).delay(this.delay);
+        }.bind(this).delay(this.delay);
         $super(url);
     }
 });

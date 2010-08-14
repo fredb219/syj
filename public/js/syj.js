@@ -243,32 +243,32 @@ var SYJView = {
         this.map.addLayers([baseLayer, this.viewLayer]);
 
         if ($("edit-btn")) {
-            $("edit-btn").observe('click', (function() {
+            $("edit-btn").observe('click', function() {
                 $("geom_submit").value = SyjStrings.editAction;
                 this.messenger.hide();
                 this.editMode();
                 this.mode = 'edit';
-            }).bind(this));
+            }.bind(this));
         }
 
         if ($("create-btn")) {
-            $("create-btn").observe('click', (function() {
+            $("create-btn").observe('click', function() {
                 $("geom_submit").value = SyjStrings.createAction;
                 this.messenger.hide();
                 this.editMode();
                 this.mode = 'create';
-            }).bind(this));
+            }.bind(this));
         }
 
         if ($("clone-btn")) {
-            $("clone-btn").observe('click', (function() {
+            $("clone-btn").observe('click', function() {
                 $("geom_submit").value = SyjStrings.cloneAction;
                 $("geom_title").value = "";
                 this.messenger.hide();
                 this.editMode();
                 this.mode = 'create';
                 SyjSaveUI.enableSubmit();
-            }).bind(this));
+            }.bind(this));
         }
 
         $("geomform").ajaxize({
@@ -394,12 +394,11 @@ var SYJView = {
             return;
         }
 
-        var self = this;
         this.editControl = new OpenLayers.Control.DrawFeature(new OpenLayers.Layer.Vector(), OpenLayers.Handler.SyjModifiablePath, {
             callbacks: {
                 modify: function(f, line) {
-                    if (!self.unsavedRoute) {
-                        self.unsavedRoute = {};
+                    if (!SYJView.unsavedRoute) {
+                        SYJView.unsavedRoute = {};
                     }
                     if (this.handler.realPoints.length < 2) {
                         SyjSaveUI.show().disable();
@@ -986,4 +985,4 @@ window.onbeforeunload = function() {
     } else {
         return undefined;
     }
-}
+};
