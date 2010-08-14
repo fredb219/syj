@@ -11,6 +11,7 @@ body, html {
  */
 .message {
     text-align: center;
+    background-color: white;
 }
 
 .disabled {
@@ -36,20 +37,17 @@ noscript p {
     color: #FF8C00;
     border-color: #FF8C00;
     font-weight: bold;
-    background-color: white;
 }
 
 .error {
     border-color: red;
     font-weight: bold;
-    background-color: #FFFF33;
     color: red;
 }
 
 .info {
     border-color: black;
     color: black;
-    background-color: white;
 }
 
 .center {

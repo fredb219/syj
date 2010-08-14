@@ -51,14 +51,22 @@ body, html {
     bottom: 3em;
     text-align: center;
     background-color: white;
-    padding: 25px 45px 20px 45px;
     opacity: 0.85;
     filter:alpha(opacity=85);
     border: 1px solid gray;
     margin: auto;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
-#clone-btn {
-    margin-bottom: 1em;
+#data_controls_btns {
+    padding: 5px 10px 5px 10px;
+}
+#geomform {
+    padding: 25px 45px 20px 45px;
+}
+#edit-btn {
+    margin-top: 1em;
 }
 #geom_title {
     margin-top: 0.7em;
