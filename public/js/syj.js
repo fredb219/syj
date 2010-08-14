@@ -52,14 +52,14 @@ var SyjSaveUI = {
     }
 };
 
-var SYJDataUi = function() {
-    var deck = null;
-    var getdeck = function() {
+var SYJDataUi = (function() {
+    var deck = null,
+        getdeck = function() {
         if (!deck) {
             deck = new Deck("data_controls");
         }
         return deck;
-    }
+    };
     return {
         viewmode: function() {
             getdeck().setIndex(0);
@@ -67,8 +67,8 @@ var SYJDataUi = function() {
         editmode: function() {
             getdeck().setIndex(1);
         }
-    }
-}();
+    };
+}());
 
 OpenLayers.Handler.SyjModifiablePath = OpenLayers.Class(OpenLayers.Handler.ModifiablePath, {
     mouseup: function(evt) {
