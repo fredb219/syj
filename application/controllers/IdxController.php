@@ -17,6 +17,27 @@ class IdxController extends Zend_Controller_Action
         $this->view->headLink()->appendStylesheet('css/syj.css');
     }
 
+    public function rawmode(Syj_Model_Path $path) {
+        $this->_helper->SyjReset->resetPlaceHolders();
+
+        $this->view->headLink()->appendStylesheet('css/generic.css');
+        $this->view->headLink()->appendStylesheet('css/syjraw.css');
+        $this->view->headScript()->appendFile('js/OpenLayers.js');
+        $this->view->headScript()->appendFile('js/syjraw.js');
+        $this->view->headTitle($path->displayTitle);
+
+        $this->_jsRawLocaleStrings();
+        if ($path->creator) {
+            $this->view->jslocales['geomAttribution'] =
+                        $this->view->translate('route by <strong>%s</strong>', (string)$path->creator->pseudo);
+        }
+        $jsgeom = new phptojs\JsObject('gInitialGeom', array('data' => (string) $path->geom));
+        $this->view->headScript()->prependScript((string) $jsgeom);
+
+        $this->view->rawmode = true;
+        $this->_helper->ViewRenderer->setViewScriptPathSpec(':controller/raw.:suffix');
+    }
+
     public function indexAction() {
         $url = $this->getRequest()->getUserParam('url');
 
@@ -35,13 +56,18 @@ class IdxController extends Zend_Controller_Action
                     throw new Syj_Exception_NotFound('Not Found', 404);
                 }
             }
-            $geomform->setAction('path/' . (string)$path->id . '/update');
+
+            if ($this->getRequest()->getQuery('format') == 'raw') {
+                $this->rawmode($path);
+                return;
+            }
+
             $title = $path->displayTitle;
             $this->view->path = $path;
-            $geomform->geom_title->setValue($path->title);
-            $loginform->login_geom_id->setValue((string)$path->id);
             $jsgeom = new phptojs\JsObject('gInitialGeom', array('data' => (string) $path->geom));
             $this->view->headScript()->prependScript((string) $jsgeom);
+            $loginform->login_geom_id->setValue((string)$path->id);
+            $geomform->geom_title->setValue($path->title);
         } else {
             $geomform->setAction('path');
             $extent = new phptojs\JsObject('gMaxExtent', $this->_helper->syjGeoip($this->getRequest()->getClientIp(true)));
@@ -51,6 +77,10 @@ class IdxController extends Zend_Controller_Action
 
         $this->_jsLoggedInfo(isset($url) ? $path: null);
         $this->_jsLocaleStrings();
+        if (isset ($url) and $path->creator) {
+            $this->view->jslocales['geomAttribution'] =
+                        $this->view->translate('route by <strong>%s</strong>', (string)$path->creator->pseudo);
+        }
         $this->view->headTitle($title);
         $this->view->geomform = $geomform;
         $this->view->loginform = $loginform;
@@ -71,15 +101,18 @@ class IdxController extends Zend_Controller_Action
 
         if (isset($path)) {
             $loggedinfo->iscreator = $path->isCreator($user);
-            if ($path->creator) {
-                $loggedinfo->creatorname = $this->view->escape((string)$path->creator->pseudo);
-            }
             $loggedinfo->pathid = (string)$path->id;
         } else {
             $loggedinfo->iscreator = true;
         }
 
         $this->view->headScript()->prependScript((string) $loggedinfo);
+    }
+
+    protected function _jsRawLocaleStrings() {
+        $this->view->jslocales = array(
+            'osmAttribution' => __("Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"),
+            );
     }
 
     protected function _jsLocaleStrings() {

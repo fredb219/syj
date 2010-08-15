@@ -227,10 +227,8 @@ var SYJView = {
 
         layerOptions = {format:     OpenLayers.Format.WKT,
                         projection: WGS84,
-                        styleMap:   styleMap.view};
-        if (gLoggedInfo.creatorname) {
-            layerOptions.attribution = SyjStrings.routeBy + ' ' + '<strong>' + gLoggedInfo.creatorname + '</strong>';
-        }
+                        styleMap:   styleMap.view,
+                        attribution: SyjStrings.geomAttribution };
 
         this.viewLayer = new OpenLayers.Layer.Vector("View Layer", layerOptions);
         this.map.addLayers([baseLayer, this.viewLayer]);

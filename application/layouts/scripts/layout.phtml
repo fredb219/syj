@@ -27,15 +27,15 @@
 </head>
 <body>
 <?php
-    echo $this->render('header.phtml');
-?>
+    if (!$this->rawmode) {
+        echo $this->render('header.phtml');
+    }
 
-<?php
     echo $this->layout()->content;
-?>
 
-<?php
-    echo $this->render('footer.phtml');
+    if (!$this->rawmode) {
+        echo $this->render('footer.phtml');
+    }
 ?>
 </body>
 </html>

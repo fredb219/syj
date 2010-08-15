@@ -10,12 +10,7 @@ class ErrorController extends Zend_Controller_Action
     }
 
     public function init() {
-        $this->view->jslocales = null;
-        $this->view->headScript()->exchangeArray(array());
-        $this->view->headLink()->exchangeArray(array());
-        $this->view->headTitle()->exchangeArray(array());
-        $this->view->headStyle()->exchangeArray(array());
-
+        $this->_helper->SyjReset->resetPlaceHolders();
         $this->view->headLink()->appendStylesheet('css/generic.css');
         $this->view->headLink()->appendStylesheet('css/error.css');
     }
