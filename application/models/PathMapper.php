@@ -25,7 +25,6 @@ class Syj_Model_PathMapper
         $db = $this->getDbTable()->getAdapter();
         $expr = $db->quoteInto('seq_attained_value(?)', array('paths_id_seq', (int)$id));
         $select = $db->select()->from(new Zend_Db_Expr($expr));
-        print $select->assemble();
         $row = $db->fetchRow($select);
         return $row['t'];
     }
