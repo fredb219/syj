@@ -25,7 +25,7 @@
   </pre>
 
   <h3>Request Parameters:</h3>
-  <pre><?php echo var_export($this->request->getParams(), true) ?>
+  <pre><?php echo $this->escape(var_export($this->request->getParams(), true)) ?>
   </pre>
   <?php endif ?>
 
