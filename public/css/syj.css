@@ -141,6 +141,9 @@ body, html {
 
 #termsofusearea {
     height: 50%;
+    /* override opacity defined in .modal rule */
+    opacity: 1;
+    filter:alpha(opacity=100);
 }
 
 #other-language {
