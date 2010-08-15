@@ -6,7 +6,6 @@ class ErrorController extends Zend_Controller_Action
 {
     protected function httpError($code) {
         $this->getResponse()->setHttpResponseCode($code);
-        $this->view->message = Zend_Http_Response::responseCodeAsText($code);
     }
 
     public function init() {

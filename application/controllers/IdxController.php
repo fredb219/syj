@@ -51,8 +51,10 @@ class IdxController extends Zend_Controller_Action
             $path = new Syj_Model_Path();
             if (!$pathMapper->findByUrl($url, $path)) {
                 if (is_numeric($url) and $pathMapper->hasexisted($url)) {
+                    $this->view->message = $this->view->translate("route has been deleted");
                     throw new Syj_Exception_NotFound('Gone', 410);
                 } else {
+                    $this->view->message = $this->view->translate("route does not exist");
                     throw new Syj_Exception_NotFound('Not Found', 404);
                 }
             }

@@ -1,8 +1,17 @@
 <?php
     $this->redirectLinks = false;
 ?>
-  <h1><?php echo $this->translate('An error occurred')?></h1>
-  <h2><?php echo $this->message ?></h2>
+
+<h1><?php echo $this->translate('An error occurred')?></h1>
+<h2><?php
+  $code = Zend_Controller_Front::getInstance()->getResponse()->getHttpResponseCode();
+  printf('%d: %s', $code, Zend_Http_Response::responseCodeAsText($code));
+?>
+</h2>
+
+    <?php if (isset ($this->message)) {
+        echo '<p>' . $this->message . '</p>';
+    }?>
 
   <?php if (isset($this->exception)): ?>
 
