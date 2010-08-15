@@ -1,4 +1,6 @@
-<?php echo $this->localeSwitcher(); ?>
+<?php if (!$this->rawmode) {
+    echo $this->localeSwitcher();
+}?>
 <p><?php
 echo $this->translate('Show Your Journey is a site whose goal is to allow anyone to publish routes, for example, hiking itinerary, bicycle trip, travel itinerary or whatever.');
 ?></p>

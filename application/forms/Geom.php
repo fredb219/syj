@@ -21,7 +21,9 @@ class Syj_Form_Geom extends Zend_Form
             ));
 
         $translator = $this->getTranslator();
-        $anchor = $this->getView()->Anchor("termsofuse", $translator->translate("terms of use"), array('id' => 'geom_termsofuse_anchor'));
+        $anchor = $this->getView()->Anchor("termsofuse?format=raw",
+                                           $translator->translate("terms of use"),
+                                           array('id' => 'geom_termsofuse_anchor'));
         $text = $translator->translate("I've read and accepted %s");
         $text = vsprintf($text, $anchor);
         $touaccept = array('Checkbox', 'geom_accept', array("label" => $text,
