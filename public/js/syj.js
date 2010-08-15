@@ -597,13 +597,15 @@ var SYJUserClass = Class.create(SYJModalClass, {
 
         $$("#user_termsofuse_anchor, #geom_termsofuse_anchor").invoke('observe', "click", function(evt) {
             if (!this.toubox) {
-                $("termsofusearea").show();
-                $("termsofuseiframe").setAttribute("src", evt.target.href);
                 this.toubox = new SimpleBox($("termsofusearea"), {
                     closeMethods: ["onescapekey", "onouterclick", "onbutton"]
                 });
             }
             this.toubox.show();
+            if (!$("termsofuseiframe").getAttribute("src")) {
+                $("termsofusearea").show();
+                $("termsofuseiframe").setAttribute("src", evt.target.href);
+            }
             evt.stop();
         }.bindAsEventListener(this));
 
