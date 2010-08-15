@@ -20,36 +20,48 @@
 <?php }?>
 </div>
 
-<div id="data_controls">
-    <div id="data_controls_btns">
-<?php if (isset($this->path)) { ?>
-    <input id="clone-btn" name="clone-btn" type="button" value="<?php echo $this->translate('duplicate');?>">
-    <br>
-    <input id="edit-btn" name="edit-btn" type="button" value="<?php echo $this->translate('edit');?>">
-<?php } else {?>
-    <input id="create-btn" name="create-btn" type="button" value="<?php echo $this->translate('start a route');?>">
-<?php } ?>
+
+<div id="menu">
+
+    <?php echo $this->localeSwitcher(); ?>
+
+    <div id="login_controls">
+        <div>
+            <div class="login-anchor">
+            <?php
+                echo $this->anchor('login', $this->translate('login'), array('id' => 'login_control_anchor'));
+                $anchortext = sprintf("%s<img id=\"account-info-bullet\" src=\"icons/bullet_arrow_right.png\"><span id=\"account-info\"><br>%s</span>",
+                                      $this->translate('create an account'),
+                                      $this->translate('Whith an account, you can manage and modify your routes'));
+                ?>
+               </div>
+               <div class="login-anchor">
+               <?php
+                echo $this->anchor('', $anchortext, array('id' => 'user_control_anchor'), false);
+            ?>
+            </div>
+        </div>
+        <div>
+            <?php echo $this->logoutLink(); ?>
+        </div>
     </div>
 
-<?php
-    print $this->geomform;
-?>
+    <div id="data_controls">
+        <div id="data_controls_btns">
+    <?php if (isset($this->path)) { ?>
+        <input id="clone-btn" name="clone-btn" type="button" value="<?php echo $this->translate('duplicate');?>">
+        <br>
+        <input id="edit-btn" name="edit-btn" type="button" value="<?php echo $this->translate('edit');?>">
+    <?php } else {?>
+        <input id="create-btn" name="create-btn" type="button" value="<?php echo $this->translate('start a route');?>">
+    <?php } ?>
+        </div>
 
+    <?php
+        print $this->geomform;
+    ?>
 </div>
 
-<div id="login_controls">
-    <div>
-        <?php
-            echo $this->anchor('login', $this->translate('login'), array('id' => 'login_control_anchor', 'class' => 'login-anchor'));
-            $anchortext = sprintf("%s<img id=\"account-info-bullet\" src=\"icons/bullet_arrow_right.png\"><span id=\"account-info\"><br>%s</span>",
-                                  $this->translate('create an account'),
-                                  $this->translate('Whith an account, you can manage and modify your routes'));
-            echo $this->anchor('', $anchortext, array('id' => 'user_control_anchor', 'class' => 'login-anchor'), false);
-        ?>
-    </div>
-    <div>
-        <?php echo $this->logoutLink(); ?>
-    </div>
 </div>
 
 <div id="newpwd_area" class="modal">
@@ -66,19 +78,17 @@
     ?>
 </div>
 
-  <div id="login_area" class="modal">
-     <div id="login_message" class="message"></div>
+<div id="login_area" class="modal">
+   <div id="login_message" class="message"></div>
 
-  <?php
-    print $this->loginform;
-  ?>
+<?php
+  print $this->loginform;
+?>
 
-  <p id="login_area_create"><a id="login_area_create_anchor" href=""><?php echo $this->translate('create an account')?></a></p>
+<p id="login_area_create"><a id="login_area_create_anchor" href=""><?php echo $this->translate('create an account')?></a></p>
 
-  </div>
+</div>
 
-  <div id="termsofusearea" class="modal">
-    <iframe id="termsofuseiframe" width="100%" height="100%" frameborder="0"></iframe>
-  </div>
-
-<?php echo $this->localeSwitcher(); ?>
+<div id="termsofusearea" class="modal">
+  <iframe id="termsofuseiframe" width="100%" height="100%" frameborder="0"></iframe>
+</div>
