@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-15 16:32+0200\n"
+"POT-Creation-Date: 2010-08-17 20:59+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -62,35 +62,35 @@ msgstr "Pour créer un trajet, cliquez simplement sur la carte pour ajouter des 
 msgid "When you have finished a path, press \"save\", button."
 msgstr "Lorsque vous avez fini votre tracé, pressez le bouton \"enregistrer\"."
 
-#: application/views/scripts/idx/index.phtml:26
-#: application/controllers/IdxController.php:148
-msgid "duplicate"
-msgstr "dupliquer"
-
-#: application/views/scripts/idx/index.phtml:28
-#: application/controllers/IdxController.php:146
-msgid "edit"
-msgstr "modifier"
-
-#: application/views/scripts/idx/index.phtml:30
-msgid "start a route"
-msgstr "commencer un itinéraire"
-
-#: application/views/scripts/idx/index.phtml:43
+#: application/views/scripts/idx/index.phtml:32
 #: application/controllers/LoginController.php:8
 #: application/layouts/scripts/footer.phtml:74
 #: application/forms/Login.php:26
 msgid "login"
 msgstr "connexion"
 
-#: application/views/scripts/idx/index.phtml:45
-#: application/views/scripts/idx/index.phtml:76
+#: application/views/scripts/idx/index.phtml:34
+#: application/views/scripts/idx/index.phtml:88
 msgid "create an account"
 msgstr "créer un compte"
 
-#: application/views/scripts/idx/index.phtml:46
+#: application/views/scripts/idx/index.phtml:35
 msgid "Whith an account, you can manage and modify your routes"
 msgstr "Avec un compte, vous pourrez gérer et modifier vos itinéraires"
+
+#: application/views/scripts/idx/index.phtml:52
+#: application/controllers/IdxController.php:148
+msgid "duplicate"
+msgstr "dupliquer"
+
+#: application/views/scripts/idx/index.phtml:54
+#: application/controllers/IdxController.php:146
+msgid "edit"
+msgstr "modifier"
+
+#: application/views/scripts/idx/index.phtml:56
+msgid "start a route"
+msgstr "commencer un itinéraire"
 
 #: application/views/scripts/termsofuse/index.phtml:5
 msgid "Show Your Journey is a site whose goal is to allow anyone to publish routes, for example, hiking itinerary, bicycle trip, travel itinerary or whatever."
@@ -197,6 +197,44 @@ msgstr "modifier ou dupliquer"
 #: application/forms/Pending/ValidateCreation.php:23
 msgid "delete"
 msgstr "supprimer"
+
+#: application/views/scripts/faq/index.phtml:1
+#: application/controllers/FaqController.php:10
+msgid "Frequently asked questions"
+msgstr "Foire aux questions"
+
+#: application/views/scripts/faq/index.phtml:2
+msgid "What's syj?"
+msgstr "Qu'est-ce que syj&nbsp;?"
+
+#: application/views/scripts/faq/index.phtml:3
+msgid "<acronym title=\"Show your journey\">Syj</acronym> is a website to share routes. You draw a route on a map background, and then, you get an link to share it. You can then show clever bicycle rides, your last hiking, or any route you want."
+msgstr "<acronym title=\"Show your journey\">Syj</acronym> is un site de partage d'itinéraires. Vous dessinez un itinéraire sur un fond de carte, et vous obtenez un lien pour le partager. Vous pouvez l'utiliser pour montrer des trajets de randonnée, des itinéraires cyclistes malin, ou n'importe quoi d'autre."
+
+#: application/views/scripts/faq/index.phtml:5
+msgid "How do I modify a route?"
+msgstr "Comment modifier un itinéraire&nbsp;?"
+
+#: application/views/scripts/faq/index.phtml:6
+#, php-format
+msgid "When you're editing a route, you can drag and drop a point to move it. If you want to delete it, you need to press the Shift key. While you hold the button, points will have an icon%s over them. Clicking that icon will delete the point."
+msgstr "Lorsque vous éditez un itinéraire, vous pouvez le bouger en le glisser-déposant. Si vous voulez le supprimer, vous devez appuyer sur la touche Shift. Lorsque la touche est enfoncée, une icône%s va apparaître au dessus des points. Cliquez sur l'icône pour supprimer un point."
+
+#: application/views/scripts/faq/index.phtml:8
+msgid "Why should I create a account?"
+msgstr "Pourquoi créer un compte&nbsp;?"
+
+#: application/views/scripts/faq/index.phtml:9
+msgid "You can create routes without a account. But if you want to modify your routes afterwards, you need to be registered when creating the route."
+msgstr "Vous pouvez créer des itinéraires sans avoir de compte. Mais si vous voulez modifier les itinéraires que vous avez créé, vous devez avoir un compte lors de leur création."
+
+#: application/views/scripts/faq/index.phtml:11
+msgid "Is it possible to have my route \"attach\" nearby paths?"
+msgstr "Est-ce que c'est possible d'&nbsp;«&nbsp;accrocher&nbsp;» les routes ?"
+
+#: application/views/scripts/faq/index.phtml:12
+msgid "When you create a route with syj, you must draw each point on the map. If your route follows an existing path, you still need to draw the layer manually: syj will not try to attach nearby existing paths. There are three main reasons. One bad reason: it would a lot of work to implement. And two good reasons: syj uses OpenStreetMap as a background map, and the map is still unfinished in many areas. Also, depending on your route, you may wish to attach to motorways, footways, biycle lanes, railways, &hellip;. If you are in a place with lot of differents routes, it would be nearly impossible to always choose the right way."
+msgstr "Lorsque vous créez un itinéraire avec syj, vous devez placer chaque point sur la carte. Si votre itinéraire suit un chemin, vous devez quand même dessiner la surcouche à la main&nbsp;: syj ne vas pas chercher à accrocher les chemins proches. Il y a trois raisons principales à cela. Une mauvaise raison&nbsp;: cela demanderait beaucoup de travail à mettre en place. Et deux bonnes raisons&nbsp;: syj utilise OpenStreetMap comme fond de carte. Or, il y a beaucoup d'endroits où cette carte est incomplète. D'autre part, selon l'itinéraire, vous voudriez accrocher l'autoroute, ou bien les chemins piétons, ou les pistes cyclables, ou les rails de tramway, &hellip;. Si vous êtes dans un endroit avec différents types de routes, syj n'arrivera probablement pas à choisir la bonne route."
 
 #: application/views/helpers/LogoutLink.php:10
 #: application/layouts/scripts/footer.phtml:67
@@ -579,6 +617,10 @@ msgstr "Vous avez un itinéraire non sauvegardé"
 #: application/layouts/scripts/footer.phtml:28
 msgid "contact"
 msgstr "contact"
+
+#: application/layouts/scripts/footer.phtml:97
+msgid "faq"
+msgstr "faq"
 
 #: application/forms/Login.php:9
 msgid "user"

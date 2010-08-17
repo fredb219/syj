@@ -8,3 +8,10 @@ body {
 #footer {
     _position: static;
 }
+
+h1, h2 {
+    text-align: center;
+}
+p {
+    margin: 0.5em 15% 2.0em 15%;
+}

@@ -1,0 +1,16 @@
+<?php
+    echo $this->localeSwitcher();
+?>
+
+<h1><?php echo $this->translate('Frequently asked questions')?></h1>
+<h2 id="whatsyj"><?php echo $this->translate('What\'s syj?')?></h2>
+<p><?php echo $this->translate('<acronym title="Show your journey">Syj</acronym> is a website to share routes. You draw a route on a map background, and then, you get an link to share it. You can then show clever bicycle rides, your last hiking, or any route you want.');?></p>
+
+<h2 id="modify"><?php echo $this->translate('How do I modify a route?')?></h2>
+<p><?php echo $this->translate('When you\'re editing a route, you can drag and drop a point to move it. If you want to delete it, you need to press the Shift key. While you hold the button, points will have an icon%s over them. Clicking that icon will delete the point.', '<img style="vertical-align: middle" src="icons/delete.png">');?></p>
+
+<h2 id="account"><?php echo $this->translate('Why should I create a account?')?></h2>
+<p><?php echo $this->translate('You can create routes without a account. But if you want to modify your routes afterwards, you need to be registered when creating the route.');?></p>
+
+<h2 id="attach"><?php echo $this->translate('Is it possible to have my route "attach" nearby paths?')?></h2>
+<p><?php echo $this->translate('When you create a route with syj, you must draw each point on the map. If your route follows an existing path, you still need to draw the layer manually: syj will not try to attach nearby existing paths. There are three main reasons. One bad reason: it would a lot of work to implement. And two good reasons: syj uses OpenStreetMap as a background map, and the map is still unfinished in many areas. Also, depending on your route, you may wish to attach to motorways, footways, biycle lanes, railways, &hellip;. If you are in a place with lot of differents routes, it would be nearly impossible to always choose the right way.');?></p>

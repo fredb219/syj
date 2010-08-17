@@ -87,6 +87,16 @@ echo $this->footerLink(array(
     $this->translate("terms of use"),
     false);
 
+/*
+ * faq
+ */
+echo $this->footerLink(array(
+    'route' => 'faq',
+    'action'     => 'index',
+    'controller' => 'faq'),
+    $this->translate("faq"),
+    false);
+
 echo '</div>' . PHP_EOL;
 
 ?>
