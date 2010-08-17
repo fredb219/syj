@@ -69,6 +69,7 @@ body, html {
 }
 #geomform {
     padding: 25px 45px 20px 45px;
+    *width: 40%; /* otherwise takes all screen width in ie<7 */
 }
 #edit-btn {
     margin-top: 1em;
