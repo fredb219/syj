@@ -19,8 +19,8 @@ Your account is currently active, but you need to confirm your inscription by
 following this link:
 %hashurl%
 
-If you do not not confirm your inscription within 7 days, your account and all
-your items will be deleted.
+If you do not not confirm your inscription within 7 days, your account will be
+deleted.
 
 Please do not reply this email. If you need to contact us, please use the form
 contact at %contacturl%
@@ -51,9 +51,8 @@ Syj team", $this->_user->lang);
                 $subject = $this->translate("[SYJ] Account deactivated", $this->_user->lang);
                 $text = $this->translate("Hi %user%,
 
-You have not validated your syj account on time. Therefore, your account and
-all your data have been deleted. Nevertheless, you can still create a new
-account.
+You have not validated your syj account on time. Therefore, your account have
+been deleted. Nevertheless, you can still create a new account.
 
 Please do not reply this email. If you need to contact us, please use the form
 contact at %contacturl%

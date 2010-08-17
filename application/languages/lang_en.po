@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 20:59+0200\n"
+"POT-Creation-Date: 2010-08-17 21:33+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -198,41 +198,41 @@ msgstr "modify or duplicate"
 msgid "delete"
 msgstr "delete"
 
-#: application/views/scripts/faq/index.phtml:1
+#: application/views/scripts/faq/index.phtml:5
 #: application/controllers/FaqController.php:10
 msgid "Frequently asked questions"
 msgstr "Frequently asked questions"
 
-#: application/views/scripts/faq/index.phtml:2
+#: application/views/scripts/faq/index.phtml:6
 msgid "What's syj?"
 msgstr "What's syj?"
 
-#: application/views/scripts/faq/index.phtml:3
+#: application/views/scripts/faq/index.phtml:7
 msgid "<acronym title=\"Show your journey\">Syj</acronym> is a website to share routes. You draw a route on a map background, and then, you get an link to share it. You can then show clever bicycle rides, your last hiking, or any route you want."
 msgstr "<acronym title=\"Show your journey\">Syj</acronym> est un site de partage d'itiis a website to share routes. You draw a route on a map background, and then, you get an link to share it. You can then show clever bicycle rides, your last hiking, or any route you want."
 
-#: application/views/scripts/faq/index.phtml:5
+#: application/views/scripts/faq/index.phtml:9
 msgid "How do I modify a route?"
 msgstr "How do I modify a route?"
 
-#: application/views/scripts/faq/index.phtml:6
+#: application/views/scripts/faq/index.phtml:10
 #, php-format
 msgid "When you're editing a route, you can drag and drop a point to move it. If you want to delete it, you need to press the Shift key. While you hold the button, points will have an icon%s over them. Clicking that icon will delete the point."
 msgstr "When you're editing a route, you can drag and drop a point to move it. If you want to delete it, you need to press the Shift key. While you hold the button, points will have an icon%s over them. Clicking that icon will delete the point."
 
-#: application/views/scripts/faq/index.phtml:8
+#: application/views/scripts/faq/index.phtml:12
 msgid "Why should I create a account?"
 msgstr "Why should I create a account?"
 
-#: application/views/scripts/faq/index.phtml:9
+#: application/views/scripts/faq/index.phtml:13
 msgid "You can create routes without a account. But if you want to modify your routes afterwards, you need to be registered when creating the route."
 msgstr "You can create routes without a account. But if you want to modify your routes afterwards, you need to be registered when creating the route."
 
-#: application/views/scripts/faq/index.phtml:11
+#: application/views/scripts/faq/index.phtml:15
 msgid "Is it possible to have my route \"attach\" nearby paths?"
 msgstr "Is it possible to have my route \"attach\" nearby paths?"
 
-#: application/views/scripts/faq/index.phtml:12
+#: application/views/scripts/faq/index.phtml:16
 msgid "When you create a route with syj, you must draw each point on the map. If your route follows an existing path, you still need to draw the layer manually: syj will not try to attach nearby existing paths. There are three main reasons. One bad reason: it would a lot of work to implement. And two good reasons: syj uses OpenStreetMap as a background map, and the map is still unfinished in many areas. Also, depending on your route, you may wish to attach to motorways, footways, biycle lanes, railways, &hellip;. If you are in a place with lot of differents routes, it would be nearly impossible to always choose the right way."
 msgstr "When you create a route with syj, you must draw each point on the map. If your route follows an existing path, you still need to draw the layer manually: syj will not try to attach nearby existing paths. There are three main reasons. One bad reason: it would a lot of work to implement. And two good reasons: syj uses OpenStreetMap as a background map, and the map is still unfinished in many areas. Also, depending on your route, you may wish to attach to motorways, footways, biycle lanes, railways, &hellip;. If you are in a place with lot of differents routes, it would be nearly impossible to always choose the right way."
 
@@ -309,8 +309,8 @@ msgid ""
 "following this link:\n"
 "%hashurl%\n"
 "\n"
-"If you do not not confirm your inscription within 7 days, your account and all\n"
-"your items will be deleted.\n"
+"If you do not not confirm your inscription within 7 days, your account will be\n"
+"deleted.\n"
 "\n"
 "Please do not reply this email. If you need to contact us, please use the form\n"
 "contact at %contacturl%\n"
@@ -325,8 +325,8 @@ msgstr ""
 "following this link:\n"
 "%hashurl%\n"
 "\n"
-"If you do not not confirm your inscription within 7 days, your account and all\n"
-"your items will be deleted.\n"
+"If you do not not confirm your inscription within 7 days, your account will be\n"
+"deleted.\n"
 "\n"
 "Please do not reply this email. If you need to contact us, please use the form\n"
 "contact at %contacturl%\n"
@@ -375,9 +375,8 @@ msgstr "[SYJ] Account deactivated"
 msgid ""
 "Hi %user%,\n"
 "\n"
-"You have not validated your syj account on time. Therefore, your account and\n"
-"all your data have been deleted. Nevertheless, you can still create a new\n"
-"account.\n"
+"You have not validated your syj account on time. Therefore, your account have\n"
+"been deleted. Nevertheless, you can still create a new account.\n"
 "\n"
 "Please do not reply this email. If you need to contact us, please use the form\n"
 "contact at %contacturl%\n"
@@ -388,9 +387,8 @@ msgid ""
 msgstr ""
 "Hi %user%,\n"
 "\n"
-"You have not validated your syj account on time. Therefore, your account and\n"
-"all your data have been deleted. Nevertheless, you can still create a new\n"
-"account.\n"
+"You have not validated your syj account on time. Therefore, your account have\n"
+"been deleted. Nevertheless, you can still create a new account.\n"
 "\n"
 "Please do not reply this email. If you need to contact us, please use the form\n"
 "contact at %contacturl%\n"
@@ -701,8 +699,8 @@ msgid "user name"
 msgstr "user name"
 
 #: application/forms/User.php:37
-msgid "After creating your account, you will receive a confirmation email. You have 7 days to confirm otherwise, your account and your routes will all be deleted."
-msgstr "After creating your account, you will receive a confirmation email. You have 7 days to confirm otherwise, your account and your routes will all be deleted."
+msgid "After creating your account, you will receive a confirmation email. You have 7 days to confirm otherwise, your account will be deleted."
+msgstr "After creating your account, you will receive a confirmation email. You have 7 days to confirm otherwise, your account will be deleted."
 
 #: application/forms/User.php:58
 msgid "create account"

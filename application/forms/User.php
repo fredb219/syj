@@ -34,7 +34,7 @@ class Syj_Form_User extends Syj_Form_TableAbstract
 
         $email = array('Text', 'user_email', array(
             'label' => __("email"),
-            'description' => __("After creating your account, you will receive a confirmation email. You have 7 days to confirm otherwise, your account and your routes will all be deleted."),
+            'description' => __("After creating your account, you will receive a confirmation email. You have 7 days to confirm otherwise, your account will be deleted."),
             'required' => true
             ));
 
