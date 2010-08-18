@@ -27,6 +27,7 @@ class Syj_Form_Geom extends Zend_Form
         $text = $translator->translate("I've read and accepted %s");
         $text = vsprintf($text, $anchor);
         $touaccept = array('Checkbox', 'geom_accept', array("label" => $text,
+                            'helper' => 'SyjFormCheckbox', // similar to FormCheckbox without a hidden input
                             'decorators' => array(
                                   'ViewHelper',
                                   'label',

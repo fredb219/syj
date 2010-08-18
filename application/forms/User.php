@@ -46,6 +46,7 @@ class Syj_Form_User extends Syj_Form_TableAbstract
         $text = $translator->translate("I've read and accepted %s");
         $text = vsprintf($text, $anchor);
         $this->addElement('Checkbox', 'user_accept', array("label" => $text,
+                            'helper' => 'SyjFormCheckbox', // similar to FormCheckbox without a hidden input
                             'decorators' => array(
                                   'ViewHelper',
                                   'label',
