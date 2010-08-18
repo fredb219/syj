@@ -40,6 +40,7 @@ var SyjSaveUI = {
 
     enableSubmit: function() {
         $("geom_submit").disabled = false;
+        $("geom_accept").disabled = false;
         this.status = "partial";
         return this;
     },
@@ -47,6 +48,8 @@ var SyjSaveUI = {
     disableSubmit: function() {
         $("geom_submit").blur();
         $("geom_submit").disabled = true;
+        $("geom_accept").blur();
+        $("geom_accept").disabled = true;
         this.status = "partial";
         return this;
     }
