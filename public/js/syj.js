@@ -261,7 +261,6 @@ var SYJView = {
                 this.messenger.hide();
                 this.editMode();
                 this.mode = 'create';
-                SyjSaveUI.enableSubmit();
             }.bind(this));
         }
 
