@@ -13,8 +13,8 @@ class ListController extends Zend_Controller_Action
         $this->view->headScript()->appendFile('js/utils.js');
         $this->view->headScript()->appendFile('js/list.js');
 
-        $this->view->headLink()->appendStylesheet('css/generic.css');
-        $this->view->headLink()->appendStylesheet('css/list.css');
+        $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
+        $this->view->headLink()->appendStylesheet('css/list.css', 'all');
         $this->view->headTitle($this->view->translate("my routes"));
     }
 

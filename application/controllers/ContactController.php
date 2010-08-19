@@ -9,8 +9,8 @@ class ContactController extends Zend_Controller_Action
         $this->view->headScript()->appendFile('js/prototype.js');
         $this->view->headScript()->appendFile('js/utils.js');
         $this->view->headScript()->appendFile('js/contact.js');
-        $this->view->headLink()->appendStylesheet('css/generic.css');
-        $this->view->headLink()->appendStylesheet('css/contact.css');
+        $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
+        $this->view->headLink()->appendStylesheet('css/contact.css', 'all');
         $this->view->headTitle($this->view->translate("contact form"));
     }
 

@@ -15,3 +15,10 @@ h1, h2 {
 p {
     margin: 0.5em 15% 2.0em 15%;
 }
+
+@media print {
+    p {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

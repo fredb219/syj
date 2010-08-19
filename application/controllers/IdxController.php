@@ -12,16 +12,16 @@ class IdxController extends Zend_Controller_Action
         $this->view->headScript()->appendFile('js/simplebox.js');
         $this->view->headScript()->appendFile('js/utils.js');
         $this->view->headScript()->appendFile('js/syj.js');
-        $this->view->headLink()->appendStylesheet('css/openlayers/style.css');
-        $this->view->headLink()->appendStylesheet('css/generic.css');
-        $this->view->headLink()->appendStylesheet('css/syj.css');
+        $this->view->headLink()->appendStylesheet('css/openlayers/style.css', "all");
+        $this->view->headLink()->appendStylesheet('css/generic.css', "all");
+        $this->view->headLink()->appendStylesheet('css/syj.css', "all");
     }
 
     public function rawmode(Syj_Model_Path $path) {
         $this->_helper->SyjReset->resetPlaceHolders();
 
-        $this->view->headLink()->appendStylesheet('css/generic.css');
-        $this->view->headLink()->appendStylesheet('css/syjraw.css');
+        $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
+        $this->view->headLink()->appendStylesheet('css/syjraw.css', 'all');
         $this->view->headScript()->appendFile('js/OpenLayers.js');
         $this->view->headScript()->appendFile('js/syjraw.js');
         $this->view->headTitle($path->displayTitle);

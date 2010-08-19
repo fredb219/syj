@@ -5,8 +5,8 @@
 class FaqController extends Zend_Controller_Action
 {
     public function indexAction() {
-        $this->view->headLink()->appendStylesheet('css/generic.css');
-        $this->view->headLink()->appendStylesheet('css/faq.css');
+        $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
+        $this->view->headLink()->appendStylesheet('css/faq.css', 'all');
         $this->view->headTitle($this->view->translate("Frequently asked questions"));
     }
 }

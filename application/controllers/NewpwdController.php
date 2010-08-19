@@ -9,8 +9,8 @@ class NewpwdController extends Zend_Controller_Action
         $this->view->headScript()->appendFile('js/prototype.js');
         $this->view->headScript()->appendFile('js/newpwd.js');
         $this->view->headScript()->appendFile('js/utils.js');
-        $this->view->headLink()->appendStylesheet('css/generic.css');
-        $this->view->headLink()->appendStylesheet('css/newpwd.css');
+        $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
+        $this->view->headLink()->appendStylesheet('css/newpwd.css', 'all');
     }
 
     public function indexAction() {

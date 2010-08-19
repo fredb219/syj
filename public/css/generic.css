@@ -115,3 +115,9 @@ input {
     padding-bottom: 3px;
     border: #1E90FF 1px solid;
 }
+
+@media print {
+    #footer, #other-language {
+        display: none;
+    }
+}
