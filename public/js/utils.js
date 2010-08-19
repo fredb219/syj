@@ -30,6 +30,36 @@ var CloseBtn = Class.create({
     }
 });
 
+var Toggler = Class.create({
+    initialize: function(target, options) {
+        options = Object.extend({}, options);
+        target = $(target).hide();
+
+        var openIcn = options.openIcn || 'icons/bullet_arrow_right.png',
+            closeIcn = options.closeIcn || 'icons/bullet_arrow_down.png';
+
+        this.element = new Element("img", { src: openIcn })
+                              .setStyle({ border: 'none',  // in firefox, in image inside an anchor has a border
+                                        verticalAlign: "middle"});
+
+        this.element.observe('click', function(evt) {
+            if (target.visible()) {
+                evt.target.src = openIcn;
+                target.hide();
+            } else {
+                evt.target.src = closeIcn;
+                target.show();
+            }
+            evt.stop();
+        });
+
+        if (options.initialShow) {
+            target.show();
+            this.element.src = closeIcn;
+        }
+    }
+});
+
 var Deck = Class.create({
     initialize: function(elt, options) {
         this.element = $(elt);

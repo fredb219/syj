@@ -30,7 +30,7 @@
             <div class="login-anchor">
             <?php
                 echo $this->anchor('login', $this->translate('login'), array('id' => 'login_control_anchor'));
-                $anchortext = sprintf("%s<img id=\"account-info-bullet\" src=\"icons/bullet_arrow_right.png\"><span id=\"account-info\"><br>%s</span>",
+                $anchortext = sprintf("<span id=\"account-create-anchor\">%s</span><span id=\"account-info\"><br>%s</span>",
                                       $this->translate('create an account'),
                                       $this->translate('Whith an account, you can manage and modify your routes'));
                 ?>

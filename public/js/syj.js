@@ -638,18 +638,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
             }
         }.bindAsEventListener(this));
 
-        $("account-info").hide();
-        $("account-info-bullet").observe('click', function(evt) {
-            var elt = $("account-info");
-            if (elt.visible()) {
-                evt.target.src = "icons/bullet_arrow_right.png";
-                elt.hide();
-            } else {
-                evt.target.src = "icons/bullet_arrow_down.png";
-                elt.show();
-            }
-            evt.stop();
-        });
+        $('account-create-anchor').insert({after: new Toggler('account-info').element});
     },
 
     presubmit: function() {

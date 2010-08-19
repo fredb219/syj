@@ -109,12 +109,6 @@ body, html {
     background-color: #BBBBFF;
 }
 
-#account-info-bullet {
-    /* in firefox, in image inside an anchor has a border */
-    border: none;
-    vertical-align: middle;
-}
-
 #other-language {
     opacity: 0.85;
     filter:alpha(opacity=85);
