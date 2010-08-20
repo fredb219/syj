@@ -212,11 +212,37 @@ Element.addMethods('form', {
                 reqoptions.method = this.method;
             }
 
+            if (reqoptions.onFailure) {
+                reqoptions.onFailure = reqoptions.onFailure.wrap(function(proceed, transport, json) {
+                    form.enable();
+                    proceed(transport, json);
+                });
+            } else {
+                reqoptions.onFailure = function() {
+                    form.enable();
+                };
+            }
+
+            if (reqoptions.onSuccess) {
+                reqoptions.onSuccess = reqoptions.onSuccess.wrap(function(proceed, transport, json) {
+                    form.enable();
+                    proceed(transport, json);
+                });
+            } else {
+                reqoptions.onSuccess = function() {
+                    form.enable();
+                };
+            }
+
             new Ajax.TimedRequest(action, options.delay || 20, reqoptions);
 
             if (Object.isFunction(options.postsubmit)) {
                 options.postsubmit(this);
             }
+            Form.getElements(form).each(function(elt) {
+                elt.blur();
+                elt.disable();
+            });
         });
     },
 
