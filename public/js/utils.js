@@ -10,14 +10,18 @@ var CloseBtn = Class.create({
             return;
         }
 
+        if (typeof options !== "object") {
+            options = {};
+        }
+
         style = Object.extend({
             float: "right",
             margin: "2px",
             fontWeight: "bold",
             padding: "0px"
-        }, typeof options === "object" ? options.style: {});
+        }, options.style);
 
-        imgsrc = (options && options.closeBtnSrc) || "icons/close.png";
+        imgsrc = (options.closeBtnSrc) || "icons/close.png";
         btn = new Element("input", { type: "image", src: imgsrc, alt: "X"}).setStyle(style);
         elt.insert({top: btn});
         btn.observe("click", function(evt) {

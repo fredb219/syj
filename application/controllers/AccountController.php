@@ -68,7 +68,7 @@ class AccountController extends Zend_Controller_Action
 
     protected function _jsLocaleStrings() {
         $this->view->jslocales = array(
-            'notEmptyField' => __("Value is required and can't be empty"),
+            'notEmptyField' => __("Value is required"),
             'passwordNoMatchWarn' => __("Password do not match"),
             'passwordLenghtWarn' => array(__("At least %d characters"), 6),
             'nochangeWarn' => __("You have made no change"),

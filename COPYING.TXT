@@ -2,13 +2,13 @@
   Version 3, and redistributed under the conditions of this license. A copy of
   modified AGPL license is included in this file.
 
-- delete.png, bullet_arrow_down.png and bullet_arrow_right.png comes form
-  FamFamFam Silk Icons. Author is Mark James. They are licensed under a
+- delete.png, bullet_arrow_down.png, bullet_arrow_right.png and world.png come
+  form FamFamFam Silk Icons. Author is Mark James. They are licensed under a
   Creative Commons Attribution 2.5 License. See
   http://www.famfamfam.com/lab/icons/silk/ for more informations.
 
-- pseudo-throbber.gif files has been generated with http://ajaxload.info/
-  generator and is free for use.
+- pseudo.gif files has been generated with http://ajaxload.info/ generator and
+  is free for use.
 
 
 

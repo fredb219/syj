@@ -887,7 +887,7 @@ var PseudoChecker = {
 
             $("user_pseudo").up('tr').insert({after: row});
             this.messageelt = new Element('span');
-            this.throbber = new Element("img", { src: "icons/pseudo-throbber.gif"});
+            this.throbber = new Element("img", { src: "icons/throbber.gif"});
             row.down('div').insert(this.throbber).insert(this.messageelt);
         }
         if (throbber) {
@@ -962,6 +962,147 @@ var PseudoChecker = {
     }
 };
 
+var Nominatim = (function() {
+    var presubmit = function() {
+        var input = $("nominatim-search");
+        if (input.value.strip().empty()) {
+            $("nominatim-message").setMessage(SyjStrings.notEmptyField, "warn");
+            input.activate();
+            return false;
+        }
+        $("nominatim-suggestions").hide();
+        $("nominatim-message").hide();
+        $("nominatim-throbber").show();
+        return true;
+    };
+
+    var zoomToExtent = function(bounds) { // we must call map.setCenter with forceZoomChange to true. See ol#2798
+        var center = bounds.getCenterLonLat();
+        if (this.baseLayer.wrapDateLine) {
+            var maxExtent = this.getMaxExtent();
+            bounds = bounds.clone();
+            while (bounds.right < bounds.left) {
+                bounds.right += maxExtent.getWidth();
+            }
+            center = bounds.getCenterLonLat().wrapDateLine(maxExtent);
+        }
+        this.setCenter(center, this.getZoomForExtent(bounds), false, true);
+    }
+
+    var success = function(transport) {
+        $("nominatim-throbber").hide();
+
+        if (!transport.responseJSON || !transport.responseJSON.length) {
+            $("nominatim-message").setMessage(SyjStrings.noResult, 'error');
+            $("nominatim-search").activate();
+            return;
+        }
+
+        var place = transport.responseJSON[0],
+            bbox = place.boundingbox;
+
+        if (!bbox || bbox.length !== 4) {
+            $("nominatim-message").setMessage(SyjStrings.requestError, 'error');
+            return;
+        }
+
+        extent = new OpenLayers.Bounds(bbox[2], bbox[1], bbox[3], bbox[0]).transform(WGS84, Mercator);
+        zoomToExtent.call(SYJView.map, extent);
+
+        $("nominatim-suggestions-list").update();
+
+        var clickhandler = function(bbox) {
+            return function(evt) {
+                evt.stop();
+                var extent = new OpenLayers.Bounds(bbox[2], bbox[1], bbox[3], bbox[0]).transform(WGS84, Mercator);
+                $("nominatim-suggestions-list").select("li").invoke('removeClassName', 'current');
+                evt.target.up('li').addClassName('current');
+                SYJView.map.zoomToExtent(extent);
+            };
+        };
+
+        for (var i = 0; i < transport.responseJSON.length; i++) {
+            var item = transport.responseJSON[i];
+            if (item.display_name && item.boundingbox && item.boundingbox.length === 4) {
+                var li = new Element("li");
+                var anchor = new Element("a", {
+                    href: "",
+                    className: "nominatim-suggestions-link"
+                });
+
+                anchor.observe('click', clickhandler(item.boundingbox));
+
+                var text = document.createTextNode(item.display_name);
+                var icon = new Element("img", {
+                    className: "nominatim-suggestions-icon",
+                    src: item.icon || 'icons/world.png'
+                });
+                anchor.appendChild(text); // insert does not work; see prototype #1125
+                li.insert(icon).insert(anchor);
+                $("nominatim-suggestions-list").insert(li);
+                if ($("nominatim-suggestions-list").childNodes.length >= 6) {
+                    break;
+                }
+            }
+        }
+
+        if ($("nominatim-suggestions-list").childNodes.length > 1) {
+            $("nominatim-suggestions").show();
+            $("nominatim-suggestions-list").select("li:first-child")[0].addClassName('current');
+        } else {
+            $("nominatim-suggestions").hide();
+        }
+
+    };
+
+    var failure = function(transport) {
+        $("nominatim-throbber").hide();
+
+        var httpCode = 0, message = SyjStrings.unknownError, input; // default message error
+
+        if (transport) {
+            httpCode = transport.getStatus();
+        }
+
+        switch (httpCode) {
+            case 0:
+                message = SyjStrings.notReachedError;
+            break;
+            case 400:
+            case 404:
+                message = SyjStrings.requestError;
+            break;
+            case 500:
+                message = SyjStrings.serverError;
+            break;
+        }
+
+        $("nominatim-message").setMessage(message, 'error');
+    };
+
+    return {
+        init: function() {
+            if (!$("nominatim-form")) {
+               return;
+            }
+            $("nominatim-controls").hide();
+            $("nominatim-label").observe('click', function(evt) {
+                $("nominatim-controls").show();
+                $("nominatim-search").activate();
+                evt.stop();
+            });
+
+            $("nominatim-form").ajaxize({
+                presubmit: presubmit,
+                onSuccess: success,
+                onFailure: failure
+              });
+            new CloseBtn($("nominatim-suggestions"));
+
+            $$("#nominatim-message, #nominatim-suggestions, #nominatim-throbber").invoke('hide');
+        }
+    };
+}());
 
 document.observe("dom:loaded", function() {
     SYJLogin.init();
@@ -970,7 +1111,9 @@ document.observe("dom:loaded", function() {
     SYJView.init();
     SYJNewpwd.init();
     LoginMgr.updateUI();
+    Nominatim.init();
 });
+
 window.onbeforeunload = function() {
     if (SYJView.unsavedRoute) {
         return SyjStrings.unsavedConfirmExit;

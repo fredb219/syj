@@ -67,6 +67,59 @@ body, html {
 #data_controls_btns {
     padding: 5px 10px 5px 10px;
 }
+
+#nominatim-form {
+    text-align: left;
+    padding-bottom: 7px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid black;
+}
+#nominatim-message {
+    max-width: 16em;
+    padding: 15px 0 15px 0;
+}
+#nominatim-label {
+    text-decoration: none;
+}
+#nominatim-search {
+    border: 1px solid black;
+}
+#nominatim-submit {
+    width: 26px;
+    border: 1px solid black;
+    padding: 0;
+}
+#nominatim-suggestions {
+    border: 2px solid blue;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    margin-top: 8px;
+    max-width: 360px;
+    width: 360px\9; /* ie only */
+    position: absolute;
+    background-color: white;
+}
+#nominatim-suggestions-title {
+    text-align: center;
+    font-weight: bold;
+}
+#nominatim-suggestions-list {
+    list-style: none;
+    padding: 0 16px 0 12px;
+}
+#nominatim-suggestions-list li.current {
+    background-color: #D3D3D3;
+}
+.nominatim-suggestions-icon {
+    border: none;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.nominatim-suggestions-link {
+    text-decoration: none;
+}
+
 #geomform {
     padding: 25px 45px 20px 45px;
     *width: 40%; /* otherwise takes all screen width in ie<7 */

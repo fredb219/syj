@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-19 20:01+0200\n"
+"POT-Creation-Date: 2010-08-20 14:01+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -70,7 +70,7 @@ msgid "login"
 msgstr "connexion"
 
 #: application/views/scripts/idx/index.phtml:34
-#: application/views/scripts/idx/index.phtml:88
+#: application/views/scripts/idx/index.phtml:105
 msgid "create an account"
 msgstr "créer un compte"
 
@@ -78,17 +78,29 @@ msgstr "créer un compte"
 msgid "Whith an account, you can manage and modify your routes"
 msgstr "Avec un compte, vous pourrez gérer et modifier vos itinéraires"
 
-#: application/views/scripts/idx/index.phtml:52
+#: application/views/scripts/idx/index.phtml:53
 #: application/controllers/IdxController.php:148
 msgid "duplicate"
 msgstr "dupliquer"
 
-#: application/views/scripts/idx/index.phtml:54
+#: application/views/scripts/idx/index.phtml:55
 #: application/controllers/IdxController.php:146
 msgid "edit"
 msgstr "modifier"
 
-#: application/views/scripts/idx/index.phtml:56
+#: application/views/scripts/idx/index.phtml:59
+msgid "Search a place"
+msgstr "Rechercher un lieu"
+
+#: application/views/scripts/idx/index.phtml:63
+msgid "Ok"
+msgstr "Ok"
+
+#: application/views/scripts/idx/index.phtml:67
+msgid "more results"
+msgstr "plus de résultats"
+
+#: application/views/scripts/idx/index.phtml:73
 msgid "start a route"
 msgstr "commencer un itinéraire"
 
@@ -439,9 +451,9 @@ msgstr "Bonjour,"
 #: application/controllers/ContactController.php:122
 #: application/controllers/NewpwdController.php:69
 #: application/controllers/AccountController.php:71
-#: application/forms/Contact.php:27
-msgid "Value is required and can't be empty"
-msgstr "Le champ est requis, et ne doit pas être vide"
+#: application/controllers/IdxController.php:150
+msgid "Value is required"
+msgstr "Le champ est requis"
 
 #: application/controllers/ContactController.php:123
 #: application/forms/Contact.php:32
@@ -612,6 +624,10 @@ msgstr "créér"
 msgid "You have an unsaved route"
 msgstr "Vous avez un itinéraire non sauvegardé"
 
+#: application/controllers/IdxController.php:151
+msgid "no result"
+msgstr "pas de résultat"
+
 #: application/layouts/scripts/footer.phtml:28
 msgid "contact"
 msgstr "contact"
@@ -633,6 +649,10 @@ msgstr "mot de passe"
 #: application/forms/Login.php:23
 msgid "I forgot my password"
 msgstr "J'ai oublié mon mot de passe"
+
+#: application/forms/Contact.php:27
+msgid "Value is required and can't be empty"
+msgstr "Le champ est requis, et ne doit pas être vide"
 
 #: application/forms/Contact.php:36
 msgid "Email:"
