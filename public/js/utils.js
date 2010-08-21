@@ -35,31 +35,46 @@ var CloseBtn = Class.create({
 });
 
 var Toggler = Class.create({
-    initialize: function(target, options) {
-        options = Object.extend({}, options);
-        target = $(target).hide();
+    options: {},
 
-        var openIcn = options.openIcn || 'icons/bullet_arrow_right.png',
-            closeIcn = options.closeIcn || 'icons/bullet_arrow_down.png';
+    close: function() {
+        this.element.src = this.options.openIcn;
+        this.target.hide();
+        document.fire('toggler:close', this);
+    },
 
-        this.element = new Element("img", { src: openIcn })
-                              .setStyle({ border: 'none',  // in firefox, in image inside an anchor has a border
-                                        verticalAlign: "middle"});
+    open: function() {
+        this.element.src = this.options.closeIcn;
+        this.target.show();
+        document.fire('toggler:open', this);
+    },
 
-        this.element.observe('click', function(evt) {
-            if (target.visible()) {
-                evt.target.src = openIcn;
-                target.hide();
-            } else {
-                evt.target.src = closeIcn;
-                target.show();
-            }
+    toggle: function(evt) {
+        if (evt && typeof evt.stop === "function") {
             evt.stop();
-        });
+        }
+        if (this.target.visible()) {
+            this.close();
+        } else {
+            this.open();
+        }
+    },
 
-        if (options.initialShow) {
-            target.show();
-            this.element.src = closeIcn;
+    initialize: function(target, options) {
+        this.options = Object.extend({
+                openIcn: 'icons/bullet_arrow_right.png',
+                closeIcn: 'icons/bullet_arrow_down.png'
+            }, options);
+
+        this.target = $(target).hide();
+        this.element = new Element("img").setStyle({ border: 'none',  // in firefox, in image inside an anchor has a border
+                                                    verticalAlign: "middle"});
+        this.element.observe('click', this.toggle.bindAsEventListener(this));
+
+        if (this.options.autoOpen) {
+            this.open();
+        } else {
+            this.close();
         }
     }
 });

@@ -55,20 +55,77 @@ var SyjSaveUI = {
     }
 };
 
+var SYJPathLength = (function(){
+    return {
+        update: function() {
+            var pathLength = 0, unit;
+            if (SYJView.mode === 'view') {
+                if (SYJView.viewLayer.features.length) {
+                    pathLength = SYJView.viewLayer.features[0].geometry.getGeodesicLength(Mercator);
+                }
+            } else {
+                pathLength = SYJView.editControl.handler.line.geometry.getGeodesicLength(Mercator);
+            }
+
+            if (pathLength === 0) {
+                $("path-length").hide();
+                return;
+            }
+            $("path-length").show();
+
+            if (pathLength < 1000) {
+                // precision: 1 cm
+                pathLength = Math.round(pathLength * 100) / 100;
+                unit = 'm';
+            } else {
+                // precision: 1 m
+                pathLength = Math.round(pathLength) / 1000;
+                unit = 'km';
+            }
+            $("path-length-content").update(pathLength + ' ' + unit);
+        }
+    };
+}());
+
 var SYJDataUi = (function() {
     var deck = null,
+        infotoggler = null,
         getdeck = function() {
-        if (!deck) {
-            deck = new Deck("data_controls");
-        }
-        return deck;
-    };
+            if (!deck) {
+                deck = new Deck("data_controls");
+            }
+            return deck;
+        },
+        getinfotoggler = function() {
+            if (!infotoggler) {
+                infotoggler = new Toggler('path-infos-content');
+                $("path-infos-toggler").insert({bottom: infotoggler.element});
+                $("path-infos-anchor").observe('click', function(evt) {
+                    evt.stop();
+                    infotoggler.toggle(evt);
+                });
+                document.observe('toggler:open', function(evt) {
+                    if (evt.memo === infotoggler) {
+                        // XXX: update informations
+                    }
+                });
+            }
+            return infotoggler;
+        };
     return {
         viewmode: function() {
             getdeck().setIndex(0);
+            if ($("path-infos")) {
+                getinfotoggler();
+                getinfotoggler().close();
+                $("path-infos").show();
+            }
         },
         editmode: function() {
             getdeck().setIndex(1);
+            if ($("path-infos")) {
+                $("path-infos").hide();
+            }
         }
     };
 }());
@@ -294,6 +351,7 @@ var SYJView = {
         }
         this.map.zoomToExtent(extent);
         document.observe('simplebox:shown', this.observer.bindAsEventListener(this));
+        SYJPathLength.update();
     },
 
     observer: function(evt) {
@@ -389,6 +447,7 @@ var SYJView = {
         this.editControl = new OpenLayers.Control.DrawFeature(new OpenLayers.Layer.Vector(), OpenLayers.Handler.SyjModifiablePath, {
             callbacks: {
                 modify: function(f, line) {
+                    SYJPathLength.update();
                     if (!SYJView.unsavedRoute) {
                         SYJView.unsavedRoute = {};
                     }
@@ -1047,7 +1106,10 @@ var Nominatim = (function() {
         }
 
         if ($("nominatim-suggestions-list").childNodes.length > 1) {
-            $("nominatim-suggestions").show();
+            var bottomOffset = $('data_controls').measure('height') + 3;
+            $("nominatim-suggestions").setStyle({
+                bottom: bottomOffset.toString() + 'px'
+            }).show();
             $("nominatim-suggestions-list").select("li:first-child")[0].addClassName('current');
         } else {
             $("nominatim-suggestions").hide();

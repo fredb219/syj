@@ -9,6 +9,6 @@ class Syj_View_Helper_LogoutLink extends Zend_View_Helper_Abstract
         $encodeduri = implode('/', array_map('urlencode', explode('/', $currentUri)));
         $translatedString = $this->view->translate('logout');
         $href = $this->view->addParamToUrl('logout', 'redirect', $encodeduri, true);
-        return $this->view->anchor($href, $translatedString, array('id' => 'logout', 'class' => 'login-anchor'));
+        return $this->view->anchor($href, $translatedString, array('id' => 'logout', 'class' => 'menu-item'));
     }
 }

@@ -21,13 +21,19 @@
 </div>
 
 
+<div id="path-length" class="menu-group">
+    <div id="path-length-title"><?php echo $this->translate('route length')?></div>
+    <div id="path-length-content">
+    </div>
+</div>
+
 <div id="menu">
 
     <?php echo $this->localeSwitcher(); ?>
 
-    <div id="login_controls">
+    <div id="login_controls" class="menu-group">
         <div>
-            <div class="login-anchor">
+            <div class="menu-item">
             <?php
                 echo $this->anchor('login', $this->translate('login'), array('id' => 'login_control_anchor'));
                 $anchortext = sprintf("<span id=\"account-create-anchor\">%s</span><span id=\"account-info\"><br>%s</span>",
@@ -35,7 +41,7 @@
                                       $this->translate('Whith an account, you can manage and modify your routes'));
                 ?>
                </div>
-               <div class="login-anchor">
+               <div class="menu-item">
                <?php
                 echo $this->anchor('', $anchortext, array('id' => 'user_control_anchor'), false);
             ?>
@@ -45,6 +51,17 @@
             <?php echo $this->logoutLink(); ?>
         </div>
     </div>
+
+    <?php if (isset($this->path)) { ?>
+        <div id="path-infos" class="menu-group">
+            <div class="menu-item">
+                <div id="path-infos-toggler"><a href="" id="path-infos-anchor"><?php echo $this->translate("route infos")?></a></div>
+             </div>
+                <div id="path-infos-content">
+                </div>
+            </div>
+        </div>
+    <?php }?>
 
     <div id="data_controls">
         <div id="data_controls_btns">
