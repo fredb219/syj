@@ -81,11 +81,6 @@
             <img id="nominatim-throbber" src="icons/throbber.gif">
             </div>
 
-            <div id="nominatim-suggestions">
-            <div id="nominatim-suggestions-title"><?php echo $this->translate('more results')?></div>
-            <ul id="nominatim-suggestions-list"></ul>
-            </div>
-
         </form>
 
         <input id="create-btn" name="create-btn" type="button" value="<?php echo $this->translate('start a route');?>">
@@ -95,7 +90,16 @@
     <?php
         print $this->geomform;
     ?>
+
 </div>
+
+<?php if (!isset($this->path)) {?>
+            <div id="nominatim-suggestions">
+            <div id="nominatim-suggestions-title"><?php echo $this->translate('more results')?></div>
+            <ul id="nominatim-suggestions-list"></ul>
+            </div>
+<?php }?>
+
 
 </div>
 

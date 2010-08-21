@@ -51,6 +51,7 @@ body, html {
 }
 
 .menu-group {
+    z-index: 10; /* to be over nominatim-suggestions */
     position: relative; /* otherwise, under #map in ie */
     float: right;
     clear: right;
@@ -143,41 +144,6 @@ body, html {
     border: 1px solid black;
     padding: 0;
 }
-#nominatim-suggestions {
-    border: 2px solid blue;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
-    margin-top: 8px;
-<<<<<<< HEAD
-    max-width: 360px;
-    width: 360px\9; /* ie only */
-=======
-    max-width: 320px;
-    width: 320px\9; /* ie only */
->>>>>>> cf7da47... display route length
-    position: absolute;
-    background-color: white;
-}
-#nominatim-suggestions-title {
-    text-align: center;
-    font-weight: bold;
-}
-#nominatim-suggestions-list {
-    list-style: none;
-    padding: 0 16px 0 12px;
-}
-#nominatim-suggestions-list li.current {
-    background-color: #D3D3D3;
-}
-.nominatim-suggestions-icon {
-    border: none;
-    vertical-align: middle;
-    margin-right: 4px;
-}
-.nominatim-suggestions-link {
-    text-decoration: none;
-}
 
 #geomform {
     padding: 25px 45px 20px 45px;
@@ -199,6 +165,41 @@ body, html {
     background-color: white;
     padding: 5px 1px 5px 1px;
     position: relative; /* otherwise, under #map in ie */
+}
+
+/* nominatim-suggestions */
+#nominatim-suggestions {
+    text-align: left;
+    border: 2px solid blue;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    max-width: 360px;
+    width: 360px\9; /* ie only */
+    background-color: white;
+    position: absolute;
+    right: 8px;
+}
+#nominatim-suggestions-list {
+    margin-left: 0;
+    position: relative;
+    list-style: none;
+    padding: 0 16px 0 12px;
+}
+#nominatim-suggestions-title {
+    text-align: center;
+    font-weight: bold;
+}
+#nominatim-suggestions-list li.current {
+    background-color: #D3D3D3;
+}
+.nominatim-suggestions-icon {
+    border: none;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.nominatim-suggestions-link {
+    text-decoration: none;
 }
 
 /* * login rules

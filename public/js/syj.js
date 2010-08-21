@@ -1107,7 +1107,7 @@ var Nominatim = (function() {
         if ($("nominatim-suggestions-list").childNodes.length > 1) {
             var bottomOffset = $('data_controls').measure('height') + 3;
             $("nominatim-suggestions").setStyle({
-                bottom: bottomOffset.toString() + 'px'
+                bottom: (document.viewport.getHeight() - $('data_controls').cumulativeOffset().top + 3).toString() + 'px'
             }).show();
             $("nominatim-suggestions-list").select("li:first-child")[0].addClassName('current');
         } else {
