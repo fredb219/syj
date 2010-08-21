@@ -122,6 +122,23 @@ Element.addMethods({
         Element.setStyle(element, {'backgroundColor': color});
         Element.setStyle.delay(timeout, element, {'backgroundColor': current});
         return element;
+    },
+    text: function(element, content) {
+        if (typeof content === "undefined") { // getter
+            if (element.nodeType === 8) {
+                return "";
+            } else if (element.nodeType === 3 || element.nodeType === 4)  {
+                return element.nodeValue;
+            } else {
+                return $A(element.childNodes).inject("", function(acc, el) {
+                    return acc + Element.text(el);
+                 });
+            }
+        } else { // setter
+            var node = document.createTextNode(content);
+            element.update().appendChild(node);
+            return element;
+        }
     }
 });
 

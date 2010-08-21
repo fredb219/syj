@@ -1090,13 +1090,12 @@ var Nominatim = (function() {
                 });
 
                 anchor.observe('click', clickhandler(item.boundingbox));
+                Element.text(anchor, item.display_name);
 
-                var text = document.createTextNode(item.display_name);
                 var icon = new Element("img", {
                     className: "nominatim-suggestions-icon",
                     src: item.icon || 'icons/world.png'
                 });
-                anchor.appendChild(text); // insert does not work; see prototype #1125
                 li.insert(icon).insert(anchor);
                 $("nominatim-suggestions-list").insert(li);
                 if ($("nominatim-suggestions-list").childNodes.length >= 6) {
