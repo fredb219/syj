@@ -22,7 +22,7 @@
 
 
 <div id="path-length" class="menu-group">
-    <div id="path-length-title"><?php echo $this->translate('route length')?></div>
+    <div id="path-length-title" class="info-title"><?php echo $this->translate('route length')?></div>
     <div id="path-length-content">
     </div>
 </div>
@@ -57,7 +57,18 @@
             <div class="menu-item">
                 <div id="path-infos-toggler"><a href="" id="path-infos-anchor"><?php echo $this->translate("route infos")?></a></div>
              </div>
-                <div id="path-infos-content">
+                <div id="path-infos-content" class="menu-item">
+                    <div id="path-directlink-title" class="info-title"><?php echo $this->translate("direct link")?></div>
+                    <div id="path-directlink-content"><?php
+                            $serverUrl = rtrim($this->serverUrl(), '/');
+                            $baseUrl = trim($this->baseUrl(), '/');
+                            $urlcomp = urlencode($this->path->urlcomp ?: $this->path->id);
+                            $href = $serverUrl . '/' . ($baseUrl ? ($baseUrl . '/'): '') . 'idx/' . $urlcomp . '?format=raw';
+                            printf('<a href="%s" title="%s">%s</a>',
+                                        $href,
+                                        $this->translate('direct link'),
+                                        $this->escape($href));
+                        ?></div>
                 </div>
             </div>
         </div>

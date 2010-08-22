@@ -78,12 +78,13 @@ body, html {
     background-color: #BBBBFF;
 }
 
+.info-title {
+    text-decoration: underline;
+}
+
 #path-infos-content {
-    background-color: white;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    margin: 2px 10px 2px 0;
+    text-align: center;
+    padding: 4px 15px 15px 15px;
 }
 
 #path-length {
@@ -100,9 +101,6 @@ body, html {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     background-color: white;
-}
-#path-length-title {
-    text-decoration: underline;
 }
 
 #data_controls {
