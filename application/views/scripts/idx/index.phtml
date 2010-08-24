@@ -58,17 +58,37 @@
                 <div id="path-infos-toggler"><a href="" id="path-infos-anchor"><?php echo $this->translate("route infos")?></a></div>
              </div>
                 <div id="path-infos-content" class="menu-item">
+
                     <div id="path-directlink-title" class="info-title"><?php echo $this->translate("direct link")?></div>
                     <div id="path-directlink-content"><?php
                             $serverUrl = rtrim($this->serverUrl(), '/');
                             $baseUrl = trim($this->baseUrl(), '/');
+                            $fullBaseUrl = $serverUrl . '/' . ($baseUrl ? ($baseUrl . '/'): '');
                             $urlcomp = urlencode($this->path->urlcomp ?: $this->path->id);
-                            $href = $serverUrl . '/' . ($baseUrl ? ($baseUrl . '/'): '') . 'idx/' . $urlcomp . '?format=raw';
+                            $href = $fullBaseUrl . 'idx/' . $urlcomp . '?format=raw';
                             printf('<a href="%s" title="%s">%s</a>',
                                         $href,
                                         $this->translate('direct link'),
                                         $this->escape($href));
                         ?></div>
+
+                    <div id="path-export-title" class="info-title"><?php echo $this->translate("export")?></div>
+                    <div id="path-export-content"><?php
+                       $href = $fullBaseUrl . 'geom/' . urlencode($this->path->id) . '.kml';
+                       printf('<a href="%s" title="%s">%s</a>',
+                                        $href,
+                                        $this->translate('kml export'),
+                                        $this->translate('kml export'));
+
+                        print '<br>';
+                       $href = $fullBaseUrl . 'geom/' . urlencode($this->path->id) . '.gpx';
+                       printf('<a href="%s" title="%s">%s</a>',
+                                        $href,
+                                        $this->translate('gpx export'),
+                                        $this->translate('gpx export'));
+                       ?>
+
+
                 </div>
             </div>
         </div>

@@ -87,6 +87,13 @@ body, html {
     padding: 4px 15px 15px 15px;
 }
 
+#path-export-title {
+    margin-top: 1em;
+}
+#path-export-content a {
+    text-decoration: none;
+}
+
 #path-length {
     text-align: center;
     position: absolute; /* otherwise, under #map in ie */
