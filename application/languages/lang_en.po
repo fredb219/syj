@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-22 17:46+0200\n"
+"POT-Creation-Date: 2010-08-25 15:09+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -74,7 +74,7 @@ msgid "login"
 msgstr "login"
 
 #: application/views/scripts/idx/index.phtml:40
-#: application/views/scripts/idx/index.phtml:138
+#: application/views/scripts/idx/index.phtml:158
 msgid "create an account"
 msgstr "create an account"
 
@@ -86,37 +86,48 @@ msgstr "Whith an account, you can manage and modify your routes"
 msgid "route infos"
 msgstr "route infos"
 
-#: application/views/scripts/idx/index.phtml:61
+#: application/views/scripts/idx/index.phtml:62
+#: application/views/scripts/idx/index.phtml:71
 msgid "direct link"
 msgstr "direct link"
 
-#: application/views/scripts/idx/index.phtml:69
-msgid "direct link to current path"
-msgstr "direct link to current path"
+#: application/views/scripts/idx/index.phtml:75
+msgid "export"
+msgstr "export"
 
+#: application/views/scripts/idx/index.phtml:80
 #: application/views/scripts/idx/index.phtml:81
+msgid "kml export"
+msgstr "kml export"
+
+#: application/views/scripts/idx/index.phtml:87
+#: application/views/scripts/idx/index.phtml:88
+msgid "gpx export"
+msgstr "gpx export"
+
+#: application/views/scripts/idx/index.phtml:101
 #: application/controllers/IdxController.php:148
 msgid "duplicate"
 msgstr "duplicate"
 
-#: application/views/scripts/idx/index.phtml:83
+#: application/views/scripts/idx/index.phtml:103
 #: application/controllers/IdxController.php:146
 msgid "edit"
 msgstr "edit"
 
-#: application/views/scripts/idx/index.phtml:87
+#: application/views/scripts/idx/index.phtml:107
 msgid "Search a place"
 msgstr "Search a place"
 
-#: application/views/scripts/idx/index.phtml:91
+#: application/views/scripts/idx/index.phtml:111
 msgid "Ok"
 msgstr "Ok"
 
-#: application/views/scripts/idx/index.phtml:97
+#: application/views/scripts/idx/index.phtml:117
 msgid "start a route"
 msgstr "start a route"
 
-#: application/views/scripts/idx/index.phtml:109
+#: application/views/scripts/idx/index.phtml:129
 msgid "more results"
 msgstr "more results"
 
@@ -642,6 +653,10 @@ msgstr "You have an unsaved route"
 msgid "no result"
 msgstr "no result"
 
+#: application/controllers/IdxController.php:152
+msgid "could not analyze file content"
+msgstr "could not analyze file content"
+
 #: application/layouts/scripts/footer.phtml:28
 msgid "contact"
 msgstr "contact"
@@ -769,6 +784,8 @@ msgstr "Someone, probably you, has registered an account %s with email address %
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "To cancel account creation, press following button. The account and all its data will be deleted."
 
+#~ msgid "direct link to current path"
+#~ msgstr "direct link to current path"
 #~ msgid "modify"
 #~ msgstr "modify"
 #~ msgid "pseudo available"

@@ -149,7 +149,7 @@ class IdxController extends Zend_Controller_Action
             'unsavedConfirmExit' => __("You have an unsaved route"),
             'notEmptyField' => __("Value is required"),
             'noResult' => __("no result"),
-            'dragFileError' => __("could not read content of file"),
+            'dragFileError' => __("could not analyze file content"),
             );
     }
 

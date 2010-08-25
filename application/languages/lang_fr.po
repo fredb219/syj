@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-22 17:46+0200\n"
+"POT-Creation-Date: 2010-08-25 15:09+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -74,7 +74,7 @@ msgid "login"
 msgstr "connexion"
 
 #: application/views/scripts/idx/index.phtml:40
-#: application/views/scripts/idx/index.phtml:138
+#: application/views/scripts/idx/index.phtml:158
 msgid "create an account"
 msgstr "créer un compte"
 
@@ -86,37 +86,48 @@ msgstr "Avec un compte, vous pourrez gérer et modifier vos itinéraires"
 msgid "route infos"
 msgstr "informations sur le tracé"
 
-#: application/views/scripts/idx/index.phtml:61
+#: application/views/scripts/idx/index.phtml:62
+#: application/views/scripts/idx/index.phtml:71
 msgid "direct link"
 msgstr "lien direct"
 
-#: application/views/scripts/idx/index.phtml:69
-msgid "direct link to current path"
-msgstr ""
+#: application/views/scripts/idx/index.phtml:75
+msgid "export"
+msgstr "export"
 
+#: application/views/scripts/idx/index.phtml:80
 #: application/views/scripts/idx/index.phtml:81
+msgid "kml export"
+msgstr "export kml"
+
+#: application/views/scripts/idx/index.phtml:87
+#: application/views/scripts/idx/index.phtml:88
+msgid "gpx export"
+msgstr "export gpx"
+
+#: application/views/scripts/idx/index.phtml:101
 #: application/controllers/IdxController.php:148
 msgid "duplicate"
 msgstr "dupliquer"
 
-#: application/views/scripts/idx/index.phtml:83
+#: application/views/scripts/idx/index.phtml:103
 #: application/controllers/IdxController.php:146
 msgid "edit"
 msgstr "modifier"
 
-#: application/views/scripts/idx/index.phtml:87
+#: application/views/scripts/idx/index.phtml:107
 msgid "Search a place"
 msgstr "Rechercher un lieu"
 
-#: application/views/scripts/idx/index.phtml:91
+#: application/views/scripts/idx/index.phtml:111
 msgid "Ok"
 msgstr "Ok"
 
-#: application/views/scripts/idx/index.phtml:97
+#: application/views/scripts/idx/index.phtml:117
 msgid "start a route"
 msgstr "commencer un itinéraire"
 
-#: application/views/scripts/idx/index.phtml:109
+#: application/views/scripts/idx/index.phtml:129
 msgid "more results"
 msgstr "plus de résultats"
 
@@ -643,6 +654,10 @@ msgstr "Vous avez un itinéraire non sauvegardé"
 #: application/controllers/IdxController.php:151
 msgid "no result"
 msgstr "pas de résultat"
+
+#: application/controllers/IdxController.php:152
+msgid "could not analyze file content"
+msgstr "impossible d'analyser le contenu du fichier"
 
 #: application/layouts/scripts/footer.phtml:28
 msgid "contact"
