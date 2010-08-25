@@ -67,6 +67,22 @@ class GeomController extends Zend_Controller_Action
         $api->setCheckIfNoneMatch(true)->setContentType('application/vnd.google-earth.kml+xml')->setBody($data);
     }
 
+    protected function gpx(Syj_Model_Path $path) {
+        $data = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;   // <? <-- vim syntax goes crazy
+        $data .= '<gpx creator="syj" version="1.0" xmlns="http://www.topografix.com/GPX/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">';
+        $data .= '<trk>';
+        if ($path->creator) {
+            $data .= '<author>' . htmlspecialchars($path->creator->pseudo) . '</author>';
+        }
+        $data .= '<name>' . htmlspecialchars($path->displayTitle) . '</name>';
+        $data .= $path->geom->toGPX();
+        $data .= '</trk>';
+        $data .= '</gpx>';
+
+        $api = $this->_helper->SyjApi;
+        $api->setCheckIfNoneMatch(true)->setContentType('application/octet-stream')->setBody($data);
+    }
+
     protected function json(Syj_Model_Path $path) {
         $data = array('geom' => (string)$path->geom,
                   'title' => (string)$path->displayTitle);
