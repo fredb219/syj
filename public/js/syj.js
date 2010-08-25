@@ -352,6 +352,66 @@ var SYJView = {
         this.map.zoomToExtent(extent);
         document.observe('simplebox:shown', this.observer.bindAsEventListener(this));
         SYJPathLength.update();
+
+        if (FileList && FileReader) {
+            $("map").observe("dragenter", function(evt) { evt.stop();});
+            $("map").observe("dragover", function(evt) { evt.stop();});
+            $("map").observe("drop", function(evt) {
+                evt.stop();
+                if (this.mode !== "view" || this.viewLayer.features.length) {
+                    return;
+                }
+                if (!evt.dataTransfer.files.length) {
+                    return;
+                }
+                var file = evt.dataTransfer.files[0];
+                var reader = new FileReader();
+                var readerror = function() {
+                    this.messenger.setMessage(SyjStrings.dragFileError, "warn");
+                }.bind(this);
+                reader.onload = function(evt) {
+                    if (evt.error) {
+                        readerror();
+                        return;
+                    }
+
+                    var results = null;
+                    var content = evt.target.result;
+
+                    var engine;
+                    var formats = ['KML', 'GPX'];
+
+                    for (var i = 0; i < formats.length; i++) {
+                        engine = new OpenLayers.Format[formats[i]]({ internalProjection: Mercator, externalProjection: WGS84 });
+                        try {
+                            results = engine.read(content);
+                        } catch(e) {
+                        }
+                        if (results || results.length) {
+                            break;
+                        }
+                    }
+                    if (!results || !results.length) {
+                        readerror();
+                        return;
+                    }
+
+
+                    var vector = results[0];
+                    if (vector.geometry.CLASS_NAME !== "OpenLayers.Geometry.LineString") {
+                        readerror();
+                        return;
+                    }
+                    this.viewLayer.addFeatures([vector]);
+                    this.map.zoomToExtent(this.viewLayer.getDataExtent());
+                    this.editMode();
+                    if (vector.data && vector.data.name) {
+                        $("geom_title").value = vector.data.name;
+                    }
+                 }.bind(this);
+                reader.readAsText(file);
+           }.bind(this));
+        }
     },
 
     observer: function(evt) {
@@ -1046,7 +1106,7 @@ var Nominatim = (function() {
             center = bounds.getCenterLonLat().wrapDateLine(maxExtent);
         }
         this.setCenter(center, this.getZoomForExtent(bounds), false, true);
-    }
+    };
 
     var success = function(transport) {
         $("nominatim-throbber").hide();
