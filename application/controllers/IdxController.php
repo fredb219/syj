@@ -6,12 +6,7 @@ class IdxController extends Zend_Controller_Action
 {
 
     public function init() {
-        $this->view->headScript()->appendFile('js/OpenLayers.js');
-        $this->view->headScript()->appendFile('js/ModifiablePath.js');
-        $this->view->headScript()->appendFile('js/prototype.js');
-        $this->view->headScript()->appendFile('js/simplebox.js');
-        $this->view->headScript()->appendFile('js/utils.js');
-        $this->view->headScript()->appendFile('js/syj.js');
+        $this->_helper->SyjMedias->addScripts('idx');
         $this->view->headLink()->appendStylesheet('css/openlayers/style.css', "all");
         $this->view->headLink()->appendStylesheet('css/generic.css', "all");
         $this->view->headLink()->appendStylesheet('css/syj.css', "all");
@@ -19,11 +14,10 @@ class IdxController extends Zend_Controller_Action
 
     public function rawmode(Syj_Model_Path $path) {
         $this->_helper->SyjReset->resetPlaceHolders();
+        $this->_helper->SyjMedias->addScripts('syjraw');
 
         $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
         $this->view->headLink()->appendStylesheet('css/syjraw.css', 'all');
-        $this->view->headScript()->appendFile('js/OpenLayers.js');
-        $this->view->headScript()->appendFile('js/syjraw.js');
         $this->view->headTitle($path->displayTitle);
 
         $this->_jsRawLocaleStrings();

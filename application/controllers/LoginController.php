@@ -6,9 +6,7 @@ class LoginController extends Zend_Controller_Action
 {
     public function init() {
         $this->view->headTitle($this->view->translate("login"));
-        $this->view->headScript()->appendFile('js/prototype.js');
-        $this->view->headScript()->appendFile('js/utils.js');
-        $this->view->headScript()->appendFile('js/login.js');
+        $this->_helper->SyjMedias->addScripts('login');
         $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
         $this->view->headLink()->appendStylesheet('css/login.css', 'all');
     }

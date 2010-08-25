@@ -8,10 +8,7 @@ class ListController extends Zend_Controller_Action
     public function init() {
         $this->_helper->SyjSession->needsLogin();
 
-        $this->view->headScript()->appendFile('js/OpenLayers.js');
-        $this->view->headScript()->appendFile('js/prototype.js');
-        $this->view->headScript()->appendFile('js/utils.js');
-        $this->view->headScript()->appendFile('js/list.js');
+        $this->_helper->SyjMedias->addScripts('list');
 
         $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
         $this->view->headLink()->appendStylesheet('css/list.css', 'all');
