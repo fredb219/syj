@@ -15,7 +15,7 @@ var CloseBtn = Class.create({
         }
 
         style = Object.extend({
-            float: "right",
+            'float': "right",
             margin: "2px",
             fontWeight: "bold",
             padding: "0px"
