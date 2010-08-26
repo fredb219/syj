@@ -1,0 +1,14 @@
+body, html {
+    background-color: #F0FFF8;
+    font-family: verdana, sans-serif;
+    margin: 0; padding: 0;
+}
+h1, form legend {
+        color: #B22222;
+}
+h2, label {
+        color: #556B2F;
+}
+legend {
+    font-weight: bold;
+}

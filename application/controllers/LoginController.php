@@ -8,6 +8,7 @@ class LoginController extends Zend_Controller_Action
         $this->view->headTitle($this->view->translate("login"));
         $this->_helper->SyjMedias->addScripts('login');
         $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
+        $this->view->headLink()->appendStylesheet('css/form.css', 'all');
         $this->view->headLink()->appendStylesheet('css/login.css', 'all');
     }
 

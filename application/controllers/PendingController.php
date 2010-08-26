@@ -7,6 +7,7 @@ class PendingController extends Zend_Controller_Action
 
     public function init() {
         $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
+        $this->view->headLink()->appendStylesheet('css/form.css', 'all');
         $this->view->headLink()->appendStylesheet('css/pending.css', 'all');
     }
 

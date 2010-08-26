@@ -10,6 +10,7 @@ class AccountController extends Zend_Controller_Action
         $this->_helper->SyjMedias->addScripts('account');
 
         $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
+        $this->view->headLink()->appendStylesheet('css/form.css', 'all');
         $this->view->headLink()->appendStylesheet('css/account.css', 'all');
         $this->view->headTitle($this->view->translate("my account"));
     }
