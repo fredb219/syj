@@ -336,7 +336,7 @@ Element.addMethods(['input', 'textarea'], {
                 }
                 handler.apply(null, arguments);
             });
-            proceed(element, 'paste', handler);
+            proceed(element, 'paste', handler.defer.bind(handler));
             return proceed(element, 'change', handler);
         }
         return proceed(element, eventName, handler);
