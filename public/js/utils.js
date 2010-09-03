@@ -26,6 +26,9 @@ var CloseBtn = Class.create({
         elt.insert({top: btn});
         btn.observe("click", function(evt) {
             evt.stop();
+            if (evt.detail === 0) { // it's not a real click, possibly a submit event
+                return;
+            }
             if (typeof options.callback === "function") {
                 options.callback.call(elt);
             }
