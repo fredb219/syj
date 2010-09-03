@@ -353,7 +353,7 @@ var SYJView = {
         document.observe('simplebox:shown', this.observer.bindAsEventListener(this));
         SYJPathLength.update();
 
-        if (FileList && FileReader) {
+        if (window.FileList && window.FileReader) {
             $("map").observe("dragenter", function(evt) { evt.stop();});
             $("map").observe("dragover", function(evt) { evt.stop();});
             $("map").observe("drop", function(evt) {
