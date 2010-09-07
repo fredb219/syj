@@ -531,28 +531,6 @@ var SYJView = {
             styles = this.editControl.handler.layerOptions.styleMap.styles;
             styles.select = styles.select_for_canvas;
         }
-        new CloseBtn($("geomform"), {
-            style : {
-                marginRight: "-40px",
-                marginTop: "-20px"
-            },
-            callback: function(form) {
-                this.viewMode();
-                this.mode = 'view';
-                SYJDataUi.viewmode();
-                this.messenger.hide();
-
-                if (this.unsavedRoute && typeof this.unsavedRoute.features !== "undefined") {
-                    this.viewLayer.addFeatures(this.unsavedRoute.features);
-                }
-                if (this.unsavedRoute && typeof this.unsavedRoute.title !== "undefined") {
-                    $("geom_title").value = this.unsavedRoute.title;
-                } else {
-                    $("geom_title").value = "";
-                }
-                this.unsavedRoute = null;
-            }.bind(this)
-        });
     },
 
     saveSuccess: function(transport) {
