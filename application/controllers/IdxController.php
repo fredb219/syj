@@ -14,7 +14,7 @@ class IdxController extends Zend_Controller_Action
 
     public function rawmode(Syj_Model_Path $path) {
         $this->_helper->SyjReset->resetPlaceHolders();
-        $this->_helper->SyjMedias->addScripts('syjraw');
+        $this->_helper->SyjMedias->addScripts('rawidx');
 
         $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
         $this->view->headLink()->appendStylesheet('css/syjraw.css', 'all');
