@@ -2,4 +2,6 @@ MAILTO=arno@renevier.net
 # every 5 minutes, call syj php cron
 */5 * * * * /usr/bin/wget --header="Host: osm-syj.crans.org" http://localhost/cron -O /dev/null  -o /dev/null
 # every month, update geoip db
-0 0 3 * * /data/project/syj/scripts/updategeoip.sh
+12 3 3 * * /data/project/syj/scripts/updategeoip.sh
+# every day, delete old sessions files
+47 4 * * * find /tmp/ -name "sess_*" -user syj  -ctime +45 -exec rm -f '{}' \;
