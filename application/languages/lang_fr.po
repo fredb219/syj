@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-25 15:09+0200\n"
+"POT-Creation-Date: 2010-09-09 13:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -55,7 +55,7 @@ msgid "Welcome on Syj."
 msgstr "Bienvenue sur Syj."
 
 #: application/views/scripts/idx/index.phtml:17
-msgid "To create a journey, just click on the map to add points to your route. You can zoom and move map with controls upper left."
+msgid "To create a journey, just click on the map to add points to your route. You can zoom and move the map with the controls in the top left corner"
 msgstr "Pour créer un trajet, cliquez simplement sur la carte pour ajouter des points à votre tracé. Vous pouvez zoomer et bouger la carte avec les boutons en haut à gauche."
 
 #: application/views/scripts/idx/index.phtml:19
@@ -106,12 +106,12 @@ msgid "gpx export"
 msgstr "export gpx"
 
 #: application/views/scripts/idx/index.phtml:101
-#: application/controllers/IdxController.php:148
+#: application/controllers/IdxController.php:142
 msgid "duplicate"
 msgstr "dupliquer"
 
 #: application/views/scripts/idx/index.phtml:103
-#: application/controllers/IdxController.php:146
+#: application/controllers/IdxController.php:140
 msgid "edit"
 msgstr "modifier"
 
@@ -156,7 +156,7 @@ msgid "Sources of the software running the website are <a href=\"http://dev.rene
 msgstr "Les sources du logiciel qui fait tourner le site web sont <a href=\"http://dev.renevier.net/?p=syj.git\">disponibles publiquement</a> sous une licence agpl. La carte utilisée pour l'affichage des itinéraires vient d'<a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 
 #: application/views/scripts/newpwd/success.phtml:4
-#: application/controllers/IdxController.php:139
+#: application/controllers/IdxController.php:133
 msgid "A link to reset your password has been emailed to you"
 msgstr "Un email contenant un lien pour réinitialiser votre mot de passe vous a été envoyé"
 
@@ -438,51 +438,51 @@ msgstr ""
 "\n"
 "L'équipe de Syj"
 
-#: application/controllers/LoginController.php:100
-#: application/controllers/IdxController.php:129
+#: application/controllers/LoginController.php:99
+#: application/controllers/IdxController.php:123
 msgid "you must enter a login name"
 msgstr "vous devez entrer un nom d'utilisateur"
 
-#: application/controllers/PendingController.php:32
+#: application/controllers/PendingController.php:33
 msgid "account validated"
 msgstr "compte validé"
 
-#: application/controllers/PendingController.php:39
+#: application/controllers/PendingController.php:40
 msgid "account deleted"
 msgstr "Compte supprimé"
 
-#: application/controllers/PendingController.php:43
+#: application/controllers/PendingController.php:44
 msgid "account creation validation"
 msgstr "validation de la création du compte"
 
-#: application/controllers/PendingController.php:53
+#: application/controllers/PendingController.php:54
 msgid "password changed"
 msgstr "mot de passe modifié"
 
-#: application/controllers/PendingController.php:61
+#: application/controllers/PendingController.php:62
 msgid "request canceled"
 msgstr "requête annulée"
 
-#: application/controllers/PendingController.php:65
+#: application/controllers/PendingController.php:66
 msgid "password reset validation"
 msgstr "validation de la réinitialisation du mot de passe"
 
-#: application/controllers/ContactController.php:14
+#: application/controllers/ContactController.php:13
 msgid "contact form"
 msgstr "formulaire de contact"
 
-#: application/controllers/ContactController.php:113
+#: application/controllers/ContactController.php:112
 msgid "Hi,"
 msgstr "Bonjour,"
 
-#: application/controllers/ContactController.php:122
-#: application/controllers/NewpwdController.php:69
-#: application/controllers/AccountController.php:71
-#: application/controllers/IdxController.php:150
+#: application/controllers/ContactController.php:121
+#: application/controllers/NewpwdController.php:68
+#: application/controllers/AccountController.php:70
+#: application/controllers/IdxController.php:144
 msgid "Value is required"
 msgstr "Le champ est requis"
 
-#: application/controllers/ContactController.php:123
+#: application/controllers/ContactController.php:122
 #: application/forms/Contact.php:32
 #: application/validate/EmailAddress.php:13
 msgid "Invalid email"
@@ -499,163 +499,163 @@ msgstr "Oups, il y a eu un souci"
 msgid "terms of use"
 msgstr "conditions d'utilisation"
 
-#: application/controllers/ListController.php:18
+#: application/controllers/ListController.php:15
 #: application/layouts/scripts/footer.phtml:53
 msgid "my routes"
 msgstr "mes itinéraires"
 
-#: application/controllers/ListController.php:35
+#: application/controllers/ListController.php:32
 msgid "There is no undo. Delete this route definitively ?"
 msgstr "Vous ne pourrez pas annuler. Supprimer l'itinéraire définitivement ?"
 
-#: application/controllers/ListController.php:36
-#: application/controllers/IdxController.php:126
+#: application/controllers/ListController.php:33
+#: application/controllers/IdxController.php:120
 msgid "server could not be reached"
 msgstr "serveur inaccessible"
 
-#: application/controllers/ListController.php:37
-#: application/controllers/IdxController.php:123
+#: application/controllers/ListController.php:34
+#: application/controllers/IdxController.php:117
 msgid "server did not understood request. That's probably caused by a bug in SYJ"
 msgstr "Le serveur n'a pas compris la requête. Il s'agit probablement d'un bug dans SYJ"
 
-#: application/controllers/ListController.php:38
-#: application/controllers/IdxController.php:124
+#: application/controllers/ListController.php:35
+#: application/controllers/IdxController.php:118
 msgid "route not referenced on the server. It has probably been deleted."
 msgstr "chemin non référencé sur le serveur. Il a probablement été supprimé."
 
-#: application/controllers/ListController.php:39
-#: application/controllers/IdxController.php:127
+#: application/controllers/ListController.php:36
+#: application/controllers/IdxController.php:121
 msgid "there was a server error"
 msgstr "Il s'est produit une erreur serveur"
 
-#: application/controllers/ListController.php:40
-#: application/controllers/IdxController.php:128
+#: application/controllers/ListController.php:37
+#: application/controllers/IdxController.php:122
 msgid "there was an unknown error"
 msgstr "Il s'est produit une erreur inconnue"
 
-#: application/controllers/ListController.php:41
+#: application/controllers/ListController.php:38
 msgid "route was successfully deleted"
 msgstr "l'itinéraire a été correctement supprimé"
 
-#: application/controllers/AccountController.php:16
+#: application/controllers/AccountController.php:15
 #: application/layouts/scripts/footer.phtml:39
 msgid "my account"
 msgstr "mon compte"
 
-#: application/controllers/AccountController.php:31
+#: application/controllers/AccountController.php:30
 msgid "Wrong password"
 msgstr "Mauvais mot de passe"
 
-#: application/controllers/AccountController.php:44
-#: application/controllers/IdxController.php:137
+#: application/controllers/AccountController.php:43
+#: application/controllers/IdxController.php:131
 msgid "an user is already registered with this email"
 msgstr "il y'a déjà un utilisateur enregistré avec cet email"
 
-#: application/controllers/AccountController.php:72
-#: application/controllers/IdxController.php:133
+#: application/controllers/AccountController.php:71
+#: application/controllers/IdxController.php:127
 #: application/forms/Account.php:40
 msgid "Password do not match"
 msgstr "Les mots de passe ne correspondent pas"
 
-#: application/controllers/AccountController.php:73
+#: application/controllers/AccountController.php:72
 #: application/forms/Account.php:33
 #: application/forms/User.php:20
 #, php-format
 msgid "At least %d characters"
 msgstr "Au moins %d caractères"
 
-#: application/controllers/AccountController.php:74
+#: application/controllers/AccountController.php:73
 msgid "You have made no change"
 msgstr "Vous n'avez fait aucun changement"
 
-#: application/controllers/IdxController.php:32
-#: application/controllers/IdxController.php:84
+#: application/controllers/IdxController.php:26
+#: application/controllers/IdxController.php:78
 #, php-format
 msgid "route by <strong>%s</strong>"
 msgstr "tracé par <strong>%s</strong>"
 
-#: application/controllers/IdxController.php:54
+#: application/controllers/IdxController.php:48
 msgid "route has been deleted"
 msgstr "l'itinéraire a été supprimé"
 
-#: application/controllers/IdxController.php:57
+#: application/controllers/IdxController.php:51
 msgid "route does not exist"
 msgstr "L'itinéraire n'existe pas"
 
-#: application/controllers/IdxController.php:116
-#: application/controllers/IdxController.php:142
+#: application/controllers/IdxController.php:110
+#: application/controllers/IdxController.php:136
 msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 msgstr "Carte par <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 
-#: application/controllers/IdxController.php:122
+#: application/controllers/IdxController.php:116
 msgid "save took place successfully"
 msgstr "La sauvegarde s'est déroulée correctement"
 
-#: application/controllers/IdxController.php:125
+#: application/controllers/IdxController.php:119
 msgid "similar path seems to already exist. Please do not create two exactly identical paths"
 msgstr "Il semble qu'il y ait déjà un chemin similaire. Veuillez ne pas créer deux chemins exactement identiques"
 
-#: application/controllers/IdxController.php:130
+#: application/controllers/IdxController.php:124
 msgid "Login correct"
 msgstr "Vous êtes connecté"
 
-#: application/controllers/IdxController.php:131
+#: application/controllers/IdxController.php:125
 msgid "Wrong login/password"
 msgstr "Mauvais nom d'utilisateur ou mot de passe"
 
-#: application/controllers/IdxController.php:132
+#: application/controllers/IdxController.php:126
 msgid "you must enter a password"
 msgstr "vous devez entrer un mot de passe"
 
-#: application/controllers/IdxController.php:134
+#: application/controllers/IdxController.php:128
 msgid "You must accept terms of use"
 msgstr "Vous devez accepter les conditions d'utilisation"
 
-#: application/controllers/IdxController.php:135
+#: application/controllers/IdxController.php:129
 msgid "you must enter an email"
 msgstr "vous devez entrer un email"
 
-#: application/controllers/IdxController.php:136
+#: application/controllers/IdxController.php:130
 msgid "invalid email"
 msgstr "email invalide"
 
-#: application/controllers/IdxController.php:138
+#: application/controllers/IdxController.php:132
 msgid "Account created"
 msgstr "Compte créé"
 
-#: application/controllers/IdxController.php:140
+#: application/controllers/IdxController.php:134
 msgid "Now, you can retry to save"
 msgstr "Maintenant, vous pouvez réessayer de sauvegarder"
 
-#: application/controllers/IdxController.php:141
+#: application/controllers/IdxController.php:135
 msgid "route by"
 msgstr "tracé par"
 
-#: application/controllers/IdxController.php:143
+#: application/controllers/IdxController.php:137
 msgid "checking availibilty"
 msgstr "vérification de la disponibilité"
 
-#: application/controllers/IdxController.php:144
+#: application/controllers/IdxController.php:138
 msgid "available pseudo"
 msgstr "pseudo disponible"
 
-#: application/controllers/IdxController.php:145
+#: application/controllers/IdxController.php:139
 msgid "unavailable pseudo"
 msgstr "pseudo non disponible"
 
-#: application/controllers/IdxController.php:147
+#: application/controllers/IdxController.php:141
 msgid "create"
 msgstr "créér"
 
-#: application/controllers/IdxController.php:149
+#: application/controllers/IdxController.php:143
 msgid "You have an unsaved route"
 msgstr "Vous avez un itinéraire non sauvegardé"
 
-#: application/controllers/IdxController.php:151
+#: application/controllers/IdxController.php:145
 msgid "no result"
 msgstr "pas de résultat"
 
-#: application/controllers/IdxController.php:152
+#: application/controllers/IdxController.php:146
 msgid "could not analyze file content"
 msgstr "impossible d'analyser le contenu du fichier"
 
