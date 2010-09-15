@@ -72,4 +72,5 @@ for line in $(cat ${GEONAMESXML##*/}); do
 done
 echo "INSERT INTO geonames (country, minlon, minlat, maxlon, maxlat) VALUES ('EU', -26, 34, 40, 68);" >> $TMPFILE
 echo "INSERT INTO geonames (country, minlon, minlat, maxlon, maxlat) VALUES ('AP', 90, -20, -140, 68);" >> $TMPFILE
+echo "VACUUM ANALYZE geonames;" >> $TMPFILE
 psql --set "ON_ERROR_STOP=1" -f $TMPFILE

@@ -81,3 +81,4 @@ unzip ${GEOIPDB##*/} $GEOIPCVS
 
 # insert all values from csv to database
 sed -e 's/"\([^"]\+\)","\([^"]\+\)","\([^"]\+\)","\([^"]\+\)","\([^"]\+\)","\([^"]\+\)"/INSERT INTO geoip (begin_ip, end_ip, country) VALUES ('\''\3'\'','\''\4'\'','\''\5'\'');/' $GEOIPCVS | psql --set "ON_ERROR_STOP=1" -f -
+psql --set "ON_ERROR_STOP=1" -c "VACUUM ANALYZE geoip;"
