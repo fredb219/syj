@@ -3,3 +3,4 @@ application/languages/*.po~
 scripts/jslint.js
 generated/mails.txt
 build/
+scripts/lighttpd.conf
