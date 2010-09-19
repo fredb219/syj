@@ -6,6 +6,6 @@ MAILTO=arno@renevier.net
 # every day, delete old sessions files
 47 4 * * * find /tmp/ -name "sess_*" -user syj  -ctime +45 -exec rm -f '{}' \;
 # every day, vacuum tables
-48 4 * * * psql syj syj -c "VACUUM ANALYZE users"
-48 4 * * * psql syj syj -c "VACUUM ANALYZE paths"
-48 4 * * * psql syj syj -c "VACUUM ANALYZE pending_actions"
+48 4 * * * psql syj syj -c "VACUUM ANALYZE users" > /dev/null
+48 4 * * * psql syj syj -c "VACUUM ANALYZE paths" > /dev/null
+48 4 * * * psql syj syj -c "VACUUM ANALYZE pending_actions" > /dev/null
