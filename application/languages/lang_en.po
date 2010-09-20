@@ -248,7 +248,7 @@ msgstr "What's syj?"
 
 #: application/views/scripts/faq/index.phtml:7
 msgid "<acronym title=\"Show your journey\">Syj</acronym> is a website to share routes. You draw a route on a map background, and then, you get an link to share it. You can then show clever bicycle rides, your last hiking, or any route you want."
-msgstr "<acronym title=\"Show your journey\">Syj</acronym> est un site de partage d'itiis a website to share routes. You draw a route on a map background, and then, you get an link to share it. You can then show clever bicycle rides, your last hiking, or any route you want."
+msgstr "<acronym title=\"Show your journey\">Syj</acronym> is a website to share routes. You draw a route on a map background, and then, you get an link to share it. You can then show clever bicycle rides, your last hiking, or any route you want."
 
 #: application/views/scripts/faq/index.phtml:9
 msgid "How do I modify a route?"
