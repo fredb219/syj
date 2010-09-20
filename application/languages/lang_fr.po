@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-19 20:54+0200\n"
+"POT-Creation-Date: 2010-09-20 11:26+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -59,8 +59,8 @@ msgid "To create a journey, just press <strong>\"start a route\"</strong> button
 msgstr "Pour créer un trajet, pressez simplement le bouton <strong>\"commencer un itinéraire\"</strong> puis cliquez sur la carte pour ajouter des points à votre tracé. Vous pouvez zoomer et bouger la carte avec les boutons en haut à gauche."
 
 #: application/views/scripts/idx/index.phtml:19
-msgid "When you have finished a path, press \"save\", button."
-msgstr "Lorsque vous avez fini votre tracé, pressez le bouton \"enregistrer\"."
+msgid "When you have finished a path, press \"create\", button."
+msgstr "Lorsque vous avez fini votre tracé, pressez le bouton \"créer\"."
 
 #: application/views/scripts/idx/index.phtml:25
 msgid "route length"

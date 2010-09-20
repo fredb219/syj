@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-19 20:54+0200\n"
+"POT-Creation-Date: 2010-09-20 11:26+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -55,13 +55,12 @@ msgid "Welcome on Syj."
 msgstr "Welcome on Syj."
 
 #: application/views/scripts/idx/index.phtml:17
-#, fuzzy
 msgid "To create a journey, just press <strong>\"start a route\"</strong> button, then click on the map to add points to your route. You can zoom and move the map with the controls in the top left corner"
-msgstr "To create a journey, just press \"start a route\" button, then click on the map to add points to your route. You can zoom and move the map with the controls in the top left corner"
+msgstr "To create a journey, just press <strong>\"start a route\"</strong> button, then click on the map to add points to your route. You can zoom and move the map with the controls in the top left corner"
 
 #: application/views/scripts/idx/index.phtml:19
-msgid "When you have finished a path, press \"save\", button."
-msgstr "When you have finished a path, press \"save\", button."
+msgid "When you have finished a path, press \"create\", button."
+msgstr "When you have finished a path, press \"create\", button."
 
 #: application/views/scripts/idx/index.phtml:25
 msgid "route length"
