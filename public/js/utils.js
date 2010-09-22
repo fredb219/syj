@@ -395,7 +395,7 @@ Element.addMethods('div', {
 
         while (node) {
             nextNode = node.nextSibling;
-            if (node.nodeType === 3 || node.tagName.toLowerCase() === 'br') {
+            if (node.nodeType === 3 || node.tagName.toLowerCase() === 'br' || node.textContent || node.innerText) {
                 div.removeChild(node);
             }
                 node = nextNode;
@@ -408,7 +408,7 @@ Element.addMethods('div', {
         var node = (div.ownerDocument || document).createTextNode(message);
 
         if ($A(div.childNodes).filter(function(node) {
-                return (node.nodeType === 3 || node.tagName.toLowerCase() === 'br');
+                return (node.nodeType === 3 || node.tagName.toLowerCase() === 'br' || node.textContent || node.innerText);
              }).length) {
             div.insert(new Element('br'));
         }

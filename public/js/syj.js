@@ -789,7 +789,14 @@ var SYJUserClass = Class.create(SYJModalClass, {
     },
 
     success: function(transport) {
-        LoginMgr.login();
+        if (!transport.responseJSON ||
+            typeof transport.responseJSON.pseudo !== "string"
+            ) {
+            this.messenger.setMessage(SyjStrings.unknownError, "error");
+            return;
+        }
+
+        LoginMgr.login(transport.responseJSON.pseudo);
         SYJView.messenger.setMessage(SyjStrings.userSuccess, "success");
         this.modalbox.hide();
         if (SYJView.needsFormResubmit) {
@@ -867,14 +874,8 @@ var SYJLoginClass = Class.create(SYJModalClass, {
             this.messenger.setMessage(SyjStrings.unknownError, "error");
             return;
         }
-        LoginMgr.login(transport.responseJSON.iscreator);
-        $$('.logged-pseudo').each(function(elt) {
-            $A(elt.childNodes).filter(function(node) {
-                return (node.nodeType === 3 || node.tagName.toLowerCase() === 'br');
-            }).each(function(node) {
-                node.nodeValue = node.nodeValue.replace('%s', transport.responseJSON.pseudo);
-            });
-        });
+        LoginMgr.login(transport.responseJSON.pseudo, transport.responseJSON.iscreator);
+
         SYJView.messenger.setMessage(SyjStrings.loginSuccess, "success");
         this.modalbox.hide();
         if (SYJView.needsFormResubmit) {
@@ -957,11 +958,18 @@ var LoginMgr = Object.extend(gLoggedInfo, {
         }
     },
 
-    login: function(aIsCreator) {
+    login: function(aPseudo, aIsCreator) {
         if (typeof aIsCreator === "boolean") {
             this.iscreator = aIsCreator;
         }
         this.logged = true;
+        $$('.logged-pseudo').each(function(elt) {
+            $A(elt.childNodes).filter(function(node) {
+                return (node.nodeType === 3 || node.tagName.toLowerCase() === 'br');
+            }).each(function(node) {
+                node.nodeValue = node.nodeValue.replace('%s', aPseudo);
+            });
+        });
         this.updateUI();
     }
 });
