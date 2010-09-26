@@ -4,6 +4,7 @@
 body, html {
     background-color: white;
     color: black;
+    font-family: Arial, Verdana, sans-serif;
 }
 
 /*
@@ -119,5 +120,8 @@ input {
 @media print {
     #footer, #other-language {
         display: none;
+    }
+    html, body {
+        font-family: serif;
     }
 }
