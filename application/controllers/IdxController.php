@@ -66,8 +66,7 @@ class IdxController extends Zend_Controller_Action
             $geomform->geom_title->setValue($path->title);
         } else {
             $geomform->setAction('path');
-            $clientip = trim(end(split(',', $this->getRequest()->getClientIp(true))));
-            $extent = new phptojs\JsObject('gMaxExtent', $this->_helper->syjGeoip($clientip));
+            $extent = new phptojs\JsObject('gMaxExtent', $this->_helper->syjGeoip($this->getRequest()->getClientIp(true)));
             $this->view->headScript()->prependScript((string) $extent);
             $title = "Show your journey";
         }
