@@ -13,7 +13,7 @@ class PathController extends Zend_Controller_Action
             throw new Syj_Exception_Request();
         }
         $path->creator = $user;
-        $path->creatorIp = $this->getRequest()->getClientIp(true);
+        $path->creatorIp = trim(end(split(',', $this->getRequest()->getClientIp(true))));
 
         $this->save($path, $formData);
         $data = array('redirect' => "idx/" . (string)$path->id);
