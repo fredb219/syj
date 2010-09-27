@@ -41,7 +41,7 @@ class ErrorController extends Zend_Controller_Action
             $log->crit($this->view->message, $error->exception);
         }
 
-        if ($error_code != 404 and $error_code != 410 and $error->request->isXmlHttpRequest()) {
+        if ($error_code == 400 and $error->request->isXmlHttpRequest()) {
             return $this->_helper->json(array('message' => $error->exception->getMessage()));
         }
 
