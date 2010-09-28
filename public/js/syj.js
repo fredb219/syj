@@ -404,7 +404,20 @@ var SYJView = {
                     }
                     this.viewLayer.addFeatures([vector]);
                     this.map.zoomToExtent(this.viewLayer.getDataExtent());
-                    this.editMode();
+
+                    if ($("edit-btn")) {
+                        $("edit-btn").click();
+                    } else if ($("create-btn")) {
+                        $("create-btn").click();
+                    }
+
+                    if (this.editControl.handler.realPoints.length < 2) {
+                        SyjSaveUI.disable();
+                    } else {
+                        SyjSaveUI.enable();
+                    }
+
+
                     if (vector.data && vector.data.name) {
                         $("geom_title").value = vector.data.name;
                     }
