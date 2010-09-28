@@ -388,7 +388,7 @@ var SYJView = {
                         } catch(e) {
                         }
                         if (results || results.length) {
-                            break;
+                            continue;
                         }
                     }
                     if (!results || !results.length) {
