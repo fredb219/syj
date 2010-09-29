@@ -9,3 +9,5 @@ MAILTO=arno@renevier.net
 48 4 * * * psql syj syj -c "VACUUM ANALYZE users" > /dev/null
 48 4 * * * psql syj syj -c "VACUUM ANALYZE paths" > /dev/null
 48 4 * * * psql syj syj -c "VACUUM ANALYZE pending_actions" > /dev/null
+# every day, clear lighttpd compress cache
+12 5 * * * find /data/work/syj/lighttpd/lighttpd-cache -type f -mtime +2 | xargs -r rm
