@@ -3,8 +3,7 @@ set -e
 
 GEOIPDB=http://geolite.maxmind.com/download/geoip/database/GeoIPCountryCSV.zip
 
-EXECDIR=$PWD/${0%/*}
-. $EXECDIR/db_auth.sh
+. ${0%/*}/db_auth.sh
 
 usage() {
     echo Usage: ${0##*/} [options]

@@ -3,8 +3,7 @@ set -e
 
 GEONAMESXML=http://ws.geonames.org/countryInfo
 
-EXECDIR=$PWD/${0%/*}
-. $EXECDIR/db_auth.sh
+. ${0%/*}/db_auth.sh
 
 usage() {
     echo Usage: ${0##*/} [options]
