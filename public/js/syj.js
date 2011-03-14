@@ -267,7 +267,7 @@ var SYJView = {
     mode: 'view',
 
     init: function() {
-        var externalGraphic, baseURL, baseLayer, layerOptions, extent, hidemessenger;
+        var externalGraphic, baseURL, baseLayer, layerOptions, hidemessenger;
 
         // is svg context, opera does not resolve links with base element is svg context
         externalGraphic = styleMap.edit.styles.select.defaultStyle.externalGraphic;
@@ -341,15 +341,14 @@ var SYJView = {
 
         if (typeof gInitialGeom !== "undefined" && typeof gInitialGeom.data !== "undefined") {
             this.viewLayer.addFeatures([this.wkt.read(gInitialGeom.data)]);
-            extent = this.viewLayer.getDataExtent();
             // XXX: ie has not guessed height of map main div yet during map
             // initialisation. Now, it will read it correctly.
             this.map.updateSize();
+            this.map.zoomToExtent(this.viewLayer.getDataExtent());
         } else {
-            extent = new OpenLayers.Bounds(gMaxExtent.minlon, gMaxExtent.minlat, gMaxExtent.maxlon, gMaxExtent.maxlat)
-                                         .transform(WGS84, Mercator);
+            this.initMaPos(gInitialPos);
         }
-        this.map.zoomToExtent(extent);
+
         document.observe('simplebox:shown', this.observer.bindAsEventListener(this));
         SYJPathLength.update();
 
@@ -424,6 +423,27 @@ var SYJView = {
                  }.bind(this);
                 reader.readAsText(file);
            }.bind(this));
+        }
+    },
+
+    initMaPos: function (aPos) {
+        var extent = null, center = null, zoom = 0;
+
+        if (aPos.hasOwnProperty('lon') && aPos.hasOwnProperty('lat') && aPos.hasOwnProperty('zoom')) {
+            center = new OpenLayers.LonLat(parseFloat(aPos.lon), parseFloat(aPos.lat)).transform(WGS84, Mercator);
+            zoom = parseInt(aPos.zoom);
+        } else if (aPos.hasOwnProperty('minlon') && aPos.hasOwnProperty('minlat')
+                    && aPos.hasOwnProperty('maxlon') && aPos.hasOwnProperty('maxlat')) {
+            extent = new OpenLayers.Bounds(aPos.minlon, aPos.minlat, aPos.maxlon, aPos.maxlat)
+                                         .transform(WGS84, Mercator);
+        } else {
+            extent = new OpenLayers.Bounds(-160, -70, 160, 70).transform(WGS84, Mercator);
+        }
+
+        if (extent) {
+            this.map.zoomToExtent(extent);
+        } else {
+            this.map.setCenter(center, zoom);
         }
     },
 

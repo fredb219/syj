@@ -66,8 +66,17 @@ class IdxController extends Zend_Controller_Action
             $geomform->geom_title->setValue($path->title);
         } else {
             $geomform->setAction('path');
-            $extent = new phptojs\JsObject('gMaxExtent', $this->_helper->syjGeoip($this->getRequest()->getClientIp(true)));
-            $this->view->headScript()->prependScript((string) $extent);
+
+            $lat = $this->getRequest()->getQuery('lat');
+            $lon = $this->getRequest()->getQuery('lon');
+            $zoom = $this->getRequest()->getQuery('zoom');
+            if (is_numeric ($lat) and is_numeric ($lon) and is_numeric ($zoom)) {
+                $initialpos = array('lat' => (float)$lat, 'lon' => (float)$lon, 'zoom' => (int)$zoom);
+            } else {
+                $initialpos =  $this->_helper->syjGeoip($this->getRequest()->getClientIp(true));
+            }
+
+            $this->view->headScript()->prependScript((string) new phptojs\JsObject('gInitialPos', $initialpos));
             $title = "Show your journey";
         }
 
