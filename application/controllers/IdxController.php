@@ -78,6 +78,7 @@ class IdxController extends Zend_Controller_Action
                         $this->view->translate('route by <strong>%s</strong>', (string)$path->creator->pseudo);
         }
         $this->view->headTitle($title);
+        $this->view->headMeta()->appendName('description', $this->view->translate('website to share routes'));
         $this->view->geomform = $geomform;
         $this->view->loginform = $loginform;
         $this->view->userform = $userform;

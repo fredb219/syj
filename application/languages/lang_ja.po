@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-27 10:55+0200\n"
+"POT-Creation-Date: 2011-03-14 15:01+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: S.Higashi <s_higash@mua.biglobe.ne.jp>\n"
 "Language: \n"
@@ -660,7 +660,7 @@ msgid "You have made no change"
 msgstr "変更していません"
 
 #: application/controllers/IdxController.php:26
-#: application/controllers/IdxController.php:79
+#: application/controllers/IdxController.php:78
 #, php-format
 msgid "route by <strong>%s</strong>"
 msgstr "<strong>%s</strong>のルート"
@@ -672,6 +672,11 @@ msgstr "ルートは削除されました"
 #: application/controllers/IdxController.php:51
 msgid "route does not exist"
 msgstr "ルートはありません"
+
+#: application/controllers/IdxController.php:81
+#, fuzzy
+msgid "website to share routes"
+msgstr "ルート開始"
 
 #: application/controllers/IdxController.php:111
 #: application/controllers/IdxController.php:137

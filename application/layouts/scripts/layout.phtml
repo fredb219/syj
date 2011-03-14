@@ -4,6 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 
 <?php
+    echo $this->headMeta()->setIndent(4) . PHP_EOL;
+    echo $this->headBase()->setIndent(4) . PHP_EOL;
+    echo $this->headTitle()->setIndent(4) . PHP_EOL;
+    echo $this->headLink()->setIndent(4) . PHP_EOL;
 
     if ($this->jslocales) {
         $syjStrings = new phptojs\JsObject('SyjStrings');
@@ -17,9 +21,6 @@
         $this->headScript()->prependScript((string) $syjStrings);
     }
 
-    echo $this->headBase()->setIndent(4) . PHP_EOL;
-    echo $this->headTitle()->setIndent(4) . PHP_EOL;
-    echo $this->headLink()->setIndent(4) . PHP_EOL;
     echo $this->headScript()->setIndent(4) . PHP_EOL;
 
 ?>
