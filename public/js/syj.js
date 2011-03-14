@@ -378,10 +378,10 @@ var SYJView = {
                     var results = null;
                     var content = evt.target.result;
 
-                    var engine;
+                    var engine, i;
                     var formats = ['KML', 'GPX'];
 
-                    for (var i = 0; i < formats.length; i++) {
+                    for (i = 0; i < formats.length; i++) {
                         engine = new OpenLayers.Format[formats[i]]({ internalProjection: Mercator, externalProjection: WGS84 });
                         try {
                             results = engine.read(content);
@@ -1139,7 +1139,8 @@ var Nominatim = (function() {
             };
         };
 
-        for (var i = 0; i < transport.responseJSON.length; i++) {
+        var i;
+        for (i = 0; i < transport.responseJSON.length; i++) {
             var item = transport.responseJSON[i];
             if (item.display_name && item.boundingbox && item.boundingbox.length === 4) {
                 var li = new Element("li");
