@@ -21,8 +21,9 @@ Copyright (c) 2002 Douglas Crockford  (www.JSLint.com) Rhino Edition
         quit(1);
     }
     if (!JSLINT(input, {bitwise: true, eqeqeq: true, immed: true,
-            newcap: true, nomen: true, onevar: true, plusplus: true,
-            regexp: true, rhino: true, undef: true, white: true})) {
+            newcap: true, nomen: true, onevar: false, plusplus: false,
+            regexp: true, rhino: true, undef: false, white: false,
+            'continue': true})) {
         for (i = 0; i < JSLINT.errors.length; i += 1) {
             e = JSLINT.errors[i];
             if (e) {
