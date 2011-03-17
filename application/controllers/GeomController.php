@@ -84,10 +84,10 @@ class GeomController extends Zend_Controller_Action
     }
 
     protected function json(Syj_Model_Path $path) {
-        $data = array('geom' => (string)$path->geom,
-                  'title' => (string)$path->displayTitle);
+        $data = json_decode($path->geom->toGeoJSON());
+        $data->title = (string)$path->displayTitle;
         if ($path->creator) {
-            $data['creator'] = (string)$path->creator->pseudo;
+            $data->creator = (string)$path->creator->pseudo;
         }
         $api = $this->_helper->SyjApi;
         $api->setCheckIfNoneMatch(true)->setBodyJson($data);
