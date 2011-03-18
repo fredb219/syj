@@ -1,5 +1,5 @@
 <?php
-/*  This file is part of Syj, Copyright (c) 2010 Arnaud Renevier,
+/*  This file is part of Syj, Copyright (c) 2010-2011 Arnaud Renevier,
     and is published under the AGPL license. */
 
 class Syj_Form_Geom extends Zend_Form implements Syj_Processor_Interface

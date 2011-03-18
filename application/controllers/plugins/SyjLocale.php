@@ -1,5 +1,5 @@
 <?php
-/*  This file is part of Syj, Copyright (c) 2010 Arnaud Renevier,
+/*  This file is part of Syj, Copyright (c) 2010-2011 Arnaud Renevier,
     and is published under the AGPL license. */
 
 class Syj_Controllers_Plugins_SyjLocale extends Zend_Controller_Plugin_Abstract
