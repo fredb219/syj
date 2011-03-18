@@ -427,7 +427,7 @@ var SYJView = {
 
         if (aPos.hasOwnProperty('lon') && aPos.hasOwnProperty('lat') && aPos.hasOwnProperty('zoom')) {
             center = new OpenLayers.LonLat(parseFloat(aPos.lon), parseFloat(aPos.lat)).transform(WGS84, Mercator);
-            zoom = parseInt(aPos.zoom);
+            zoom = parseInt(aPos.zoom, 10);
         } else if (aPos.hasOwnProperty('minlon') && aPos.hasOwnProperty('minlat')
                     && aPos.hasOwnProperty('maxlon') && aPos.hasOwnProperty('maxlat')) {
             extent = new OpenLayers.Bounds(aPos.minlon, aPos.minlat, aPos.maxlon, aPos.maxlat)
@@ -693,7 +693,7 @@ var SYJModalClass = Class.create({
                 input = this.area.select('input[type="text"]')[0];
                 (function () {
                     input.activate();
-                }).defer();
+                }.defer());
             } else {
                 this.modalbox.hide();
             }
