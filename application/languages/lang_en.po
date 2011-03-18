@@ -801,27 +801,3 @@ msgstr "Someone, probably you, has registered an account %s with email address %
 #: application/forms/Pending/ValidateCreation.php:24
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "To cancel account creation, press following button. The account and all its data will be deleted."
-
-#~ msgid "direct link to current path"
-#~ msgstr "direct link to current path"
-
-#~ msgid "modify"
-#~ msgstr "modify"
-
-#~ msgid "pseudo available"
-#~ msgstr "pseudo available"
-
-#~ msgid "pseudo not available"
-#~ msgstr "pseudo not available"
-
-#~ msgid "pseudo must only contain letters, digits, dots or underscores"
-#~ msgstr "pseudo must only contain letters, digits, dots or underscores"
-
-#~ msgid "You need to login before retrying to save"
-#~ msgstr "You need to login before retrying to save"
-
-#~ msgid "You need to have cookies enabled to login to SYJ"
-#~ msgstr "You need to have cookies enabled to login to SYJ"
-
-#~ msgid "reset password"
-#~ msgstr "reset password"
