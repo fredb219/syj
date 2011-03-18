@@ -13,10 +13,7 @@ class Syj_Form_Login extends Syj_Form_TableAbstract
         $this->setMainElements(array($user, $pass))
              ->addElement('Hidden', 'login_geom_id', array( 'decorators' => array('ViewHelper')));
 
-        $currentUri = Zend_Controller_Front::getInstance()->getRequest()->getRequestUri();
-        if (strpos($currentUri, '?') !== false) {
-            $currentUri = strstr($currentUri, '?', true);
-        }
+        $currentUri = $this->getView()->UriPath(true);
         $href = $this->getView()->addParamToUrl('newpwd', 'redirect', $currentUri, true);
 
         $anchor = $this->getView()->Anchor($href,

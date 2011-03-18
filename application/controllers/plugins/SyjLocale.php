@@ -7,11 +7,14 @@ class Syj_Controllers_Plugins_SyjLocale extends Zend_Controller_Plugin_Abstract
 
     public function preDispatch(Zend_Controller_Request_Abstract $request) {
         $lang = $request->getQuery('lang');
-        if (is_null($lang)) {
-            return;
+
+        if ($lang) {
+            setcookie("syj_lang", $lang, 0, "", "", false, true);
+        } else {
+            $lang = $request->getCookie('syj_lang');
         }
 
-        if (!Zend_Registry::isRegistered('Zend_Translate')) {
+        if (!$lang) {
             return;
         }
 

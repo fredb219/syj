@@ -11,10 +11,7 @@ class Syj_View_Helper_FooterLink extends Zend_View_Helper_Abstract
         } else {
             $href = $page->getHRef();
             if ($redirect) {
-                $currentUri = Zend_Controller_Front::getInstance()->getRequest()->getRequestUri();
-                if (($pos = strpos($currentUri, '?')) !== false) {
-                    $currentUri = substr($currentUri, 0, $pos);
-                 }
+                $currentUri = $this->view->UriPath(true);
                 $href = $this->view->addParamToUrl($href, 'redirect', $currentUri, true);
             }
             $link = $this->view->anchor($href, $text, array('class' => 'footer-anchor'));

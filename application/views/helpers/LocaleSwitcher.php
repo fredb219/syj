@@ -9,7 +9,7 @@ class Syj_View_Helper_LocaleSwitcher extends Zend_View_Helper_Abstract
         $availables = $translator->getList();
         $current = $translator->getLocale();
 
-        $requestUri = Zend_Controller_Front::getInstance()->getRequest()->getRequestUri();
+        $requestUri = $this->view->UriPath();
 
         $links = array();
         foreach ($availables as $lang) {

@@ -13,29 +13,20 @@ class Syj_Controller_Action_Helper_SyjSession extends Zend_Controller_Action_Hel
             throw new Zend_Exception();
         }
 
-        $storage = Zend_Auth::getInstance()->getStorage();
-        $storage->clear();
-        $storage->write(array('user' => $user->id));
-        Zend_Session::rememberMe(); // zend default expiration delay is 2 weeks. Ok, use that value
+        $storage = new Zend_Session_Namespace('userSettings');
+        $storage->user = $user->id;
+        Zend_Session::rememberMe();
     }
 
     static public function logout() {
-        Zend_Session::start();
-        Zend_Session::destroy();
+        $storage = new Zend_Session_Namespace('userSettings');
+        unset($storage->user);
+        Zend_Session::rememberMe();
     }
 
     static public function user() {
-        try {
-            $sessionStorage = Zend_Auth::getInstance()->getStorage();
-        } catch(Exception $e) {
-            return null;
-        }
-        $sessionData = $sessionStorage->read();
-        if ($sessionStorage->isEmpty()) {
-            return null;
-        }
-
-        $id = $sessionData['user'];
+        $storage = new Zend_Session_Namespace('userSettings');
+        $id = $storage->user;
         if (!isset($id)) {
             return null;
         }
@@ -63,16 +54,9 @@ class Syj_Controller_Action_Helper_SyjSession extends Zend_Controller_Action_Hel
         $view = $viewRenderer->view;
         $request = $this->getRequest();
 
-        $encodeduri = implode('/', array_map('urlencode', explode('/', $request->getRequestUri())));
+        $encodeduri = $view->UriPath(true);
         $loginurl = $view->addParamToUrl($view->baseUrl() . '/' . 'login', 'redirect', $encodeduri);
         $translator = Zend_Registry::get('Zend_Translate');
-        $lang = $request->getQuery('lang');
-        if ($lang) {
-            $adapter = $translator->getAdapter();
-            if ($adapter->isAvailable($lang)) {
-                $loginurl = $view->addParamToUrl($loginurl, 'lang', $lang);
-            }
-        }
         $this->getActionController()->getHelper('Redirector')->gotoURL($loginurl, array('prependBase' => false));
     }
 }
