@@ -350,7 +350,69 @@ var SYJView = {
         }
 
         $("map-overlay").hide();
-        $("geom_upload").observe('change', function() {
+        $("geom_upload").observe('change', function(evt) {
+            var file = null, reader = null, readerror = null;
+            if (window.FileList && window.FileReader) {
+                file = evt.target.files[0];
+                reader = new FileReader();
+                readerror = function() {
+                    this.messenger.setMessage(SyjStrings.uploadFileError, "warn");
+                }.bind(this);
+                reader.onload = function(evt) {
+                    var data = null, results = null, engine = null, vector = null, i = 0, formats = ['KML', 'GPX', 'GeoJSON'];
+
+                    $("geom_upload_container").removeClassName("disabled");
+                    $("geom_upload").disabled = false;
+                    if (evt.error) {
+                        readerror();
+                        return;
+                    }
+                    data = evt.target.result;
+
+                    for (i = 0; i < formats.length; i++) {
+                        engine = new OpenLayers.Format[formats[i]]({ internalProjection: Mercator, externalProjection: WGS84 });
+                        try {
+                            results = engine.read(data);
+                        } catch(e) {
+                        }
+                        if (results && results.length) {
+                            break;
+                        }
+                    }
+                    if (!results || !results.length) {
+                        readerror();
+                        return;
+                    }
+
+                    vector = results[0];
+                    if (vector.geometry.CLASS_NAME !== "OpenLayers.Geometry.LineString") {
+                        readerror();
+                        return;
+                    }
+                    this.viewLayer.addFeatures([vector]);
+                    this.map.zoomToExtent(this.viewLayer.getDataExtent());
+
+                    if ($("edit-btn")) {
+                        $("edit-btn").click();
+                    } else if ($("create-btn")) {
+                        $("create-btn").click();
+                    }
+
+                    if (this.editControl.handler.realPoints.length < 2) {
+                        SyjSaveUI.disable();
+                    } else {
+                       SyjSaveUI.enable();
+                    }
+
+                    if (vector.data && vector.data.name) {
+                        $("geom_title").value = vector.data.name;
+                    }
+                }.bind(this);
+                $("geom_upload_container").addClassName("disabled");
+                $("geom_upload").disabled = true;
+                reader.readAsText(file);
+                return;
+            }
             $("map-overlay").show();
             SyjSaveUI.enable();
             this.editControl.deactivate();
@@ -498,8 +560,9 @@ var SYJView = {
                     }
                 },
                 create: function(f, line) {
+                    this.messenger.hide();
                     $("geom_upload_container").hide();
-                }
+                }.bind(this)
             },
 
             handlerOptions: {
