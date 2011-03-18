@@ -517,8 +517,14 @@ var SYJView = {
     },
 
     saveSuccess: function(transport) {
-      this.unsavedRoute = null;
+      // server sends and empty response on success. If we get a response, that
+      // probably means an error or warning has been printed by server.
+      if (!transport.responseJSON && transport.responseText.length) {
+          this.saveFailure(null, 500);
+          return;
+      }
 
+      this.unsavedRoute = null;
       if (transport.responseJSON && (typeof transport.responseJSON.redirect === "string")) {
           location = transport.responseJSON.redirect;
           return;
@@ -529,12 +535,12 @@ var SYJView = {
       document.title = $('geom_title').value;
     },
 
-    saveFailure: function(transport) {
-        var httpCode = 0, message = "";
-
-        if (transport) {
-            httpCode = transport.getStatus();
+    saveFailure: function(transport, httpCode) {
+        var message = "";
+        if (typeof httpCode === "undefined") {
+            httpCode = transport? transport.getStatus(): 0;
         }
+
         switch (httpCode) {
             case 0:
                 message = SyjStrings.notReachedError;
