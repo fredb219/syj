@@ -212,7 +212,8 @@ Ajax.Responders.register({
 
 // wrapper around Form.request that sets up the submit listener, stops the
 // submit event, calls presubmit function, calls Form.request and calls a
-// postsubmit function
+// postsubmit function. If form has some visible and activated file inputs,
+// execute presubmit, but do not send the file with ajax.
 Element.addMethods('form', {
     ajaxize : function(form, options) {
         var reqoptions;
@@ -220,7 +221,6 @@ Element.addMethods('form', {
         options = Object.clone(options || {});
 
         $(form).observe('submit', function(evt) {
-            evt.stop(); // cancel form submission
 
             reqoptions = Object.clone(options);
             delete(reqoptions.presubmit);
@@ -229,9 +229,29 @@ Element.addMethods('form', {
 
             if (Object.isFunction(options.presubmit)) {
                 if (options.presubmit(this) === false) {
+                    evt.stop(); // cancel form submission
                     return;
                 }
             }
+
+            // get list of input file not disabled, and not hidden
+            if (this.getInputs('file').find(function(elt) {
+                if (elt.disabled) {
+                    return false;
+                }
+                while (elt && $(elt).identify() !== this.identify()) {
+                    if (!elt.visible()) {
+                        return false;
+                    }
+                    elt = elt.parentNode;
+                }
+                return true;
+             }.bind(this))) {
+                // form has some file inputs. Do not manage on our own.
+                return;
+            }
+
+            evt.stop(); // cancel form submission
 
             var params = reqoptions.parameters, action = this.readAttribute('action') || '';
 

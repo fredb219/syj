@@ -21,7 +21,7 @@ var SyjSaveUI = {
         this.enableSubmit();
         $("geom_title").disabled = false;
         $("geom_title").activate();
-        $("geomform").removeClassName("disabled");
+        $$("#geom_accept_container, #geom_title_container").invoke('removeClassName', "disabled");
         this.status = "enabled";
         return this;
     },
@@ -33,7 +33,7 @@ var SyjSaveUI = {
         this.disableSubmit();
         $("geom_title").blur();
         $("geom_title").disabled = true;
-        $("geomform").addClassName("disabled");
+        $$("#geom_accept_container, #geom_title_container").invoke('addClassName', "disabled");
         this.status = "disabled";
         return this;
     },
@@ -349,81 +349,15 @@ var SYJView = {
             this.initMaPos(gInitialPos);
         }
 
+        $("map-overlay").hide();
+        $("geom_upload").observe('change', function() {
+            $("map-overlay").show();
+            SyjSaveUI.enable();
+            this.editControl.deactivate();
+        }.bind(this));
+
         document.observe('simplebox:shown', this.observer.bindAsEventListener(this));
         SYJPathLength.update();
-
-        if (window.FileList && window.FileReader) {
-            $("map").observe("dragenter", function(evt) { evt.stop();});
-            $("map").observe("dragover", function(evt) { evt.stop();});
-            $("map").observe("drop", function(evt) {
-                evt.stop();
-                if (this.mode !== "view" || this.viewLayer.features.length) {
-                    return;
-                }
-                if (!evt.dataTransfer.files.length) {
-                    return;
-                }
-                var file = evt.dataTransfer.files[0];
-                var reader = new FileReader();
-                var readerror = function() {
-                    this.messenger.setMessage(SyjStrings.dragFileError, "warn");
-                }.bind(this);
-                reader.onload = function(evt) {
-                    if (evt.error) {
-                        readerror();
-                        return;
-                    }
-
-                    var results = null;
-                    var content = evt.target.result;
-
-                    var engine, i;
-                    var formats = ['KML', 'GPX'];
-
-                    for (i = 0; i < formats.length; i++) {
-                        engine = new OpenLayers.Format[formats[i]]({ internalProjection: Mercator, externalProjection: WGS84 });
-                        try {
-                            results = engine.read(content);
-                        } catch(e) {
-                        }
-                        if (results || results.length) {
-                            continue;
-                        }
-                    }
-                    if (!results || !results.length) {
-                        readerror();
-                        return;
-                    }
-
-
-                    var vector = results[0];
-                    if (vector.geometry.CLASS_NAME !== "OpenLayers.Geometry.LineString") {
-                        readerror();
-                        return;
-                    }
-                    this.viewLayer.addFeatures([vector]);
-                    this.map.zoomToExtent(this.viewLayer.getDataExtent());
-
-                    if ($("edit-btn")) {
-                        $("edit-btn").click();
-                    } else if ($("create-btn")) {
-                        $("create-btn").click();
-                    }
-
-                    if (this.editControl.handler.realPoints.length < 2) {
-                        SyjSaveUI.disable();
-                    } else {
-                        SyjSaveUI.enable();
-                    }
-
-
-                    if (vector.data && vector.data.name) {
-                        $("geom_title").value = vector.data.name;
-                    }
-                 }.bind(this);
-                reader.readAsText(file);
-           }.bind(this));
-        }
     },
 
     initMaPos: function (aPos) {
@@ -472,7 +406,12 @@ var SYJView = {
 
         this.viewMode();
 
-        $("geom_data").value = this.wkt.write(new OpenLayers.Feature.Vector(line));
+        if (line.components.length) {
+            $("geom_data").value = this.wkt.write(new OpenLayers.Feature.Vector(line));
+        } else {
+            $("geom_data").value = "";
+        }
+
         if (this.mode === "edit" && typeof gLoggedInfo.pathid !== "undefined") {
             $("geomform").setAttribute("action", "path/" + gLoggedInfo.pathid.toString() + '/update');
         } else {
@@ -541,14 +480,25 @@ var SYJView = {
             callbacks: {
                 modify: function(f, line) {
                     SYJPathLength.update();
-                    if (!SYJView.unsavedRoute) {
-                        SYJView.unsavedRoute = {};
+
+                    var npoints = this.handler.realPoints.length;
+                    if (npoints === 0) {
+                        $("geom_upload_container").show();
+                        SYJView.unsavedRoute = null;
+                    } else {
+                        if (!SYJView.unsavedRoute) {
+                            SYJView.unsavedRoute = {};
+                        }
                     }
-                    if (this.handler.realPoints.length < 2) {
+
+                    if (npoints < 2) {
                         SyjSaveUI.disable();
                     } else {
                         SyjSaveUI.enable();
                     }
+                },
+                create: function(f, line) {
+                    $("geom_upload_container").hide();
                 }
             },
 

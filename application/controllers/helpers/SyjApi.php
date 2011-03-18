@@ -8,6 +8,7 @@ class Syj_Controller_Action_Helper_SyjApi extends Zend_Controller_Action_Helper_
     protected $_checkIfNoneMatch = false;
     protected $_body = '';
     protected $_code = 200;
+    protected $_redirect = '';
 
     public function init() {
         $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
@@ -51,6 +52,20 @@ class Syj_Controller_Action_Helper_SyjApi extends Zend_Controller_Action_Helper_
         return $this->_code;
     }
 
+    public function setRedirect($url, $code = 0) {
+        $this->_redirect = (string)$url;
+        if (is_numeric($code) && (int)$code >= 300 && (int)$code < 400) {
+            $this->_code;
+        } else if (!isset($this->_code)) {
+            $this->code = 301;
+        }
+        return $this;
+    }
+
+    public function getRedirect() {
+        return $this->_redirect;
+    }
+
     public function setCheckIfNoneMatch($check) {
         $this->_checkIfNoneMatch = (boolean)$check;
         return $this;
@@ -78,6 +93,10 @@ class Syj_Controller_Action_Helper_SyjApi extends Zend_Controller_Action_Helper_
             // no-cache is needed otherwise IE does not try to get new version.
             $response->setHeader ('Cache-control', 'no-cache, must-revalidate');
             $response->setHeader ('Etag', $etag);
+        }
+
+        if ($this->_redirect) {
+            $response->setHeader ('Location', $this->_redirect);
         }
 
         $response->setHttpResponseCode($this->_code)

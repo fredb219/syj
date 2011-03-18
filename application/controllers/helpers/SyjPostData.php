@@ -17,6 +17,11 @@ class Syj_Controller_Action_Helper_SyjPostData extends Zend_Controller_Action_He
             throw new Syj_Exception_Request();
         }
         $data = $this->getRequest()->getPost();
+
+        if ($form instanceof Syj_Processor_Interface) {
+            $form->process($data);
+        }
+
         if (!$form->isValid($data)) {
             throw new Syj_Exception_Request();
         }

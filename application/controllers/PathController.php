@@ -16,8 +16,14 @@ class PathController extends Zend_Controller_Action
         $path->creatorIp = $this->getRequest()->getClientIp(true);
 
         $this->save($path, $formData);
-        $data = array('redirect' => "idx/" . (string)$path->id);
-        $this->_helper->SyjApi->setCode(201)->setBodyJson($data);
+
+        $redirecturl = "idx/" . (string)$path->id;
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            $data = array('redirect' => $redirecturl);
+            $this->_helper->SyjApi->setCode(201)->setBodyJson($data);
+        } else {
+            $this->_helper->SyjApi->setRedirect($redirecturl, 303);
+        }
     }
 
     public function updateAction() {
@@ -55,12 +61,22 @@ class PathController extends Zend_Controller_Action
 
     public function save(Syj_Model_Path $path, $formData) {
         /* setting geom property */
-        $decoder = new gisconverter\WKT();
-        try {
-            $geom = $decoder->geomFromText($formData["geom_data"]);
-        } catch (gisconverter\CustomException $e) {
-            throw new Syj_Exception_Request();
+        $geom = null;
+        foreach (array("WKT", "KML", "GPX", "geoJSON") as $dectype) {
+            $classname = 'gisconverter\\' . $dectype;
+            $decoder = new $classname();
+            try {
+                $geom = $decoder->geomFromText($formData["geom_data"]);
+            } catch (Exception $e) {
+            }
+            if ($geom) {
+                break;
+            }
         }
+        if (!$geom) {
+            throw new Syj_Exception_InvalidGeomUpload();
+        }
+
         if ($geom::name != "LineString") {
             throw new Syj_Exception_Request();
         }

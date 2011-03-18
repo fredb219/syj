@@ -33,14 +33,11 @@ class IdxController extends Zend_Controller_Action
     }
 
     public function indexAction() {
+        $this->_initForms();
+
         $url = $this->getRequest()->getUserParam('url');
-
-        $geomform = new Syj_Form_Geom(array('name' => 'geomform'));
-        $loginform = new Syj_Form_Login(array('name' => 'loginform', 'action' => 'login'));
-        $userform = new Syj_Form_User(array('name' => 'userform', 'action' => 'user'));
-        $newpwdform = new Syj_Form_Newpwd(array('name' => 'newpwdform', 'action' => 'newpwd'));
-
         if (isset($url)) {
+            $this->view->geomform->setAction("");
             $pathMapper = new Syj_Model_PathMapper();
             $path = new Syj_Model_Path();
             if (!$pathMapper->findByUrl($url, $path)) {
@@ -62,21 +59,10 @@ class IdxController extends Zend_Controller_Action
             $this->view->path = $path;
             $jsgeom = new phptojs\JsObject('gInitialGeom', array('data' => (string) $path->geom));
             $this->view->headScript()->prependScript((string) $jsgeom);
-            $loginform->login_geom_id->setValue((string)$path->id);
-            $geomform->geom_title->setValue($path->title);
+            $this->view->loginform->login_geom_id->setValue((string)$path->id);
+            $this->view->geomform->geom_title->setValue($path->title);
         } else {
-            $geomform->setAction('path');
-
-            $lat = $this->getRequest()->getQuery('lat');
-            $lon = $this->getRequest()->getQuery('lon');
-            $zoom = $this->getRequest()->getQuery('zoom');
-            if (is_numeric ($lat) and is_numeric ($lon) and is_numeric ($zoom)) {
-                $initialpos = array('lat' => (float)$lat, 'lon' => (float)$lon, 'zoom' => (int)$zoom);
-            } else {
-                $initialpos =  $this->_helper->syjGeoip($this->getRequest()->getClientIp(true));
-            }
-
-            $this->view->headScript()->prependScript((string) new phptojs\JsObject('gInitialPos', $initialpos));
+            $this->_setInitialPos();
             $title = "Show your journey";
         }
 
@@ -88,11 +74,52 @@ class IdxController extends Zend_Controller_Action
         }
         $this->view->headTitle($title);
         $this->view->headMeta()->appendName('description', $this->view->translate('website to share routes'));
-        $this->view->geomform = $geomform;
-        $this->view->loginform = $loginform;
-        $this->view->userform = $userform;
-        $this->view->newpwdform = $newpwdform;
+
         $this->view->loggedUser = $this->_helper->SyjSession->user();
+    }
+
+    protected function _initForms() {
+        $this->view->geomform = new Syj_Form_Geom(array('name' => 'geomform', 'action' => 'path'));
+        $this->view->loginform = new Syj_Form_Login(array('name' => 'loginform', 'action' => 'login'));
+        $this->view->userform = new Syj_Form_User(array('name' => 'userform', 'action' => 'user'));
+        $this->view->newpwdform = new Syj_Form_Newpwd(array('name' => 'newpwdform', 'action' => 'newpwd'));
+    }
+
+    protected function _setInitialPos() {
+        $lat = $this->getRequest()->getQuery('lat');
+        $lon = $this->getRequest()->getQuery('lon');
+        $zoom = $this->getRequest()->getQuery('zoom');
+        if (is_numeric ($lat) and is_numeric ($lon) and is_numeric ($zoom)) {
+            $initialpos = array('lat' => (float)$lat, 'lon' => (float)$lon, 'zoom' => (int)$zoom);
+        } else {
+            $initialpos =  $this->_helper->syjGeoip($this->getRequest()->getClientIp(true));
+        }
+        $this->view->headScript()->prependScript((string) new phptojs\JsObject('gInitialPos', $initialpos));
+    }
+
+    public function errorAction() {
+        Zend_Controller_Front::getInstance()->getRequest()->setRequestUri($this->_request->getBaseUrl());
+        $this->_initForms();
+        $this->_setInitialPos();
+
+        $this->_jsLoggedInfo(null);
+        $this->_jsLocaleStrings();
+
+        $this->view->headTitle("Show your journey");
+        $this->view->headMeta()->appendName('description', $this->view->translate('website to share routes'));
+        $this->view->loggedUser = $this->_helper->SyjSession->user();
+        $this->_helper->ViewRenderer->setViewScriptPathSpec(':controller/index.:suffix');
+
+        $error = $this->_getParam('error_handler');
+        if ($error) {
+            if ($error->exception instanceof Syj_Exception_ToolargeGeomUpload) {
+                $maxsize = $this->_bytesToString(min($this->_strToBytes(ini_get('upload_max_filesize')),
+                                                    $this->_strToBytes(ini_get('upload_max_filesize'))));
+                $this->view->errorMsg = $this->view->translate('File too large. File size must not exceed %s', $maxsize);
+            } else if ($error->exception instanceof Syj_Exception_InvalidGeomUpload) {
+                $this->view->errorMsg = $this->view->translate("Invalid file");
+            }
+        }
     }
 
     protected function _jsLoggedInfo(Syj_Model_Path $path = null) {
@@ -155,6 +182,37 @@ class IdxController extends Zend_Controller_Action
             'noResult' => __("no result"),
             'dragFileError' => __("could not analyze file content"),
             );
+    }
+
+    private function _strToBytes($value) {
+        $value = trim($value);
+        if (is_numeric($value)) {
+            return (integer) $value;
+        }
+        $last = strtolower($value[strlen($value)-1]);
+        $value = (int)$value;
+        switch ($last) {
+            case 'k' :
+                $value *= 1024;
+            break;
+            case 'm' :
+                $value *= 1024 * 1024;
+            break;
+            case 'g' :
+                $value *= 1024 * 1024 * 1024;
+            break;
+            default :
+            break;
+        }
+        return $value;
+    }
+
+    private function _bytesToString($size) {
+        $sizes = array('B', 'kB', 'MB', 'GB');
+        for ($c=0; $c < (count ($sizes) - 1) && $size >= 1024; $c++) {
+            $size = $size / 1024;
+        }
+        return round($size) . $sizes[$c];
     }
 
 }

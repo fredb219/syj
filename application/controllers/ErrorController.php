@@ -43,6 +43,11 @@ class ErrorController extends Zend_Controller_Action
 
         if ($error_code == 400 and $error->request->isXmlHttpRequest()) {
             return $this->_helper->json(array('message' => $error->exception->getMessage()));
+        } else if ($error->exception instanceof Syj_Exception_InvalidGeomUpload) {
+            // invalid file upload: we will redirect to main page
+            $this->_helper->SyjReset->resetPlaceHolders();
+            $this->_request->setControllerName('idx')->setActionName('error')->setDispatched(false);
+            return;
         }
 
         // conditionally display exceptions

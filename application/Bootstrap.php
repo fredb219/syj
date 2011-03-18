@@ -14,8 +14,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         parent::_bootstrap($resource);
     }
 
-    public function run()
-    {
+    public function run() {
         $sessionConfig = new Zend_Config_Ini(APPLICATION_PATH . '/configs/session.ini', APPLICATION_ENV);
         Zend_Session::setOptions($sessionConfig->toArray());
         Zend_Controller_Action_HelperBroker::getStaticHelper('ViewRenderer')->initView(APPLICATION_PATH . '/views/', 'Syj_View');
@@ -38,7 +37,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
                 return;
             }
 
-            $dirpath = implode('/', array_map('strtolower', array_slice($segments, 1, -1)));
+            $isinterface = false;
+            if (strtolower(end($segments)) == "interface") {
+                $isinterface = true;
+                array_pop($segments);
+            }
+
+            $dirpath = implode(DIRECTORY_SEPARATOR, array_map('strtolower', array_slice($segments, 1, -1)));
+            if ($isinterface) {
+                $dirpath = "interface" . DIRECTORY_SEPARATOR . $dirpath;
+            }
             $filename = APPLICATION_PATH . '/' . ($dirpath ? $dirpath . '/' : '') . end($segments) . '.php';
             if (Zend_Loader::isReadable($filename)) {
                 include_once $filename;

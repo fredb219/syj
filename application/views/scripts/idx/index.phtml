@@ -9,15 +9,25 @@
 </noscript>
 
 <div id="map"></div>
+<div id="map-overlay"></div>
 
-<div id="message" class="message info">
-<?php if (!$this->path and !$this->loggedUser) {?>
-<?php echo $this->translate('Welcome on Syj.')?>
-<br>
-<?php echo $this->translate('To create a journey, just press <strong>"start a route"</strong> button, then click on the map to add points to your route. You can zoom and move the map with the controls in the top left corner')?>
-<br>
-<?php echo $this->translate('When you have finished a path, press "create", button.')?>
-<?php }?>
+<?php
+$message = "";
+$msgclass = "info";
+if ($this->errorMsg) {
+    $message .= $this->errorMsg;
+    $msgclass = "error";
+} else if (!$this->path and !$this->loggedUser) {
+    $message .= $this->translate('Welcome on Syj.');
+    $message .= "<br>";
+    $message .= $this->translate('To create a journey, just press <strong>"start a route"</strong> button, then click on the map to add points to your route. You can zoom and move the map with the controls in the top left corner');
+    $message .= "<br>";
+    $message .= $this->translate('When you have finished a path, press "create", button.');
+}
+?>
+
+<div id="message" class="message <?php echo $msgclass?>">
+    <?php echo $message ?>
 </div>
 
 
