@@ -56,9 +56,11 @@ class GeomController extends Zend_Controller_Action
         $data .= '<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">';
         $data .= '<Placemark>';
         if ($path->creator) {
-            $data .= '<atom:author><atom:name>' . htmlspecialchars($path->creator->pseudo) . '</atom:name></atom:author>';
+            $data .= '<atom:author><atom:name>'
+                        . htmlspecialchars($path->creator->pseudo, ENT_COMPAT, "UTF-8")
+                        . '</atom:name></atom:author>';
         }
-        $data .= '<name>' . htmlspecialchars($path->displayTitle) . '</name>';
+        $data .= '<name>' . htmlspecialchars($path->displayTitle, ENT_COMPAT, "UTF-8") . '</name>';
         $data .= $path->geom->toKML();
         $data .= '</Placemark>';
         $data .= '</kml>';
@@ -72,9 +74,9 @@ class GeomController extends Zend_Controller_Action
         $data .= '<gpx creator="syj" version="1.0" xmlns="http://www.topografix.com/GPX/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">';
         $data .= '<trk>';
         if ($path->creator) {
-            $data .= '<author>' . htmlspecialchars($path->creator->pseudo) . '</author>';
+            $data .= '<author>' . htmlspecialchars($path->creator->pseudo, ENT_COMPAT, "UTF-8") . '</author>';
         }
-        $data .= '<name>' . htmlspecialchars($path->displayTitle) . '</name>';
+        $data .= '<name>' . htmlspecialchars($path->displayTitle, ENT_COMPAT, "UTF-8") . '</name>';
         $data .= $path->geom->toGPX();
         $data .= '</trk>';
         $data .= '</gpx>';

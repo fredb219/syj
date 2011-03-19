@@ -9,8 +9,8 @@ class Syj_Form_Pending_ValidateCreation extends Syj_Form_Pending
 
         $translator = $this->getTranslator();
         $activatetext = $translator->translate("Someone, probably you, has registered an account %s with email address %s on syj. To confirm this account creation, validate with following button.");
-        $pseudo = '<strong>' . htmlspecialchars('"' . $user->pseudo . '"') . '</strong>';
-        $email = '<strong>' . htmlspecialchars('"' . $user->email . '"') . '</strong>';
+        $pseudo = '<strong>' . htmlspecialchars('"' . $user->pseudo . '"', ENT_COMPAT, "UTF-8") . '</strong>';
+        $email = '<strong>' . htmlspecialchars('"' . $user->email . '"', ENT_COMPAT, "UTF-8") . '</strong>';
         $activatetext = vsprintf ($activatetext, array($pseudo, $email));
 
         return array(

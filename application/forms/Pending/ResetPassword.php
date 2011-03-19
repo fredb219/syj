@@ -9,7 +9,7 @@ class Syj_Form_Pending_ResetPassword extends Syj_Form_Pending
 
         $translator = $this->getTranslator();
         $activatetext = $translator->translate("Hi %s. Someone, probably you, has asked to reset password for your account. To get a new password, validate with following button.");
-        $pseudo = htmlspecialchars($user->pseudo);
+        $pseudo = htmlspecialchars($user->pseudo, ENT_COMPAT, "UTF-8");
         $activatetext = vsprintf ($activatetext, array($pseudo));
 
         return array(
