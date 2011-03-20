@@ -78,7 +78,7 @@ class PathController extends Zend_Controller_Action
         }
 
         if ($geom::name != "LineString") {
-            throw new Syj_Exception_Request();
+            throw new Syj_Exception_InvalidGeomUpload();
         }
         $path->geom = $geom;
 
@@ -96,7 +96,7 @@ class PathController extends Zend_Controller_Action
             if ($e->getCode() == 23505) { // 23505: Unique violation throw new Syj_Exception_Request();
                 $message = $e->getMessage();
                 if (strpos($message, 'paths_geom_key') !== false) {
-                    throw new Syj_Exception_Request("uniquepath");
+                    throw new Syj_Exception_InvalidGeomUpload("uniquepath");
                 } else {
                     throw $e;
                 }

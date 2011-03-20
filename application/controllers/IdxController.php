@@ -115,10 +115,15 @@ class IdxController extends Zend_Controller_Action
             if ($error->exception instanceof Syj_Exception_ToolargeGeomUpload) {
                 $maxsize = $this->_bytesToString(min($this->_strToBytes(ini_get('upload_max_filesize')),
                                                     $this->_strToBytes(ini_get('upload_max_filesize'))));
-                $this->view->errorMsg = $this->view->translate('File too large. File size must not exceed %s', $maxsize);
+                $errorMsg = __('File too large. File size must not exceed %s', $maxsize);
             } else if ($error->exception instanceof Syj_Exception_InvalidGeomUpload) {
-                $this->view->errorMsg = $this->view->translate("Invalid file");
+                if ($error->exception->getMessage() === 'uniquepath') {
+                    $errorMsg = __("similar path seems to already exist. Please do not create two exactly identical paths");
+                } else {
+                    $errorMsg = __("Invalid file");
+                }
             }
+            $this->view->errorMsg = $errorMsg;
         }
     }
 
