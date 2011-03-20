@@ -82,7 +82,7 @@ class GeomController extends Zend_Controller_Action
         $data .= '</gpx>';
 
         $api = $this->_helper->SyjApi;
-        $api->setCheckIfNoneMatch(true)->setContentType('application/octet-stream')->setBody($data);
+        $api->setCheckIfNoneMatch(true)->setContentType('application/gpx+xml')->setBody($data);
     }
 
     protected function json(Syj_Model_Path $path) {
