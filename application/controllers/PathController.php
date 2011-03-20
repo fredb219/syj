@@ -90,20 +90,7 @@ class PathController extends Zend_Controller_Action
 
         /* now, saving !*/
         $pathMapper = new Syj_Model_PathMapper();
-        try {
-            $pathMapper->save ($path);
-        } catch(Zend_Db_Statement_Exception $e) {
-            if ($e->getCode() == 23505) { // 23505: Unique violation throw new Syj_Exception_Request();
-                $message = $e->getMessage();
-                if (strpos($message, 'paths_geom_key') !== false) {
-                    throw new Syj_Exception_InvalidGeomUpload("uniquepath");
-                } else {
-                    throw $e;
-                }
-            } else {
-                throw $e;
-            }
-        }
+        $pathMapper->save ($path);
     }
 
 }

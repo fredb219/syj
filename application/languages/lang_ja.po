@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-20 14:22+0100\n"
+"POT-Creation-Date: 2011-03-20 20:25+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: S.Higashi <s_higash@mua.biglobe.ne.jp>\n"
 "Language: \n"
@@ -580,7 +580,7 @@ msgstr "値が必要です"
 msgid "Invalid email"
 msgstr "不正なメールアドレス"
 
-#: application/controllers/ErrorController.php:59
+#: application/controllers/ErrorController.php:60
 msgid "Oups, something went wrong"
 msgstr "おや、何かがおかしいですね"
 
@@ -605,13 +605,13 @@ msgid "server could not be reached"
 msgstr "サーバに届かなかったようです"
 
 #: application/controllers/ListController.php:34
-#: application/controllers/IdxController.php:154
+#: application/controllers/IdxController.php:155
 msgid ""
 "server did not understood request. That's probably caused by a bug in SYJ"
 msgstr "サーバはリクエストを理解できませんでした。おそらくSYJのバグでしょう"
 
 #: application/controllers/ListController.php:35
-#: application/controllers/IdxController.php:155
+#: application/controllers/IdxController.php:156
 msgid "route not referenced on the server. It has probably been deleted."
 msgstr "ルートはサーバ上で参照できませんでした。おそらく削除されています。"
 
@@ -689,20 +689,14 @@ msgstr ""
 msgid "Invalid file"
 msgstr "不正なメールアドレス"
 
-#: application/controllers/IdxController.php:147
+#: application/controllers/IdxController.php:148
 #: application/controllers/IdxController.php:173
 msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 msgstr "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 
-#: application/controllers/IdxController.php:153
+#: application/controllers/IdxController.php:154
 msgid "save took place successfully"
 msgstr "保存されました"
-
-#: application/controllers/IdxController.php:156
-msgid ""
-"similar path seems to already exist. Please do not create two exactly "
-"identical paths"
-msgstr "類似のパスが既に存在します。全く同じパスをふたつ作成しないでください"
 
 #: application/controllers/IdxController.php:161
 msgid "Login correct"

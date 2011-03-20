@@ -107,24 +107,4 @@ CREATE TABLE paths (
     urlcomp VARCHAR(20) UNIQUE CHECK (urlcomp ~ '^[a-z][a-zA-Z0-9_]*$') -- ~: matches regular expression; case sensitive
 );
 
-CREATE OR REPLACE FUNCTION tg_paths_bu() RETURNS TRIGGER AS $$
-DECLARE res INTEGER;
-BEGIN
-    SELECT INTO res COUNT(*) FROM paths WHERE ST_AsBinary(geom) = ST_AsBinary(NEW.geom) AND creator = NEW.creator AND id != NEW.id;
-    -- unique (geom, creator) constraint will not work: first because of postgis
-    -- #541; then because equality is checked by comparing bbox instead of real
-    -- geometries. So, we implement that constraint in a trigger
-    IF res >= 1 THEN
-        RAISE 'duplicate key paths_geom_key' using ERRCODE = 'unique_violation';
-    ELSE
-        -- update last_update TIMESTAMP
-        NEW.last_update = NOW();
-        RETURN NEW;
-    END IF;
-END;
-$$ LANGUAGE PLPGSQL;
-
-DROP TRIGGER IF EXISTS tg_paths_bu ON paths;
-CREATE TRIGGER tg_paths_bu BEFORE INSERT OR UPDATE ON paths FOR EACH ROW EXECUTE PROCEDURE tg_paths_bu();
-
 COMMIT;

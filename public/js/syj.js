@@ -611,15 +611,6 @@ var SYJView = {
             case 400:
             case 404:
                 message = SyjStrings.requestError;
-                if (transport.responseJSON) {
-                    switch (transport.responseJSON.message) {
-                        case "uniquepath":
-                            message = SyjStrings.uniquePathError;
-                        break;
-                        default:
-                        break;
-                    }
-                }
             break;
             case 403:
                 message = "";

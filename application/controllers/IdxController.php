@@ -117,11 +117,7 @@ class IdxController extends Zend_Controller_Action
                                                     $this->_strToBytes(ini_get('upload_max_filesize'))));
                 $errorMsg = __('File too large. File size must not exceed %s', $maxsize);
             } else if ($error->exception instanceof Syj_Exception_InvalidGeomUpload) {
-                if ($error->exception->getMessage() === 'uniquepath') {
-                    $errorMsg = __("similar path seems to already exist. Please do not create two exactly identical paths");
-                } else {
-                    $errorMsg = __("Invalid file");
-                }
+                $errorMsg = __("Invalid file");
             }
             $this->view->errorMsg = $errorMsg;
         }
@@ -158,7 +154,6 @@ class IdxController extends Zend_Controller_Action
             'saveSuccess' => __("save took place successfully"),
             'requestError' => __("server did not understood request. That's probably caused by a bug in SYJ"),
             'gonePathError' => __("route not referenced on the server. It has probably been deleted."),
-            'uniquePathError' => __("similar path seems to already exist. Please do not create two exactly identical paths"),
             'notReachedError' => __("server could not be reached"),
             'serverError' => __("there was a server error"),
             'unknownError' => __("there was an unknown error"),
