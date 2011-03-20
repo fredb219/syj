@@ -24,7 +24,7 @@ class NewpwdController extends Zend_Controller_Action
         }
 
         if (empty($formData)) {
-            $loggeduser = $this->_helper->SyjSession->user();
+            $loggeduser = $this->_helper->SyjUserManager->current();
             if ($loggeduser) {
                 $form->newpwd_email->setValue($loggeduser->email)
                                     ->setAttrib('readonly', 'true');
@@ -44,7 +44,7 @@ class NewpwdController extends Zend_Controller_Action
         $user = new Syj_Model_User();
         if ($userMapper->findByEmail($formData['newpwd_email'], $user)) {
             // if no user exist with posted email, pretend everything went correct
-            $loggeduser = isset($loggeduser) ? $loggeduser: $this->_helper->SyjSession->user();
+            $loggeduser = isset($loggeduser) ? $loggeduser: $this->_helper->SyjUserManager->current();
             if ($loggeduser and ($loggeduser != $user)) {
                 throw new Syj_Exception_Request();
             }

@@ -15,10 +15,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
     }
 
     public function run() {
-        $sessionConfig = new Zend_Config_Ini(APPLICATION_PATH . '/configs/session.ini', APPLICATION_ENV);
-        Zend_Session::setOptions($sessionConfig->toArray());
         Zend_Controller_Action_HelperBroker::getStaticHelper('ViewRenderer')->initView(APPLICATION_PATH . '/views/', 'Syj_View');
-
         parent::run();
     }
 

@@ -61,7 +61,7 @@ class UserController extends Zend_Controller_Action
             }
         }
 
-        $this->_helper->SyjSession->login($user->id);
+        $this->_helper->SyjUserManager->validate($user->pseudo, $user->password);
 
         $data = array('pseudo' => $user->pseudo);
         $this->_helper->SyjApi->setBodyJson($data)->setCode(200);

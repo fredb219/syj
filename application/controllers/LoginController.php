@@ -32,15 +32,7 @@ class LoginController extends Zend_Controller_Action
         }
 
         /* form has been filled */
-
-        $adapter = Zend_Db_Table_Abstract::getDefaultAdapter();
-        $authAdapter = new Zend_Auth_Adapter_DbTable($adapter, 'users', 'pseudo', 'password');
-        $authAdapter->setIdentity($formData['login_user'])
-                ->setCredential(sha1($formData['login_password']));
-
-        $auth = Zend_Auth::getInstance();
-        $result = $auth->authenticate($authAdapter);
-        if (!$result->isValid()) {
+        if (!$this->_helper->SyjUserManager->validate($formData['login_user'], sha1($formData['login_password']))) {
             if ($httprequest) {
                 throw new Syj_Exception_Forbidden();
             } else {
@@ -49,9 +41,7 @@ class LoginController extends Zend_Controller_Action
             }
         }
 
-        $userid = $authAdapter->getResultRowObject('id')->id;
-        $this->_helper->SyjSession->login($userid);
-        $user = $this->_helper->SyjSession->user();
+        $user = $this->_helper->SyjUserManager->current();
 
         if ($httprequest) {
             $api = $this->_helper->SyjApi->setCode(200);
@@ -75,7 +65,7 @@ class LoginController extends Zend_Controller_Action
     }
 
     public function logoutAction() {
-        $this->_helper->SyjSession->logout();
+        $this->_helper->SyjUserManager->logout();
         $this->redirect();
     }
 

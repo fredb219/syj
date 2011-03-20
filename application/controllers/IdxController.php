@@ -75,7 +75,7 @@ class IdxController extends Zend_Controller_Action
         $this->view->headTitle($title);
         $this->view->headMeta()->appendName('description', $this->view->translate('website to share routes'));
 
-        $this->view->loggedUser = $this->_helper->SyjSession->user();
+        $this->view->loggedUser = $this->_helper->SyjUserManager->current();
     }
 
     protected function _initForms() {
@@ -107,7 +107,7 @@ class IdxController extends Zend_Controller_Action
 
         $this->view->headTitle("Show your journey");
         $this->view->headMeta()->appendName('description', $this->view->translate('website to share routes'));
-        $this->view->loggedUser = $this->_helper->SyjSession->user();
+        $this->view->loggedUser = $this->_helper->SyjUserManager->current();
         $this->_helper->ViewRenderer->setViewScriptPathSpec(':controller/index.:suffix');
 
         $error = $this->_getParam('error_handler');
@@ -125,7 +125,7 @@ class IdxController extends Zend_Controller_Action
     protected function _jsLoggedInfo(Syj_Model_Path $path = null) {
         $loggedinfo = new phptojs\JsObject('gLoggedInfo', array('connections' => 0));
 
-        $user = $this->_helper->SyjSession->user();
+        $user = $this->_helper->SyjUserManager->current();
         if ($user) {
             $loggedinfo->logged = true;
         } else {

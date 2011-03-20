@@ -6,7 +6,7 @@ class ListController extends Zend_Controller_Action
 {
 
     public function init() {
-        $this->_helper->SyjSession->needsLogin();
+        $this->_helper->SyjUserManager->needsLogin();
 
         $this->_helper->SyjMedias->addScripts('list');
 
@@ -16,7 +16,7 @@ class ListController extends Zend_Controller_Action
     }
 
     public function indexAction() {
-        $user = $this->_helper->SyjSession->user();
+        $user = $this->_helper->SyjUserManager->current();
         $pathMapper = new Syj_Model_PathMapper();
         $list = $pathMapper->fetchByCreator($user);
         $paginator = Zend_Paginator::factory($list);

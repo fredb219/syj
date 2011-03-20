@@ -8,7 +8,7 @@ class PathController extends Zend_Controller_Action
         $formData = $this->_helper->SyjPostData->getPostData('Syj_Form_Geom');
         $path = new Syj_Model_Path();
 
-        $user = $this->_helper->SyjSession->user();
+        $user = $this->_helper->SyjUserManager->current();
         if (!$user and !$formData["geom_accept"]) {
             throw new Syj_Exception_Request();
         }
@@ -52,7 +52,7 @@ class PathController extends Zend_Controller_Action
             }
         }
 
-        $user = $this->_helper->SyjSession->user();
+        $user = $this->_helper->SyjUserManager->current();
         if (!$path->isCreator($user)) {
             throw new Syj_Exception_Forbidden();
         }

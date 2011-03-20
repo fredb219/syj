@@ -6,7 +6,7 @@ class AccountController extends Zend_Controller_Action
 {
 
     public function init() {
-        $this->_helper->SyjSession->needsLogin();
+        $this->_helper->SyjUserManager->needsLogin();
         $this->_helper->SyjMedias->addScripts('account');
 
         $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
@@ -16,7 +16,7 @@ class AccountController extends Zend_Controller_Action
     }
 
     public function indexAction() {
-        $user = $this->_helper->SyjSession->user();
+        $user = $this->_helper->SyjUserManager->current();
         $request = $this->getRequest();
 
         $form = new Syj_Form_Account(array('name' => 'accountform'));
