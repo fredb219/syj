@@ -8,6 +8,9 @@ class Syj_Controller_Action_Helper_SyjUserManager extends Zend_Controller_Action
     protected static $_current = -1;
 
     static public function validate($username, $hash, $rememberme = false) {
+        if (!$username) {
+            return false;
+        }
         // TODO: try to make only one sql request
         $adapter = Zend_Db_Table_Abstract::getDefaultAdapter();
         $authAdapter = new Zend_Auth_Adapter_DbTable($adapter, 'users', 'pseudo', 'password');
@@ -25,7 +28,8 @@ class Syj_Controller_Action_Helper_SyjUserManager extends Zend_Controller_Action
             throw new Zend_Exception();
         }
 
-        if (!isset ($_COOKIE['syj_user']) or (!isset ($_COOKIE['syj_hashpass']))) {
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+        if (!$request->getCookie('syj_user') or !$request->getCookie('syj_hashpass')) {
             if ($rememberme) {
                 // cookie will be valid for 2 weeks
                 $time = time () + 14 * 60 * 24 * 60;
@@ -41,18 +45,19 @@ class Syj_Controller_Action_Helper_SyjUserManager extends Zend_Controller_Action
 
     static public function logout() {
         self::$_current = null;
-        if (isset ($_COOKIE['syj_user'])) {
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+        if ($request->getCookie('syj_user')) {
             setcookie ('syj_user', "", time() - 3600, "" , "",false, true);
         }
-        if (isset ($_COOKIE['syj_hashpass'])) {
+        if ($request->getCookie('syj_hashpass')) {
             setcookie ('syj_hashpass', "", time() - 3600, "" , "",false, true);
         }
     }
 
     static public function current() {
         if (self::$_current === -1) {
-            if ((!isset ($_COOKIE['syj_user'])) || (!isset ($_COOKIE['syj_hashpass']))
-                 || (!self::validate($_COOKIE['syj_user'], $_COOKIE['syj_hashpass']))) {
+            $request = Zend_Controller_Front::getInstance()->getRequest();
+            if (!self::validate($request->getCookie('syj_user'), $request->getCookie('syj_hashpass'))) {
                     self::logout();
             }
         }
