@@ -9,8 +9,8 @@ class Syj_Form_Login extends Syj_Form_TableAbstract
         $user = array('Text', 'login_user', array( 'label' => __("user"), 'required' => true));
         $pass = array('Password', 'login_password', array( 'label' => __("password")));
 
-
         $this->setMainElements(array($user, $pass))
+             ->addElement('Checkbox', 'login_rememberme', array( 'label' => __("remember me"), 'checked' => true))
              ->addElement('Hidden', 'login_geom_id', array( 'decorators' => array('ViewHelper')));
 
         $currentUri = $this->getView()->UriPath(true);

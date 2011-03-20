@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-18 17:25+0100\n"
+"POT-Creation-Date: 2011-03-20 14:22+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -438,7 +438,7 @@ msgstr ""
 "\n"
 "L'équipe de Syj"
 
-#: application/controllers/LoginController.php:99
+#: application/controllers/LoginController.php:91
 #: application/controllers/IdxController.php:160
 msgid "you must enter a login name"
 msgstr "vous devez entrer un nom d'utilisateur"
@@ -691,6 +691,10 @@ msgstr "utilisateur"
 msgid "password"
 msgstr "mot de passe"
 
+#: application/forms/Login.php:13
+msgid "remember me"
+msgstr "se souvenir de moi"
+
 #: application/forms/Login.php:20
 msgid "I forgot my password"
 msgstr "J'ai oublié mon mot de passe"
@@ -803,3 +807,4 @@ msgstr "Quelqu'un, probablement vous, a enregistré un compte %s avec l'adresse 
 #: application/forms/Pending/ValidateCreation.php:24
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "Pour annuler la création du compte, pressez le bouton suivant. Le compte ainsi que toutes ses données seront supprimés."
+

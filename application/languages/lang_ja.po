@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-18 17:25+0100\n"
+"POT-Creation-Date: 2011-03-20 14:22+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: S.Higashi <s_higash@mua.biglobe.ne.jp>\n"
 "Language: \n"
@@ -531,7 +531,7 @@ msgstr ""
 "\n"
 "Syj チーム"
 
-#: application/controllers/LoginController.php:99
+#: application/controllers/LoginController.php:91
 #: application/controllers/IdxController.php:160
 msgid "you must enter a login name"
 msgstr "ログイン名を入力してください"
@@ -784,6 +784,10 @@ msgstr "ユーザ"
 #: application/forms/User.php:23
 msgid "password"
 msgstr "パスワード"
+
+#: application/forms/Login.php:13
+msgid "remember me"
+msgstr ""
 
 #: application/forms/Login.php:20
 msgid "I forgot my password"

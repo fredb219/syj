@@ -7,7 +7,7 @@ class Syj_Controller_Action_Helper_SyjUserManager extends Zend_Controller_Action
     // -1 for undeterminated, null for non logged, Syj_Model_User for a logged user
     protected static $_current = -1;
 
-    static public function validate($username, $hash) {
+    static public function validate($username, $hash, $rememberme = false) {
         // TODO: try to make only one sql request
         $adapter = Zend_Db_Table_Abstract::getDefaultAdapter();
         $authAdapter = new Zend_Auth_Adapter_DbTable($adapter, 'users', 'pseudo', 'password');
@@ -26,8 +26,14 @@ class Syj_Controller_Action_Helper_SyjUserManager extends Zend_Controller_Action
         }
 
         if (!isset ($_COOKIE['syj_user']) or (!isset ($_COOKIE['syj_hashpass']))) {
-            setcookie("syj_user", $username, 0, "", "", false, true);
-            setcookie("syj_hashpass", $hash, 0, "", "", false, true);
+            if ($rememberme) {
+                // cookie will be valid for 2 weeks
+                $time = time () + 14 * 60 * 24 * 60;
+            } else {
+                $time = 0;
+            }
+            setcookie("syj_user", $username, $time, "", "", false, true);
+            setcookie("syj_hashpass", $hash, $time, "", "", false, true);
         }
         self::$_current = $user;
         return true;

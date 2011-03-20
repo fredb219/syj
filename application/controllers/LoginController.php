@@ -32,7 +32,9 @@ class LoginController extends Zend_Controller_Action
         }
 
         /* form has been filled */
-        if (!$this->_helper->SyjUserManager->validate($formData['login_user'], sha1($formData['login_password']))) {
+        if (!$this->_helper->SyjUserManager->validate($formData['login_user'],
+                                                     sha1($formData['login_password']),
+                                                     $formData['login_rememberme'])) {
             if ($httprequest) {
                 throw new Syj_Exception_Forbidden();
             } else {
