@@ -66,7 +66,7 @@ class Syj_Model_PathMapper
     public function save (Syj_Model_Path $path) {
         $data = array(
             'geom'=> (string)$path->geom,
-            'creator'=> $path->creator->id,
+            'creator'=> $path->creator? $path->creator->id: null,
             'title'=> $path->title,
             'creator_ip'=> $path->creatorIp
         );
