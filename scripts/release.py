@@ -26,9 +26,9 @@ def genscripts():
         shutil.copy(path, tmpdir)
 
     # build OpenLayers.js
-    subprocess.call(['python', 'buildUncompressed.py', 'syj'],
+    subprocess.call(['python', 'buildUncompressed.py',
+                     pathjoin(os.getcwd(), "scripts/syj"), pathjoin(tmpdir, "OpenLayers.js")],
                      cwd = 'public/openlayers/openlayers/build')
-    shutil.copy('public/openlayers/openlayers/build/OpenLayers.js', tmpdir)
 
     config = ConfigParser.ConfigParser()
     os.makedirs(pathjoin(TARGET, 'public/js'))
