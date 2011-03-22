@@ -1,0 +1,11 @@
+public/js/img public/img
+public/icons
+library/*.php
+library/Zend/* # will not take .git
+application
+public/*.php
+scripts/cron.php
+scripts/db_auth.sh
+scripts/updategeoip.sh
+scripts/updategeonames.sh
+scripts/crontab.syj .

@@ -1,17 +1,11 @@
 #!/usr/bin/python
 
-TARGET="build"
+__BUILD__="build"
 
 import shutil, os, sys, subprocess, tempfile, tarfile, glob, ConfigParser
 pathjoin = os.path.join
 
-def createdir():
-    if os.path.isdir(TARGET):
-        shutil.rmtree(TARGET, False)
-    os.makedirs(TARGET)
-
 def compress(path):
-    print ("compressing " + path)
     tmpout = tempfile.TemporaryFile()
     subprocess.Popen(['yui-compressor', path], stdout=tmpout).communicate()
     tmpout.seek(0)
@@ -31,11 +25,11 @@ def genscripts():
                      cwd = 'public/openlayers/openlayers/build')
 
     config = ConfigParser.ConfigParser()
-    os.makedirs(pathjoin(TARGET, 'public/js'))
+    os.makedirs(pathjoin(__BUILD__, 'public/js'))
     config.readfp(open('application/configs/medias.ini'))
     for key, value in config.items('production'):
         if key.startswith('scripts.'):
-            outpath = pathjoin(TARGET, 'public/js/' + key[len('scripts.'):] + '.js')
+            outpath = pathjoin(__BUILD__, 'public/js/' + key[len('scripts.'):] + '.js')
             with open(outpath, 'w') as output:
                 for inpath in map(lambda p: pathjoin(tmpdir, p.strip() + '.js'), value.split(',')):
                     with open(inpath) as f:
@@ -43,56 +37,61 @@ def genscripts():
             compress(outpath)
     shutil.rmtree(tmpdir)
 
-def genstyles():
-    directory = pathjoin(TARGET, 'public/css')
-    os.makedirs(directory)
+def install(source, target):
+    if not source:
+        return
+
+    if os.path.isdir(source):
+        if not target:
+            target = source
+        buildtarget = pathjoin(__BUILD__, target)
+        parentdir = os.path.normpath(pathjoin(buildtarget, '..'))
+        if not os.path.isdir(parentdir):
+            os.makedirs(parentdir)
+        shutil.copytree(source, buildtarget)
+
+    elif os.path.exists(source):
+        if not target:
+            target = os.path.dirname(source)
+        buildtarget = os.path.normpath(pathjoin(__BUILD__, target))
+        if not os.path.isdir(buildtarget):
+            os.makedirs(buildtarget)
+        shutil.copy(source, buildtarget)
+
+    else:
+        for item in glob.glob(source):
+            install(item, target)
+
+def main():
+    if os.path.isdir(__BUILD__):
+        shutil.rmtree(__BUILD__, False)
+
+    genscripts()
+
     for path in glob.glob('public/css/*.css'):
-        shutil.copy(path, directory)
-        compress(pathjoin(TARGET, 'public/css', os.path.basename(path)))
+        install(path, None)
+        compress(pathjoin(__BUILD__, 'public/css', os.path.basename(path)))
 
-def genicons():
-    directory = pathjoin(TARGET, 'public/icons')
-    os.makedirs(directory)
-    for path in glob.glob('public/icons/*'):
-        shutil.copy(path, directory)
+    with open("scripts/syj.install") as f:
+        for line in f:
+            line = line.split('#')[0].strip()
+            if not line:
+                continue;
 
-def genolmisc():
-    directory = pathjoin(TARGET, 'public/img')
-    os.makedirs(directory)
-    for path in glob.glob('public/js/img/*'):
-        shutil.copy(path, directory)
+            parts = line.split(' ')
+            if len(parts) > 1:
+                source = parts[0]
+                target = parts[1]
+            else:
+                source = line
+                target = None
 
-def tarbuild():
+            install(source, target)
+
     print "creating syj.tar.gz"
     targz = tarfile.open("build/syj.tar.gz", "w:gz")
-    for path in ["application", "library", "public"]:
-        targz.add(pathjoin(TARGET, path))
+    for path in glob.glob(pathjoin(__BUILD__, '*')):
+        targz.add(path)
     targz.close()
 
-
-def genlibrary():
-    directory = pathjoin(TARGET, 'library')
-    os.makedirs(directory)
-    for path in glob.glob('library/*.php'):
-        shutil.copy(path, directory)
-
-    directory = pathjoin(TARGET, 'library/Zend')
-    os.makedirs(directory)
-    for path in glob.glob('library/Zend/*'): # will not take .git
-        if (os.path.isdir(path)):
-            shutil.copytree(path, pathjoin(directory, os.path.basename(path)))
-        else:
-            shutil.copy(path, directory)
-
-def genmedias():
-    genscripts()
-    genstyles()
-    genicons()
-    genolmisc()
-    genlibrary()
-    shutil.copytree('application', pathjoin(TARGET, 'application'))
-    shutil.copy('public/index.php', pathjoin(TARGET, 'public'))
-    tarbuild()
-
-createdir()
-genmedias()
+main()
