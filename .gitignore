@@ -3,3 +3,4 @@ application/languages/*.po~
 generated/mails.txt
 build/
 scripts/lighttpd.conf
+library/Zend

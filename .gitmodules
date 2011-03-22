@@ -10,9 +10,6 @@
 [submodule "public/prototype"]
 	path = public/prototype
 	url = /var/www/syj/public/prototype
-[submodule "library/Zend"]
-	path = library/Zend
-	url = /var/www/syj/library/Zend
 [submodule "public/simplebox"]
 	path = public/simplebox
 	url = /var/www/syj/public/simplebox
