@@ -1,0 +1,90 @@
+From 9c222d97bff8c4546b3a4947cc9bb79419307c5e Mon Sep 17 00:00:00 2001
+From: arno <arno@renevier.net>
+Date: Mon, 21 Mar 2011 21:12:42 +0100
+Subject: [PATCH 5/5] allow running build.py from any directory
+
+---
+ openlayers/build/build.py             |   17 +++++++++++------
+ openlayers/build/buildUncompressed.py |   16 ++++++++++------
+ 2 files changed, 21 insertions(+), 12 deletions(-)
+
+diff --git a/openlayers/build/build.py b/openlayers/build/build.py
+index 9ca6a1c..4f08216 100755
+--- a/openlayers/build/build.py
++++ b/openlayers/build/build.py
+@@ -1,7 +1,12 @@
+ #!/usr/bin/env python
+ 
+-import sys
+-sys.path.append("../tools")
++import sys, os.path
++
++scriptdir = os.path.dirname(sys.argv[0])
++normpath = lambda p: os.path.normpath(os.path.join(scriptdir, p))
++
++sys.path.append(normpath("../tools"))
++
+ import mergejs
+ import optparse
+ 
+@@ -33,9 +38,9 @@ def build(config_file = None, output_file = None, options = None):
+     if options.compressor and options.compressor in have_compressor:
+         use_compressor = options.compressor
+ 
+-    sourceDirectory = "../lib"
+-    configFilename = "full.cfg"
+-    outputFilename = "OpenLayers.js"
++    sourceDirectory = normpath("../lib")
++    configFilename = normpath("full.cfg")
++    outputFilename = normpath("OpenLayers.js")
+ 
+     if config_file:
+         configFilename = config_file
+@@ -61,7 +66,7 @@ def build(config_file = None, output_file = None, options = None):
+     else: # fallback
+         minimized = merged 
+     print "Adding license file."
+-    minimized = file("license.txt").read() + minimized
++    minimized = file(normpath("license.txt")).read() + minimized
+ 
+     print "Writing to %s." % outputFilename
+     file(outputFilename, "w").write(minimized)
+diff --git a/openlayers/build/buildUncompressed.py b/openlayers/build/buildUncompressed.py
+index fd38aa7..8d59e95 100755
+--- a/openlayers/build/buildUncompressed.py
++++ b/openlayers/build/buildUncompressed.py
+@@ -1,13 +1,17 @@
+ #!/usr/bin/env python
+ 
+-import sys
+-sys.path.append("../tools")
++import sys, os.path
++
++scriptdir = os.path.dirname(sys.argv[0])
++normpath = lambda p: os.path.normpath(os.path.join(scriptdir, p))
++
++sys.path.append(normpath("../tools"))
+ 
+ import jsmin, mergejs
+ 
+-sourceDirectory = "../lib"
+-configFilename = "full.cfg"
+-outputFilename = "OpenLayers.js"
++sourceDirectory = normpath("../lib")
++configFilename = normpath("full.cfg")
++outputFilename = normpath("OpenLayers.js")
+ 
+ if len(sys.argv) > 1:
+     configFilename = sys.argv[1] + ".cfg"
+@@ -17,7 +21,7 @@ if len(sys.argv) > 2:
+ print "Merging libraries."
+ merged = mergejs.run(sourceDirectory, None, configFilename)
+ print "Adding license file."
+-merged = file("license.txt").read() + merged
++merged = file(normpath("license.txt")).read() + merged
+ 
+ print "Writing to %s." % outputFilename
+ file(outputFilename, "w").write(merged)
+-- 
+1.7.4.1
+

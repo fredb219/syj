@@ -1,0 +1,30 @@
+From 78617274b5acad1d89cb3bbe218b2930f9298ae4 Mon Sep 17 00:00:00 2001
+From: arno <arno@renevier.net>
+Date: Mon, 21 Mar 2011 20:11:21 +0100
+Subject: [PATCH 3/5] fixes #2649
+
+---
+ openlayers/lib/OpenLayers/Layer/Vector.js |    7 +++----
+ 1 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/openlayers/lib/OpenLayers/Layer/Vector.js b/openlayers/lib/OpenLayers/Layer/Vector.js
+index d395d0e..904186f 100644
+--- a/openlayers/lib/OpenLayers/Layer/Vector.js
++++ b/openlayers/lib/OpenLayers/Layer/Vector.js
+@@ -762,10 +762,9 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
+      * options - {Object}
+      */
+     destroyFeatures: function(features, options) {
+-        var all = (features == undefined); // evaluates to true if
+-                                           // features is null
+-        if(all) {
+-            features = this.features;
++        var all = (features == undefined);
++        if(all && this.features) {
++            features = this.features.slice();
+         }
+         if(features) {
+             this.removeFeatures(features, options);
+-- 
+1.7.4.1
+

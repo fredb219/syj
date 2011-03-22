@@ -1,0 +1,26 @@
+From b26706080a45b5768112204ab160e7a547027a66 Mon Sep 17 00:00:00 2001
+From: arno <arno@renevier.net>
+Date: Mon, 21 Mar 2011 20:12:09 +0100
+Subject: [PATCH 4/5] fixes #2687
+
+---
+ openlayers/lib/OpenLayers/Lang.js |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/openlayers/lib/OpenLayers/Lang.js b/openlayers/lib/OpenLayers/Lang.js
+index 82230e0..1850705 100644
+--- a/openlayers/lib/OpenLayers/Lang.js
++++ b/openlayers/lib/OpenLayers/Lang.js
+@@ -59,6 +59,9 @@ OpenLayers.Lang = {
+     setCode: function(code) {
+         var lang;
+         if(!code) {
++            code = document.documentElement.getAttribute("lang");
++        }
++        if(!code) {
+             code = (OpenLayers.BROWSER_NAME == "msie") ?
+                 navigator.userLanguage : navigator.language;
+         }
+-- 
+1.7.4.1
+

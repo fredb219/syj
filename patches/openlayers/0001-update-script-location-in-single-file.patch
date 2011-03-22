@@ -1,0 +1,25 @@
+From e6b764e2afc1fdcce8bd35515ea717ea2e2eba3a Mon Sep 17 00:00:00 2001
+From: arno <arno@renevier.net>
+Date: Mon, 21 Mar 2011 19:12:49 +0100
+Subject: [PATCH 1/5] update script location in single file
+
+---
+ openlayers/lib/OpenLayers.js |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/openlayers/lib/OpenLayers.js b/openlayers/lib/OpenLayers.js
+index af46000..0a42abd 100644
+--- a/openlayers/lib/OpenLayers.js
++++ b/openlayers/lib/OpenLayers.js
+@@ -28,7 +28,7 @@
+     /**
+      * Relative path of this script.
+      */
+-    var scriptName = (!singleFile) ? "lib/OpenLayers.js" : "OpenLayers.js";
++    var scriptName = "OpenLayers.js";
+ 
+     /*
+      * If window.OpenLayers isn't set when this script (OpenLayers.js) is
+-- 
+1.7.4.1
+

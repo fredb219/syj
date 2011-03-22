@@ -1,0 +1,29 @@
+From f738bc5fed1dbc67177cdd7066713ee68bcf8df8 Mon Sep 17 00:00:00 2001
+From: arno <arno@renevier.net>
+Date: Mon, 21 Mar 2011 19:57:20 +0100
+Subject: [PATCH 2/5] xyz-wrapdateline: fixes #2246
+
+---
+ openlayers/lib/OpenLayers/Layer/XYZ.js |    6 ++++++
+ 1 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/openlayers/lib/OpenLayers/Layer/XYZ.js b/openlayers/lib/OpenLayers/Layer/XYZ.js
+index d8cbf53..95769bb 100644
+--- a/openlayers/lib/OpenLayers/Layer/XYZ.js
++++ b/openlayers/lib/OpenLayers/Layer/XYZ.js
+@@ -147,6 +147,12 @@ OpenLayers.Layer.XYZ = OpenLayers.Class(OpenLayers.Layer.Grid, {
+         var z = this.serverResolutions != null ?
+             OpenLayers.Util.indexOf(this.serverResolutions, res) :
+             this.map.getZoom() + this.zoomOffset;
++        var limit = Math.pow(2, z);
++
++        if (this.wrapDateLine)
++        {
++            x = ((x % limit) + limit) % limit;
++        }
+ 
+         return {'x': x, 'y': y, 'z': z};
+     },
+-- 
+1.7.4.1
+
