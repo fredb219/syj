@@ -1,6 +1,3 @@
-[submodule "public/openlayers"]
-	path = public/openlayers
-	url = http://github.com/ccnmtl/openlayers.git
 [submodule "public/modifiablepath"]
 	path = public/modifiablepath
 	url = git://github.com/arenevier/ModifiablePath.git
