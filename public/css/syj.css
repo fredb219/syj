@@ -262,7 +262,7 @@ body, html {
       size: landscape;
     }
 
-    #message, #data_controls, #login_controls, #user_area, #login_area, #newpwd_area, .olControlPanZoom{
+    #message, #menu, #user_area, #login_area, #newpwd_area, .olControlPanZoom{
         display: none;
     }
 }

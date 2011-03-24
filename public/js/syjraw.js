@@ -11,6 +11,12 @@ var styleMap = {
     })
 };
 
+function resizeMap() {
+    var map = document.getElementById('map');
+    map.style.width = map.offsetWidth.toString() + 'px';
+    map.style.height = map.offsetHeight.toString() + 'px';
+}
+
 function init() {
     var map = new OpenLayers.Map('map', {
                 controls: [ new OpenLayers.Control.Attribution() ],
@@ -31,8 +37,12 @@ function init() {
     extent = viewLayer.getDataExtent();
     map.updateSize();
     map.zoomToExtent(extent);
-
+    resizeMap();
 }
+
+window.onresize = function() {
+    resizeMap();
+};
 
 if (window.addEventListener) {
     window.addEventListener("load", init, false);
