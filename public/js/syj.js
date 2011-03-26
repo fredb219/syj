@@ -100,7 +100,12 @@ var SYJDataUi = (function() {
             if (!infotoggler) {
                 infotoggler = new Toggler('path-infos-content');
                 $("path-infos-toggler").insert({bottom: infotoggler.element});
-                $("path-infos-anchor").observe('click', function(evt) {
+                var anchor = $("path-infos-anchor");
+                var parent = anchor.up('.menu-item');
+                if (parent) {
+                    anchor = parent;
+                }
+                anchor.observe('click', function(evt) {
                     evt.stop();
                     infotoggler.toggle(evt);
                 });
@@ -658,7 +663,12 @@ var SYJModalClass = Class.create({
             closeMethods: ["onescapekey", "onouterclick", "onbutton"]
         });
 
-        $(this.type + "_control_anchor").observe("click", function(evt) {
+        var anchor = $(this.type + '_control_anchor');
+        var parent = anchor.up('.menu-item');
+        if (parent) {
+            anchor = parent;
+        }
+        anchor.observe("click", function(evt) {
             this.modalbox.show();
             evt.stop();
         }.bindAsEventListener(this));

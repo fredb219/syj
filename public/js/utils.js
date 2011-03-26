@@ -438,10 +438,16 @@ Element.addMethods('div', {
     },
 
     setMessageStatus: function(div, status) {
-        return div.removeClassName('error').
-                removeClassName('warn').
-                removeClassName('info').
-                removeClassName('success').
-                addClassName(status);
+        $A(["error", "warn", "info", "success", "optional"]).each(function(clname) {
+            div.removeClassName(clname);
+        });
+        if (typeof status === "string") {
+            div.addClassName(status);
+        } else {
+            $A(status).each(function(clname) {
+                div.addClassName(clname);
+            });
+        }
+        return div;
     }
 });

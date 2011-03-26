@@ -11,6 +11,7 @@ class IdxController extends Zend_Controller_Action
         $this->view->headLink()->appendStylesheet('css/generic.css', "screen");
         $this->view->headLink()->appendStylesheet('css/syj.css', "screen");
         $this->view->headLink()->appendStylesheet('css/syjprint.css', "print");
+        $this->view->headMeta()->appendName('viewport', 'width=640px');
     }
 
     public function rawmode(Syj_Model_Path $path) {
