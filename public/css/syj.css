@@ -261,16 +261,3 @@ body, html {
     opacity: 1;
     filter:alpha(opacity=100);
 }
-
-/*
- * printing
- */
-@media print {
-    @page {
-      size: landscape;
-    }
-
-    #message, #menu, #user_area, #login_area, #newpwd_area, .olControlPanZoom{
-        display: none;
-    }
-}

@@ -7,9 +7,9 @@ class IdxController extends Zend_Controller_Action
 
     public function init() {
         $this->_helper->SyjMedias->addScripts('idx');
-        $this->view->headLink()->appendStylesheet('css/olstyle.css', "screen");
-        $this->view->headLink()->appendStylesheet('css/generic.css', "screen");
-        $this->view->headLink()->appendStylesheet('css/syj.css', "screen");
+        $this->view->headLink()->appendStylesheet('css/olstyle.css', "all");
+        $this->view->headLink()->appendStylesheet('css/generic.css', "all");
+        $this->view->headLink()->appendStylesheet('css/syj.css', "all");
         $this->view->headLink()->appendStylesheet('css/syjprint.css', "print");
         $this->view->headMeta()->appendName('viewport', 'width=640px');
     }
