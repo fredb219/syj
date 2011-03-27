@@ -14,7 +14,7 @@ class Syj_Form_Geom extends Zend_Form implements Syj_Processor_Interface
 
         $data = array('Hidden', 'geom_data', array('required' => true, 'decorators' => array('ViewHelper', 'Errors')));
 
-        $upload = array('File', 'geom_upload', array("label" => $translator->translate("choose route from a file"),
+        $upload = array('File', 'geom_upload', array("label" => $translator->translate("Draw journey on the map or choose one from a file"),
                                         'validators' => array(),
                                         'ignoreNoFile' => true,
                                         'decorators' => array(
