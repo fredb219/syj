@@ -1,4 +1,7 @@
-<!doctype html>
+<?php
+    $doctype = $this->getHelper('Doctype')->setDoctype('HTML5');
+    echo $doctype . PHP_EOL;
+?>
 <html lang="<?php echo $this->localeShort();?>">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
