@@ -9,3 +9,4 @@ scripts/db_auth.sh
 scripts/updategeoip.sh
 scripts/updategeonames.sh
 scripts/crontab.syj .
+scripts/lighttpd.conf .
