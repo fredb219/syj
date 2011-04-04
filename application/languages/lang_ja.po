@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-27 10:56+0200\n"
+"POT-Creation-Date: 2011-04-04 13:02+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: S.Higashi <s_higash@mua.biglobe.ne.jp>\n"
 "Language: \n"
@@ -767,8 +767,8 @@ msgid "contact"
 msgstr "連絡先"
 
 #: application/layouts/scripts/footer.phtml:97
-msgid "faq"
-msgstr "FAQ"
+msgid "help"
+msgstr ""
 
 #: application/forms/Login.php:9
 msgid "user"
@@ -914,3 +914,6 @@ msgid ""
 msgstr ""
 "アカウント作成をキャンセルするには、次のボタンを押してください。アカウントと"
 "そのデータは全て削除されます。"
+
+#~ msgid "faq"
+#~ msgstr "FAQ"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-27 10:56+0200\n"
+"POT-Creation-Date: 2011-04-04 13:02+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -674,8 +674,8 @@ msgid "contact"
 msgstr "contact"
 
 #: application/layouts/scripts/footer.phtml:97
-msgid "faq"
-msgstr "faq"
+msgid "help"
+msgstr "aide"
 
 #: application/forms/Login.php:9
 msgid "user"
@@ -803,3 +803,6 @@ msgstr "Quelqu'un, probablement vous, a enregistré un compte %s avec l'adresse 
 #: application/forms/Pending/ValidateCreation.php:24
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "Pour annuler la création du compte, pressez le bouton suivant. Le compte ainsi que toutes ses données seront supprimés."
+
+#~ msgid "faq"
+#~ msgstr "faq"
