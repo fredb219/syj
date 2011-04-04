@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 13:02+0200\n"
+"POT-Creation-Date: 2011-04-04 13:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -51,12 +51,12 @@ msgid "SYJ needs javascript. Please activate scripts in your browser."
 msgstr "SYJ needs javascript. Please activate scripts in your browser."
 
 #: application/views/scripts/idx/index.phtml:21
-msgid "Welcome on Syj."
-msgstr "Welcome on Syj."
+msgid "To create a journey, press <strong>\"start a route\"</strong> button, then click on the map to add points. To delete a point, hold shift pressed while clicking on it."
+msgstr "To create a journey, press <strong>\"start a route\"</strong> button, then click on the map to add points. To delete a point, hold shift pressed while clicking on it."
 
 #: application/views/scripts/idx/index.phtml:23
-msgid "To create a journey, just press <strong>\"start a route\"</strong> button, then click on the map to add points to your route. You can zoom and move the map with the controls in the top left corner"
-msgstr "To create a journey, just press <strong>\"start a route\"</strong> button, then click on the map to add points to your route. You can zoom and move the map with the controls in the top left corner"
+msgid "You can zoom and move the map with the controls in the top left corner."
+msgstr "You can zoom and move the map with the controls in the top left corner."
 
 #: application/views/scripts/idx/index.phtml:25
 msgid "When you have finished a path, press \"create\", button."
@@ -801,6 +801,9 @@ msgstr "Someone, probably you, has registered an account %s with email address %
 #: application/forms/Pending/ValidateCreation.php:24
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "To cancel account creation, press following button. The account and all its data will be deleted."
+
+#~ msgid "Welcome on Syj."
+#~ msgstr "Welcome on Syj."
 
 #~ msgid "faq"
 #~ msgstr "faq"

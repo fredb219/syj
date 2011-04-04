@@ -18,9 +18,9 @@ if ($this->errorMsg) {
     $message .= $this->errorMsg;
     $msgclass = "error";
 } else if (!$this->path and !$this->loggedUser) {
-    $message .= $this->translate('Welcome on Syj.');
+    $message .= $this->translate('To create a journey, press <strong>"start a route"</strong> button, then click on the map to add points. To delete a point, hold shift pressed while clicking on it.');
     $message .= "<br>";
-    $message .= $this->translate('To create a journey, just press <strong>"start a route"</strong> button, then click on the map to add points to your route. You can zoom and move the map with the controls in the top left corner');
+    $message .= $this->translate('You can zoom and move the map with the controls in the top left corner.');
     $message .= "<br>";
     $message .= $this->translate('When you have finished a path, press "create", button.');
     $msgclass = "info optional";

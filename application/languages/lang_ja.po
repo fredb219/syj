@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 13:02+0200\n"
+"POT-Creation-Date: 2011-04-04 13:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: S.Higashi <s_higash@mua.biglobe.ne.jp>\n"
 "Language: \n"
@@ -49,18 +49,19 @@ msgstr ""
 "てください"
 
 #: application/views/scripts/idx/index.phtml:21
-msgid "Welcome on Syj."
-msgstr "Syjへようこそ。"
-
-#: application/views/scripts/idx/index.phtml:23
+#, fuzzy
 msgid ""
-"To create a journey, just press <strong>\"start a route\"</strong> button, "
-"then click on the map to add points to your route. You can zoom and move the "
-"map with the controls in the top left corner"
+"To create a journey, press <strong>\"start a route\"</strong> button, then "
+"click on the map to add points. To delete a point, hold shift pressed while "
+"clicking on it."
 msgstr ""
 "旅の記録を作成するには、まず<strong>\"ルート開始\"</strong> ボタンを押してく"
 "ださい。そしてマップをクリックしながらルートに沿ってポイントを追加してくださ"
 "い。画面左上のコントロールでマップのズームや移動ができます"
+
+#: application/views/scripts/idx/index.phtml:23
+msgid "You can zoom and move the map with the controls in the top left corner."
+msgstr ""
 
 #: application/views/scripts/idx/index.phtml:25
 msgid "When you have finished a path, press \"create\", button."
@@ -914,6 +915,9 @@ msgid ""
 msgstr ""
 "アカウント作成をキャンセルするには、次のボタンを押してください。アカウントと"
 "そのデータは全て削除されます。"
+
+#~ msgid "Welcome on Syj."
+#~ msgstr "Syjへようこそ。"
 
 #~ msgid "faq"
 #~ msgstr "FAQ"

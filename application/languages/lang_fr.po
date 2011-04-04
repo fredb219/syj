@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 13:02+0200\n"
+"POT-Creation-Date: 2011-04-04 13:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -51,12 +51,12 @@ msgid "SYJ needs javascript. Please activate scripts in your browser."
 msgstr "SYJ a besoin de javascript pour fonctionner. Veuillez activer les scripts dans votre navigateur."
 
 #: application/views/scripts/idx/index.phtml:21
-msgid "Welcome on Syj."
-msgstr "Bienvenue sur Syj."
+msgid "To create a journey, press <strong>\"start a route\"</strong> button, then click on the map to add points. To delete a point, hold shift pressed while clicking on it."
+msgstr "Pour créer un trajet, pressez le bouton <strong>\"commencer un itinéraire\"</strong> puis cliquez sur la carte pour ajouter des points à votre tracé. Pour supprimer un point, maintenant shift enfoncé en cliquant sur ce point."
 
 #: application/views/scripts/idx/index.phtml:23
-msgid "To create a journey, just press <strong>\"start a route\"</strong> button, then click on the map to add points to your route. You can zoom and move the map with the controls in the top left corner"
-msgstr "Pour créer un trajet, pressez simplement le bouton <strong>\"commencer un itinéraire\"</strong> puis cliquez sur la carte pour ajouter des points à votre tracé. Vous pouvez zoomer et bouger la carte avec les boutons en haut à gauche."
+msgid "You can zoom and move the map with the controls in the top left corner."
+msgstr "Vous pouvez zoomer et bouger la carte avec les boutons en haut à gauche."
 
 #: application/views/scripts/idx/index.phtml:25
 msgid "When you have finished a path, press \"create\", button."
@@ -803,6 +803,9 @@ msgstr "Quelqu'un, probablement vous, a enregistré un compte %s avec l'adresse 
 #: application/forms/Pending/ValidateCreation.php:24
 msgid "To cancel account creation, press following button. The account and all its data will be deleted."
 msgstr "Pour annuler la création du compte, pressez le bouton suivant. Le compte ainsi que toutes ses données seront supprimés."
+
+#~ msgid "Welcome on Syj."
+#~ msgstr "Bienvenue sur Syj."
 
 #~ msgid "faq"
 #~ msgstr "faq"
