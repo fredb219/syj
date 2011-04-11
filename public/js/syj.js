@@ -288,7 +288,11 @@ var SYJView = {
             theme: null
         });
 
-        baseLayer = new OpenLayers.Layer.OSM("OSM", null, { wrapDateLine: true , attribution: SyjStrings.osmAttribution });
+        baseLayer = new OpenLayers.Layer.OSM("OSM", [
+                'http://a.tile.openstreetmap.org/${z}/${x}/${y}.png',
+                'http://b.tile.openstreetmap.org/${z}/${x}/${y}.png',
+                'http://c.tile.openstreetmap.org/${z}/${x}/${y}.png'],
+                { wrapDateLine: true , attribution: SyjStrings.osmAttribution });
 
         layerOptions = {format:     OpenLayers.Format.WKT,
                         projection: WGS84,
