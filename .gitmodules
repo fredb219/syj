@@ -6,7 +6,7 @@
 	url = git://github.com/arenevier/gisconverter.php
 [submodule "public/prototype"]
 	path = public/prototype
-	url = /var/www/syj/public/prototype
+	url = git://github.com/sstephenson/prototype.git
 [submodule "public/simplebox"]
 	path = public/simplebox
-	url = /var/www/syj/public/simplebox
+	url = git://github.com/arenevier/simplebox.git
