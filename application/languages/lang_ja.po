@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 13:05+0200\n"
+"POT-Creation-Date: 2011-04-12 23:13+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: S.Higashi <s_higash@mua.biglobe.ne.jp>\n"
 "Language: \n"
@@ -110,12 +110,12 @@ msgid "gpx export"
 msgstr "gpxにエクスポート"
 
 #: application/views/scripts/idx/index.phtml:112
-#: application/controllers/IdxController.php:182
+#: application/controllers/IdxController.php:183
 msgid "duplicate"
 msgstr "複製"
 
 #: application/views/scripts/idx/index.phtml:114
-#: application/controllers/IdxController.php:180
+#: application/controllers/IdxController.php:181
 msgid "edit"
 msgstr "編集"
 
@@ -572,7 +572,7 @@ msgstr "Hi,"
 #: application/controllers/ContactController.php:121
 #: application/controllers/NewpwdController.php:68
 #: application/controllers/AccountController.php:70
-#: application/controllers/IdxController.php:184
+#: application/controllers/IdxController.php:185
 msgid "Value is required"
 msgstr "値が必要です"
 
@@ -736,30 +736,37 @@ msgid "route by"
 msgstr "ルート作成者"
 
 #: application/controllers/IdxController.php:177
+msgid ""
+"Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> "
+"and contributors, <a href='http://creativecommons.org/licenses/by-"
+"sa/2.0/'>CC-BY-SA</a>"
+msgstr ""
+
+#: application/controllers/IdxController.php:178
 msgid "checking availibilty"
 msgstr "利用可能かチェック中"
 
-#: application/controllers/IdxController.php:178
+#: application/controllers/IdxController.php:179
 msgid "available pseudo"
 msgstr "利用出来るID"
 
-#: application/controllers/IdxController.php:179
+#: application/controllers/IdxController.php:180
 msgid "unavailable pseudo"
 msgstr "利用できないID"
 
-#: application/controllers/IdxController.php:181
+#: application/controllers/IdxController.php:182
 msgid "create"
 msgstr "作成"
 
-#: application/controllers/IdxController.php:183
+#: application/controllers/IdxController.php:184
 msgid "You have an unsaved route"
 msgstr "保存されていないルートがあります"
 
-#: application/controllers/IdxController.php:185
+#: application/controllers/IdxController.php:186
 msgid "no result"
 msgstr "結果がありません"
 
-#: application/controllers/IdxController.php:186
+#: application/controllers/IdxController.php:187
 msgid "could not analyze file content"
 msgstr "ファイル内容を分析できませんでした"
 

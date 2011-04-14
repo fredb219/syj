@@ -1,7 +1,7 @@
 /*  This file is part of Syj, Copyright (c) 2010-2011 Arnaud Renevier,
     and is published under the AGPL license. */
 
-.olControlPanZoom, .olControlAttribution {
+.olControlPanZoom, .olControlAttribution, .olControlLayerSwitcher {
     display: none;
 }
 #message, #other-language, #menu, #user_area, #login_area, #newpwd_area, #termsofusearea, #footer, #map-overlay {

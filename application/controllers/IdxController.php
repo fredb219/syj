@@ -149,6 +149,7 @@ class IdxController extends Zend_Controller_Action
     protected function _jsRawLocaleStrings() {
         $this->view->jslocales = array(
             'osmAttribution' => __("Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"),
+            'mapquestAttribution' => __("Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"),
             );
     }
 
@@ -174,6 +175,7 @@ class IdxController extends Zend_Controller_Action
             'canResubmit' => __("Now, you can retry to save"),
             'routeBy' => __("route by"),
             'osmAttribution' => __("Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"),
+            'mapquestAttribution' => __("Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"),
             'pseudoChecking' => __("checking availibilty"),
             'availablePseudo' => __("available pseudo"),
             'unavailablePseudo' => __("unavailable pseudo"),

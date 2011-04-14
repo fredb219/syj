@@ -10,6 +10,9 @@
 - pseudo.gif files has been generated with http://ajaxload.info/ generator and
   is free for use.
 
+- layer-switcher-maximize-flipped.png is a flipped version of
+  layer-switcher-maximize.png from OpenLayers. As such it is licensed under a
+  modified BSD license.
 
 
 ===============================================================================
