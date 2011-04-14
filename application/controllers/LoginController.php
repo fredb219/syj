@@ -56,7 +56,7 @@ class LoginController extends Zend_Controller_Action
                 if (!$pathMapper->find((int)$login_geom_id, $path)) {
                     throw new Syj_Exception_Request();
                 }
-                $data['iscreator'] = ($path->creator->id === $userid);
+                $data['iscreator'] = ($path->creator->id === $user->id);
             } else {
                 $data['iscreator'] = true;
             }

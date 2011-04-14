@@ -10,11 +10,8 @@ echo '<div id="footer-padding"></div>' . PHP_EOL;
 
 $front = Zend_Controller_Front::getInstance();
 $reqParams = $front->getRequest()->getParams();
-if ($reqParams['controller'] == 'idx' and (!isset($reqParams['url']))) {
-    $mainpage = true;
-} else {
-    $mainpage = false;
-}
+
+$mainpage = ($reqParams['controller'] === 'idx') and (!isset($reqParams['url']));
 
 $content = $this->translate("create a route");
 $link = ($mainpage) ? $this->escape($content) : $this->anchor($this->baseUrl(), $content, array('class' => 'footer-anchor'));
@@ -33,7 +30,7 @@ echo $this->footerLink(array(
 /*
  * account link
  */
-if ($mainpage or $this->loggedUser) {
+if ($this->loginform or $this->loggedUser) {
     echo $this->footerLink(array(
             'route' => 'account',
             'action'     => 'index',
@@ -47,7 +44,7 @@ if ($mainpage or $this->loggedUser) {
 /*
  * list link
  */
-if ($mainpage or $this->loggedUser) {
+if ($this->loginform or $this->loggedUser) {
     echo $this->footerLink(array(
             'route' => 'list',
             'action'     => 'index',
@@ -59,7 +56,7 @@ if ($mainpage or $this->loggedUser) {
 /*
  * login or logout links
  */
-if (!$mainpage) {
+if (!$this->loginform) {
     if ($this->loggedUser) {
 
         echo $this->footerLink(array(
