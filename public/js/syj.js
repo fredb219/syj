@@ -512,13 +512,6 @@ var SYJView = {
         } else {
             this.map.setCenter(center, zoom);
         }
-        this.resizeMap();
-    },
-
-    resizeMap: function() {
-        var map = $('map');
-        map.style.width = map.offsetWidth.toString() + 'px';
-        map.style.height = map.offsetHeight.toString() + 'px';
     },
 
     observer: function(evt) {
@@ -1354,8 +1347,4 @@ window.onbeforeunload = function() {
     } else {
         return undefined;
     }
-};
-
-window.onresize = function() {
-    SYJView.resizeMap();
 };
