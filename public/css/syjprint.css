@@ -4,7 +4,7 @@
 .olControlPanZoom, .olControlAttribution, .olControlLayerSwitcher {
     display: none;
 }
-#message, #other-language, #menu, #user_area, #login_area, #newpwd_area, #termsofusearea, #footer, #map-overlay {
+#message, #other-language, #menu, #user_area, #login_area, #newpwd_area, #termsofusearea, footer, #map-overlay {
     display: none;
 }
 

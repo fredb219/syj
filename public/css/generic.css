@@ -76,7 +76,7 @@ input {
 /*
  * footer
  */
-#footer {
+footer {
     position: fixed;
     _position: absolute;
     bottom: 0px;

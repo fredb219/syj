@@ -1,5 +1,7 @@
 <?php
-echo '<div id="footer">' . PHP_EOL;
+
+echo '<!--[if IE]><script>document.createElement("footer");</script><![endif]-->' . PHP_EOL;
+echo '<footer>' . PHP_EOL;
 echo '<div id="footer-padding"></div>' . PHP_EOL;
 
 /*
@@ -97,6 +99,6 @@ echo $this->footerLink(array(
     $this->translate("help"),
     false);
 
-echo '</div>' . PHP_EOL;
+echo '</footer>' . PHP_EOL;
 
 ?>
