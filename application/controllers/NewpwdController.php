@@ -7,9 +7,7 @@ class NewpwdController extends Zend_Controller_Action
 
     public function init() {
         $this->_helper->SyjMedias->addScripts('newpwd');
-        $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
-        $this->view->headLink()->appendStylesheet('css/form.css', 'all');
-        $this->view->headLink()->appendStylesheet('css/newpwd.css', 'all');
+        $this->_helper->SyjMedias->addStyleSheets('newpwd');
     }
 
     public function indexAction() {

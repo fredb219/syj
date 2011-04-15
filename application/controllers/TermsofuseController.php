@@ -5,8 +5,7 @@
 class TermsofuseController extends Zend_Controller_Action
 {
     public function indexAction() {
-        $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
-        $this->view->headLink()->appendStylesheet('css/termsofuse.css', 'all');
+        $this->_helper->SyjMedias->addStyleSheets('termsofuse');
         $this->view->headTitle($this->view->translate("terms of use"));
         $this->view->rawmode = ($this->getRequest()->getQuery('format') == 'raw');
     }

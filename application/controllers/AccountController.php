@@ -8,10 +8,8 @@ class AccountController extends Zend_Controller_Action
     public function init() {
         $this->_helper->SyjUserManager->needsLogin();
         $this->_helper->SyjMedias->addScripts('account');
+        $this->_helper->SyjMedias->addStyleSheets('account');
 
-        $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
-        $this->view->headLink()->appendStylesheet('css/form.css', 'all');
-        $this->view->headLink()->appendStylesheet('css/account.css', 'all');
         $this->view->headTitle($this->view->translate("my account"));
     }
 

@@ -9,9 +9,8 @@ class ListController extends Zend_Controller_Action
         $this->_helper->SyjUserManager->needsLogin();
 
         $this->_helper->SyjMedias->addScripts('list');
+        $this->_helper->SyjMedias->addStyleSheets('list');
 
-        $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
-        $this->view->headLink()->appendStylesheet('css/list.css', 'all');
         $this->view->headTitle($this->view->translate("my routes"));
     }
 

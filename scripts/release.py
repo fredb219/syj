@@ -5,6 +5,28 @@ __BUILD__="build"
 import shutil, os, sys, subprocess, tempfile, tarfile, glob, ConfigParser
 pathjoin = os.path.join
 
+def updateversion():
+    try:
+        import git
+        repo = git.Repo('.')
+        master = repo.commits()[0]
+        tag = (filter(lambda tag: tag.commit.id == master.id, repo.tags) or [""])[0]
+        if tag:
+            version = tag.name
+    except ImportError:
+        version = subprocess.Popen(['git', 'tag', '-l', '--contains', 'master'], stdout=subprocess.PIPE).communicate()[0][:-1]
+    if not version:
+        raise AssertionError, "master is not tagged"
+
+    fd, fname = tempfile.mkstemp()
+    f = os.fdopen(fd, 'w')
+    versionfile = 'build/application/Version.php'
+    with open('build/application/Version.php') as source:
+        for line in source:
+            f.write(line.replace('$SYJVERSION$', version))
+    f.close()
+    shutil.move(fname, versionfile)
+
 def compress(path):
     tmpout = tempfile.TemporaryFile()
     subprocess.Popen(['yui-compressor', path], stdout=tmpout).communicate()
@@ -87,6 +109,8 @@ def main():
                 target = None
 
             install(source, target)
+
+    updateversion()
 
     print "creating syj.tar.gz"
     targz = tarfile.open("build/syj.tar.gz", "w:gz")

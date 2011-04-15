@@ -10,8 +10,7 @@ class ErrorController extends Zend_Controller_Action
 
     public function init() {
         $this->_helper->SyjReset->resetPlaceHolders();
-        $this->view->headLink()->appendStylesheet('css/generic.css', 'all');
-        $this->view->headLink()->appendStylesheet('css/error.css', 'all');
+        $this->_helper->SyjMedias->addStyleSheets('error');
     }
 
     public function errorAction() {

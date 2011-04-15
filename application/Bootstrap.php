@@ -30,6 +30,18 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         if (strpos ($class, "Syj_") === 0) {
             $segments = explode ('_', $class);
 
+            if (count($segments) < 2) {
+                return;
+            }
+
+            if (count($segments) == 2) {
+                $filename = APPLICATION_PATH . '/' . end($segments) . '.php';
+                if (Zend_Loader::isReadable($filename)) {
+                    include_once $filename;
+                }
+                return;
+            }
+
             if (count($segments) < 3) {
                 return;
             }

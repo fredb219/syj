@@ -7,20 +7,15 @@ class IdxController extends Zend_Controller_Action
 
     public function init() {
         $this->_helper->SyjMedias->addScripts('idx');
-        $this->view->headLink()->appendStylesheet('css/olstyle.css', "all");
-        $this->view->headLink()->appendStylesheet('css/generic.css', "all");
-        $this->view->headLink()->appendStylesheet('css/syj.css', "all");
-        $this->view->headLink()->appendStylesheet('css/syjprint.css', "print");
+        $this->_helper->SyjMedias->addStyleSheets('idx');
         $this->view->headMeta()->appendName('viewport', 'width=640px');
     }
 
     public function rawmode(Syj_Model_Path $path) {
         $this->_helper->SyjReset->resetPlaceHolders();
         $this->_helper->SyjMedias->addScripts('rawidx');
+        $this->_helper->SyjMedias->addStyleSheets('rawidx');
 
-        $this->view->headLink()->appendStylesheet('css/generic.css', "screen");
-        $this->view->headLink()->appendStylesheet('css/syjraw.css', "screen");
-        $this->view->headLink()->appendStylesheet('css/syjprint.css', "print");
         $this->view->headTitle($path->displayTitle);
 
         $this->_jsRawLocaleStrings();

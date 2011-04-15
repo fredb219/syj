@@ -1,0 +1,26 @@
+/*  This file is part of Syj, Copyright (c) 2010-2011 Arnaud Renevier,
+    and is published under the AGPL license. */
+body, html {
+    margin: 0; padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/*  This file is part of Syj, Copyright (c) 2010-2011 Arnaud Renevier,
+    and is published under the AGPL license. */
+
+#map {
+    border: 1px solid;
+    position: static;
+    margin: 0;
+}
+
+@page {
+  size: landscape;
+}
+
+.olControlAttribution {
+    bottom: 0.5em;
+    left: 0.5em;
+    font-size: smaller;
+}
