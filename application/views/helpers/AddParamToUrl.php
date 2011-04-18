@@ -9,9 +9,10 @@ class Syj_View_Helper_AddParamToUrl extends Zend_View_Helper_Abstract
             return $url . '?' . $param . '=' . $this->view->escape($value);
         }
 
-        $parts = explode('&', substr(strstr($url, '?'), 1));
+        $query = parse_url($url, PHP_URL_QUERY);
+        $parts = explode('&', $query);
 
-        foreach (explode('&', substr(strstr($url, '?'), 1)) as $key => $part) {
+        foreach (explode('&', $query) as $key => $part) {
             if (substr($part, 0, strlen($param . '=')) === ($param . '=')) {
                 if ($replace) {
                     unset($parts[$key]);
