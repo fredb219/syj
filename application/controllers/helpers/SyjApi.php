@@ -78,8 +78,8 @@ class Syj_Controller_Action_Helper_SyjApi extends Zend_Controller_Action_Helper_
     public function postDispatch() {
         $response = $this->getResponse();
 
-        $response->setHeader('Content-Type', $this->_contentType)
-                 ->setHeader('Content-Length', strlen($this->_body));
+        $response->setHeader('Content-Type', $this->_contentType, true)
+                 ->setHeader('Content-Length', strlen($this->_body), true);
 
         if ($this->_checkIfNoneMatch) {
             $request = $this->getRequest();
