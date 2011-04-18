@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-12 23:13+0200\n"
+"POT-Creation-Date: 2011-04-04 13:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -106,12 +106,12 @@ msgid "gpx export"
 msgstr "gpx export"
 
 #: application/views/scripts/idx/index.phtml:112
-#: application/controllers/IdxController.php:183
+#: application/controllers/IdxController.php:182
 msgid "duplicate"
 msgstr "duplicate"
 
 #: application/views/scripts/idx/index.phtml:114
-#: application/controllers/IdxController.php:181
+#: application/controllers/IdxController.php:180
 msgid "edit"
 msgstr "edit"
 
@@ -476,7 +476,7 @@ msgstr "Hi,"
 #: application/controllers/ContactController.php:121
 #: application/controllers/NewpwdController.php:68
 #: application/controllers/AccountController.php:70
-#: application/controllers/IdxController.php:185
+#: application/controllers/IdxController.php:184
 msgid "Value is required"
 msgstr "Value is required"
 
@@ -640,34 +640,30 @@ msgid "route by"
 msgstr "route by"
 
 #: application/controllers/IdxController.php:177
-msgid "Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"
-msgstr "Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"
-
-#: application/controllers/IdxController.php:178
 msgid "checking availibilty"
 msgstr "checking availibilty"
 
-#: application/controllers/IdxController.php:179
+#: application/controllers/IdxController.php:178
 msgid "available pseudo"
 msgstr "available pseudo"
 
-#: application/controllers/IdxController.php:180
+#: application/controllers/IdxController.php:179
 msgid "unavailable pseudo"
 msgstr "unavailable pseudo"
 
-#: application/controllers/IdxController.php:182
+#: application/controllers/IdxController.php:181
 msgid "create"
 msgstr "create"
 
-#: application/controllers/IdxController.php:184
+#: application/controllers/IdxController.php:183
 msgid "You have an unsaved route"
 msgstr "You have an unsaved route"
 
-#: application/controllers/IdxController.php:186
+#: application/controllers/IdxController.php:185
 msgid "no result"
 msgstr "no result"
 
-#: application/controllers/IdxController.php:187
+#: application/controllers/IdxController.php:186
 msgid "could not analyze file content"
 msgstr "could not analyze file content"
 

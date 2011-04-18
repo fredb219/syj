@@ -272,7 +272,7 @@ var SYJView = {
     mode: 'view',
 
     init: function() {
-        var externalGraphic, baseURL, osmLayer, layerOptions, hidemessenger, layerCode, parameters;
+        var externalGraphic, baseURL, baseLayer, layerOptions, hidemessenger;
 
         // is svg context, opera does not resolve links with base element is svg context
         externalGraphic = styleMap.edit.styles.select.defaultStyle.externalGraphic;
@@ -283,24 +283,16 @@ var SYJView = {
             controls: [
                 new OpenLayers.Control.Navigation(),
                 new OpenLayers.Control.PanZoom(),
-                this.createLayerSwitcher(),
                 new OpenLayers.Control.Attribution()
             ],
             theme: null
         });
 
-        osmLayer = new OpenLayers.Layer.OSM("OSM", [
+        baseLayer = new OpenLayers.Layer.OSM("OSM", [
                 'http://a.tile.openstreetmap.org/${z}/${x}/${y}.png',
                 'http://b.tile.openstreetmap.org/${z}/${x}/${y}.png',
                 'http://c.tile.openstreetmap.org/${z}/${x}/${y}.png'],
-                { wrapDateLine: true , attribution: SyjStrings.osmAttribution, layerCode: 'O'});
-
-        mapquestLayer = new OpenLayers.Layer.OSM("Mapquest", [
-            'http://otile1.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.png',
-            'http://otile2.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.png',
-            'http://otile3.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.png',
-            'http://otile4.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.png'],
-                { wrapDateLine: true , attribution: SyjStrings.mapquestAttribution, layerCode: 'M'});
+                { wrapDateLine: true , attribution: SyjStrings.osmAttribution });
 
         layerOptions = {format:     OpenLayers.Format.WKT,
                         projection: WGS84,
@@ -308,34 +300,7 @@ var SYJView = {
                         attribution: SyjStrings.geomAttribution };
 
         this.viewLayer = new OpenLayers.Layer.Vector("View Layer", layerOptions);
-        this.map.addLayers([osmLayer, mapquestLayer, this.viewLayer]);
-
-        this.map.setBaseLayer(mapquestLayer);
-        layerCode = null;
-        parameters = OpenLayers.Util.getParameters(window.location.href);
-        if (parameters.layer) {
-            layerCode = parameters.layer;
-            try {
-                store.remove('baselayer');
-            } catch(e) {}
-        } else {
-            try {
-                layerCode = store.get('baselayer');
-            } catch(e) {}
-        }
-
-        if (layerCode) {
-            layerCode = layerCode.toUpperCase();
-            var self = this;
-            $([osmLayer, mapquestLayer]).each(function(layer) {
-                if (layer.layerCode === layerCode) {
-                    self.map.setBaseLayer(layer);
-                }
-            });
-        }
-
-
-        this.map.events.register("changebaselayer", this, this.saveBaseLayer);
+        this.map.addLayers([baseLayer, this.viewLayer]);
 
         if ($("edit-btn")) {
             $("edit-btn").observe('click', function() {
@@ -464,33 +429,6 @@ var SYJView = {
 
         document.observe('simplebox:shown', this.observer.bindAsEventListener(this));
         SYJPathLength.update();
-    },
-
-    saveBaseLayer: function(data) {
-        try {
-            store.set('baselayer', data.layer.layerCode);
-        } catch(e) {}
-    },
-
-    createLayerSwitcher: function() {
-        var control = new OpenLayers.Control.LayerSwitcher({roundedCorner: false});
-        // XXX: we need to "live-patch" LayerSwitcher to use our icons. We use
-        // a regexp instead of a string in case OpenLayers is modified and in
-        // case browsers modify the function representation
-        control.loadContents = eval('(function() { return (' + control.loadContents.toString().replace(
-                    /\s*=\s*imgLocation\s*\+\s*['"]layer-switcher-maximize\.png['"]\s*;/,
-                    " = 'icons/layer-switcher-maximize-flipped.png';"
-                    ) + ')}())');
-        var oldMaximizeControl = control.maximizeControl;
-        var self = this;
-        control.maximizeControl = (function(oldfunc) {
-            return function() {
-                oldfunc.apply(control, arguments);
-                self.messenger.hide();
-            };
-        }(control.maximizeControl));
-
-        return control;
     },
 
     initMaPos: function (aPos) {
