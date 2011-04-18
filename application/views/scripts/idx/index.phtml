@@ -85,14 +85,14 @@ if ($this->errorMsg) {
 
                     <div id="path-export-title" class="info-title"><?php echo $this->translate("export")?></div>
                     <div id="path-export-content"><?php
-                       $href = $fullBaseUrl . 'geom/' . urlencode($this->path->id) . '.kml';
+                       $href = $fullBaseUrl . 'geom/' . rawurlencode($this->path->displayTitle) . '.kml';
                        printf('<a href="%s" title="%s">%s</a>',
                                         $href,
                                         $this->translate('kml export'),
                                         $this->translate('kml export'));
 
                         print '<br>';
-                       $href = $fullBaseUrl . 'geom/' . urlencode($this->path->id) . '.gpx';
+                       $href = $fullBaseUrl . 'geom/' . rawurlencode($this->path->displayTitle) . '.gpx';
                        printf('<a href="%s" title="%s">%s</a>',
                                         $href,
                                         $this->translate('gpx export'),

@@ -35,6 +35,12 @@ class Syj_Model_PathMapper
         return $this->_fetchItem($select, $path);
     }
 
+    public function findByTitle($title, Syj_Model_Path $path) {
+        $select = $this->_select();
+        $select->where('title = ?', (string)$title);
+        return $this->_fetchItem($select, $path);
+    }
+
     public function findByUrl($url, Syj_Model_Path $path) {
         $select = $this->_select();
         $select->where('id = ?', (int)$url)->orWhere('urlcomp = ?', (string)$url);

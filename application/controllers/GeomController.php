@@ -28,12 +28,14 @@ class GeomController extends Zend_Controller_Action
         }
 
         if (!$pathMapper->find($idx, $path)) {
-            if ($pathMapper->hasexisted($idx)) {
-                $api->setCode(410);
-            } else {
-                $api->setCode(404);
+            if (!$pathMapper->findByTitle($idx, $path)) {
+                if ($pathMapper->hasexisted($idx)) {
+                    $api->setCode(410);
+                } else {
+                    $api->setCode(404);
+                }
+                return;
             }
-            return;
         }
 
         switch ($ext) {
