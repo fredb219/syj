@@ -8,7 +8,7 @@ class IdxController extends Zend_Controller_Action
     public function init() {
         $this->_helper->SyjMedias->addScripts('idx');
         $this->_helper->SyjMedias->addStyleSheets('idx');
-        $this->view->headMeta()->appendName('viewport', 'width=640px');
+        $this->view->headMeta()->appendName('viewport', 'width=640');
     }
 
     public function rawmode(Syj_Model_Path $path) {
