@@ -11,7 +11,7 @@ echo '<div id="footer-padding"></div>' . PHP_EOL;
 $front = Zend_Controller_Front::getInstance();
 $reqParams = $front->getRequest()->getParams();
 
-$mainpage = ($reqParams['controller'] === 'idx') and (!isset($reqParams['url']));
+$mainpage = ($reqParams['controller'] === 'idx') && (!isset($reqParams['url']));
 
 $content = $this->translate("create a route");
 $link = ($mainpage) ? $this->escape($content) : $this->anchor($this->baseUrl(), $content, array('class' => 'footer-anchor'));
