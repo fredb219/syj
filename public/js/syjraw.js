@@ -19,7 +19,10 @@ function resizeMap() {
 
 function init() {
     var map = new OpenLayers.Map('map', {
-                controls: [ new OpenLayers.Control.Attribution() ],
+                controls: [
+                    new OpenLayers.Control.Navigation(),
+                    new OpenLayers.Control.Attribution()
+                ],
                 theme: null}),
 
          baseLayer = new OpenLayers.Layer.OSM("OSM", null, { attribution: SyjStrings.osmAttribution }),
