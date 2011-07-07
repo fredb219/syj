@@ -1,7 +1,16 @@
+#container {
+    position: absolute;
+    overflow: auto;
+    bottom: 2em;
+    top: 8px;
+    right: 0;
+    left: 0;
+}
+
 .item {
     float: left;
     width: 250px;
-    margin: 0px 10px 10px 10px;
+    margin: 10px 10px 10px 16px;
 }
 
 .geom {
@@ -29,17 +38,18 @@
 }
 
 .page-link {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+    font-size: x-large;
+    font-weight: bold;
+    text-decoration: none;
+}
+.page-link:link, .page-link:visited {
+    color: blue;
 }
 #navigation {
     text-align: center;
-}
-
-footer {
-    position: fixed;
-    z-index: 2000;
-    background-color: white;
+    margin-bottom: 8px;
 }
 
 .noroute {
@@ -69,7 +79,7 @@ footer {
 
 #other-language {
     margin: 10px 10px 20px 20px;
-    /* .item: 108px +.title: 32px + margin-bottom: 10px => 150px */
+    /* .item: 118px +.title: 32px + margin-bottom: 10px => 150px */
     /* margin: 30px + padding: 10px => height = 150 - 40 */
-    height: 110px;
+    height: 120px;
 }

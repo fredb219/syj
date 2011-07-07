@@ -8,11 +8,7 @@
         <p><?php echo $this->translate('SYJ needs javascript. Please activate scripts in your browser.');?></p>
     </noscript>
 
-    <div id="message"></div>
-
-
 <?php
-    print $this->localeSwitcher();
     if ($this->paginator->count() == 0) {
         $link = $this->Anchor($this->baseUrl(), $this->translate ("create a route"), array(), false);
         $noroutecontent = $this->translate("you have created no route yet, you may want to %s", $link);
@@ -20,6 +16,9 @@
         printf ('<div class="warn noroute">%s</div>', $noroutecontent);
         return;
     }
+
+    print '<div id="container">';
+    print '<div id="message"></div>';
 
     $pages = $this->paginator->getPages();
     if (isset($pages->previous) or isset($pages->next)) {
@@ -54,9 +53,10 @@
         print '</div>';
     }
 
-    print '<div id="container">';
-    foreach ($this->paginator as $item) {
 
+    print $this->localeSwitcher();
+
+    foreach ($this->paginator as $item) {
         $map = sprintf('<div class="map" data-geom="%s"></div>', $this->escape($item->geom));
         $href = $this->url(array(
             'controller' => 'idx',
@@ -74,7 +74,7 @@
                 </div>
                 ',
                 (int)$item->id, $maplink, $modifylink,  $deletelink, $this->escape($item->displayTitle));
-
     }
+
     print '</div>';
 ?>
