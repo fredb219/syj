@@ -38,12 +38,6 @@ body, html {
     width: 40%;
     margin: 0px 45% 0px 15%;
     padding: 1.5em 1.5em 0.5em 1.5em;
-    text-align: center;
-    border-width: 2px;
-    border-style: solid;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
 }
 @media screen and (max-width: 640px) {
     #message.optional {

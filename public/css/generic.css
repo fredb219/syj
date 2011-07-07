@@ -10,9 +10,14 @@ body, html {
 /*
  * generic rules
  */
-.message {
+#message {
     text-align: center;
     background-color: white;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
 }
 
 .disabled {

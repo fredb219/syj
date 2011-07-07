@@ -69,12 +69,6 @@
     width: 40%;
     margin: 20px auto 20px auto;
     padding: 1.5em 1.5em 1.5em 1.5em;
-    text-align: center;
-    border-width: 2px;
-    border-style: solid;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
 }
 
 #other-language {
