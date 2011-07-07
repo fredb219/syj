@@ -25,7 +25,6 @@ body, html {
 .olControlAttribution {
     bottom: 0.5em;
     *bottom: 2.5em;
-    _bottom: 3.0em;
     left: 0.5em;
 }
 
