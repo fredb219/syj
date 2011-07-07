@@ -32,7 +32,11 @@ var CloseBtn = Class.create({
             if (typeof options.callback === "function") {
                 options.callback.call(elt);
             }
-            elt.hide();
+            if (typeof elt.clearMessages === "function") {
+                elt.clearMessages();
+            } else {
+                elt.hide();
+            }
         });
     }
 });
@@ -398,19 +402,44 @@ Element.addMethods(['input', 'textarea'], {
     }
 });
 
-Element.addMethods('div', {
-    setMessage: function(div, message, status) {
-        div.clearMessages();
-        if (status) {
-            div.setMessageStatus(status);
-        }
-        if (message) {
-            div.addMessage(message);
-        }
-        return div;
-    },
+Element.addMethods('div', (function() {
+    var supportsTransition = false, endTransitionEventName = null;
 
-    clearMessages: function(div) {
+    if (window.addEventListener) { // fails badly in ie: prevents page from loading
+        var div = $(document.createElement('div'));
+        var timeout = null;
+
+        var cleanup = function() {
+            if (timeout) {
+                window.clearTimeout(timeout);
+                timeout = null;
+                div.stopObserving('webkitTransitionEnd');
+                div.stopObserving('transitionend');
+                div.stopObserving('oTransitionend');
+                Element.remove.defer(div);
+            }
+        }
+
+        var handler = function(e) {
+            supportsTransition = true;
+            endTransitionEventName = e.type;
+            cleanup();
+        }
+        div.observe('webkitTransitionEnd', handler).observe('transitionend', handler) .observe('oTransitionend', handler);
+        div.setStyle({'transitionProperty': 'opacity',
+                      'MozTransitionProperty': 'opacity',
+                      'WebkitTransitionProperty': 'opacity',
+                      'OTransitionProperty': 'opacity',
+                      'transitionDuration': '1ms',
+                      'MozTransitionDuration': '1ms',
+                      'WebkitTransitionDuration': '1ms',
+                      'OTransitionDuration': '1ms'});
+        $(document.documentElement).insert(div);
+        Element.setOpacity.defer(div, 0);
+        window.setTimeout(cleanup, 100);
+    }
+
+    function removeMessages(div) {
         var node = div.firstChild, nextNode;
 
         while (node) {
@@ -420,11 +449,63 @@ Element.addMethods('div', {
             }
                 node = nextNode;
         }
-
         return div;
-    },
+    };
 
-    addMessage: function(div, message) {
+    function hasOpacityTransition(div) {
+        return ([div.getStyle('transition-property'),
+                 div.getStyle('-moz-transition-property'),
+                 div.getStyle('-webkit-transition-property'),
+                 div.getStyle('-o-transition-property')
+                 ].join(' ').split(' ').indexOf('opacity') !== -1);
+    }
+
+    function hide(div) {
+        div = $(div);
+        if (supportsTransition && hasOpacityTransition(div)) {
+            div.observe(endTransitionEventName, function() {
+                div.stopObserving(endTransitionEventName);
+                div.hide();
+            });
+            div.setOpacity(0);
+        } else {
+            div.hide();
+        }
+    }
+
+    function show(div) {
+        div = $(div);
+        div.show();
+        // we need to set opacity to 0 before calling hasOpacityTransition
+        // otherwise we trigger mozilla #601190
+        div.setOpacity(0);
+        if (supportsTransition && hasOpacityTransition(div)) {
+            // display = '' then opacity = 1;
+            Element.setOpacity.defer(div, 1);
+        } else {
+            div.setOpacity(1);
+        }
+    }
+
+    function clearMessages(div) {
+        if (div.visible()) {
+            hide(div);
+        }
+        return div;
+    }
+
+    function setMessage(div, message, status) {
+        removeMessages(div);
+        if (status) {
+            div.setMessageStatus(status);
+        }
+        if (message) {
+            div.addMessage(message);
+        }
+        return div;
+    }
+
+    function addMessage(div, message) {
         var node = (div.ownerDocument || document).createTextNode(message);
 
         if ($A(div.childNodes).filter(function(node) {
@@ -434,10 +515,13 @@ Element.addMethods('div', {
         }
 
         div.appendChild(node);
-        return div.show();
-    },
+        if (!div.visible()) {
+            show(div);
+        }
+        return div;
+    }
 
-    setMessageStatus: function(div, status) {
+    function setMessageStatus(div, status) {
         $A(["error", "warn", "info", "success", "optional"]).each(function(clname) {
             div.removeClassName(clname);
         });
@@ -450,4 +534,12 @@ Element.addMethods('div', {
         }
         return div;
     }
-});
+
+    return {
+        setMessage: setMessage,
+        clearMessages: clearMessages,
+        addMessage: addMessage,
+        setMessageStatus: setMessageStatus
+    };
+
+})());

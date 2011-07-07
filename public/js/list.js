@@ -91,7 +91,7 @@ item.prototype = {
         }
         var id = this.elt.getAttribute('data-id');
 
-        $("message").hide();
+        $("message").clearMessages();
         new Ajax.Request('path/' + id.toString() + '/delete', {
             method: 'post',
             onSuccess: this.deleteSuccess.bind(this),

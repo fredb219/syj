@@ -305,7 +305,7 @@ var SYJView = {
         if ($("edit-btn")) {
             $("edit-btn").observe('click', function() {
                 $("geom_submit").value = SyjStrings.editAction;
-                this.messenger.hide();
+                this.messenger.clearMessages();
                 this.editMode();
                 this.mode = 'edit';
             }.bind(this));
@@ -314,7 +314,7 @@ var SYJView = {
         if ($("create-btn")) {
             $("create-btn").observe('click', function() {
                 $("geom_submit").value = SyjStrings.createAction;
-                this.messenger.hide();
+                this.messenger.clearMessages();
                 this.editMode();
                 this.mode = 'create';
             }.bind(this));
@@ -324,7 +324,7 @@ var SYJView = {
             $("clone-btn").observe('click', function() {
                 $("geom_submit").value = SyjStrings.cloneAction;
                 $("geom_title").value = "";
-                this.messenger.hide();
+                this.messenger.clearMessages();
                 this.editMode();
                 this.mode = 'create';
             }.bind(this));
@@ -454,7 +454,7 @@ var SYJView = {
 
     observer: function(evt) {
         if (evt.eventName === "simplebox:shown" && evt.memo.element !== $("termsofusearea")) {
-            this.messenger.hide();
+            this.messenger.clearMessages();
         }
     },
 
@@ -490,7 +490,7 @@ var SYJView = {
         }
         this.needsFormResubmit = false;
         SyjSaveUI.disable.bind(SyjSaveUI).defer();
-        this.messenger.hide();
+        this.messenger.clearMessages();
         return true;
     },
 
@@ -569,7 +569,7 @@ var SYJView = {
                     }
                 },
                 create: function(f, line) {
-                    this.messenger.hide();
+                    this.messenger.clearMessages();
                     $("geom_upload_container").hide();
                 }.bind(this)
             },
@@ -738,7 +738,7 @@ var SYJModalClass = Class.create({
     },
 
     reset: function() {
-        this.messenger.hide();
+        this.messenger.clearMessages();
         this.area.select('.message').invoke('setMessageStatus', null);
     }
 });
@@ -796,7 +796,7 @@ var SYJUserClass = Class.create(SYJModalClass, {
     },
 
     presubmit: function() {
-        this.messenger.hide();
+        this.messenger.clearMessages();
         PseudoChecker.reset();
         if (!(this.checkNotEmpty("user_pseudo", SyjStrings.userEmptyWarn))) {
             return false;
@@ -914,7 +914,7 @@ var SYJLoginClass = Class.create(SYJModalClass, {
     },
 
     presubmit: function() {
-        this.messenger.hide();
+        this.messenger.clearMessages();
         if (!(this.checkNotEmpty("login_user", SyjStrings.userEmptyWarn))) {
             return false;
         }
