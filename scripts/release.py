@@ -7,6 +7,7 @@ pathjoin = os.path.join
 
 def updateversion():
     try:
+        version = None
         import git
         repo = git.Repo('.')
         master = repo.commits()[0]
