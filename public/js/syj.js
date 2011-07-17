@@ -6,6 +6,8 @@ OpenLayers.Console.userError = function(error) {
     SYJView.messenger.setMessage(error, "error");
 };
 
+OpenLayers.Layer.Vector.prototype.renderers = ["SVG2", "VML", "Canvas"];
+
 var SyjSaveUI = {
     status: "unknown",
 
