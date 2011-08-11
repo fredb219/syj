@@ -1,6 +1,12 @@
 /*  This file is part of Syj, Copyright (c) 2010-2011 Arnaud Renevier,
     and is published under the AGPL license. */
 
+#message  {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /*
  * form
  */
