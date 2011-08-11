@@ -38,6 +38,9 @@
     *margin-top: -1em; /* in ie <=7, .control-link margin-bottom "pushes" .title */
     height: 32px;
     clear: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
 }
 
 .page-link {

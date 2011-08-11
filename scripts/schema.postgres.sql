@@ -102,7 +102,7 @@ CREATE TABLE paths (
     geom GEOGRAPHY (LINESTRING, 4326) NOT NULL,
     creator INTEGER REFERENCES users ON DELETE SET NULL,
     creator_ip INET NOT NULL,
-    title VARCHAR(40),
+    title VARCHAR(160),
     last_update TIMESTAMP NOT NULL DEFAULT NOW(),
     urlcomp VARCHAR(20) UNIQUE CHECK (urlcomp ~ '^[a-z][a-zA-Z0-9_]*$') -- ~: matches regular expression; case sensitive
 );

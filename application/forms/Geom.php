@@ -26,8 +26,8 @@ class Syj_Form_Geom extends Zend_Form implements Syj_Processor_Interface
 
         $title = array('Text', 'geom_title', array(
             'label' => __("optional title for this journey"),
-            'attribs' => array('maxlength' => '40', 'size' => '20'),
-            'validators' => array(new Zend_Validate_StringLength(0, 40)),
+            'attribs' => array('maxlength' => '160', 'size' => '20'),
+            'validators' => array(new Zend_Validate_StringLength(0, 160)),
             'decorators' => array(
                                 'ViewHelper',
                                 'Errors',
