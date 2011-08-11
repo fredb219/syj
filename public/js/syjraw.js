@@ -1,3 +1,5 @@
+"use strict";
+
 var WGS84 = new OpenLayers.Projection("EPSG:4326");
 var Mercator = new OpenLayers.Projection("EPSG:900913");
 
@@ -37,7 +39,7 @@ function init() {
 
     map.addLayers([baseLayer, viewLayer]);
     viewLayer.addFeatures([wkt.read(gInitialGeom.data)]);
-    extent = viewLayer.getDataExtent();
+    var extent = viewLayer.getDataExtent();
     map.updateSize();
     map.zoomToExtent(extent);
     resizeMap();

@@ -1,6 +1,8 @@
 /*  This file is part of Syj, Copyright (c) 2010-2011 Arnaud Renevier,
     and is published under the AGPL license. */
 
+"use strict";
+
 var CloseBtn = Class.create({
     initialize: function(elt, options) {
         var btn, imgsrc, style;

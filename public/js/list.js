@@ -1,3 +1,5 @@
+"use strict";
+
 var WGS84 = new OpenLayers.Projection("EPSG:4326");
 var Mercator = new OpenLayers.Projection("EPSG:900913");
 

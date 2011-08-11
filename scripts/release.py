@@ -40,7 +40,17 @@ def genscripts():
 
     # copy scripts OpenLayers.js
     for path in glob.glob('public/js/*.js'):
-        shutil.copy(path, tmpdir)
+        if os.path.islink(path):
+            shutil.copy(path, tmpdir)
+        else:
+            # remove "use strict"; directive
+            with open(path) as inp:
+                dest = pathjoin(tmpdir, os.path.basename(path))
+                with open(dest, "w") as out:
+                    for line in inp:
+                        sline = line.strip()
+                        if sline != '"use strict"' and sline != '"use strict";':
+                            out.write(line)
 
     # build OpenLayers.js
     subprocess.call(['python', 'buildUncompressed.py',

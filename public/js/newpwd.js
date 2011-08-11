@@ -1,5 +1,8 @@
 /*  This file is part of Syj, Copyright (c) 2010-2011 Arnaud Renevier,
     and is published under the AGPL license. */
+
+"use strict";
+
 function insertErrorBefore(elt, messageError) {
     var message = new Element("div", {className: 'error'}).update(messageError);
     elt.insert({before: message});
