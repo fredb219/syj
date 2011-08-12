@@ -16,7 +16,7 @@ class Syj_View_Helper_Returnto extends Zend_View_Helper_HtmlElement
 
     public function returnto() {
         $returnto = $this->getHref();
-        $baseurl = $this->view->baseUrl();
+        $baseurl = $this->view->baseUrl() + '/';
 
         if ($returnto === false) {
             return $this->view->translate('You can now') . ' '
