@@ -755,7 +755,11 @@ var SYJUserClass = Class.create(SYJModalClass, {
         $super();
         $("termsofusearea").hide();
 
-        $$("#user_termsofuse_anchor, #geom_termsofuse_anchor").invoke('observe', "click", function(evt) {
+        var touevt = (function(evt) {
+            if (evt.type === "keyup" && evt.keyCode !== 32) { // 32 = space
+                // allow opening box by pressing space
+                return;
+            }
             if (!this.toubox) {
                 this.toubox = new SimpleBox($("termsofusearea"), {
                     closeMethods: ["onescapekey", "onouterclick", "onbutton"]
@@ -767,7 +771,11 @@ var SYJUserClass = Class.create(SYJModalClass, {
                 $("termsofuseiframe").setAttribute("src", evt.target.href);
             }
             evt.stop();
-        }.bindAsEventListener(this));
+        }).bindAsEventListener(this);
+
+        ["click", "keyup"].each(function (evtName) {
+            $$("#user_termsofuse_anchor, #geom_termsofuse_anchor").invoke('observe', evtName, touevt);
+        })
 
         $$("#login_area_create > a").invoke('observe', 'click',
             function(evt) {
