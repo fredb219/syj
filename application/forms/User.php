@@ -42,7 +42,7 @@ class Syj_Form_User extends Syj_Form_TableAbstract
 
         $anchor = $this->getView()->Anchor("termsofuse?format=raw",
                                            $translator->translate("terms of use"),
-                                           array('id' => 'user_termsofuse_anchor'));
+                                           array('id' => 'user_termsofuse_anchor', 'tabindex' => '0'));
         $text = $translator->translate("I've read and accepted %s");
         $text = vsprintf($text, $anchor);
         $this->addElement('Checkbox', 'user_accept', array("label" => $text,
