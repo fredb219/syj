@@ -12,7 +12,7 @@ class Syj_Model_Pending_ValidateCreation extends Syj_Model_Pending
     public function _notify() {
         switch ($this->_notifications_number) {
             case 0:
-                $subject = $this->translate("[SYJ] Validate your account", $this->_user->lang);
+                $subject = $this->translate("[SYJ] Please validate your account", $this->_user->lang);
                 $text = $this->translate("Hi %user%, and welcome on syj
 
 Your account is currently active, but you need to confirm your inscription by
