@@ -372,7 +372,7 @@ var SYJView = {
                     this.messenger.setMessage(SyjStrings.uploadFileError, "warn");
                 }.bind(this);
                 reader.onload = function(evt) {
-                    var data = null, results = null, engine = null, vector = null, i = 0, formats = ['KML', 'GPX', 'GeoJSON'];
+                    var data = null, results = null, engine = null, vector = null, i = 0, format = null, formats = ['KML', 'GPX', 'GeoJSON'];
 
                     $("geom_upload_container").removeClassName("disabled");
                     $("geom_upload").disabled = false;
@@ -383,7 +383,8 @@ var SYJView = {
                     data = evt.target.result;
 
                     for (i = 0; i < formats.length; i++) {
-                        engine = new OpenLayers.Format[formats[i]]({ internalProjection: Mercator, externalProjection: WGS84 });
+                        format = formats[i];
+                        engine = new OpenLayers.Format[format]({ internalProjection: Mercator, externalProjection: WGS84 });
                         try {
                             results = engine.read(data);
                         } catch(e) {
@@ -401,6 +402,12 @@ var SYJView = {
                     if (vector.geometry.CLASS_NAME !== "OpenLayers.Geometry.LineString") {
                         readerror();
                         return;
+                    }
+                    // merge linestrings for gpx containting multiple trkseg elements.
+                    if (format === 'GPX') {
+                      for (i = 1; i < results.length; i++) {
+                        vector.geometry.addComponents(results[i].geometry.components);
+                      }
                     }
                     this.viewLayer.addFeatures([vector]);
                     this.map.zoomToExtent(this.viewLayer.getDataExtent());

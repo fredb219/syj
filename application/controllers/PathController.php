@@ -77,6 +77,18 @@ class PathController extends Zend_Controller_Action
             throw new Syj_Exception_InvalidGeomUpload();
         }
 
+        // merge linestrings for gpx containting multiple trkseg elements.
+        if ($classname == 'gisconverter\\GPX' && $geom::name == 'GeometryCollection') {
+          $geomstring = "";
+          foreach (array_filter($geom->components, function ($geom) {
+            return $geom::name == "LineString";
+          }) as $linestring) {
+            $geomstring .= str_replace("<trkseg>", "",
+                              str_replace("</trkseg>", "", $linestring->toGPX()));
+          }
+          $geom = $decoder->geomFromText("<trkseg>" . $geomstring . "</trkseg>");
+        }
+
         if ($geom::name != "LineString") {
             throw new Syj_Exception_InvalidGeomUpload();
         }
