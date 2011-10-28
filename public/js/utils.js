@@ -467,7 +467,9 @@ Element.addMethods('div', (function() {
         if (supportsTransition && hasOpacityTransition(div)) {
             div.observe(endTransitionEventName, function() {
                 div.stopObserving(endTransitionEventName);
-                div.hide();
+                if (!div.getOpacity()) { // in case show has been called in-between
+                  div.hide();
+                }
             });
             div.setOpacity(0);
         } else {
@@ -490,7 +492,7 @@ Element.addMethods('div', (function() {
     }
 
     function clearMessages(div) {
-        if (div.visible()) {
+        if (div.getOpacity()) {
             hide(div);
         }
         return div;
@@ -517,7 +519,7 @@ Element.addMethods('div', (function() {
         }
 
         div.appendChild(node);
-        if (!div.visible()) {
+        if (!div.getOpacity()) {
             show(div);
         }
         return div;
