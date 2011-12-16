@@ -29,6 +29,37 @@ body, html {
     left: 0.5em;
 }
 
+.olControlLayerSwitcher {
+    bottom: 4em;
+    top: auto;
+    left: 13px;
+    opacity: 0.75;
+    height: 6em;
+    max-width: intrinsic;
+    max-width: -moz-max-content;
+}
+
+/* setting opacity to .olControlLayerSwitcher does not work */
+.olControlLayerSwitcher .layersDiv,
+.olControlLayerSwitcher .maximizeDiv,
+.olControlLayerSwitcher .minimizeDiv
+{
+    filter:alpha(opacity=75);
+}
+
+.olControlLayerSwitcher .dataLayersDiv, .olControlLayerSwitcher .dataLbl {
+    display: none;
+}
+.olControlLayerSwitcher .layersDiv {
+    padding: 5px 12px 5px 36px;
+}
+.olControlLayerSwitcher .maximizeDiv {
+    top: -6em;
+}
+.olControlLayerSwitcher .minimizeDiv {
+    left: 4px;
+}
+
 /*
  * main message rules
  */

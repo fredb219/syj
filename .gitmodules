@@ -10,3 +10,6 @@
 [submodule "public/simplebox"]
 	path = public/simplebox
 	url = git://github.com/arenevier/simplebox.git
+[submodule "public/store"]
+	path = public/store
+	url = git://github.com/cloudhead/store.js.git

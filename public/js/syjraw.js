@@ -22,6 +22,23 @@ function resizeMap() {
     map.style.height = map.offsetHeight.toString() + 'px';
 }
 
+function mapquestLayer() {
+      return new OpenLayers.Layer.OSM("MapQuest", [
+                'http://otile1.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.png',
+                'http://otile2.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.png',
+                'http://otile3.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.png',
+                'http://otile4.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.png'],
+                    { attribution: SyjStrings.mapquestAttribution});
+}
+
+function mapnikLayer() {
+    return new OpenLayers.Layer.OSM("Mapnik", [
+                'http://a.tile.openstreetmap.org/${z}/${x}/${y}.png',
+                'http://b.tile.openstreetmap.org/${z}/${x}/${y}.png',
+                'http://c.tile.openstreetmap.org/${z}/${x}/${y}.png'],
+                { attribution: SyjStrings.osmAttribution});
+}
+
 function init() {
     var map = new OpenLayers.Map('map', {
                 controls: [
@@ -30,7 +47,8 @@ function init() {
                 ],
                 theme: null}),
 
-         baseLayer = new OpenLayers.Layer.OSM("OSM", null, { attribution: SyjStrings.osmAttribution }),
+         parameters = OpenLayers.Util.getParameters(window.location.href),
+         baseLayer = null,
 
          layerOptions = {format:     OpenLayers.Format.WKT,
                         projection: WGS84,
@@ -39,6 +57,21 @@ function init() {
 
         viewLayer = new OpenLayers.Layer.Vector("View Layer", layerOptions),
         wkt = new OpenLayers.Format.WKT({ internalProjection: Mercator, externalProjection: WGS84 });
+
+    if (parameters.layer) {
+        switch (parameters.layer.toUpperCase()) {
+            case 'Q':
+             baseLayer = mapquestLayer();
+            break;
+            case 'M':
+             baseLayer = mapnikLayer();
+            break;
+        }
+    }
+
+    if (!baseLayer) {
+        baseLayer = mapnikLayer();
+    }
 
     map.addLayers([baseLayer, viewLayer]);
     viewLayer.addFeatures([wkt.read(gInitialGeom.data)]);

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-08 16:25+0200\n"
+"POT-Creation-Date: 2011-12-16 21:23+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -18,15 +18,275 @@ msgstr ""
 "X-Poedit-Bookmarks: -1,-1,-1,-1,13,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: application\n"
 
-#: application/validate/EmailAddress.php:13
-#: application/forms/Contact.php:32
+#: application/controllers/ErrorController.php:59
+msgid "Oups, something went wrong"
+msgstr "Oups, il y a eu un souci"
+
+#: application/controllers/FaqController.php:9
+#: application/views/scripts/faq/index.phtml:5
+msgid "Frequently asked questions"
+msgstr "Foire aux questions"
+
+#: application/controllers/ListController.php:14
+#: application/layouts/scripts/footer.phtml:52
+msgid "my routes"
+msgstr "mes itinéraires"
+
+#: application/controllers/ListController.php:31
+msgid "There is no undo. Delete this route definitively ?"
+msgstr "Vous ne pourrez pas annuler. Supprimer l'itinéraire définitivement ?"
+
+#: application/controllers/ListController.php:32
+#: application/controllers/IdxController.php:156
+msgid "server could not be reached"
+msgstr "serveur inaccessible"
+
+#: application/controllers/ListController.php:33
+#: application/controllers/IdxController.php:154
+msgid ""
+"server did not understood request. That's probably caused by a bug in SYJ"
+msgstr ""
+"Le serveur n'a pas compris la requête. Il s'agit probablement d'un bug dans "
+"SYJ"
+
+#: application/controllers/ListController.php:34
+#: application/controllers/IdxController.php:155
+msgid "route not referenced on the server. It has probably been deleted."
+msgstr "chemin non référencé sur le serveur. Il a probablement été supprimé."
+
+#: application/controllers/ListController.php:35
+#: application/controllers/IdxController.php:157
+msgid "there was a server error"
+msgstr "Il s'est produit une erreur serveur"
+
+#: application/controllers/ListController.php:36
+#: application/controllers/IdxController.php:158
+msgid "there was an unknown error"
+msgstr "Il s'est produit une erreur inconnue"
+
+#: application/controllers/ListController.php:37
+msgid "route was successfully deleted"
+msgstr "l'itinéraire a été correctement supprimé"
+
+#: application/controllers/IdxController.php:24
+#: application/controllers/IdxController.php:71
+#, php-format
+msgid "route by <strong>%s</strong>"
+msgstr "tracé par <strong>%s</strong>"
+
+#: application/controllers/IdxController.php:43
+msgid "route has been deleted"
+msgstr "l'itinéraire a été supprimé"
+
+#: application/controllers/IdxController.php:46
+msgid "route does not exist"
+msgstr "L'itinéraire n'existe pas"
+
+#: application/controllers/IdxController.php:74
+#: application/controllers/IdxController.php:107
+msgid "website to share routes"
+msgstr "site de partage d'itinéraires"
+
+#: application/controllers/IdxController.php:116
+#, php-format
+msgid "File too large. File size must not exceed %s"
+msgstr "Fichier trop gros. La taille ne doit pas dépasser %s"
+
+#: application/controllers/IdxController.php:118
+msgid "Invalid file"
+msgstr "Fichier invalide"
+
+#: application/controllers/IdxController.php:146
+#: application/controllers/IdxController.php:172
+msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
+msgstr "Carte par <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
+
+#: application/controllers/IdxController.php:147
+#: application/controllers/IdxController.php:173
+msgid ""
+"Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> "
+"and contributors, <a href='http://creativecommons.org/licenses/by-"
+"sa/2.0/'>CC-BY-SA</a>"
+msgstr "Carte par MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> et contributeurs, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"
+
+#: application/controllers/IdxController.php:153
+msgid "save took place successfully"
+msgstr "La sauvegarde s'est déroulée correctement"
+
+#: application/controllers/IdxController.php:159
+#: application/controllers/LoginController.php:89
+msgid "you must enter a login name"
+msgstr "vous devez entrer un nom d'utilisateur"
+
+#: application/controllers/IdxController.php:160
+msgid "Login correct"
+msgstr "Vous êtes connecté"
+
+#: application/controllers/IdxController.php:161
+msgid "Wrong login/password"
+msgstr "Mauvais nom d'utilisateur ou mot de passe"
+
+#: application/controllers/IdxController.php:162
+msgid "you must enter a password"
+msgstr "vous devez entrer un mot de passe"
+
+#: application/controllers/IdxController.php:163
+#: application/controllers/AccountController.php:69
+#: application/forms/Account.php:40
+msgid "Password do not match"
+msgstr "Les mots de passe ne correspondent pas"
+
+#: application/controllers/IdxController.php:164
+msgid "You must accept terms of use"
+msgstr "Vous devez accepter les conditions d'utilisation"
+
+#: application/controllers/IdxController.php:165
+msgid "you must enter an email"
+msgstr "vous devez entrer un email"
+
+#: application/controllers/IdxController.php:166
+msgid "invalid email"
+msgstr "email invalide"
+
+#: application/controllers/IdxController.php:167
+#: application/controllers/AccountController.php:41
+msgid "an user is already registered with this email"
+msgstr "il y'a déjà un utilisateur enregistré avec cet email"
+
+#: application/controllers/IdxController.php:168
+msgid "Account created"
+msgstr "Compte créé"
+
+#: application/controllers/IdxController.php:169
+#: application/views/scripts/newpwd/success.phtml:4
+msgid "A link to reset your password has been emailed to you"
+msgstr ""
+"Un email contenant un lien pour réinitialiser votre mot de passe vous a été "
+"envoyé"
+
+#: application/controllers/IdxController.php:170
+msgid "Now, you can retry to save"
+msgstr "Maintenant, vous pouvez réessayer de sauvegarder"
+
+#: application/controllers/IdxController.php:171
+msgid "route by"
+msgstr "tracé par"
+
+#: application/controllers/IdxController.php:174
+msgid "checking availibilty"
+msgstr "vérification de la disponibilité"
+
+#: application/controllers/IdxController.php:175
+msgid "available pseudo"
+msgstr "pseudo disponible"
+
+#: application/controllers/IdxController.php:176
+msgid "unavailable pseudo"
+msgstr "pseudo non disponible"
+
+#: application/controllers/IdxController.php:177
+#: application/views/scripts/idx/index.phtml:115
+msgid "edit"
+msgstr "modifier"
+
+#: application/controllers/IdxController.php:178
+msgid "create"
+msgstr "créér"
+
+#: application/controllers/IdxController.php:179
+#: application/views/scripts/idx/index.phtml:113
+msgid "duplicate"
+msgstr "dupliquer"
+
+#: application/controllers/IdxController.php:180
+msgid "You have an unsaved route"
+msgstr "Vous avez un itinéraire non sauvegardé"
+
+#: application/controllers/IdxController.php:181
+#: application/controllers/AccountController.php:68
+#: application/controllers/ContactController.php:119
+#: application/controllers/NewpwdController.php:66
+msgid "Value is required"
+msgstr "Le champ est requis"
+
+#: application/controllers/IdxController.php:182
+msgid "no result"
+msgstr "pas de résultat"
+
+#: application/controllers/IdxController.php:183
+msgid "could not analyze file content"
+msgstr "impossible d'analyser le contenu du fichier"
+
+#: application/controllers/AccountController.php:13
+#: application/layouts/scripts/footer.phtml:38
+msgid "my account"
+msgstr "mon compte"
+
+#: application/controllers/AccountController.php:28
+msgid "Wrong password"
+msgstr "Mauvais mot de passe"
+
+#: application/controllers/AccountController.php:70
+#: application/forms/Account.php:33 application/forms/User.php:20
+#, php-format
+msgid "At least %d characters"
+msgstr "Au moins %d caractères"
+
+#: application/controllers/AccountController.php:71
+msgid "You have made no change"
+msgstr "Vous n'avez fait aucun changement"
+
+#: application/controllers/TermsofuseController.php:9
+#: application/forms/User.php:44 application/forms/Geom.php:39
+#: application/layouts/scripts/footer.phtml:86
+msgid "terms of use"
+msgstr "conditions d'utilisation"
+
+#: application/controllers/ContactController.php:11
+msgid "contact form"
+msgstr "formulaire de contact"
+
+#: application/controllers/ContactController.php:110
+msgid "Hi,"
+msgstr "Bonjour,"
+
 #: application/controllers/ContactController.php:120
+#: application/forms/Contact.php:32 application/validate/EmailAddress.php:13
 msgid "Invalid email"
 msgstr "Email invalide"
 
-#: application/forms/Newpwd.php:28
+#: application/controllers/PendingController.php:31
+msgid "account validated"
+msgstr "compte validé"
+
+#: application/controllers/PendingController.php:38
+msgid "account deleted"
+msgstr "Compte supprimé"
+
+#: application/controllers/PendingController.php:42
+msgid "account creation validation"
+msgstr "validation de la création du compte"
+
+#: application/controllers/PendingController.php:52
+msgid "password changed"
+msgstr "mot de passe modifié"
+
+#: application/controllers/PendingController.php:60
+msgid "request canceled"
+msgstr "requête annulée"
+
+#: application/controllers/PendingController.php:64
+msgid "password reset validation"
+msgstr "validation de la réinitialisation du mot de passe"
+
+#: application/controllers/LoginController.php:8
+#: application/forms/Login.php:23 application/views/scripts/idx/index.phtml:49
+#: application/layouts/scripts/footer.phtml:73
+msgid "login"
+msgstr "connexion"
+
+#: application/forms/Newpwd.php:28 application/forms/Account.php:27
 #: application/forms/User.php:36
-#: application/forms/Account.php:27
 msgid "email"
 msgstr "email"
 
@@ -63,57 +323,15 @@ msgstr "Envoyer"
 msgid "Send a message"
 msgstr "Envoyer un message"
 
-#: application/forms/User.php:10
-msgid "only letters, numbers, underscores or dots"
-msgstr "seulement des lettres, des chiffres, des soulignés ou des points"
-
-#: application/forms/User.php:12
-msgid "user name"
-msgstr "nom d'utilisateur"
-
-#: application/forms/User.php:20
-#: application/forms/Account.php:33
-#: application/controllers/AccountController.php:70
-#, php-format
-msgid "At least %d characters"
-msgstr "Au moins %d caractères"
-
-#: application/forms/User.php:23
-#: application/forms/Account.php:35
-#: application/forms/Login.php:10
-msgid "password"
-msgstr "mot de passe"
-
-#: application/forms/User.php:30
-#: application/forms/Account.php:42
-msgid "confirm password"
-msgstr "confirmation du mot de passe"
-
-#: application/forms/User.php:37
-msgid "After creating your account, you will receive a confirmation email. You have 7 days to confirm otherwise, your account will be deleted."
-msgstr "Après la création de votre compte, vous recevrez un mail de confirmation. Vous avez 7 jours pour confirmer, sinon votre compte sera supprimé."
-
-#: application/forms/User.php:44
-#: application/forms/Geom.php:39
-#: application/layouts/scripts/footer.phtml:86
-#: application/controllers/TermsofuseController.php:9
-msgid "terms of use"
-msgstr "conditions d'utilisation"
-
-#: application/forms/User.php:46
-#: application/forms/Geom.php:41
-#, php-format
-msgid "I've read and accepted %s"
-msgstr "J'ai lu et accepté les %s"
-
-#: application/forms/User.php:59
-msgid "create account"
-msgstr "créer le compte"
-
 #: application/forms/Pending/ValidateCreation.php:11
 #, php-format
-msgid "Someone, probably you, has registered an account %s with email address %s on syj. To confirm this account creation, validate with following button."
-msgstr "Quelqu'un, probablement vous, a enregistré un compte %s avec l'adresse email %s sur syj. Pour confirmer la création du compte, validez avec le bouton suivant."
+msgid ""
+"Someone, probably you, has registered an account %s with email address %s on "
+"syj. To confirm this account creation, validate with following button."
+msgstr ""
+"Quelqu'un, probablement vous, a enregistré un compte %s avec l'adresse email "
+"%s sur syj. Pour confirmer la création du compte, validez avec le bouton "
+"suivant."
 
 #: application/forms/Pending/ValidateCreation.php:17
 #: application/forms/Geom.php:50
@@ -126,27 +344,43 @@ msgid "delete"
 msgstr "supprimer"
 
 #: application/forms/Pending/ValidateCreation.php:24
-msgid "To cancel account creation, press following button. The account and all its data will be deleted."
-msgstr "Pour annuler la création du compte, pressez le bouton suivant. Le compte ainsi que toutes ses données seront supprimés."
+msgid ""
+"To cancel account creation, press following button. The account and all its "
+"data will be deleted."
+msgstr ""
+"Pour annuler la création du compte, pressez le bouton suivant. Le compte "
+"ainsi que toutes ses données seront supprimés."
 
 #: application/forms/Pending/ResetPassword.php:11
 #, php-format
-msgid "Hi %s. Someone, probably you, has asked to reset password for your account. To get a new password, validate with following button."
-msgstr "Bonjour %s. Quelqu'un, probablement vous, a demandé de réinitialiser le mot de passe de votre compte. Pour avoir un nouveau mot de passe, validez avec le bouton suivant."
+msgid ""
+"Hi %s. Someone, probably you, has asked to reset password for your account. "
+"To get a new password, validate with following button."
+msgstr ""
+"Bonjour %s. Quelqu'un, probablement vous, a demandé de réinitialiser le mot "
+"de passe de votre compte. Pour avoir un nouveau mot de passe, validez avec "
+"le bouton suivant."
 
 #: application/forms/Pending/ResetPassword.php:23
 msgid "cancel request"
 msgstr "annuler la requête"
 
 #: application/forms/Pending/ResetPassword.php:24
-msgid "To cancel this request, press following button. Your password will not change."
-msgstr "Pour annuler la requête, pressez le bouton suivant. Votre mot de passe ne sera pas changé."
+msgid ""
+"To cancel this request, press following button. Your password will not "
+"change."
+msgstr ""
+"Pour annuler la requête, pressez le bouton suivant. Votre mot de passe ne "
+"sera pas changé."
 
-#: application/forms/Account.php:40
-#: application/controllers/IdxController.php:162
-#: application/controllers/AccountController.php:69
-msgid "Password do not match"
-msgstr "Les mots de passe ne correspondent pas"
+#: application/forms/Account.php:35 application/forms/User.php:23
+#: application/forms/Login.php:10
+msgid "password"
+msgstr "mot de passe"
+
+#: application/forms/Account.php:42 application/forms/User.php:30
+msgid "confirm password"
+msgstr "confirmation du mot de passe"
 
 #: application/forms/Account.php:48
 msgid "current password"
@@ -155,6 +389,31 @@ msgstr "mot de passe actuel"
 #: application/forms/Account.php:50
 msgid "modify my informations"
 msgstr "modifier mes informations"
+
+#: application/forms/User.php:10
+msgid "only letters, numbers, underscores or dots"
+msgstr "seulement des lettres, des chiffres, des soulignés ou des points"
+
+#: application/forms/User.php:12
+msgid "user name"
+msgstr "nom d'utilisateur"
+
+#: application/forms/User.php:37
+msgid ""
+"After creating your account, you will receive a confirmation email. You have "
+"7 days to confirm otherwise, your account will be deleted."
+msgstr ""
+"Après la création de votre compte, vous recevrez un mail de confirmation. "
+"Vous avez 7 jours pour confirmer, sinon votre compte sera supprimé."
+
+#: application/forms/User.php:46 application/forms/Geom.php:41
+#, php-format
+msgid "I've read and accepted %s"
+msgstr "J'ai lu et accepté les %s"
+
+#: application/forms/User.php:59
+msgid "create account"
+msgstr "créer le compte"
 
 #: application/forms/Login.php:9
 msgid "user"
@@ -168,13 +427,6 @@ msgstr "se souvenir de moi"
 msgid "I forgot my password"
 msgstr "J'ai oublié mon mot de passe"
 
-#: application/forms/Login.php:23
-#: application/views/scripts/idx/index.phtml:49
-#: application/layouts/scripts/footer.phtml:73
-#: application/controllers/LoginController.php:8
-msgid "login"
-msgstr "connexion"
-
 #: application/forms/Geom.php:17
 msgid "Draw journey on the map or choose one from a file"
 msgstr "Tracez l'itinéraire sur la carte ou choisissez un fichier"
@@ -183,165 +435,30 @@ msgstr "Tracez l'itinéraire sur la carte ou choisissez un fichier"
 msgid "optional title for this journey"
 msgstr "titre facultatif pour ce trajet"
 
-#: application/models/Pending/ValidateCreation.php:15
-msgid "[SYJ] Please validate your account"
-msgstr "[SYJ] Veuillez valider la création du compte"
+#: application/views/helpers/LocaleSwitcher.php:17
+msgid "english"
+msgstr "français"
 
-#: application/models/Pending/ValidateCreation.php:16
-msgid ""
-"Hi %user%, and welcome on syj\n"
-"\n"
-"Your account is currently active, but you need to confirm your inscription by\n"
-"following this link:\n"
-"%hashurl%\n"
-"\n"
-"If you do not not confirm your inscription within 7 days, your account will be\n"
-"deleted.\n"
-"\n"
-"Please do not reply this email. If you need to contact us, please use the form\n"
-"contact at %contacturl%\n"
-"\n"
-"Thanks,\n"
-"\n"
-"Syj team"
-msgstr ""
-"Bonjour %user%, et bienvenue sur syj\n"
-"\n"
-"Votre compte est actif, mais vous devez confirmer votre inscription en\n"
-"suivant ce lien:\n"
-"%hashurl%\n"
-"\n"
-"Si vous ne confirmez pas votre inscription d'ici 7 jours, votre compte sera\n"
-"supprimé.\n"
-"\n"
-"Veuillez ne pas répondre à cet email. Si vous avez besoin de nous contacter,\n"
-"merci d'utiliser le formulaire à l'adresse suivante:\n"
-"%contacturl%\n"
-"\n"
-"Merci,\n"
-"\n"
-"l'équipe de Syj"
-
-#: application/models/Pending/ValidateCreation.php:34
-msgid "[SYJ] Reminder: Validate your account"
-msgstr "[SYJ] Rappel: Validation de votre compte"
-
-#: application/models/Pending/ValidateCreation.php:35
-msgid ""
-"Hi %user%,\n"
-"\n"
-"You need to validate your account on syj since 6 days. Otherwise, your\n"
-"account will be deleted tomorrow. Please follow this link:\n"
-"%hashurl%\n"
-"\n"
-"Please do not reply this email. If you need to contact us, please use the form\n"
-"contact at %contacturl%\n"
-"\n"
-"Thanks,\n"
-"\n"
-"Syj team"
-msgstr ""
-"Bonjour %user%,\n"
-"\n"
-"Votre compte est en attente de validation depuis 6 jours. Si vous ne le\n"
-"validez pas, il sera supprimé demain. Merci de suivre ce lien:\n"
-"%hashurl%\n"
-"\n"
-"Veuillez ne pas répondre à cet email. Si vous avez besoin de nous contacter,\n"
-"merci d'utiliser le formulaire à l'adresse suivante:\n"
-"%contacturl%\n"
-"\n"
-"Merci\n"
-"\n"
-"L'équipe de Syj"
-
-#: application/models/Pending/ValidateCreation.php:51
-msgid "[SYJ] Account deactivated"
-msgstr "[SYJ] Compte désactivé"
-
-#: application/models/Pending/ValidateCreation.php:52
-msgid ""
-"Hi %user%,\n"
-"\n"
-"You have not validated your syj account on time. Therefore, your account have\n"
-"been deleted. Nevertheless, you can still create a new account.\n"
-"\n"
-"Please do not reply this email. If you need to contact us, please use the form\n"
-"contact at %contacturl%\n"
-"\n"
-"Regards,\n"
-"\n"
-"Syj team"
-msgstr ""
-"Bonjour %user%,\n"
-"\n"
-"Vous n'avez pas validé votre compte à temps. Votre compte a donc été supprimé.\n"
-"Vous pouvez toujours recréer un nouveau compte.\n"
-"\n"
-"Veuillez ne pas répondre à cet email. Si vous avez besoin de nous contacter,\n"
-"merci d'utiliser le formulaire à l'adresse suivante:\n"
-"%contacturl%\n"
-"\n"
-"L'équipe de Syj"
-
-#: application/models/Pending/ResetPassword.php:19
-msgid "[SYJ] Reset your password"
-msgstr "[SYJ] Réinitialisation de votre mot de passe"
-
-#: application/models/Pending/ResetPassword.php:20
-msgid ""
-"Hi %user%,\n"
-"\n"
-"Someone, probably you, has asked to reset your password. If you want to reset\n"
-"your password, please follow this link:\n"
-"%hashurl%\n"
-"\n"
-"If you do not not confirm within 2 days, your password will not be reset.\n"
-"\n"
-"Please do not reply this email. If you need to contact us, please use the form\n"
-"contact at %contacturl%\n"
-"\n"
-"Thanks,\n"
-"\n"
-"Syj team"
-msgstr ""
-"Bonjour %user%,\n"
-"\n"
-"Quelqu'un, probablement vous, a demandé à réinitialiser votre mot de\n"
-"passe. Si vous voulez le réinitialiser, veuillez suivre ce lien:\n"
-"%hashurl%\n"
-"\n"
-"Si vous n'avez pas confirmé d'ici 2 jours, votre mot de passe ne sera pas\n"
-"réinitialisé.\n"
-"\n"
-"Veuillez ne pas répondre à cet email. Si vous avez besoin de nous contacter,\n"
-"merci d'utiliser le formulaire à l'adresse suivante:\n"
-"%contacturl%\n"
-"\n"
-"Merci,\n"
-"\n"
-"l'équipe de Syj"
-
-#: application/models/Path.php:61
-#, php-format
-msgid "route number %d"
-msgstr "itinéraire numéro %d"
+#: application/views/helpers/LogoutLink.php:9
+#: application/layouts/scripts/footer.phtml:66
+msgid "logout"
+msgstr "déconnexion"
 
 #: application/views/helpers/Returnto.php:22
 #: application/views/helpers/Returnto.php:25
 #: application/views/helpers/Returnto.php:28
-#: application/views/scripts/pending/creation_cancel.phtml:14
 #: application/views/scripts/pending/creation_validate.phtml:14
+#: application/views/scripts/pending/creation_cancel.phtml:14
 #: application/views/scripts/pending/password_cancel.phtml:14
 msgid "You can now"
 msgstr "Vous pouvez maintenant"
 
 #: application/views/helpers/Returnto.php:23
 #: application/views/helpers/Returnto.php:31
-#: application/views/scripts/error/error.phtml:37
-#: application/views/scripts/pending/creation_cancel.phtml:15
 #: application/views/scripts/pending/creation_validate.phtml:15
+#: application/views/scripts/pending/creation_cancel.phtml:15
 #: application/views/scripts/pending/password_cancel.phtml:15
+#: application/views/scripts/error/error.phtml:37
 msgid "go to main page"
 msgstr "aller à la page d'accueil"
 
@@ -355,52 +472,122 @@ msgstr "retourner à %s"
 msgid "or you can"
 msgstr "ou vous pouvez"
 
-#: application/views/helpers/LocaleSwitcher.php:17
-msgid "english"
-msgstr "français"
+#: application/views/scripts/account/success.phtml:4
+msgid "Your account was modified successfully"
+msgstr "Votre compte a bien été modifié."
 
-#: application/views/helpers/LogoutLink.php:9
-#: application/layouts/scripts/footer.phtml:66
-msgid "logout"
-msgstr "déconnexion"
+#: application/views/scripts/pending/index.phtml:16
+msgid "If you need more informations, please"
+msgstr "Si vous avez besoin de plus d'informations, veuillez"
 
-#: application/views/scripts/faq/index.phtml:5
-#: application/controllers/FaqController.php:9
-msgid "Frequently asked questions"
-msgstr "Foire aux questions"
+#: application/views/scripts/pending/index.phtml:17
+msgid "contact us"
+msgstr "nous contacter"
 
-#: application/views/scripts/faq/index.phtml:6
-msgid "What's syj?"
-msgstr "Qu'est-ce que syj&nbsp;?"
+#: application/views/scripts/pending/creation_validate.phtml:12
+msgid "You have validated your account."
+msgstr "Vous avez validé votre compte."
 
-#: application/views/scripts/faq/index.phtml:7
-msgid "<acronym title=\"Show your journey\">Syj</acronym> is a website to share routes. You draw a route on a map background, and then, you get an link to share it. You can then show clever bicycle rides, your last hiking, or any route you want."
-msgstr "<acronym title=\"Show your journey\">Syj</acronym> est un site de partage d'itinéraires. Vous dessinez un itinéraire sur un fond de carte, et vous obtenez un lien pour le partager. Vous pouvez l'utiliser pour montrer des trajets de randonnée, des itinéraires cyclistes malins, ou n'importe quoi d'autre."
+#: application/views/scripts/pending/creation_cancel.phtml:12
+msgid "You have canceled the account."
+msgstr "Vous avez annulé le compte."
 
-#: application/views/scripts/faq/index.phtml:9
-msgid "How do I modify a route?"
-msgstr "Comment modifier un itinéraire&nbsp;?"
+#: application/views/scripts/pending/password_cancel.phtml:12
+msgid "You have canceled the request."
+msgstr "Vous avez annulé la requête."
 
-#: application/views/scripts/faq/index.phtml:10
+#: application/views/scripts/pending/password_validate.phtml:17
+msgid "log in"
+msgstr "vous connecter"
+
+#: application/views/scripts/pending/password_validate.phtml:15
 #, php-format
-msgid "When you're editing a route, you can drag and drop a point to move it. If you want to delete it, you need to press the Shift key. While you hold the button, points will have an icon%s over them. Clicking that icon will delete the point."
-msgstr "Lorsque vous éditez un itinéraire, vous pouvez le bouger en le glissant-déposant. Si vous voulez le supprimer, vous devez appuyer sur la touche Shift. Lorsque la touche est enfoncée, une icône%s va apparaître au-dessus des points. Cliquez sur l'icône pour supprimer un point."
+msgid ""
+"Your new password is now <strong>%s</strong>. You can %s with this new "
+"password. Don't forget to change it again to a personal password as soon as "
+"possible."
+msgstr ""
+"Votre nouveau mot de passe est <strong>%s</strong>. Vous pouvez %s avec le "
+"nouveau mot de passe. N'oubliez pas de le rechanger le plus tôt possible "
+"pour utiliser un mot de passe personnel."
 
-#: application/views/scripts/faq/index.phtml:12
-msgid "Why should I create a account?"
-msgstr "Pourquoi créer un compte&nbsp;?"
+#: application/views/scripts/contact/index.phtml:8
+#, php-format
+msgid ""
+"There was an unkwown message when sending the message. Please try again "
+"later, or send a mail directly to <a href=\"mailto:%s\">%s</a>"
+msgstr ""
+"Il s'est produit une erreur inconnue lors de l'envoi du message. Merci de "
+"réessayer plus tard, ou d'écrire directement à <a href=\"mailto:%s\">%s</a>"
 
-#: application/views/scripts/faq/index.phtml:13
-msgid "You can create routes without a account. But if you want to modify your routes afterwards, you need to be registered when creating the route."
-msgstr "Vous pouvez créer des itinéraires sans avoir de compte. Mais si vous voulez modifier les itinéraires que vous avez créé, vous devez avoir un compte lors de leur création."
+#: application/views/scripts/contact/success.phtml:4
+msgid "Email was send successfully"
+msgstr "L'email a été envoyé avec succès"
 
-#: application/views/scripts/faq/index.phtml:15
-msgid "Is it possible to have my route \"attach\" nearby paths?"
-msgstr "Est-ce que c'est possible d'&nbsp;«&nbsp;accrocher&nbsp;» les routes ?"
+#: application/views/scripts/termsofuse/index.phtml:5
+msgid ""
+"Show Your Journey is a site whose goal is to allow anyone to publish routes, "
+"for example, hiking itinerary, bicycle trip, travel itinerary or whatever."
+msgstr ""
+"Show Your Journey est un site dont le but est de permettre à quiconque de "
+"publier des itinéraires, par exemple, des itinéraires de randonnées, des "
+"trajets cyclistes, des itinéraires de voyages, ou n'importe quoi d'autre."
 
-#: application/views/scripts/faq/index.phtml:16
-msgid "When you create a route with syj, you must draw each point on the map. If your route follows an existing path, you still need to draw the layer manually: syj will not try to attach nearby existing paths. There are three main reasons. One bad reason: it would a lot of work to implement. And two good reasons: syj uses OpenStreetMap as a background map, and the map is still unfinished in many areas. Also, depending on your route, you may wish to attach to motorways, footways, biycle lanes, railways, &hellip;. If you are in a place with lot of differents routes, it would be nearly impossible to always choose the right way."
-msgstr "Lorsque vous créez un itinéraire avec syj, vous devez placer chaque point sur la carte. Si votre itinéraire suit un chemin, vous devez quand même dessiner la surcouche à la main&nbsp;: syj ne va pas chercher à accrocher les chemins proches. Il y a trois raisons principales à cela. Une mauvaise raison&nbsp;: cela demanderait beaucoup de travail à mettre en place. Et deux bonnes raisons&nbsp;: syj utilise OpenStreetMap comme fond de carte. Or, il y a beaucoup d'endroits où cette carte est incomplète. D'autre part, selon l'itinéraire, vous voudriez accrocher l'autoroute, ou bien les chemins piétons, ou les pistes cyclables, ou les rails de tramway, &hellip;. Si vous êtes dans un endroit avec différents types de routes, syj n'arrivera probablement pas à choisir la bonne route."
+#: application/views/scripts/termsofuse/index.phtml:9
+msgid ""
+"In order to publish a route, you must first create an account. A valid email "
+"is asked for, and ip address of account creation is stored on the server. "
+"Those informations will not be divulged to anyone without the user explicit "
+"permission."
+msgstr ""
+"Pour publier un itinéraire, vous devez tout d'abord créer un compte. Un "
+"email valide est demandé, et l'adresse ip de création du compte est "
+"enregistrée sur le serveur. Ces informations ne seront divulguées à personne "
+"sans la permission explicite de l'utilisateur."
+
+#: application/views/scripts/termsofuse/index.phtml:13
+msgid ""
+"When you create a route, you accept that it's free for any use. This means "
+"you accept that anyone can reuse, reproduce, or republish your itinerary, or "
+"a modified version of it for any purpose. This also means you need to get "
+"appropriate permissions from the creator if you want to upload a route you "
+"didn't create yourself."
+msgstr ""
+"Lorsque vous créez un itinéraire, vous acceptez qu'il soit utilisable sans "
+"restriction. Cela veut dire que n'importe qui peut réutiliser, reproduire ou "
+"redistribuer votre itinéraire, ou une version modifiée de celui-ci, et pour "
+"n'importe quel usage. Cela veut également dire que vous devez obtenir les "
+"autorisations nécessaires si vous voulez publier un itinéraire dont vous "
+"n'êtes pas l'auteur."
+
+#: application/views/scripts/termsofuse/index.phtml:17
+msgid ""
+"Show Your Journey is not responsible for the accuracy of the routes "
+"published. It's the user responsibility to check that a route is accessible "
+"and safe."
+msgstr ""
+"Show Your Journey n'est pas responsable de l'exactitude des itinéraires "
+"publiés. Il appartient à l'utilisateur de vérifier qu'un chemin est "
+"praticable et sécurisé."
+
+#: application/views/scripts/termsofuse/index.phtml:21
+msgid ""
+"Show Your Journey service is provided \"as is\" with no guarantee for "
+"accuracy or accessibility."
+msgstr ""
+"Show Your Journey est proposé sans garantie de fiabilité ou de disponibilité."
+
+#: application/views/scripts/termsofuse/index.phtml:25
+msgid ""
+"Sources of the software running the website are <a href=\"http://dev."
+"renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The "
+"map used to display the routes comes from <a href=\"http://www.openstreetmap."
+"org/\">openstreetmap</a>."
+msgstr ""
+"Les sources du logiciel qui fait tourner le site web sont <a href=\"http://"
+"dev.renevier.net/?p=syj.git\">disponibles publiquement</a> sous une licence "
+"agpl. La carte utilisée pour l'affichage des itinéraires vient d'<a href="
+"\"http://www.openstreetmap.org/\">openstreetmap</a>."
 
 #: application/views/scripts/error/error.phtml:5
 msgid "An error occurred"
@@ -410,19 +597,103 @@ msgstr "Il s'est produit une erreur"
 msgid "Please try again later"
 msgstr "Veuillez réessayer plus tard"
 
+#: application/views/scripts/faq/index.phtml:6
+msgid "What's syj?"
+msgstr "Qu'est-ce que syj&nbsp;?"
+
+#: application/views/scripts/faq/index.phtml:7
+msgid ""
+"<acronym title=\"Show your journey\">Syj</acronym> is a website to share "
+"routes. You draw a route on a map background, and then, you get an link to "
+"share it. You can then show clever bicycle rides, your last hiking, or any "
+"route you want."
+msgstr ""
+"<acronym title=\"Show your journey\">Syj</acronym> est un site de partage "
+"d'itinéraires. Vous dessinez un itinéraire sur un fond de carte, et vous "
+"obtenez un lien pour le partager. Vous pouvez l'utiliser pour montrer des "
+"trajets de randonnée, des itinéraires cyclistes malins, ou n'importe quoi "
+"d'autre."
+
+#: application/views/scripts/faq/index.phtml:9
+msgid "How do I modify a route?"
+msgstr "Comment modifier un itinéraire&nbsp;?"
+
+#: application/views/scripts/faq/index.phtml:10
+#, php-format
+msgid ""
+"When you're editing a route, you can drag and drop a point to move it. If "
+"you want to delete it, you need to press the Shift key. While you hold the "
+"button, points will have an icon%s over them. Clicking that icon will delete "
+"the point."
+msgstr ""
+"Lorsque vous éditez un itinéraire, vous pouvez le bouger en le glissant-"
+"déposant. Si vous voulez le supprimer, vous devez appuyer sur la touche "
+"Shift. Lorsque la touche est enfoncée, une icône%s va apparaître au-dessus "
+"des points. Cliquez sur l'icône pour supprimer un point."
+
+#: application/views/scripts/faq/index.phtml:12
+msgid "Why should I create a account?"
+msgstr "Pourquoi créer un compte&nbsp;?"
+
+#: application/views/scripts/faq/index.phtml:13
+msgid ""
+"You can create routes without a account. But if you want to modify your "
+"routes afterwards, you need to be registered when creating the route."
+msgstr ""
+"Vous pouvez créer des itinéraires sans avoir de compte. Mais si vous voulez "
+"modifier les itinéraires que vous avez créé, vous devez avoir un compte lors "
+"de leur création."
+
+#: application/views/scripts/faq/index.phtml:15
+msgid "Is it possible to have my route \"attach\" nearby paths?"
+msgstr "Est-ce que c'est possible d'&nbsp;«&nbsp;accrocher&nbsp;» les routes ?"
+
+#: application/views/scripts/faq/index.phtml:16
+msgid ""
+"When you create a route with syj, you must draw each point on the map. If "
+"your route follows an existing path, you still need to draw the layer "
+"manually: syj will not try to attach nearby existing paths. There are three "
+"main reasons. One bad reason: it would a lot of work to implement. And two "
+"good reasons: syj uses OpenStreetMap as a background map, and the map is "
+"still unfinished in many areas. Also, depending on your route, you may wish "
+"to attach to motorways, footways, biycle lanes, railways, &hellip;. If you "
+"are in a place with lot of differents routes, it would be nearly impossible "
+"to always choose the right way."
+msgstr ""
+"Lorsque vous créez un itinéraire avec syj, vous devez placer chaque point "
+"sur la carte. Si votre itinéraire suit un chemin, vous devez quand même "
+"dessiner la surcouche à la main&nbsp;: syj ne va pas chercher à accrocher "
+"les chemins proches. Il y a trois raisons principales à cela. Une mauvaise "
+"raison&nbsp;: cela demanderait beaucoup de travail à mettre en place. Et "
+"deux bonnes raisons&nbsp;: syj utilise OpenStreetMap comme fond de carte. "
+"Or, il y a beaucoup d'endroits où cette carte est incomplète. D'autre part, "
+"selon l'itinéraire, vous voudriez accrocher l'autoroute, ou bien les chemins "
+"piétons, ou les pistes cyclables, ou les rails de tramway, &hellip;. Si vous "
+"êtes dans un endroit avec différents types de routes, syj n'arrivera "
+"probablement pas à choisir la bonne route."
+
 #: application/views/scripts/idx/raw.phtml:8
 #: application/views/scripts/idx/index.phtml:8
 #: application/views/scripts/list/index.phtml:8
 msgid "SYJ needs javascript. Please activate scripts in your browser."
-msgstr "SYJ a besoin de javascript pour fonctionner. Veuillez activer les scripts dans votre navigateur."
+msgstr ""
+"SYJ a besoin de javascript pour fonctionner. Veuillez activer les scripts "
+"dans votre navigateur."
 
 #: application/views/scripts/idx/index.phtml:21
-msgid "To create a journey, press <strong>\"start a route\"</strong> button, then click on the map to add points. To delete a point, hold shift pressed while clicking on it."
-msgstr "Pour créer un trajet, pressez le bouton <strong>\"commencer un itinéraire\"</strong> puis cliquez sur la carte pour ajouter des points à votre tracé. Pour supprimer un point, maintenant shift enfoncé en cliquant sur ce point."
+msgid ""
+"To create a journey, press <strong>\"start a route\"</strong> button, then "
+"click on the map to add points. To delete a point, hold shift pressed while "
+"clicking on it."
+msgstr ""
+"Pour créer un trajet, pressez le bouton <strong>\"commencer un itinéraire\"</"
+"strong> puis cliquez sur la carte pour ajouter des points à votre tracé. "
+"Pour supprimer un point, maintenant shift enfoncé en cliquant sur ce point."
 
 #: application/views/scripts/idx/index.phtml:23
 msgid "You can zoom and move the map with the controls in the top left corner."
-msgstr "Vous pouvez zoomer et bouger la carte avec les boutons en haut à gauche."
+msgstr ""
+"Vous pouvez zoomer et bouger la carte avec les boutons en haut à gauche."
 
 #: application/views/scripts/idx/index.phtml:25
 msgid "When you have finished a path, press \"create\", button."
@@ -433,7 +704,7 @@ msgid "route length"
 msgstr "longueur du tracé"
 
 #: application/views/scripts/idx/index.phtml:51
-#: application/views/scripts/idx/index.phtml:169
+#: application/views/scripts/idx/index.phtml:170
 msgid "create an account"
 msgstr "créer un compte"
 
@@ -454,74 +725,31 @@ msgstr "lien direct"
 msgid "export"
 msgstr "export"
 
-#: application/views/scripts/idx/index.phtml:91
 #: application/views/scripts/idx/index.phtml:92
+#: application/views/scripts/idx/index.phtml:93
 msgid "kml export"
 msgstr "export kml"
 
-#: application/views/scripts/idx/index.phtml:98
 #: application/views/scripts/idx/index.phtml:99
+#: application/views/scripts/idx/index.phtml:100
 msgid "gpx export"
 msgstr "export gpx"
 
-#: application/views/scripts/idx/index.phtml:112
-#: application/controllers/IdxController.php:177
-msgid "duplicate"
-msgstr "dupliquer"
-
-#: application/views/scripts/idx/index.phtml:114
-#: application/controllers/IdxController.php:175
-msgid "edit"
-msgstr "modifier"
-
-#: application/views/scripts/idx/index.phtml:118
+#: application/views/scripts/idx/index.phtml:119
 msgid "Search a place"
 msgstr "Rechercher un lieu"
 
-#: application/views/scripts/idx/index.phtml:122
+#: application/views/scripts/idx/index.phtml:123
 msgid "Ok"
 msgstr "Ok"
 
-#: application/views/scripts/idx/index.phtml:128
+#: application/views/scripts/idx/index.phtml:129
 msgid "start a route"
 msgstr "commencer un itinéraire"
 
-#: application/views/scripts/idx/index.phtml:140
+#: application/views/scripts/idx/index.phtml:141
 msgid "more results"
 msgstr "plus de résultats"
-
-#: application/views/scripts/termsofuse/index.phtml:5
-msgid "Show Your Journey is a site whose goal is to allow anyone to publish routes, for example, hiking itinerary, bicycle trip, travel itinerary or whatever."
-msgstr "Show Your Journey est un site dont le but est de permettre à quiconque de publier des itinéraires, par exemple, des itinéraires de randonnées, des trajets cyclistes, des itinéraires de voyages, ou n'importe quoi d'autre."
-
-#: application/views/scripts/termsofuse/index.phtml:9
-msgid "In order to publish a route, you must first create an account. A valid email is asked for, and ip address of account creation is stored on the server. Those informations will not be divulged to anyone without the user explicit permission."
-msgstr "Pour publier un itinéraire, vous devez tout d'abord créer un compte. Un email valide est demandé, et l'adresse ip de création du compte est enregistrée sur le serveur. Ces informations ne seront divulguées à personne sans la permission explicite de l'utilisateur."
-
-#: application/views/scripts/termsofuse/index.phtml:13
-msgid "When you create a route, you accept that it's free for any use. This means you accept that anyone can reuse, reproduce, or republish your itinerary, or a modified version of it for any purpose. This also means you need to get appropriate permissions from the creator if you want to upload a route you didn't create yourself."
-msgstr "Lorsque vous créez un itinéraire, vous acceptez qu'il soit utilisable sans restriction. Cela veut dire que n'importe qui peut réutiliser, reproduire ou redistribuer votre itinéraire, ou une version modifiée de celui-ci, et pour n'importe quel usage. Cela veut également dire que vous devez obtenir les autorisations nécessaires si vous voulez publier un itinéraire dont vous n'êtes pas l'auteur."
-
-#: application/views/scripts/termsofuse/index.phtml:17
-msgid "Show Your Journey is not responsible for the accuracy of the routes published. It's the user responsibility to check that a route is accessible and safe."
-msgstr "Show Your Journey n'est pas responsable de l'exactitude des itinéraires publiés. Il appartient à l'utilisateur de vérifier qu'un chemin est praticable et sécurisé."
-
-#: application/views/scripts/termsofuse/index.phtml:21
-msgid "Show Your Journey service is provided \"as is\" with no guarantee for accuracy or accessibility."
-msgstr "Show Your Journey est proposé sans garantie de fiabilité ou de disponibilité."
-
-#: application/views/scripts/termsofuse/index.phtml:25
-msgid "Sources of the software running the website are <a href=\"http://dev.renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The map used to display the routes comes from <a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
-msgstr "Les sources du logiciel qui fait tourner le site web sont <a href=\"http://dev.renevier.net/?p=syj.git\">disponibles publiquement</a> sous une licence agpl. La carte utilisée pour l'affichage des itinéraires vient d'<a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
-
-#: application/views/scripts/contact/success.phtml:4
-msgid "Email was send successfully"
-msgstr "L'email a été envoyé avec succès"
-
-#: application/views/scripts/contact/index.phtml:8
-#, php-format
-msgid "There was an unkwown message when sending the message. Please try again later, or send a mail directly to <a href=\"mailto:%s\">%s</a>"
-msgstr "Il s'est produit une erreur inconnue lors de l'envoi du message. Merci de réessayer plus tard, ou d'écrire directement à <a href=\"mailto:%s\">%s</a>"
 
 #: application/views/scripts/list/index.phtml:13
 #: application/layouts/scripts/footer.phtml:16
@@ -553,256 +781,170 @@ msgstr "dernière page"
 msgid "modify or duplicate"
 msgstr "modifier ou dupliquer"
 
-#: application/views/scripts/account/success.phtml:4
-msgid "Your account was modified successfully"
-msgstr "Votre compte a bien été modifié."
+#: application/models/Pending/ValidateCreation.php:15
+msgid "[SYJ] Please validate your account"
+msgstr "[SYJ] Veuillez valider la création du compte"
 
-#: application/views/scripts/newpwd/success.phtml:4
-#: application/controllers/IdxController.php:168
-msgid "A link to reset your password has been emailed to you"
-msgstr "Un email contenant un lien pour réinitialiser votre mot de passe vous a été envoyé"
+#: application/models/Pending/ValidateCreation.php:16
+msgid ""
+"Hi %user%, and welcome on syj\n"
+"\n"
+"Your account is currently active, but you need to confirm your inscription "
+"by\n"
+"following this link:\n"
+"%hashurl%\n"
+"\n"
+"If you do not not confirm your inscription within 7 days, your account will "
+"be\n"
+"deleted.\n"
+"\n"
+"Please do not reply this email. If you need to contact us, please use the "
+"form\n"
+"contact at %contacturl%\n"
+"\n"
+"Thanks,\n"
+"\n"
+"Syj team"
+msgstr ""
+"Bonjour %user%, et bienvenue sur syj\n"
+"\n"
+"Votre compte est actif, mais vous devez confirmer votre inscription en\n"
+"suivant ce lien:\n"
+"%hashurl%\n"
+"\n"
+"Si vous ne confirmez pas votre inscription d'ici 7 jours, votre compte sera\n"
+"supprimé.\n"
+"\n"
+"Veuillez ne pas répondre à cet email. Si vous avez besoin de nous "
+"contacter,\n"
+"merci d'utiliser le formulaire à l'adresse suivante:\n"
+"%contacturl%\n"
+"\n"
+"Merci,\n"
+"\n"
+"l'équipe de Syj"
 
-#: application/views/scripts/pending/creation_cancel.phtml:12
-msgid "You have canceled the account."
-msgstr "Vous avez annulé le compte."
+#: application/models/Pending/ValidateCreation.php:34
+msgid "[SYJ] Reminder: Validate your account"
+msgstr "[SYJ] Rappel: Validation de votre compte"
 
-#: application/views/scripts/pending/creation_validate.phtml:12
-msgid "You have validated your account."
-msgstr "Vous avez validé votre compte."
+#: application/models/Pending/ValidateCreation.php:35
+msgid ""
+"Hi %user%,\n"
+"\n"
+"You need to validate your account on syj since 6 days. Otherwise, your\n"
+"account will be deleted tomorrow. Please follow this link:\n"
+"%hashurl%\n"
+"\n"
+"Please do not reply this email. If you need to contact us, please use the "
+"form\n"
+"contact at %contacturl%\n"
+"\n"
+"Thanks,\n"
+"\n"
+"Syj team"
+msgstr ""
+"Bonjour %user%,\n"
+"\n"
+"Votre compte est en attente de validation depuis 6 jours. Si vous ne le\n"
+"validez pas, il sera supprimé demain. Merci de suivre ce lien:\n"
+"%hashurl%\n"
+"\n"
+"Veuillez ne pas répondre à cet email. Si vous avez besoin de nous "
+"contacter,\n"
+"merci d'utiliser le formulaire à l'adresse suivante:\n"
+"%contacturl%\n"
+"\n"
+"Merci\n"
+"\n"
+"L'équipe de Syj"
 
-#: application/views/scripts/pending/password_validate.phtml:17
-msgid "log in"
-msgstr "vous connecter"
+#: application/models/Pending/ValidateCreation.php:51
+msgid "[SYJ] Account deactivated"
+msgstr "[SYJ] Compte désactivé"
 
-#: application/views/scripts/pending/password_validate.phtml:15
+#: application/models/Pending/ValidateCreation.php:52
+msgid ""
+"Hi %user%,\n"
+"\n"
+"You have not validated your syj account on time. Therefore, your account "
+"have\n"
+"been deleted. Nevertheless, you can still create a new account.\n"
+"\n"
+"Please do not reply this email. If you need to contact us, please use the "
+"form\n"
+"contact at %contacturl%\n"
+"\n"
+"Regards,\n"
+"\n"
+"Syj team"
+msgstr ""
+"Bonjour %user%,\n"
+"\n"
+"Vous n'avez pas validé votre compte à temps. Votre compte a donc été "
+"supprimé.\n"
+"Vous pouvez toujours recréer un nouveau compte.\n"
+"\n"
+"Veuillez ne pas répondre à cet email. Si vous avez besoin de nous "
+"contacter,\n"
+"merci d'utiliser le formulaire à l'adresse suivante:\n"
+"%contacturl%\n"
+"\n"
+"L'équipe de Syj"
+
+#: application/models/Pending/ResetPassword.php:19
+msgid "[SYJ] Reset your password"
+msgstr "[SYJ] Réinitialisation de votre mot de passe"
+
+#: application/models/Pending/ResetPassword.php:20
+msgid ""
+"Hi %user%,\n"
+"\n"
+"Someone, probably you, has asked to reset your password. If you want to "
+"reset\n"
+"your password, please follow this link:\n"
+"%hashurl%\n"
+"\n"
+"If you do not not confirm within 2 days, your password will not be reset.\n"
+"\n"
+"Please do not reply this email. If you need to contact us, please use the "
+"form\n"
+"contact at %contacturl%\n"
+"\n"
+"Thanks,\n"
+"\n"
+"Syj team"
+msgstr ""
+"Bonjour %user%,\n"
+"\n"
+"Quelqu'un, probablement vous, a demandé à réinitialiser votre mot de\n"
+"passe. Si vous voulez le réinitialiser, veuillez suivre ce lien:\n"
+"%hashurl%\n"
+"\n"
+"Si vous n'avez pas confirmé d'ici 2 jours, votre mot de passe ne sera pas\n"
+"réinitialisé.\n"
+"\n"
+"Veuillez ne pas répondre à cet email. Si vous avez besoin de nous "
+"contacter,\n"
+"merci d'utiliser le formulaire à l'adresse suivante:\n"
+"%contacturl%\n"
+"\n"
+"Merci,\n"
+"\n"
+"l'équipe de Syj"
+
+#: application/models/Path.php:61
 #, php-format
-msgid "Your new password is now <strong>%s</strong>. You can %s with this new password. Don't forget to change it again to a personal password as soon as possible."
-msgstr "Votre nouveau mot de passe est <strong>%s</strong>. Vous pouvez %s avec le nouveau mot de passe. N'oubliez pas de le rechanger le plus tôt possible pour utiliser un mot de passe personnel."
-
-#: application/views/scripts/pending/password_cancel.phtml:12
-msgid "You have canceled the request."
-msgstr "Vous avez annulé la requête."
-
-#: application/views/scripts/pending/index.phtml:16
-msgid "If you need more informations, please"
-msgstr "Si vous avez besoin de plus d'informations, veuillez"
-
-#: application/views/scripts/pending/index.phtml:17
-msgid "contact us"
-msgstr "nous contacter"
+msgid "route number %d"
+msgstr "itinéraire numéro %d"
 
 #: application/layouts/scripts/footer.phtml:27
 msgid "contact"
 msgstr "contact"
 
-#: application/layouts/scripts/footer.phtml:38
-#: application/controllers/AccountController.php:13
-msgid "my account"
-msgstr "mon compte"
-
-#: application/layouts/scripts/footer.phtml:52
-#: application/controllers/ListController.php:14
-msgid "my routes"
-msgstr "mes itinéraires"
-
 #: application/layouts/scripts/footer.phtml:96
 msgid "help"
 msgstr "aide"
-
-#: application/controllers/PendingController.php:31
-msgid "account validated"
-msgstr "compte validé"
-
-#: application/controllers/PendingController.php:38
-msgid "account deleted"
-msgstr "Compte supprimé"
-
-#: application/controllers/PendingController.php:42
-msgid "account creation validation"
-msgstr "validation de la création du compte"
-
-#: application/controllers/PendingController.php:52
-msgid "password changed"
-msgstr "mot de passe modifié"
-
-#: application/controllers/PendingController.php:60
-msgid "request canceled"
-msgstr "requête annulée"
-
-#: application/controllers/PendingController.php:64
-msgid "password reset validation"
-msgstr "validation de la réinitialisation du mot de passe"
-
-#: application/controllers/NewpwdController.php:66
-#: application/controllers/IdxController.php:179
-#: application/controllers/ContactController.php:119
-#: application/controllers/AccountController.php:68
-msgid "Value is required"
-msgstr "Le champ est requis"
-
-#: application/controllers/IdxController.php:24
-#: application/controllers/IdxController.php:71
-#, php-format
-msgid "route by <strong>%s</strong>"
-msgstr "tracé par <strong>%s</strong>"
-
-#: application/controllers/IdxController.php:43
-msgid "route has been deleted"
-msgstr "l'itinéraire a été supprimé"
-
-#: application/controllers/IdxController.php:46
-msgid "route does not exist"
-msgstr "L'itinéraire n'existe pas"
-
-#: application/controllers/IdxController.php:74
-#: application/controllers/IdxController.php:107
-msgid "website to share routes"
-msgstr "site de partage d'itinéraires"
-
-#: application/controllers/IdxController.php:116
-#, php-format
-msgid "File too large. File size must not exceed %s"
-msgstr "Fichier trop gros. La taille ne doit pas dépasser %s"
-
-#: application/controllers/IdxController.php:118
-msgid "Invalid file"
-msgstr "Fichier invalide"
-
-#: application/controllers/IdxController.php:146
-#: application/controllers/IdxController.php:171
-msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
-msgstr "Carte par <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
-
-#: application/controllers/IdxController.php:152
-msgid "save took place successfully"
-msgstr "La sauvegarde s'est déroulée correctement"
-
-#: application/controllers/IdxController.php:153
-#: application/controllers/ListController.php:33
-msgid "server did not understood request. That's probably caused by a bug in SYJ"
-msgstr "Le serveur n'a pas compris la requête. Il s'agit probablement d'un bug dans SYJ"
-
-#: application/controllers/IdxController.php:154
-#: application/controllers/ListController.php:34
-msgid "route not referenced on the server. It has probably been deleted."
-msgstr "chemin non référencé sur le serveur. Il a probablement été supprimé."
-
-#: application/controllers/IdxController.php:155
-#: application/controllers/ListController.php:32
-msgid "server could not be reached"
-msgstr "serveur inaccessible"
-
-#: application/controllers/IdxController.php:156
-#: application/controllers/ListController.php:35
-msgid "there was a server error"
-msgstr "Il s'est produit une erreur serveur"
-
-#: application/controllers/IdxController.php:157
-#: application/controllers/ListController.php:36
-msgid "there was an unknown error"
-msgstr "Il s'est produit une erreur inconnue"
-
-#: application/controllers/IdxController.php:158
-#: application/controllers/LoginController.php:89
-msgid "you must enter a login name"
-msgstr "vous devez entrer un nom d'utilisateur"
-
-#: application/controllers/IdxController.php:159
-msgid "Login correct"
-msgstr "Vous êtes connecté"
-
-#: application/controllers/IdxController.php:160
-msgid "Wrong login/password"
-msgstr "Mauvais nom d'utilisateur ou mot de passe"
-
-#: application/controllers/IdxController.php:161
-msgid "you must enter a password"
-msgstr "vous devez entrer un mot de passe"
-
-#: application/controllers/IdxController.php:163
-msgid "You must accept terms of use"
-msgstr "Vous devez accepter les conditions d'utilisation"
-
-#: application/controllers/IdxController.php:164
-msgid "you must enter an email"
-msgstr "vous devez entrer un email"
-
-#: application/controllers/IdxController.php:165
-msgid "invalid email"
-msgstr "email invalide"
-
-#: application/controllers/IdxController.php:166
-#: application/controllers/AccountController.php:41
-msgid "an user is already registered with this email"
-msgstr "il y'a déjà un utilisateur enregistré avec cet email"
-
-#: application/controllers/IdxController.php:167
-msgid "Account created"
-msgstr "Compte créé"
-
-#: application/controllers/IdxController.php:169
-msgid "Now, you can retry to save"
-msgstr "Maintenant, vous pouvez réessayer de sauvegarder"
-
-#: application/controllers/IdxController.php:170
-msgid "route by"
-msgstr "tracé par"
-
-#: application/controllers/IdxController.php:172
-msgid "checking availibilty"
-msgstr "vérification de la disponibilité"
-
-#: application/controllers/IdxController.php:173
-msgid "available pseudo"
-msgstr "pseudo disponible"
-
-#: application/controllers/IdxController.php:174
-msgid "unavailable pseudo"
-msgstr "pseudo non disponible"
-
-#: application/controllers/IdxController.php:176
-msgid "create"
-msgstr "créér"
-
-#: application/controllers/IdxController.php:178
-msgid "You have an unsaved route"
-msgstr "Vous avez un itinéraire non sauvegardé"
-
-#: application/controllers/IdxController.php:180
-msgid "no result"
-msgstr "pas de résultat"
-
-#: application/controllers/IdxController.php:181
-msgid "could not analyze file content"
-msgstr "impossible d'analyser le contenu du fichier"
-
-#: application/controllers/ContactController.php:11
-msgid "contact form"
-msgstr "formulaire de contact"
-
-#: application/controllers/ContactController.php:110
-msgid "Hi,"
-msgstr "Bonjour,"
-
-#: application/controllers/ListController.php:31
-msgid "There is no undo. Delete this route definitively ?"
-msgstr "Vous ne pourrez pas annuler. Supprimer l'itinéraire définitivement ?"
-
-#: application/controllers/ListController.php:37
-msgid "route was successfully deleted"
-msgstr "l'itinéraire a été correctement supprimé"
-
-#: application/controllers/AccountController.php:28
-msgid "Wrong password"
-msgstr "Mauvais mot de passe"
-
-#: application/controllers/AccountController.php:71
-msgid "You have made no change"
-msgstr "Vous n'avez fait aucun changement"
-
-#: application/controllers/ErrorController.php:59
-msgid "Oups, something went wrong"
-msgstr "Oups, il y a eu un souci"
 
 #~ msgid "Welcome on Syj."
 #~ msgstr "Bienvenue sur Syj."
