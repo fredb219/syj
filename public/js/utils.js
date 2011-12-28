@@ -519,7 +519,7 @@ Element.addMethods('div', (function() {
         }
 
         div.appendChild(node);
-        if (!div.getOpacity()) {
+        if (div.getOpacity()) {
             show(div);
         }
         return div;
