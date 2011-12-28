@@ -71,12 +71,9 @@ if ($this->errorMsg) {
                 <div id="path-infos-content" class="menu-item">
 
                     <div id="path-directlink-title" class="info-title"><?php echo $this->translate("direct link")?></div>
-                    <div id="path-directlink-content"><?php
-                            $serverUrl = rtrim($this->serverUrl(), '/');
-                            $baseUrl = trim($this->baseUrl(), '/');
-                            $fullBaseUrl = $serverUrl . '/' . ($baseUrl ? ($baseUrl . '/'): '');
+                    <div id="path-directlink-content" class="info-content"><?php
                             $urlcomp = urlencode($this->path->urlcomp ?: $this->path->id);
-                            $href = $fullBaseUrl . 'idx/' . $urlcomp . '?format=raw';
+                            $href = $this->baseUrl() . '/idx/' . $urlcomp . '?format=raw';
                             printf('<a href="%s" title="%s">%s</a>',
                                         $href,
                                         $this->translate('direct link'),
@@ -84,16 +81,16 @@ if ($this->errorMsg) {
                         ?></div>
 
                     <div id="path-export-title" class="info-title"><?php echo $this->translate("export")?></div>
-                    <div id="path-export-content"><?php
+                    <div id="path-export-content" class="info-content"><?php
                        $fileName = $this->path->title ?: $this->path->id;
-                       $href = $fullBaseUrl . 'geom/' . rawurlencode($fileName) . '.kml';
+                       $href = $this->baseUrl() . '/geom/' . rawurlencode($fileName) . '.kml';
                        printf('<a href="%s" title="%s">%s</a>',
                                         $href,
                                         $this->translate('kml export'),
                                         $this->translate('kml export'));
 
                         print '<br>';
-                       $href = $fullBaseUrl . 'geom/' . rawurlencode($fileName) . '.gpx';
+                       $href = $this->baseUrl() . '/geom/' . rawurlencode($fileName) . '.gpx';
                        printf('<a href="%s" title="%s">%s</a>',
                                         $href,
                                         $this->translate('gpx export'),

@@ -117,17 +117,17 @@ body, html {
 .info-title {
     text-decoration: underline;
 }
+.info-content a {
+    text-decoration: none;
+}
 
 #path-infos-content {
     text-align: center;
     padding: 4px 15px 15px 15px;
 }
 
-#path-export-title {
-    margin-top: 1em;
-}
-#path-export-content a {
-    text-decoration: none;
+.info-content {
+    margin-bottom: 0.5em;
 }
 
 #path-length {
