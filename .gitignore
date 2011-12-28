@@ -1,6 +1,6 @@
 application/languages/*.mo
 application/languages/*.po~
-generated/mails.txt
+generated/
 build/
 scripts/lighttpd.conf
 library/Zend
