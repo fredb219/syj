@@ -11,12 +11,7 @@ class Syj_Controller_Action_Helper_SyjApi extends Zend_Controller_Action_Helper_
     protected $_redirect = '';
 
     public function init() {
-        $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
-        $viewRenderer->setNoRender();
-        $layout = Zend_Layout::getMvcInstance();
-        if (null !== $layout) {
-            $layout->disableLayout();
-        }
+        $this->getActionController()->getHelper('SyjNoRender')->disableRender();
     }
 
     public function setContentType($contentType) {
