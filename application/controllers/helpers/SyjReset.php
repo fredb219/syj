@@ -6,6 +6,9 @@ class Syj_Controller_Action_Helper_SyjReset extends Zend_Controller_Action_Helpe
 {
     public function resetPlaceHolders() {
         $controller = $this->getActionController();
+        if (!$controller->view) {
+            return;
+        }
         $controller->view->jslocales = null;
         $controller->view->headScript()->exchangeArray(array());
         $controller->view->headLink()->exchangeArray(array());

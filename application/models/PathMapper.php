@@ -80,6 +80,7 @@ class Syj_Model_PathMapper
             $path->id = $this->getDbTable()->insert($data);
         } else {
             $this->getDbTable()->update($data, array('id = ?' => $id));
+            $path->invalidateCache();
         }
     }
 

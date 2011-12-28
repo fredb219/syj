@@ -96,9 +96,19 @@ if ($this->errorMsg) {
                                         $this->translate('gpx export'),
                                         $this->translate('gpx export'));
                        ?>
-
-
                 </div>
+
+                <?php if ($this->profileActive) { ?>
+                <div id="path-profile-title" class="info-title"><?php echo $this->translate("altitude profile")?></div>
+                <div id="path-profile-content" class="info-content"><?php
+                        $urlcomp = urlencode($this->path->urlcomp ?: $this->path->id);
+                        $href = $this->baseUrl() . '/profile/' . $urlcomp . '.png';
+                        $imgsrc =  $this->addParamToUrl($href, 'size', 'small', true);
+                        printf('<a href="%s"><img src="%s"></a>', $href, $imgsrc);
+                ?></div>
+                <?php }?>
+
+
             </div>
         </div>
     <?php }?>

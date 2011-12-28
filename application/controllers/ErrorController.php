@@ -28,6 +28,8 @@ class ErrorController extends Zend_Controller_Action
                     $error_code = 400; // Bad Request
                 } else if ($error->exception instanceof Syj_Exception_Forbidden) {
                     $error_code = 403; // Forbidden
+                } else if ($error->exception instanceof Syj_Exception_NotImplemented) {
+                    $error_code = 501; // Not Implemented
                 } else if ($error->exception instanceof Syj_Exception_NotFound) {
                     $error_code = $error->exception->getCode();
                 }

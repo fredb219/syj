@@ -59,6 +59,7 @@ class IdxController extends Zend_Controller_Action
             $this->view->headScript()->prependScript((string) $jsgeom);
             $this->view->loginform->login_geom_id->setValue((string)$path->id);
             $this->view->geomform->geom_title->setValue($path->title);
+            $this->view->profileActive = $this->_hasAltiProfile($path);
         } else {
             $this->_setInitialPos();
             $title = "Show your journey";
@@ -213,6 +214,32 @@ class IdxController extends Zend_Controller_Action
             $size = $size / 1024;
         }
         return round($size) . $sizes[$c];
+    }
+
+    private function _hasAltiProfile($path) {
+        if (!extension_loaded('gd')) {
+            return false;
+        }
+        $cachefile = $path->getProfileCache('small');
+        if (file_exists($cachefile)) {
+            return filesize($cachefile) != 0;
+        }
+
+        try {
+            $service = $this->_helper->SyjAltiService->service();
+        } catch(Exception $e) {
+            return false;
+        }
+
+        try {
+            $path->getAltiProfile($service, 2 / 100);
+            return true;
+        } catch(Syj_Exception_NotImplemented $e) {
+            @touch($cachefile);
+            return false;
+        } catch(Exception $e) {
+            return false;
+       }
     }
 
 }

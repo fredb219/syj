@@ -7,6 +7,9 @@ class Syj_Controllers_Plugins_SyjLoggedUser extends Zend_Controller_Plugin_Abstr
     public function postDispatch(Zend_Controller_Request_Abstract $request) {
         $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
         $view = $viewRenderer->view;
+        if (!$view) {
+            return;
+        }
         $helper = Zend_Controller_Action_HelperBroker::getStaticHelper('SyjUserManager');
         $view->loggedUser = $helper->current();
     }

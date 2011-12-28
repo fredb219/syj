@@ -3,7 +3,7 @@
     and is published under the AGPL license. */
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
-    protected static $libns = array('gisconverter', 'phptojs', 'pwdgen');
+    protected static $libns = array('gisconverter', 'phptojs', 'pwdgen', 'alti');
 
     public function _bootstrap($resource = null) {
         $autoloader = Zend_Loader_Autoloader::getInstance();

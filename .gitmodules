@@ -13,3 +13,6 @@
 [submodule "public/store"]
 	path = public/store
 	url = git://github.com/cloudhead/store.js.git
+[submodule "library/altiphp"]
+	path = library/altiphp
+	url = https://github.com/arenevier/altiphp.git

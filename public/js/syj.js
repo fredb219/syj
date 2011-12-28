@@ -674,6 +674,20 @@ var SYJView = {
           return;
       }
 
+        $('path-profile-content').select('img').each(function(img) {
+            var src = img.src;
+            var found = src.match('foo=bar(\\d*)');
+            var num;
+            if (found) {
+                num = parseInt(found[1], 10);
+                img.src = src.replace(found[0], 'foo=bar' + (num+1));
+            } else if (src.indexOf('?') === -1) {
+                img.src = img.src + '?foo=bar0';
+            } else {
+                img.src = img.src + '&foo=bar0';
+            }
+        });
+
       this.messenger.setMessage(SyjStrings.saveSuccess, "success");
       SYJDataUi.viewmode();
       document.title = $('geom_title').value;
