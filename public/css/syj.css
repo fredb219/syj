@@ -129,6 +129,7 @@ body, html {
 #path-infos-content {
     text-align: center;
     padding: 4px 15px 15px 15px;
+    cursor: auto;
 }
 
 #path-length {
