@@ -2,15 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-16 21:23+0100\n"
+"POT-Creation-Date: 2012-02-17 12:06+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: S.Higashi <s_higash@mua.biglobe.ne.jp>\n"
+"Last-Translator: Shu Higashi\n"
+"Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: application/controllers/ErrorController.php:59
+#: application/controllers/ErrorController.php:61
 msgid "Oups, something went wrong"
 msgstr "おや、何かがおかしいですね"
 
@@ -29,28 +30,28 @@ msgid "There is no undo. Delete this route definitively ?"
 msgstr "やり直しはできません。本当にこのルートを削除しますか？"
 
 #: application/controllers/ListController.php:32
-#: application/controllers/IdxController.php:156
+#: application/controllers/IdxController.php:157
 msgid "server could not be reached"
 msgstr "サーバに届かなかったようです"
 
 #: application/controllers/ListController.php:33
-#: application/controllers/IdxController.php:154
+#: application/controllers/IdxController.php:155
 msgid ""
 "server did not understood request. That's probably caused by a bug in SYJ"
 msgstr "サーバはリクエストを理解できませんでした。おそらくSYJのバグでしょう"
 
 #: application/controllers/ListController.php:34
-#: application/controllers/IdxController.php:155
+#: application/controllers/IdxController.php:156
 msgid "route not referenced on the server. It has probably been deleted."
 msgstr "ルートはサーバ上で参照できませんでした。おそらく削除されています。"
 
 #: application/controllers/ListController.php:35
-#: application/controllers/IdxController.php:157
+#: application/controllers/IdxController.php:158
 msgid "there was a server error"
 msgstr "サーバのエラーがありました"
 
 #: application/controllers/ListController.php:36
-#: application/controllers/IdxController.php:158
+#: application/controllers/IdxController.php:159
 msgid "there was an unknown error"
 msgstr "不明なエラーがありました"
 
@@ -59,7 +60,7 @@ msgid "route was successfully deleted"
 msgstr "ルートは削除されました"
 
 #: application/controllers/IdxController.php:24
-#: application/controllers/IdxController.php:71
+#: application/controllers/IdxController.php:72
 #, php-format
 msgid "route by <strong>%s</strong>"
 msgstr "<strong>%s</strong>のルート"
@@ -72,138 +73,139 @@ msgstr "ルートは削除されました"
 msgid "route does not exist"
 msgstr "ルートはありません"
 
-#: application/controllers/IdxController.php:74
-#: application/controllers/IdxController.php:107
-#, fuzzy
+#: application/controllers/IdxController.php:75
+#: application/controllers/IdxController.php:108
 msgid "website to share routes"
 msgstr "ルートを共有するウェブサイト"
 
-#: application/controllers/IdxController.php:116
+#: application/controllers/IdxController.php:117
 #, php-format
 msgid "File too large. File size must not exceed %s"
 msgstr "ファイルが大きすぎます。 %s 以下のサイズにしてください"
 
-#: application/controllers/IdxController.php:118
-#, fuzzy
+#: application/controllers/IdxController.php:119
 msgid "Invalid file"
 msgstr "不正なファイル"
 
-#: application/controllers/IdxController.php:146
-#: application/controllers/IdxController.php:172
+#: application/controllers/IdxController.php:147
+#: application/controllers/IdxController.php:173
 msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 msgstr "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 
-#: application/controllers/IdxController.php:147
-#: application/controllers/IdxController.php:173
+#: application/controllers/IdxController.php:148
+#: application/controllers/IdxController.php:174
 msgid ""
 "Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> "
 "and contributors, <a href='http://creativecommons.org/licenses/by-"
 "sa/2.0/'>CC-BY-SA</a>"
 msgstr ""
+"Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> "
+"and contributors, <a href='http://creativecommons.org/licenses/by-"
+"sa/2.0/'>CC-BY-SA</a>"
 
-#: application/controllers/IdxController.php:153
+#: application/controllers/IdxController.php:154
 msgid "save took place successfully"
 msgstr "保存されました"
 
-#: application/controllers/IdxController.php:159
+#: application/controllers/IdxController.php:160
 #: application/controllers/LoginController.php:89
 msgid "you must enter a login name"
 msgstr "ログイン名を入力してください"
 
-#: application/controllers/IdxController.php:160
+#: application/controllers/IdxController.php:161
 msgid "Login correct"
 msgstr "正常ログイン"
 
-#: application/controllers/IdxController.php:161
+#: application/controllers/IdxController.php:162
 msgid "Wrong login/password"
 msgstr "誤ったログイン/パスワード"
 
-#: application/controllers/IdxController.php:162
+#: application/controllers/IdxController.php:163
 msgid "you must enter a password"
 msgstr "パスワードを入力してください"
 
-#: application/controllers/IdxController.php:163
+#: application/controllers/IdxController.php:164
 #: application/controllers/AccountController.php:69
 #: application/forms/Account.php:40
 msgid "Password do not match"
 msgstr "パスワードが一致しません"
 
-#: application/controllers/IdxController.php:164
+#: application/controllers/IdxController.php:165
 msgid "You must accept terms of use"
 msgstr "利用条件を承諾してください"
 
-#: application/controllers/IdxController.php:165
+#: application/controllers/IdxController.php:166
 msgid "you must enter an email"
 msgstr "メールアドレスを入力してください"
 
-#: application/controllers/IdxController.php:166
+#: application/controllers/IdxController.php:167
 msgid "invalid email"
 msgstr "不正なメールアドレス"
 
-#: application/controllers/IdxController.php:167
+#: application/controllers/IdxController.php:168
 #: application/controllers/AccountController.php:41
 msgid "an user is already registered with this email"
 msgstr "このメールアドレスのユーザが既に登録されています"
 
-#: application/controllers/IdxController.php:168
+#: application/controllers/IdxController.php:169
 msgid "Account created"
 msgstr "アカウントを作成しました"
 
-#: application/controllers/IdxController.php:169
+#: application/controllers/IdxController.php:170
 #: application/views/scripts/newpwd/success.phtml:4
 msgid "A link to reset your password has been emailed to you"
 msgstr "パスワードをリセットするためのURLがあなた宛に送られました"
 
-#: application/controllers/IdxController.php:170
+#: application/controllers/IdxController.php:171
 msgid "Now, you can retry to save"
 msgstr "今は、保存をやり直すことができます"
 
-#: application/controllers/IdxController.php:171
+#: application/controllers/IdxController.php:172
 msgid "route by"
 msgstr "ルート作成者"
 
-#: application/controllers/IdxController.php:174
+#: application/controllers/IdxController.php:175
 msgid "checking availibilty"
 msgstr "利用可能かチェック中"
 
-#: application/controllers/IdxController.php:175
+#: application/controllers/IdxController.php:176
 msgid "available pseudo"
 msgstr "利用出来るID"
 
-#: application/controllers/IdxController.php:176
+#: application/controllers/IdxController.php:177
 msgid "unavailable pseudo"
 msgstr "利用できないID"
 
-#: application/controllers/IdxController.php:177
-#: application/views/scripts/idx/index.phtml:115
+#: application/controllers/IdxController.php:178
+#: application/views/scripts/idx/index.phtml:127
 msgid "edit"
 msgstr "編集"
 
-#: application/controllers/IdxController.php:178
+#: application/controllers/IdxController.php:179
 msgid "create"
 msgstr "作成"
 
-#: application/controllers/IdxController.php:179
-#: application/views/scripts/idx/index.phtml:113
+#: application/controllers/IdxController.php:180
+#: application/views/scripts/idx/index.phtml:125
 msgid "duplicate"
 msgstr "複製"
 
-#: application/controllers/IdxController.php:180
+#: application/controllers/IdxController.php:181
 msgid "You have an unsaved route"
 msgstr "保存されていないルートがあります"
 
-#: application/controllers/IdxController.php:181
+#: application/controllers/IdxController.php:182
 #: application/controllers/AccountController.php:68
 #: application/controllers/ContactController.php:119
 #: application/controllers/NewpwdController.php:66
 msgid "Value is required"
 msgstr "値が必要です"
 
-#: application/controllers/IdxController.php:182
+#: application/controllers/IdxController.php:183
 msgid "no result"
 msgstr "結果がありません"
 
-#: application/controllers/IdxController.php:183
+#: application/controllers/IdxController.php:184
 msgid "could not analyze file content"
 msgstr "ファイル内容を分析できませんでした"
 
@@ -411,7 +413,7 @@ msgstr "ユーザ"
 
 #: application/forms/Login.php:13
 msgid "remember me"
-msgstr ""
+msgstr "記憶する"
 
 #: application/forms/Login.php:20
 msgid "I forgot my password"
@@ -664,7 +666,6 @@ msgstr ""
 "てください"
 
 #: application/views/scripts/idx/index.phtml:21
-#, fuzzy
 msgid ""
 "To create a journey, press <strong>\"start a route\"</strong> button, then "
 "click on the map to add points. To delete a point, hold shift pressed while "
@@ -687,7 +688,7 @@ msgid "route length"
 msgstr "ルート長"
 
 #: application/views/scripts/idx/index.phtml:51
-#: application/views/scripts/idx/index.phtml:170
+#: application/views/scripts/idx/index.phtml:182
 msgid "create an account"
 msgstr "アカウントを作成"
 
@@ -699,8 +700,8 @@ msgstr "アカウントがあれば、自分のルートを管理、変更でき
 msgid "route infos"
 msgstr "ルート情報"
 
-#: application/views/scripts/idx/index.phtml:73
-#: application/views/scripts/idx/index.phtml:82
+#: application/views/scripts/idx/index.phtml:74
+#: application/views/scripts/idx/index.phtml:80
 msgid "direct link"
 msgstr "ダイレクトリンク"
 
@@ -718,19 +719,23 @@ msgstr "kmlにエクスポート"
 msgid "gpx export"
 msgstr "gpxにエクスポート"
 
-#: application/views/scripts/idx/index.phtml:119
+#: application/views/scripts/idx/index.phtml:106
+msgid "altitude profile"
+msgstr "高度のプロファイル"
+
+#: application/views/scripts/idx/index.phtml:131
 msgid "Search a place"
 msgstr "場所をさがす"
 
-#: application/views/scripts/idx/index.phtml:123
+#: application/views/scripts/idx/index.phtml:135
 msgid "Ok"
 msgstr "OK"
 
-#: application/views/scripts/idx/index.phtml:129
+#: application/views/scripts/idx/index.phtml:141
 msgid "start a route"
 msgstr "ルート開始"
 
-#: application/views/scripts/idx/index.phtml:141
+#: application/views/scripts/idx/index.phtml:153
 msgid "more results"
 msgstr "もっと"
 
@@ -765,7 +770,6 @@ msgid "modify or duplicate"
 msgstr "変更または複製"
 
 #: application/models/Pending/ValidateCreation.php:15
-#, fuzzy
 msgid "[SYJ] Please validate your account"
 msgstr "[SYJ] あなたのアカウントを認証してください"
 
