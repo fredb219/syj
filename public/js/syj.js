@@ -393,7 +393,7 @@ var SYJView = {
             this.map.updateSize();
             this.map.zoomToExtent(this.viewLayer.getDataExtent());
         } else {
-            this.initMaPos(gInitialPos);
+            this.initMapPos(gInitialPos);
         }
 
         $("map-overlay").hide();
@@ -503,7 +503,7 @@ var SYJView = {
         return control;
     },
 
-    initMaPos: function (aPos) {
+    initMapPos: function (aPos) {
         var extent = null, center = null, zoom = 0;
 
         if (aPos.hasOwnProperty('lon') && aPos.hasOwnProperty('lat') && aPos.hasOwnProperty('zoom')) {
@@ -853,11 +853,11 @@ var SYJUserClass = Class.create(SYJModalClass, {
                 $("termsofuseiframe").setAttribute("src", evt.target.href);
             }
             evt.stop();
-        }).bindAsEventListener(this);
+        }.bindAsEventListener(this));
 
         ["click", "keyup"].each(function (evtName) {
             $$("#user_termsofuse_anchor, #geom_termsofuse_anchor").invoke('observe', evtName, touevt);
-        })
+        });
 
         $$("#login_area_create > a").invoke('observe', 'click',
             function(evt) {
