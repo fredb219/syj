@@ -68,20 +68,23 @@ if ($this->errorMsg) {
             <div class="menu-item">
                 <div id="path-infos-toggler"><a href="" id="path-infos-anchor"><?php echo $this->translate("route infos")?></a></div>
              </div>
-                <div id="path-infos-content" class="menu-item">
+             <div id="path-infos-content" class="menu-item">
 
-                    <div id="path-directlink-title" class="info-title"><?php echo $this->translate("direct link")?></div>
-                    <div id="path-directlink-content" class="info-content"><?php
-                            $urlcomp = urlencode($this->path->urlcomp ?: $this->path->id);
-                            $href = $this->baseUrl() . '/idx/' . $urlcomp . '?format=raw';
-                            printf('<a href="%s" title="%s">%s</a>',
-                                        $href,
-                                        $this->translate('direct link'),
-                                        $this->escape($href));
-                        ?></div>
+                <section class="info-section">
+                    <h1 id="path-directlink-title"><?php echo $this->translate("direct link")?></h1>
+                    <?php
+                        $urlcomp = urlencode($this->path->urlcomp ?: $this->path->id);
+                        $href = $this->baseUrl() . '/idx/' . $urlcomp . '?format=raw';
+                        printf('<a href="%s" title="%s">%s</a>',
+                               $href,
+                               $this->translate('direct link'),
+                               $this->escape($href));
+                    ?>
+                </section>
 
-                    <div id="path-export-title" class="info-title"><?php echo $this->translate("export")?></div>
-                    <div id="path-export-content" class="info-content"><?php
+                <section class="info-section">
+                    <h1 id="path-export-title"><?php echo $this->translate("export")?></h1>
+                    <?php
                        $fileName = $this->path->title ?: $this->path->id;
                        $href = $this->baseUrl() . '/geom/' . rawurlencode($fileName) . '.kml';
                        printf('<a href="%s" title="%s">%s</a>',
@@ -96,16 +99,18 @@ if ($this->errorMsg) {
                                         $this->translate('gpx export'),
                                         $this->translate('gpx export'));
                        ?>
-                </div>
+                </section>
 
                 <?php if ($this->profileActive) { ?>
-                <div id="path-profile-title" class="info-title"><?php echo $this->translate("altitude profile")?></div>
-                <div id="path-profile-content" class="info-content"><?php
+                <section class="info-section">
+                    <h1 id="path-profile-title"><?php echo $this->translate("altitude profile")?></h1>
+                    <?php
                         $urlcomp = urlencode($this->path->urlcomp ?: $this->path->id);
                         $href = $this->baseUrl() . '/profile/' . $urlcomp . '.png';
                         $imgsrc =  $this->addParamToUrl($href, 'size', 'small', true);
                         printf('<a href="%s"><img src="%s"></a>', $href, $imgsrc);
-                ?></div>
+                    ?>
+                    </section>
                 <?php }?>
 
 

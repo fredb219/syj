@@ -114,20 +114,21 @@ body, html {
     background-color: #E0E0FF;
 }
 
-.info-title {
-    text-decoration: underline;
+.info-section {
+    margin-bottom: 0.5em;
 }
-.info-content a {
+.info-section > h1 {
+    text-decoration: underline;
+    font-size: 1em;
+    margin: 2px 0 2px 0;
+}
+.info-section a {
     text-decoration: none;
 }
 
 #path-infos-content {
     text-align: center;
     padding: 4px 15px 15px 15px;
-}
-
-.info-content {
-    margin-bottom: 0.5em;
 }
 
 #path-length {
