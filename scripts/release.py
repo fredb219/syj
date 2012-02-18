@@ -30,7 +30,10 @@ def updateversion():
 
 def compress(path):
     tmpout = tempfile.TemporaryFile()
-    subprocess.Popen(['yui-compressor', path], stdout=tmpout).communicate()
+    try:
+        subprocess.Popen(['yui-compressor', path], stdout=tmpout).communicate()
+    except OSError:
+        subprocess.Popen(['yuicompressor', path], stdout=tmpout).communicate()
     tmpout.seek(0)
     with open(path, 'w') as output:
         output.write(tmpout.read())
