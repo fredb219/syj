@@ -95,8 +95,12 @@ def install(source, target):
         shutil.copy(source, buildtarget)
 
     else:
+        hascontent = False
         for item in glob.glob(source):
+            hascontent = True
             install(item, target)
+        if not hascontent: # not a directory or a file or a list of files
+            raise Exception(("%s does not exist" % source))
 
 def main():
     if os.path.isdir(__BUILD__):
