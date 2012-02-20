@@ -2,6 +2,10 @@ public/js/img public/img
 public/icons
 library/*.php
 library/Zend/* # will not take .git
+library/alti.php
+library/datasource.php
+library/srtmpostgis
+library/srtmtiles
 application
 public/*.php
 scripts/cron.php
