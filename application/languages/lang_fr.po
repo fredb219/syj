@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-08 21:33+0200\n"
+"POT-Creation-Date: 2012-08-08 22:28+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: arno <arno@renevier.net>\n"
 "Language-Team: arno <arno@renevier.net>\n"
@@ -17,6 +17,9 @@ msgstr ""
 "X-Poedit-Basepath: application\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,13,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: application\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
+"X-Source-Language: C\n"
 
 #: application/validate/EmailAddress.php:13
 #: application/controllers/ContactController.php:120
@@ -248,7 +251,7 @@ msgstr ""
 "réessayer plus tard, ou d'écrire directement à <a href=\"mailto:%s\">%s</a>"
 
 #: application/views/scripts/newpwd/success.phtml:4
-#: application/controllers/IdxController.php:170
+#: application/controllers/IdxController.php:172
 msgid "A link to reset your password has been emailed to you"
 msgstr ""
 "Un email contenant un lien pour réinitialiser votre mot de passe vous a été "
@@ -268,9 +271,10 @@ msgid ""
 "click on the map to add points. To delete a point, hold shift pressed while "
 "clicking on it."
 msgstr ""
-"Pour créer un trajet, pressez le bouton <strong>\"commencer un itinéraire\"</"
-"strong> puis cliquez sur la carte pour ajouter des points à votre tracé. "
-"Pour supprimer un point, maintenant shift enfoncé en cliquant sur ce point."
+"Pour créer un trajet, pressez le bouton <strong>\"commencer un "
+"itinéraire\"</strong> puis cliquez sur la carte pour ajouter des points à "
+"votre tracé. Pour supprimer un point, maintenant shift enfoncé en cliquant "
+"sur ce point."
 
 #: application/views/scripts/idx/index.phtml:23
 msgid "You can zoom and move the map with the controls in the top left corner."
@@ -286,8 +290,8 @@ msgid "route length"
 msgstr "longueur du tracé"
 
 #: application/views/scripts/idx/index.phtml:49
-#: application/controllers/LoginController.php:8
-#: application/forms/Login.php:23 application/layouts/scripts/footer.phtml:73
+#: application/controllers/LoginController.php:8 application/forms/Login.php:23
+#: application/layouts/scripts/footer.phtml:73
 msgid "login"
 msgstr "connexion"
 
@@ -328,12 +332,12 @@ msgid "altitude profile"
 msgstr "dénivelé"
 
 #: application/views/scripts/idx/index.phtml:125
-#: application/controllers/IdxController.php:180
+#: application/controllers/IdxController.php:184
 msgid "duplicate"
 msgstr "dupliquer"
 
 #: application/views/scripts/idx/index.phtml:127
-#: application/controllers/IdxController.php:178
+#: application/controllers/IdxController.php:182
 msgid "edit"
 msgstr "modifier"
 
@@ -408,15 +412,15 @@ msgstr ""
 
 #: application/views/scripts/termsofuse/index.phtml:25
 msgid ""
-"Sources of the software running the website are <a href=\"http://dev."
-"renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The "
-"map used to display the routes comes from <a href=\"http://www.openstreetmap."
-"org/\">openstreetmap</a>."
+"Sources of the software running the website are <a "
+"href=\"http://dev.renevier.net/?p=syj.git\">publicly available</a> under a "
+"agpl license. The map used to display the routes comes from <a "
+"href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 msgstr ""
-"Les sources du logiciel qui fait tourner le site web sont <a href=\"http://"
-"dev.renevier.net/?p=syj.git\">disponibles publiquement</a> sous une licence "
-"agpl. La carte utilisée pour l'affichage des itinéraires vient d'<a href="
-"\"http://www.openstreetmap.org/\">openstreetmap</a>."
+"Les sources du logiciel qui fait tourner le site web sont <a "
+"href=\"http://dev.renevier.net/?p=syj.git\">disponibles publiquement</a> "
+"sous une licence agpl. La carte utilisée pour l'affichage des itinéraires "
+"vient d'<a href=\"http://www.openstreetmap.org/\">openstreetmap</a>."
 
 #: application/views/scripts/account/success.phtml:4
 msgid "Your account was modified successfully"
@@ -499,10 +503,10 @@ msgid ""
 "button, points will have an icon%s over them. Clicking that icon will delete "
 "the point."
 msgstr ""
-"Lorsque vous éditez un itinéraire, vous pouvez le bouger en le glissant-"
-"déposant. Si vous voulez le supprimer, vous devez appuyer sur la touche "
-"Shift. Lorsque la touche est enfoncée, une icône%s va apparaître au-dessus "
-"des points. Cliquez sur l'icône pour supprimer un point."
+"Lorsque vous éditez un itinéraire, vous pouvez le bouger en le "
+"glissant-déposant. Si vous voulez le supprimer, vous devez appuyer sur la "
+"touche Shift. Lorsque la touche est enfoncée, une icône%s va apparaître "
+"au-dessus des points. Cliquez sur l'icône pour supprimer un point."
 
 #: application/views/scripts/faq/index.phtml:12
 msgid "Why should I create a account?"
@@ -573,7 +577,7 @@ msgid "Hi,"
 msgstr "Bonjour,"
 
 #: application/controllers/ContactController.php:119
-#: application/controllers/IdxController.php:182
+#: application/controllers/IdxController.php:186
 #: application/controllers/AccountController.php:68
 #: application/controllers/NewpwdController.php:66
 msgid "Value is required"
@@ -608,26 +612,39 @@ msgid "Invalid file"
 msgstr "Fichier invalide"
 
 #: application/controllers/IdxController.php:147
-#: application/controllers/IdxController.php:173
+#: application/controllers/IdxController.php:175
 msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 msgstr "Carte par <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
 
 #: application/controllers/IdxController.php:148
-#: application/controllers/IdxController.php:174
+#: application/controllers/IdxController.php:149
+#: application/controllers/IdxController.php:176
+#: application/controllers/IdxController.php:177
+msgid ""
+"Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>, <a "
+"href='http://opencyclemap.org/'>OpenCycleMap</a>, <a "
+"href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"
+msgstr ""
+"Carte par <a href='http://openstreetmap.org/'>OpenStreetMap</a>, <a "
+"href='http://opencyclemap.org/'>OpenCycleMap</a>, <a "
+"href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"
+
+#: application/controllers/IdxController.php:150
+#: application/controllers/IdxController.php:178
 msgid ""
 "Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> "
-"and contributors, <a href='http://creativecommons.org/licenses/by-"
-"sa/2.0/'>CC-BY-SA</a>"
+"and contributors, <a "
+"href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"
 msgstr ""
-"Carte par MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</"
-"a> et contributeurs, <a href='http://creativecommons.org/licenses/by-"
-"sa/2.0/'>CC-BY-SA</a>"
+"Carte par MapQuest, <a "
+"href='http://www.openstreetmap.org/'>OpenStreetMap</a> et contributeurs, <a "
+"href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"
 
-#: application/controllers/IdxController.php:154
+#: application/controllers/IdxController.php:156
 msgid "save took place successfully"
 msgstr "La sauvegarde s'est déroulée correctement"
 
-#: application/controllers/IdxController.php:155
+#: application/controllers/IdxController.php:157
 #: application/controllers/ListController.php:33
 msgid ""
 "server did not understood request. That's probably caused by a bug in SYJ"
@@ -635,103 +652,103 @@ msgstr ""
 "Le serveur n'a pas compris la requête. Il s'agit probablement d'un bug dans "
 "SYJ"
 
-#: application/controllers/IdxController.php:156
+#: application/controllers/IdxController.php:158
 #: application/controllers/ListController.php:34
 msgid "route not referenced on the server. It has probably been deleted."
 msgstr "chemin non référencé sur le serveur. Il a probablement été supprimé."
 
-#: application/controllers/IdxController.php:157
+#: application/controllers/IdxController.php:159
 #: application/controllers/ListController.php:32
 msgid "server could not be reached"
 msgstr "serveur inaccessible"
 
-#: application/controllers/IdxController.php:158
+#: application/controllers/IdxController.php:160
 #: application/controllers/ListController.php:35
 msgid "there was a server error"
 msgstr "Il s'est produit une erreur serveur"
 
-#: application/controllers/IdxController.php:159
+#: application/controllers/IdxController.php:161
 #: application/controllers/ListController.php:36
 msgid "there was an unknown error"
 msgstr "Il s'est produit une erreur inconnue"
 
-#: application/controllers/IdxController.php:160
+#: application/controllers/IdxController.php:162
 #: application/controllers/LoginController.php:89
 msgid "you must enter a login name"
 msgstr "vous devez entrer un nom d'utilisateur"
 
-#: application/controllers/IdxController.php:161
+#: application/controllers/IdxController.php:163
 msgid "Login correct"
 msgstr "Vous êtes connecté"
 
-#: application/controllers/IdxController.php:162
+#: application/controllers/IdxController.php:164
 msgid "Wrong login/password"
 msgstr "Mauvais nom d'utilisateur ou mot de passe"
 
-#: application/controllers/IdxController.php:163
+#: application/controllers/IdxController.php:165
 msgid "you must enter a password"
 msgstr "vous devez entrer un mot de passe"
 
-#: application/controllers/IdxController.php:164
+#: application/controllers/IdxController.php:166
 #: application/controllers/AccountController.php:69
 #: application/forms/Account.php:40
 msgid "Password do not match"
 msgstr "Les mots de passe ne correspondent pas"
 
-#: application/controllers/IdxController.php:165
+#: application/controllers/IdxController.php:167
 msgid "You must accept terms of use"
 msgstr "Vous devez accepter les conditions d'utilisation"
 
-#: application/controllers/IdxController.php:166
+#: application/controllers/IdxController.php:168
 msgid "you must enter an email"
 msgstr "vous devez entrer un email"
 
-#: application/controllers/IdxController.php:167
+#: application/controllers/IdxController.php:169
 msgid "invalid email"
 msgstr "email invalide"
 
-#: application/controllers/IdxController.php:168
+#: application/controllers/IdxController.php:170
 #: application/controllers/AccountController.php:41
 msgid "an user is already registered with this email"
 msgstr "il y'a déjà un utilisateur enregistré avec cet email"
 
-#: application/controllers/IdxController.php:169
+#: application/controllers/IdxController.php:171
 msgid "Account created"
 msgstr "Compte créé"
 
-#: application/controllers/IdxController.php:171
+#: application/controllers/IdxController.php:173
 msgid "Now, you can retry to save"
 msgstr "Maintenant, vous pouvez réessayer de sauvegarder"
 
-#: application/controllers/IdxController.php:172
+#: application/controllers/IdxController.php:174
 msgid "route by"
 msgstr "tracé par"
 
-#: application/controllers/IdxController.php:175
+#: application/controllers/IdxController.php:179
 msgid "checking availibilty"
 msgstr "vérification de la disponibilité"
 
-#: application/controllers/IdxController.php:176
+#: application/controllers/IdxController.php:180
 msgid "available pseudo"
 msgstr "pseudo disponible"
 
-#: application/controllers/IdxController.php:177
+#: application/controllers/IdxController.php:181
 msgid "unavailable pseudo"
 msgstr "pseudo non disponible"
 
-#: application/controllers/IdxController.php:179
+#: application/controllers/IdxController.php:183
 msgid "create"
 msgstr "créér"
 
-#: application/controllers/IdxController.php:181
+#: application/controllers/IdxController.php:185
 msgid "You have an unsaved route"
 msgstr "Vous avez un itinéraire non sauvegardé"
 
-#: application/controllers/IdxController.php:183
+#: application/controllers/IdxController.php:187
 msgid "no result"
 msgstr "pas de résultat"
 
-#: application/controllers/IdxController.php:184
+#: application/controllers/IdxController.php:188
 msgid "could not analyze file content"
 msgstr "impossible d'analyser le contenu du fichier"
 

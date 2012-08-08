@@ -30,11 +30,11 @@ body, html {
 }
 
 .olControlLayerSwitcher {
-    bottom: 4em;
+    bottom: 6em;
     top: auto;
     left: 13px;
     opacity: 0.75;
-    height: 6em;
+    height: 8.5em;
     max-width: intrinsic;
     max-width: -moz-max-content;
 }

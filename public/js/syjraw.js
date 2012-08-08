@@ -39,6 +39,22 @@ function mapnikLayer() {
                 { attribution: SyjStrings.osmAttribution});
 }
 
+function opencyclemapLayer() {
+    return new OpenLayers.Layer.OSM("OpenCycleMap", [
+                'http://a.tile.opencyclemap.org/cycle/${z}/${x}/${y}.png',
+                'http://b.tile.opencyclemap.org/cycle/${z}/${x}/${y}.png',
+                'http://c.tile.opencyclemap.org/cycle/${z}/${x}/${y}.png'],
+                { attribution: SyjStrings.opencyclemapAttribution});
+}
+
+function landscapeLayer() {
+    return new OpenLayers.Layer.OSM("Landscape", [
+                'http://a.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png',
+                'http://b.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png',
+                'http://c.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png'],
+                { attribution: SyjStrings.landscapeAttribution});
+}
+
 function init() {
     var map = new OpenLayers.Map('map', {
                 controls: [
@@ -65,6 +81,12 @@ function init() {
             break;
             case 'M':
              baseLayer = mapnikLayer();
+            break;
+            case 'C':
+             baseLayer = opencyclemapLayer();
+            break;
+            case 'L':
+             baseLayer = landscapeLayer();
             break;
         }
     }
