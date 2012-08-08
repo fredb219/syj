@@ -3,5 +3,5 @@
     and is published under the AGPL license. */
 
 class Syj_Version {
-    const VERSION = "v0.4.2-dev";
+    const VERSION = "$SYJVERSION$";
 }
