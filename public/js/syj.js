@@ -276,7 +276,7 @@ var SYJView = {
     mode: 'view',
 
     init: function() {
-        var externalGraphic, baseURL, mapnikLayer, mapquestLayer, layerOptions, hidemessenger, layerCode, parameters;
+        var externalGraphic, baseURL, mapnikLayer, opencyclemapLayer, landscapeLayer, mapquestLayer, layerOptions, hidemessenger, layerCode, parameters;
 
         // is svg context, opera does not resolve links with base element is svg context
         externalGraphic = styleMap.edit.styles.select.defaultStyle.externalGraphic;
@@ -299,6 +299,18 @@ var SYJView = {
                 'http://c.tile.openstreetmap.org/${z}/${x}/${y}.png'],
                 { attribution: SyjStrings.osmAttribution, layerCode: 'M' });
 
+		opencyclemapLayer = new OpenLayers.Layer.OSM("OpenCycleMap", [
+                'http://a.tile.opencyclemap.org/cycle/${z}/${x}/${y}.png',
+                'http://b.tile.opencyclemap.org/cycle/${z}/${x}/${y}.png',
+                'http://c.tile.opencyclemap.org/cycle/${z}/${x}/${y}.png'],
+                { attribution: SyjStrings.opencyclemapAttribution, layerCode: 'C' });
+
+		landscapeLayer = new OpenLayers.Layer.OSM("Landscape", [
+                'http://a.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png',
+                'http://b.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png',
+                'http://c.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png'],
+                { attribution: SyjStrings.landscapeAttribution, layerCode: 'L' });
+
         mapquestLayer = new OpenLayers.Layer.OSM("MapQuest", [
             'http://otile1.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.png',
             'http://otile2.mqcdn.com/tiles/1.0.0/osm/${z}/${x}/${y}.png',
@@ -312,7 +324,7 @@ var SYJView = {
                         attribution: SyjStrings.geomAttribution };
 
         this.viewLayer = new OpenLayers.Layer.Vector("View Layer", layerOptions);
-        this.map.addLayers([mapnikLayer, mapquestLayer, this.viewLayer]);
+        this.map.addLayers([mapnikLayer, opencyclemapLayer, landscapeLayer, mapquestLayer, this.viewLayer]);
 
         this.map.setBaseLayer(mapnikLayer);
         layerCode = null;
