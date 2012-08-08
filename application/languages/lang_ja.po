@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syj\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-17 12:06+0100\n"
+"POT-Creation-Date: 2012-08-08 21:33+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Shu Higashi\n"
 "Language-Team: \n"
@@ -11,763 +11,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: application/controllers/ErrorController.php:61
-msgid "Oups, something went wrong"
-msgstr "おや、何かがおかしいですね"
-
-#: application/controllers/FaqController.php:9
-#: application/views/scripts/faq/index.phtml:5
-msgid "Frequently asked questions"
-msgstr "FAQ"
-
-#: application/controllers/ListController.php:14
-#: application/layouts/scripts/footer.phtml:52
-msgid "my routes"
-msgstr "自分のルート"
-
-#: application/controllers/ListController.php:31
-msgid "There is no undo. Delete this route definitively ?"
-msgstr "やり直しはできません。本当にこのルートを削除しますか？"
-
-#: application/controllers/ListController.php:32
-#: application/controllers/IdxController.php:157
-msgid "server could not be reached"
-msgstr "サーバに届かなかったようです"
-
-#: application/controllers/ListController.php:33
-#: application/controllers/IdxController.php:155
-msgid ""
-"server did not understood request. That's probably caused by a bug in SYJ"
-msgstr "サーバはリクエストを理解できませんでした。おそらくSYJのバグでしょう"
-
-#: application/controllers/ListController.php:34
-#: application/controllers/IdxController.php:156
-msgid "route not referenced on the server. It has probably been deleted."
-msgstr "ルートはサーバ上で参照できませんでした。おそらく削除されています。"
-
-#: application/controllers/ListController.php:35
-#: application/controllers/IdxController.php:158
-msgid "there was a server error"
-msgstr "サーバのエラーがありました"
-
-#: application/controllers/ListController.php:36
-#: application/controllers/IdxController.php:159
-msgid "there was an unknown error"
-msgstr "不明なエラーがありました"
-
-#: application/controllers/ListController.php:37
-msgid "route was successfully deleted"
-msgstr "ルートは削除されました"
-
-#: application/controllers/IdxController.php:24
-#: application/controllers/IdxController.php:72
-#, php-format
-msgid "route by <strong>%s</strong>"
-msgstr "<strong>%s</strong>のルート"
-
-#: application/controllers/IdxController.php:43
-msgid "route has been deleted"
-msgstr "ルートは削除されました"
-
-#: application/controllers/IdxController.php:46
-msgid "route does not exist"
-msgstr "ルートはありません"
-
-#: application/controllers/IdxController.php:75
-#: application/controllers/IdxController.php:108
-msgid "website to share routes"
-msgstr "ルートを共有するウェブサイト"
-
-#: application/controllers/IdxController.php:117
-#, php-format
-msgid "File too large. File size must not exceed %s"
-msgstr "ファイルが大きすぎます。 %s 以下のサイズにしてください"
-
-#: application/controllers/IdxController.php:119
-msgid "Invalid file"
-msgstr "不正なファイル"
-
-#: application/controllers/IdxController.php:147
-#: application/controllers/IdxController.php:173
-msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
-msgstr "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
-
-#: application/controllers/IdxController.php:148
-#: application/controllers/IdxController.php:174
-msgid ""
-"Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> "
-"and contributors, <a href='http://creativecommons.org/licenses/by-"
-"sa/2.0/'>CC-BY-SA</a>"
-msgstr ""
-"Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> "
-"and contributors, <a href='http://creativecommons.org/licenses/by-"
-"sa/2.0/'>CC-BY-SA</a>"
-
-#: application/controllers/IdxController.php:154
-msgid "save took place successfully"
-msgstr "保存されました"
-
-#: application/controllers/IdxController.php:160
-#: application/controllers/LoginController.php:89
-msgid "you must enter a login name"
-msgstr "ログイン名を入力してください"
-
-#: application/controllers/IdxController.php:161
-msgid "Login correct"
-msgstr "正常ログイン"
-
-#: application/controllers/IdxController.php:162
-msgid "Wrong login/password"
-msgstr "誤ったログイン/パスワード"
-
-#: application/controllers/IdxController.php:163
-msgid "you must enter a password"
-msgstr "パスワードを入力してください"
-
-#: application/controllers/IdxController.php:164
-#: application/controllers/AccountController.php:69
-#: application/forms/Account.php:40
-msgid "Password do not match"
-msgstr "パスワードが一致しません"
-
-#: application/controllers/IdxController.php:165
-msgid "You must accept terms of use"
-msgstr "利用条件を承諾してください"
-
-#: application/controllers/IdxController.php:166
-msgid "you must enter an email"
-msgstr "メールアドレスを入力してください"
-
-#: application/controllers/IdxController.php:167
-msgid "invalid email"
-msgstr "不正なメールアドレス"
-
-#: application/controllers/IdxController.php:168
-#: application/controllers/AccountController.php:41
-msgid "an user is already registered with this email"
-msgstr "このメールアドレスのユーザが既に登録されています"
-
-#: application/controllers/IdxController.php:169
-msgid "Account created"
-msgstr "アカウントを作成しました"
-
-#: application/controllers/IdxController.php:170
-#: application/views/scripts/newpwd/success.phtml:4
-msgid "A link to reset your password has been emailed to you"
-msgstr "パスワードをリセットするためのURLがあなた宛に送られました"
-
-#: application/controllers/IdxController.php:171
-msgid "Now, you can retry to save"
-msgstr "今は、保存をやり直すことができます"
-
-#: application/controllers/IdxController.php:172
-msgid "route by"
-msgstr "ルート作成者"
-
-#: application/controllers/IdxController.php:175
-msgid "checking availibilty"
-msgstr "利用可能かチェック中"
-
-#: application/controllers/IdxController.php:176
-msgid "available pseudo"
-msgstr "利用出来るID"
-
-#: application/controllers/IdxController.php:177
-msgid "unavailable pseudo"
-msgstr "利用できないID"
-
-#: application/controllers/IdxController.php:178
-#: application/views/scripts/idx/index.phtml:127
-msgid "edit"
-msgstr "編集"
-
-#: application/controllers/IdxController.php:179
-msgid "create"
-msgstr "作成"
-
-#: application/controllers/IdxController.php:180
-#: application/views/scripts/idx/index.phtml:125
-msgid "duplicate"
-msgstr "複製"
-
-#: application/controllers/IdxController.php:181
-msgid "You have an unsaved route"
-msgstr "保存されていないルートがあります"
-
-#: application/controllers/IdxController.php:182
-#: application/controllers/AccountController.php:68
-#: application/controllers/ContactController.php:119
-#: application/controllers/NewpwdController.php:66
-msgid "Value is required"
-msgstr "値が必要です"
-
-#: application/controllers/IdxController.php:183
-msgid "no result"
-msgstr "結果がありません"
-
-#: application/controllers/IdxController.php:184
-msgid "could not analyze file content"
-msgstr "ファイル内容を分析できませんでした"
-
-#: application/controllers/AccountController.php:13
-#: application/layouts/scripts/footer.phtml:38
-msgid "my account"
-msgstr "自分のアカウント"
-
-#: application/controllers/AccountController.php:28
-msgid "Wrong password"
-msgstr "間違ったパスワード"
-
-#: application/controllers/AccountController.php:70
-#: application/forms/Account.php:33 application/forms/User.php:20
-#, php-format
-msgid "At least %d characters"
-msgstr "最低 %d 文字"
-
-#: application/controllers/AccountController.php:71
-msgid "You have made no change"
-msgstr "変更していません"
-
-#: application/controllers/TermsofuseController.php:9
-#: application/forms/User.php:44 application/forms/Geom.php:39
-#: application/layouts/scripts/footer.phtml:86
-msgid "terms of use"
-msgstr "利用条件"
-
-#: application/controllers/ContactController.php:11
-msgid "contact form"
-msgstr "連絡フォーム"
-
-#: application/controllers/ContactController.php:110
-msgid "Hi,"
-msgstr "Hi,"
-
+#: application/validate/EmailAddress.php:13
 #: application/controllers/ContactController.php:120
-#: application/forms/Contact.php:32 application/validate/EmailAddress.php:13
+#: application/forms/Contact.php:32
 msgid "Invalid email"
 msgstr "不正なメールアドレス"
 
-#: application/controllers/PendingController.php:31
-msgid "account validated"
-msgstr "認証済みアカウント"
-
-#: application/controllers/PendingController.php:38
-msgid "account deleted"
-msgstr "削除済みアカウント"
-
-#: application/controllers/PendingController.php:42
-msgid "account creation validation"
-msgstr "アカウント作成認証"
-
-#: application/controllers/PendingController.php:52
-msgid "password changed"
-msgstr "変更済みパスワード"
-
-#: application/controllers/PendingController.php:60
-msgid "request canceled"
-msgstr "キャンセル済みリクエスト"
-
-#: application/controllers/PendingController.php:64
-msgid "password reset validation"
-msgstr "パスワードリセット認証"
-
-#: application/controllers/LoginController.php:8
-#: application/forms/Login.php:23 application/views/scripts/idx/index.phtml:49
-#: application/layouts/scripts/footer.phtml:73
-msgid "login"
-msgstr "ログイン"
-
-#: application/forms/Newpwd.php:28 application/forms/Account.php:27
-#: application/forms/User.php:36
-msgid "email"
-msgstr "メールアドレス"
-
-#: application/forms/Newpwd.php:33
-#: application/forms/Pending/ResetPassword.php:16
-msgid "reset my password"
-msgstr "自分のパスワードをリセット"
-
-#: application/forms/Contact.php:27
-msgid "Value is required and can't be empty"
-msgstr "値が必要です"
-
-#: application/forms/Contact.php:36
-msgid "Email:"
-msgstr "メールアドレス:"
-
-#: application/forms/Contact.php:40
-msgid "Subject must be %max% characters long or less"
-msgstr "件名欄は %max% 文字までです"
-
-#: application/forms/Contact.php:45
-msgid "Subject:"
-msgstr "件名(英語で)"
-
-#: application/forms/Contact.php:49
-msgid "Message:"
-msgstr "メッセージ(英語で)"
-
-#: application/forms/Contact.php:56
-msgid "Send"
-msgstr "送信"
-
-#: application/forms/Contact.php:64
-msgid "Send a message"
-msgstr "メッセージを送信"
-
-#: application/forms/Pending/ValidateCreation.php:11
+#: application/models/Path.php:61
 #, php-format
-msgid ""
-"Someone, probably you, has registered an account %s with email address %s on "
-"syj. To confirm this account creation, validate with following button."
-msgstr ""
-"誰か、おそらくあなた自身、がアカウント %s を %s というメールアドレスでSyj 上"
-"に登録しました。このアカウント作成を確認するには、次のボタンを認証してくださ"
-"い。"
-
-#: application/forms/Pending/ValidateCreation.php:17
-#: application/forms/Geom.php:50
-msgid "save"
-msgstr "保存"
-
-#: application/forms/Pending/ValidateCreation.php:23
-#: application/views/scripts/list/index.phtml:68
-msgid "delete"
-msgstr "削除"
-
-#: application/forms/Pending/ValidateCreation.php:24
-msgid ""
-"To cancel account creation, press following button. The account and all its "
-"data will be deleted."
-msgstr ""
-"アカウント作成をキャンセルするには、次のボタンを押してください。アカウントと"
-"そのデータは全て削除されます。"
-
-#: application/forms/Pending/ResetPassword.php:11
-#, php-format
-msgid ""
-"Hi %s. Someone, probably you, has asked to reset password for your account. "
-"To get a new password, validate with following button."
-msgstr ""
-"こんにちは、 %s さん、誰か、おそらくあなた自身、がアカウントのパスワードリ"
-"セットを要求しました新しいパスワードを取得するには、下記のボタンで認証してく"
-"ださい。"
-
-#: application/forms/Pending/ResetPassword.php:23
-msgid "cancel request"
-msgstr "リクエストをキャンセル"
-
-#: application/forms/Pending/ResetPassword.php:24
-msgid ""
-"To cancel this request, press following button. Your password will not "
-"change."
-msgstr ""
-"このリクエストをキャンセルするには、次のボタンを押してください。あなたのパス"
-"ワードは変更されません。"
-
-#: application/forms/Account.php:35 application/forms/User.php:23
-#: application/forms/Login.php:10
-msgid "password"
-msgstr "パスワード"
-
-#: application/forms/Account.php:42 application/forms/User.php:30
-msgid "confirm password"
-msgstr "パスワードを確認"
-
-#: application/forms/Account.php:48
-msgid "current password"
-msgstr "現在のパスワード"
-
-#: application/forms/Account.php:50
-msgid "modify my informations"
-msgstr "自分の情報を変更"
-
-#: application/forms/User.php:10
-msgid "only letters, numbers, underscores or dots"
-msgstr "文字、数字、アンダースコア、ドットのいずれかのみ"
-
-#: application/forms/User.php:12
-msgid "user name"
-msgstr "ユーザ名"
-
-#: application/forms/User.php:37
-msgid ""
-"After creating your account, you will receive a confirmation email. You have "
-"7 days to confirm otherwise, your account will be deleted."
-msgstr ""
-"アカウント作成後、確認メールが届きます。７日以内に認証してください、そうしな"
-"ければアカウントは削除されます。"
-
-#: application/forms/User.php:46 application/forms/Geom.php:41
-#, php-format
-msgid "I've read and accepted %s"
-msgstr "私は %s を読んで承諾しました"
-
-#: application/forms/User.php:59
-msgid "create account"
-msgstr "アカウント作成"
-
-#: application/forms/Login.php:9
-msgid "user"
-msgstr "ユーザ"
-
-#: application/forms/Login.php:13
-msgid "remember me"
-msgstr "記憶する"
-
-#: application/forms/Login.php:20
-msgid "I forgot my password"
-msgstr "パスワードを忘れた"
-
-#: application/forms/Geom.php:17
-msgid "Draw journey on the map or choose one from a file"
-msgstr "マップ上に旅行記録を描くかファイルからひとつ選んでください"
-
-#: application/forms/Geom.php:28
-msgid "optional title for this journey"
-msgstr "この旅の任意の見出し"
-
-# This is language name. translate english to the name of your language. For example: "deutsch" or "fran軋is"
-#: application/views/helpers/LocaleSwitcher.php:17
-msgid "english"
-msgstr "日本語"
-
-#: application/views/helpers/LogoutLink.php:9
-#: application/layouts/scripts/footer.phtml:66
-msgid "logout"
-msgstr "ログアウト"
-
-#: application/views/helpers/Returnto.php:22
-#: application/views/helpers/Returnto.php:25
-#: application/views/helpers/Returnto.php:28
-#: application/views/scripts/pending/creation_validate.phtml:14
-#: application/views/scripts/pending/creation_cancel.phtml:14
-#: application/views/scripts/pending/password_cancel.phtml:14
-msgid "You can now"
-msgstr "以下のことができます"
-
-#: application/views/helpers/Returnto.php:23
-#: application/views/helpers/Returnto.php:31
-#: application/views/scripts/pending/creation_validate.phtml:15
-#: application/views/scripts/pending/creation_cancel.phtml:15
-#: application/views/scripts/pending/password_cancel.phtml:15
-#: application/views/scripts/error/error.phtml:37
-msgid "go to main page"
-msgstr "メインページへ"
-
-#: application/views/helpers/Returnto.php:26
-#: application/views/helpers/Returnto.php:29
-#, php-format
-msgid "go back to %s"
-msgstr "%s に戻る"
-
-#: application/views/helpers/Returnto.php:30
-msgid "or you can"
-msgstr "または"
-
-#: application/views/scripts/account/success.phtml:4
-msgid "Your account was modified successfully"
-msgstr "アカウントの変更に成功しました"
-
-#: application/views/scripts/pending/index.phtml:16
-msgid "If you need more informations, please"
-msgstr "詳細な情報が必要なら"
-
-#: application/views/scripts/pending/index.phtml:17
-msgid "contact us"
-msgstr "管理者に連絡してください"
-
-#: application/views/scripts/pending/creation_validate.phtml:12
-msgid "You have validated your account."
-msgstr "あなたのアカウントは認証されました。"
-
-#: application/views/scripts/pending/creation_cancel.phtml:12
-msgid "You have canceled the account."
-msgstr "アカウントはキャンセルされました。"
-
-#: application/views/scripts/pending/password_cancel.phtml:12
-msgid "You have canceled the request."
-msgstr "リクエストをキャンセルしました。"
-
-#: application/views/scripts/pending/password_validate.phtml:17
-msgid "log in"
-msgstr "ログイン"
-
-#: application/views/scripts/pending/password_validate.phtml:15
-#, php-format
-msgid ""
-"Your new password is now <strong>%s</strong>. You can %s with this new "
-"password. Don't forget to change it again to a personal password as soon as "
-"possible."
-msgstr ""
-"あなたの新しいパスワードは <strong>%s</strong> です。この新しいパスワード"
-"で%s できます。忘れずにできるだけ早く個人的なパスワードに再度変更してくださ"
-"い。"
-
-#: application/views/scripts/contact/index.phtml:8
-#, php-format
-msgid ""
-"There was an unkwown message when sending the message. Please try again "
-"later, or send a mail directly to <a href=\"mailto:%s\">%s</a>"
-msgstr ""
-"メッセージ送信時に不明なメッセージがありました。しばらくしてからやり直してく"
-"ださいもしくは<a href=\"mailto:%s\">%s</a>に直接メールしてください"
-
-#: application/views/scripts/contact/success.phtml:4
-msgid "Email was send successfully"
-msgstr "メール送信に成功しました"
-
-#: application/views/scripts/termsofuse/index.phtml:5
-msgid ""
-"Show Your Journey is a site whose goal is to allow anyone to publish routes, "
-"for example, hiking itinerary, bicycle trip, travel itinerary or whatever."
-msgstr ""
-"Show Your Journey のゴールは誰もがルートを公開できるようにすることです。例え"
-"ば、ハイキング経路、自転車トリップ、旅行行程その他あらゆるものです。"
-
-#: application/views/scripts/termsofuse/index.phtml:9
-msgid ""
-"In order to publish a route, you must first create an account. A valid email "
-"is asked for, and ip address of account creation is stored on the server. "
-"Those informations will not be divulged to anyone without the user explicit "
-"permission."
-msgstr ""
-"ルートを公開するためには、最初にアカウントを作成してください。実在するメール"
-"アドレスが必要で、アカウントを作成時のIPアドレスはサーバの保存されます。これ"
-"らの情報はユーザの明示的な許可が無い限り、誰にも漏らすことはありません。"
-
-#: application/views/scripts/termsofuse/index.phtml:13
-msgid ""
-"When you create a route, you accept that it's free for any use. This means "
-"you accept that anyone can reuse, reproduce, or republish your itinerary, or "
-"a modified version of it for any purpose. This also means you need to get "
-"appropriate permissions from the creator if you want to upload a route you "
-"didn't create yourself."
-msgstr ""
-"ルートを作成する場合は、いかなる用途でも自由に使えることに同意することになり"
-"ます。これはあなたの旅程やそれに手を加えたものを誰もがどのような目的にも再利"
-"用、再作成、再公開できるということを意味します。同時に、もしあなたが自分で作"
-"成したものでないルートをアップロードする場合にはその作者から適切な許可をもら"
-"う必要がある、ということをも意味しています。"
-
-#: application/views/scripts/termsofuse/index.phtml:17
-msgid ""
-"Show Your Journey is not responsible for the accuracy of the routes "
-"published. It's the user responsibility to check that a route is accessible "
-"and safe."
-msgstr ""
-"Show Your Journeyは公開されたルートの正確さに責を負うものではありません。ルー"
-"トが通行可能で安全であるということをチェックするのはユーザの責任です。"
-
-#: application/views/scripts/termsofuse/index.phtml:21
-msgid ""
-"Show Your Journey service is provided \"as is\" with no guarantee for "
-"accuracy or accessibility."
-msgstr ""
-"Show Your Journeyサービスは\"あるがまま\"に提供され、正確さやアクセシビリティ"
-"を保証するものではありません。"
-
-#: application/views/scripts/termsofuse/index.phtml:25
-msgid ""
-"Sources of the software running the website are <a href=\"http://dev."
-"renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The "
-"map used to display the routes comes from <a href=\"http://www.openstreetmap."
-"org/\">openstreetmap</a>."
-msgstr ""
-"ウェブサイトで動作しているソフトウェアのソースコードはagplライセンスの下で<a "
-"href=\"http://dev.renevier.net/?p=syj.git\">誰でも利用可能</a>です。ルート表"
-"示に使用されているマップは<a href=\"http://www.openstreetmap.org/"
-"\">openstreetmap</a>です。"
-
-#: application/views/scripts/error/error.phtml:5
-msgid "An error occurred"
-msgstr "エラーが発生しました"
-
-#: application/views/scripts/error/error.phtml:35
-msgid "Please try again later"
-msgstr "しばらくしてからやり直してください"
-
-#: application/views/scripts/faq/index.phtml:6
-msgid "What's syj?"
-msgstr "Syjとは？"
-
-#: application/views/scripts/faq/index.phtml:7
-msgid ""
-"<acronym title=\"Show your journey\">Syj</acronym> is a website to share "
-"routes. You draw a route on a map background, and then, you get an link to "
-"share it. You can then show clever bicycle rides, your last hiking, or any "
-"route you want."
-msgstr ""
-"<acronym title=\"Show your journey\">Syj</acronym> はルートを共有するための"
-"ウェブサイトです。マップの背景にルートを描くと、それを共有するためのリンクURL"
-"を取得できます。これにより賢い自転車ルート、最近のハイキング、その他何でも好"
-"きなルートを取得することができます。"
-
-#: application/views/scripts/faq/index.phtml:9
-msgid "How do I modify a route?"
-msgstr "ルートはどうやって変更できますか？"
-
-#: application/views/scripts/faq/index.phtml:10
-#, php-format
-msgid ""
-"When you're editing a route, you can drag and drop a point to move it. If "
-"you want to delete it, you need to press the Shift key. While you hold the "
-"button, points will have an icon%s over them. Clicking that icon will delete "
-"the point."
-msgstr ""
-"ルートを編集する際には、ドラッグ＆ドロップでポイントを移動できます。削除した"
-"い場合には、シフトキーを押す必要があります。ボタンを押している間、ポイントの"
-"上にアイコン %s が現れます。そのアイコンをクリックするとポイントは削除されま"
-"す。"
-
-#: application/views/scripts/faq/index.phtml:12
-msgid "Why should I create a account?"
-msgstr "なぜアカウントを作成する必要があるのですか？"
-
-#: application/views/scripts/faq/index.phtml:13
-msgid ""
-"You can create routes without a account. But if you want to modify your "
-"routes afterwards, you need to be registered when creating the route."
-msgstr ""
-"アカウントなしでもルートを作成できます。しかし、後から自分のルートを変更した"
-"い場合には、ルート作成時にユーザ登録している必要があります。"
-
-#: application/views/scripts/faq/index.phtml:15
-msgid "Is it possible to have my route \"attach\" nearby paths?"
-msgstr "私のルートをパスの近辺に\"添付\"できますか？"
-
-#: application/views/scripts/faq/index.phtml:16
-msgid ""
-"When you create a route with syj, you must draw each point on the map. If "
-"your route follows an existing path, you still need to draw the layer "
-"manually: syj will not try to attach nearby existing paths. There are three "
-"main reasons. One bad reason: it would a lot of work to implement. And two "
-"good reasons: syj uses OpenStreetMap as a background map, and the map is "
-"still unfinished in many areas. Also, depending on your route, you may wish "
-"to attach to motorways, footways, biycle lanes, railways, &hellip;. If you "
-"are in a place with lot of differents routes, it would be nearly impossible "
-"to always choose the right way."
-msgstr ""
-"Syjでルートを作成するには、各ポイントをマップ上に描かなければなりません。あな"
-"たのルートが既存のパスをフォローしている場合でも、あなたは手動でレイヤを描く"
-"必要があります： Syjは既存のパス近辺に添付しようとはしません。主な理由は３"
-"つ。悪い理由がひとつ: 実装には多くの労力がかかります。良い理由がふたつ: Syjは"
-"OpenStreetMapを背景マップとして使っており、そしてマップは多くのエリアで未完成"
-"です。また、あなたのルートによっては、あなたは自動車専用道路、歩道、自転車専"
-"用レーン、鉄道…などを添付したいと思うでしょう。あなたが多くの異なるルートがあ"
-"る場所にいるなら、常に正しい道を選ぶのは不可能に近いでしょう。"
-
-#: application/views/scripts/idx/raw.phtml:8
-#: application/views/scripts/idx/index.phtml:8
-#: application/views/scripts/list/index.phtml:8
-msgid "SYJ needs javascript. Please activate scripts in your browser."
-msgstr ""
-"SYJはjavascriptを使用します。あなたのブラウザでjavascriptを使えるように設定し"
-"てください"
-
-#: application/views/scripts/idx/index.phtml:21
-msgid ""
-"To create a journey, press <strong>\"start a route\"</strong> button, then "
-"click on the map to add points. To delete a point, hold shift pressed while "
-"clicking on it."
-msgstr ""
-"旅の記録を作成するには、まず<strong>\"ルート開始\"</strong> ボタンを押してく"
-"ださい。次にマップをクリックしてポイントを追加してください。ポイントを削除す"
-"る時はクリックしたままシフトキーを押し続けてください。"
-
-#: application/views/scripts/idx/index.phtml:23
-msgid "You can zoom and move the map with the controls in the top left corner."
-msgstr "トップ左隅のコントロールでマップをズームしたり移動することができます。"
-
-#: application/views/scripts/idx/index.phtml:25
-msgid "When you have finished a path, press \"create\", button."
-msgstr "パスを描き終わったら、\"作成\"ボタンを押してください"
-
-#: application/views/scripts/idx/index.phtml:36
-msgid "route length"
-msgstr "ルート長"
-
-#: application/views/scripts/idx/index.phtml:51
-#: application/views/scripts/idx/index.phtml:182
-msgid "create an account"
-msgstr "アカウントを作成"
-
-#: application/views/scripts/idx/index.phtml:52
-msgid "Whith an account, you can manage and modify your routes"
-msgstr "アカウントがあれば、自分のルートを管理、変更できます"
-
-#: application/views/scripts/idx/index.phtml:69
-msgid "route infos"
-msgstr "ルート情報"
-
-#: application/views/scripts/idx/index.phtml:74
-#: application/views/scripts/idx/index.phtml:80
-msgid "direct link"
-msgstr "ダイレクトリンク"
-
-#: application/views/scripts/idx/index.phtml:86
-msgid "export"
-msgstr "エクスポート"
-
-#: application/views/scripts/idx/index.phtml:92
-#: application/views/scripts/idx/index.phtml:93
-msgid "kml export"
-msgstr "kmlにエクスポート"
-
-#: application/views/scripts/idx/index.phtml:99
-#: application/views/scripts/idx/index.phtml:100
-msgid "gpx export"
-msgstr "gpxにエクスポート"
-
-#: application/views/scripts/idx/index.phtml:106
-msgid "altitude profile"
-msgstr "高度のプロファイル"
-
-#: application/views/scripts/idx/index.phtml:131
-msgid "Search a place"
-msgstr "場所をさがす"
-
-#: application/views/scripts/idx/index.phtml:135
-msgid "Ok"
-msgstr "OK"
-
-#: application/views/scripts/idx/index.phtml:141
-msgid "start a route"
-msgstr "ルート開始"
-
-#: application/views/scripts/idx/index.phtml:153
-msgid "more results"
-msgstr "もっと"
-
-#: application/views/scripts/list/index.phtml:13
-#: application/layouts/scripts/footer.phtml:16
-msgid "create a route"
-msgstr "ルート作成"
-
-#: application/views/scripts/list/index.phtml:14
-#, php-format
-msgid "you have created no route yet, you may want to %s"
-msgstr "まだルートを作成していません、%s したいですか"
-
-#: application/views/scripts/list/index.phtml:28
-msgid "first page"
-msgstr "先頭ページ"
-
-#: application/views/scripts/list/index.phtml:32
-msgid "previous page"
-msgstr "前のページ"
-
-#: application/views/scripts/list/index.phtml:41
-msgid "next page"
-msgstr "次のページ"
-
-#: application/views/scripts/list/index.phtml:45
-msgid "last page"
-msgstr "最終ページ"
-
-#: application/views/scripts/list/index.phtml:67
-msgid "modify or duplicate"
-msgstr "変更または複製"
+msgid "route number %d"
+msgstr "ルート番号 %d"
 
 #: application/models/Pending/ValidateCreation.php:15
 msgid "[SYJ] Please validate your account"
@@ -916,10 +169,758 @@ msgstr ""
 "\n"
 "Syj チーム"
 
-#: application/models/Path.php:61
+#: application/views/scripts/pending/creation_validate.phtml:12
+msgid "You have validated your account."
+msgstr "あなたのアカウントは認証されました。"
+
+#: application/views/scripts/pending/creation_validate.phtml:14
+#: application/views/scripts/pending/creation_cancel.phtml:14
+#: application/views/scripts/pending/password_cancel.phtml:14
+#: application/views/helpers/Returnto.php:22
+#: application/views/helpers/Returnto.php:25
+#: application/views/helpers/Returnto.php:28
+msgid "You can now"
+msgstr "以下のことができます"
+
+#: application/views/scripts/pending/creation_validate.phtml:15
+#: application/views/scripts/pending/creation_cancel.phtml:15
+#: application/views/scripts/pending/password_cancel.phtml:15
+#: application/views/scripts/error/error.phtml:37
+#: application/views/helpers/Returnto.php:23
+#: application/views/helpers/Returnto.php:31
+msgid "go to main page"
+msgstr "メインページへ"
+
+#: application/views/scripts/pending/creation_cancel.phtml:12
+msgid "You have canceled the account."
+msgstr "アカウントはキャンセルされました。"
+
+#: application/views/scripts/pending/password_cancel.phtml:12
+msgid "You have canceled the request."
+msgstr "リクエストをキャンセルしました。"
+
+#: application/views/scripts/pending/password_validate.phtml:17
+msgid "log in"
+msgstr "ログイン"
+
+#: application/views/scripts/pending/password_validate.phtml:15
 #, php-format
-msgid "route number %d"
-msgstr "ルート番号 %d"
+msgid ""
+"Your new password is now <strong>%s</strong>. You can %s with this new "
+"password. Don't forget to change it again to a personal password as soon as "
+"possible."
+msgstr ""
+"あなたの新しいパスワードは <strong>%s</strong> です。この新しいパスワード"
+"で%s できます。忘れずにできるだけ早く個人的なパスワードに再度変更してくださ"
+"い。"
+
+#: application/views/scripts/pending/index.phtml:16
+msgid "If you need more informations, please"
+msgstr "詳細な情報が必要なら"
+
+#: application/views/scripts/pending/index.phtml:17
+msgid "contact us"
+msgstr "管理者に連絡してください"
+
+#: application/views/scripts/contact/success.phtml:4
+msgid "Email was send successfully"
+msgstr "メール送信に成功しました"
+
+#: application/views/scripts/contact/index.phtml:8
+#, php-format
+msgid ""
+"There was an unkwown message when sending the message. Please try again "
+"later, or send a mail directly to <a href=\"mailto:%s\">%s</a>"
+msgstr ""
+"メッセージ送信時に不明なメッセージがありました。しばらくしてからやり直してく"
+"ださいもしくは<a href=\"mailto:%s\">%s</a>に直接メールしてください"
+
+#: application/views/scripts/newpwd/success.phtml:4
+#: application/controllers/IdxController.php:170
+msgid "A link to reset your password has been emailed to you"
+msgstr "パスワードをリセットするためのURLがあなた宛に送られました"
+
+#: application/views/scripts/idx/index.phtml:8
+#: application/views/scripts/idx/raw.phtml:8
+#: application/views/scripts/list/index.phtml:8
+msgid "SYJ needs javascript. Please activate scripts in your browser."
+msgstr ""
+"SYJはjavascriptを使用します。あなたのブラウザでjavascriptを使えるように設定し"
+"てください"
+
+#: application/views/scripts/idx/index.phtml:21
+msgid ""
+"To create a journey, press <strong>\"start a route\"</strong> button, then "
+"click on the map to add points. To delete a point, hold shift pressed while "
+"clicking on it."
+msgstr ""
+"旅の記録を作成するには、まず<strong>\"ルート開始\"</strong> ボタンを押してく"
+"ださい。次にマップをクリックしてポイントを追加してください。ポイントを削除す"
+"る時はクリックしたままシフトキーを押し続けてください。"
+
+#: application/views/scripts/idx/index.phtml:23
+msgid "You can zoom and move the map with the controls in the top left corner."
+msgstr "トップ左隅のコントロールでマップをズームしたり移動することができます。"
+
+#: application/views/scripts/idx/index.phtml:25
+msgid "When you have finished a path, press \"create\", button."
+msgstr "パスを描き終わったら、\"作成\"ボタンを押してください"
+
+#: application/views/scripts/idx/index.phtml:36
+msgid "route length"
+msgstr "ルート長"
+
+#: application/views/scripts/idx/index.phtml:49
+#: application/controllers/LoginController.php:8
+#: application/forms/Login.php:23 application/layouts/scripts/footer.phtml:73
+msgid "login"
+msgstr "ログイン"
+
+#: application/views/scripts/idx/index.phtml:51
+#: application/views/scripts/idx/index.phtml:182
+msgid "create an account"
+msgstr "アカウントを作成"
+
+#: application/views/scripts/idx/index.phtml:52
+msgid "Whith an account, you can manage and modify your routes"
+msgstr "アカウントがあれば、自分のルートを管理、変更できます"
+
+#: application/views/scripts/idx/index.phtml:69
+msgid "route infos"
+msgstr "ルート情報"
+
+#: application/views/scripts/idx/index.phtml:74
+#: application/views/scripts/idx/index.phtml:80
+msgid "direct link"
+msgstr "ダイレクトリンク"
+
+#: application/views/scripts/idx/index.phtml:86
+msgid "export"
+msgstr "エクスポート"
+
+#: application/views/scripts/idx/index.phtml:92
+#: application/views/scripts/idx/index.phtml:93
+msgid "kml export"
+msgstr "kmlにエクスポート"
+
+#: application/views/scripts/idx/index.phtml:99
+#: application/views/scripts/idx/index.phtml:100
+msgid "gpx export"
+msgstr "gpxにエクスポート"
+
+#: application/views/scripts/idx/index.phtml:106
+msgid "altitude profile"
+msgstr "高度のプロファイル"
+
+#: application/views/scripts/idx/index.phtml:125
+#: application/controllers/IdxController.php:180
+msgid "duplicate"
+msgstr "複製"
+
+#: application/views/scripts/idx/index.phtml:127
+#: application/controllers/IdxController.php:178
+msgid "edit"
+msgstr "編集"
+
+#: application/views/scripts/idx/index.phtml:131
+msgid "Search a place"
+msgstr "場所をさがす"
+
+#: application/views/scripts/idx/index.phtml:135
+msgid "Ok"
+msgstr "OK"
+
+#: application/views/scripts/idx/index.phtml:141
+msgid "start a route"
+msgstr "ルート開始"
+
+#: application/views/scripts/idx/index.phtml:153
+msgid "more results"
+msgstr "もっと"
+
+#: application/views/scripts/termsofuse/index.phtml:5
+msgid ""
+"Show Your Journey is a site whose goal is to allow anyone to publish routes, "
+"for example, hiking itinerary, bicycle trip, travel itinerary or whatever."
+msgstr ""
+"Show Your Journey のゴールは誰もがルートを公開できるようにすることです。例え"
+"ば、ハイキング経路、自転車トリップ、旅行行程その他あらゆるものです。"
+
+#: application/views/scripts/termsofuse/index.phtml:9
+msgid ""
+"In order to publish a route, you must first create an account. A valid email "
+"is asked for, and ip address of account creation is stored on the server. "
+"Those informations will not be divulged to anyone without the user explicit "
+"permission."
+msgstr ""
+"ルートを公開するためには、最初にアカウントを作成してください。実在するメール"
+"アドレスが必要で、アカウントを作成時のIPアドレスはサーバの保存されます。これ"
+"らの情報はユーザの明示的な許可が無い限り、誰にも漏らすことはありません。"
+
+#: application/views/scripts/termsofuse/index.phtml:13
+msgid ""
+"When you create a route, you accept that it's free for any use. This means "
+"you accept that anyone can reuse, reproduce, or republish your itinerary, or "
+"a modified version of it for any purpose. This also means you need to get "
+"appropriate permissions from the creator if you want to upload a route you "
+"didn't create yourself."
+msgstr ""
+"ルートを作成する場合は、いかなる用途でも自由に使えることに同意することになり"
+"ます。これはあなたの旅程やそれに手を加えたものを誰もがどのような目的にも再利"
+"用、再作成、再公開できるということを意味します。同時に、もしあなたが自分で作"
+"成したものでないルートをアップロードする場合にはその作者から適切な許可をもら"
+"う必要がある、ということをも意味しています。"
+
+#: application/views/scripts/termsofuse/index.phtml:17
+msgid ""
+"Show Your Journey is not responsible for the accuracy of the routes "
+"published. It's the user responsibility to check that a route is accessible "
+"and safe."
+msgstr ""
+"Show Your Journeyは公開されたルートの正確さに責を負うものではありません。ルー"
+"トが通行可能で安全であるということをチェックするのはユーザの責任です。"
+
+#: application/views/scripts/termsofuse/index.phtml:21
+msgid ""
+"Show Your Journey service is provided \"as is\" with no guarantee for "
+"accuracy or accessibility."
+msgstr ""
+"Show Your Journeyサービスは\"あるがまま\"に提供され、正確さやアクセシビリティ"
+"を保証するものではありません。"
+
+#: application/views/scripts/termsofuse/index.phtml:25
+msgid ""
+"Sources of the software running the website are <a href=\"http://dev."
+"renevier.net/?p=syj.git\">publicly available</a> under a agpl license. The "
+"map used to display the routes comes from <a href=\"http://www.openstreetmap."
+"org/\">openstreetmap</a>."
+msgstr ""
+"ウェブサイトで動作しているソフトウェアのソースコードはagplライセンスの下で<a "
+"href=\"http://dev.renevier.net/?p=syj.git\">誰でも利用可能</a>です。ルート表"
+"示に使用されているマップは<a href=\"http://www.openstreetmap.org/"
+"\">openstreetmap</a>です。"
+
+#: application/views/scripts/account/success.phtml:4
+msgid "Your account was modified successfully"
+msgstr "アカウントの変更に成功しました"
+
+#: application/views/scripts/error/error.phtml:5
+msgid "An error occurred"
+msgstr "エラーが発生しました"
+
+#: application/views/scripts/error/error.phtml:35
+msgid "Please try again later"
+msgstr "しばらくしてからやり直してください"
+
+#: application/views/scripts/list/index.phtml:13
+#: application/layouts/scripts/footer.phtml:16
+msgid "create a route"
+msgstr "ルート作成"
+
+#: application/views/scripts/list/index.phtml:14
+#, php-format
+msgid "you have created no route yet, you may want to %s"
+msgstr "まだルートを作成していません、%s したいですか"
+
+#: application/views/scripts/list/index.phtml:28
+msgid "first page"
+msgstr "先頭ページ"
+
+#: application/views/scripts/list/index.phtml:32
+msgid "previous page"
+msgstr "前のページ"
+
+#: application/views/scripts/list/index.phtml:41
+msgid "next page"
+msgstr "次のページ"
+
+#: application/views/scripts/list/index.phtml:45
+msgid "last page"
+msgstr "最終ページ"
+
+#: application/views/scripts/list/index.phtml:67
+msgid "modify or duplicate"
+msgstr "変更または複製"
+
+#: application/views/scripts/list/index.phtml:68
+#: application/forms/Pending/ValidateCreation.php:23
+msgid "delete"
+msgstr "削除"
+
+#: application/views/scripts/faq/index.phtml:5
+#: application/controllers/FaqController.php:9
+msgid "Frequently asked questions"
+msgstr "FAQ"
+
+#: application/views/scripts/faq/index.phtml:6
+msgid "What's syj?"
+msgstr "Syjとは？"
+
+#: application/views/scripts/faq/index.phtml:7
+msgid ""
+"<acronym title=\"Show your journey\">Syj</acronym> is a website to share "
+"routes. You draw a route on a map background, and then, you get an link to "
+"share it. You can then show clever bicycle rides, your last hiking, or any "
+"route you want."
+msgstr ""
+"<acronym title=\"Show your journey\">Syj</acronym> はルートを共有するための"
+"ウェブサイトです。マップの背景にルートを描くと、それを共有するためのリンクURL"
+"を取得できます。これにより賢い自転車ルート、最近のハイキング、その他何でも好"
+"きなルートを取得することができます。"
+
+#: application/views/scripts/faq/index.phtml:9
+msgid "How do I modify a route?"
+msgstr "ルートはどうやって変更できますか？"
+
+#: application/views/scripts/faq/index.phtml:10
+#, php-format
+msgid ""
+"When you're editing a route, you can drag and drop a point to move it. If "
+"you want to delete it, you need to press the Shift key. While you hold the "
+"button, points will have an icon%s over them. Clicking that icon will delete "
+"the point."
+msgstr ""
+"ルートを編集する際には、ドラッグ＆ドロップでポイントを移動できます。削除した"
+"い場合には、シフトキーを押す必要があります。ボタンを押している間、ポイントの"
+"上にアイコン %s が現れます。そのアイコンをクリックするとポイントは削除されま"
+"す。"
+
+#: application/views/scripts/faq/index.phtml:12
+msgid "Why should I create a account?"
+msgstr "なぜアカウントを作成する必要があるのですか？"
+
+#: application/views/scripts/faq/index.phtml:13
+msgid ""
+"You can create routes without a account. But if you want to modify your "
+"routes afterwards, you need to be registered when creating the route."
+msgstr ""
+"アカウントなしでもルートを作成できます。しかし、後から自分のルートを変更した"
+"い場合には、ルート作成時にユーザ登録している必要があります。"
+
+#: application/views/scripts/faq/index.phtml:15
+msgid "Is it possible to have my route \"attach\" nearby paths?"
+msgstr "私のルートをパスの近辺に\"添付\"できますか？"
+
+#: application/views/scripts/faq/index.phtml:16
+msgid ""
+"When you create a route with syj, you must draw each point on the map. If "
+"your route follows an existing path, you still need to draw the layer "
+"manually: syj will not try to attach nearby existing paths. There are three "
+"main reasons. One bad reason: it would a lot of work to implement. And two "
+"good reasons: syj uses OpenStreetMap as a background map, and the map is "
+"still unfinished in many areas. Also, depending on your route, you may wish "
+"to attach to motorways, footways, biycle lanes, railways, &hellip;. If you "
+"are in a place with lot of differents routes, it would be nearly impossible "
+"to always choose the right way."
+msgstr ""
+"Syjでルートを作成するには、各ポイントをマップ上に描かなければなりません。あな"
+"たのルートが既存のパスをフォローしている場合でも、あなたは手動でレイヤを描く"
+"必要があります： Syjは既存のパス近辺に添付しようとはしません。主な理由は３"
+"つ。悪い理由がひとつ: 実装には多くの労力がかかります。良い理由がふたつ: Syjは"
+"OpenStreetMapを背景マップとして使っており、そしてマップは多くのエリアで未完成"
+"です。また、あなたのルートによっては、あなたは自動車専用道路、歩道、自転車専"
+"用レーン、鉄道…などを添付したいと思うでしょう。あなたが多くの異なるルートがあ"
+"る場所にいるなら、常に正しい道を選ぶのは不可能に近いでしょう。"
+
+#: application/views/helpers/Returnto.php:26
+#: application/views/helpers/Returnto.php:29
+#, php-format
+msgid "go back to %s"
+msgstr "%s に戻る"
+
+#: application/views/helpers/Returnto.php:30
+msgid "or you can"
+msgstr "または"
+
+# This is language name. translate english to the name of your language. For example: "deutsch" or "fran軋is"
+#: application/views/helpers/LocaleSwitcher.php:17
+msgid "english"
+msgstr "日本語"
+
+#: application/views/helpers/LogoutLink.php:9
+#: application/layouts/scripts/footer.phtml:66
+msgid "logout"
+msgstr "ログアウト"
+
+#: application/controllers/ContactController.php:11
+msgid "contact form"
+msgstr "連絡フォーム"
+
+#: application/controllers/ContactController.php:110
+msgid "Hi,"
+msgstr "Hi,"
+
+#: application/controllers/ContactController.php:119
+#: application/controllers/IdxController.php:182
+#: application/controllers/AccountController.php:68
+#: application/controllers/NewpwdController.php:66
+msgid "Value is required"
+msgstr "値が必要です"
+
+#: application/controllers/IdxController.php:24
+#: application/controllers/IdxController.php:72
+#, php-format
+msgid "route by <strong>%s</strong>"
+msgstr "<strong>%s</strong>のルート"
+
+#: application/controllers/IdxController.php:43
+msgid "route has been deleted"
+msgstr "ルートは削除されました"
+
+#: application/controllers/IdxController.php:46
+msgid "route does not exist"
+msgstr "ルートはありません"
+
+#: application/controllers/IdxController.php:75
+#: application/controllers/IdxController.php:108
+msgid "website to share routes"
+msgstr "ルートを共有するウェブサイト"
+
+#: application/controllers/IdxController.php:117
+#, php-format
+msgid "File too large. File size must not exceed %s"
+msgstr "ファイルが大きすぎます。 %s 以下のサイズにしてください"
+
+#: application/controllers/IdxController.php:119
+msgid "Invalid file"
+msgstr "不正なファイル"
+
+#: application/controllers/IdxController.php:147
+#: application/controllers/IdxController.php:173
+msgid "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
+msgstr "Map by <a href='http://openstreetmap.org/'>OpenStreetMap</a>"
+
+#: application/controllers/IdxController.php:148
+#: application/controllers/IdxController.php:174
+msgid ""
+"Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> "
+"and contributors, <a href='http://creativecommons.org/licenses/by-"
+"sa/2.0/'>CC-BY-SA</a>"
+msgstr ""
+"Map by MapQuest, <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> "
+"and contributors, <a href='http://creativecommons.org/licenses/by-"
+"sa/2.0/'>CC-BY-SA</a>"
+
+#: application/controllers/IdxController.php:154
+msgid "save took place successfully"
+msgstr "保存されました"
+
+#: application/controllers/IdxController.php:155
+#: application/controllers/ListController.php:33
+msgid ""
+"server did not understood request. That's probably caused by a bug in SYJ"
+msgstr "サーバはリクエストを理解できませんでした。おそらくSYJのバグでしょう"
+
+#: application/controllers/IdxController.php:156
+#: application/controllers/ListController.php:34
+msgid "route not referenced on the server. It has probably been deleted."
+msgstr "ルートはサーバ上で参照できませんでした。おそらく削除されています。"
+
+#: application/controllers/IdxController.php:157
+#: application/controllers/ListController.php:32
+msgid "server could not be reached"
+msgstr "サーバに届かなかったようです"
+
+#: application/controllers/IdxController.php:158
+#: application/controllers/ListController.php:35
+msgid "there was a server error"
+msgstr "サーバのエラーがありました"
+
+#: application/controllers/IdxController.php:159
+#: application/controllers/ListController.php:36
+msgid "there was an unknown error"
+msgstr "不明なエラーがありました"
+
+#: application/controllers/IdxController.php:160
+#: application/controllers/LoginController.php:89
+msgid "you must enter a login name"
+msgstr "ログイン名を入力してください"
+
+#: application/controllers/IdxController.php:161
+msgid "Login correct"
+msgstr "正常ログイン"
+
+#: application/controllers/IdxController.php:162
+msgid "Wrong login/password"
+msgstr "誤ったログイン/パスワード"
+
+#: application/controllers/IdxController.php:163
+msgid "you must enter a password"
+msgstr "パスワードを入力してください"
+
+#: application/controllers/IdxController.php:164
+#: application/controllers/AccountController.php:69
+#: application/forms/Account.php:40
+msgid "Password do not match"
+msgstr "パスワードが一致しません"
+
+#: application/controllers/IdxController.php:165
+msgid "You must accept terms of use"
+msgstr "利用条件を承諾してください"
+
+#: application/controllers/IdxController.php:166
+msgid "you must enter an email"
+msgstr "メールアドレスを入力してください"
+
+#: application/controllers/IdxController.php:167
+msgid "invalid email"
+msgstr "不正なメールアドレス"
+
+#: application/controllers/IdxController.php:168
+#: application/controllers/AccountController.php:41
+msgid "an user is already registered with this email"
+msgstr "このメールアドレスのユーザが既に登録されています"
+
+#: application/controllers/IdxController.php:169
+msgid "Account created"
+msgstr "アカウントを作成しました"
+
+#: application/controllers/IdxController.php:171
+msgid "Now, you can retry to save"
+msgstr "今は、保存をやり直すことができます"
+
+#: application/controllers/IdxController.php:172
+msgid "route by"
+msgstr "ルート作成者"
+
+#: application/controllers/IdxController.php:175
+msgid "checking availibilty"
+msgstr "利用可能かチェック中"
+
+#: application/controllers/IdxController.php:176
+msgid "available pseudo"
+msgstr "利用出来るID"
+
+#: application/controllers/IdxController.php:177
+msgid "unavailable pseudo"
+msgstr "利用できないID"
+
+#: application/controllers/IdxController.php:179
+msgid "create"
+msgstr "作成"
+
+#: application/controllers/IdxController.php:181
+msgid "You have an unsaved route"
+msgstr "保存されていないルートがあります"
+
+#: application/controllers/IdxController.php:183
+msgid "no result"
+msgstr "結果がありません"
+
+#: application/controllers/IdxController.php:184
+msgid "could not analyze file content"
+msgstr "ファイル内容を分析できませんでした"
+
+#: application/controllers/AccountController.php:13
+#: application/layouts/scripts/footer.phtml:38
+msgid "my account"
+msgstr "自分のアカウント"
+
+#: application/controllers/AccountController.php:28
+msgid "Wrong password"
+msgstr "間違ったパスワード"
+
+#: application/controllers/AccountController.php:70
+#: application/forms/Account.php:33 application/forms/User.php:20
+#, php-format
+msgid "At least %d characters"
+msgstr "最低 %d 文字"
+
+#: application/controllers/AccountController.php:71
+msgid "You have made no change"
+msgstr "変更していません"
+
+#: application/controllers/ListController.php:14
+#: application/layouts/scripts/footer.phtml:52
+msgid "my routes"
+msgstr "自分のルート"
+
+#: application/controllers/ListController.php:31
+msgid "There is no undo. Delete this route definitively ?"
+msgstr "やり直しはできません。本当にこのルートを削除しますか？"
+
+#: application/controllers/ListController.php:37
+msgid "route was successfully deleted"
+msgstr "ルートは削除されました"
+
+#: application/controllers/ErrorController.php:61
+msgid "Oups, something went wrong"
+msgstr "おや、何かがおかしいですね"
+
+#: application/controllers/TermsofuseController.php:9
+#: application/forms/User.php:44 application/forms/Geom.php:39
+#: application/layouts/scripts/footer.phtml:86
+msgid "terms of use"
+msgstr "利用条件"
+
+#: application/controllers/PendingController.php:31
+msgid "account validated"
+msgstr "認証済みアカウント"
+
+#: application/controllers/PendingController.php:38
+msgid "account deleted"
+msgstr "削除済みアカウント"
+
+#: application/controllers/PendingController.php:42
+msgid "account creation validation"
+msgstr "アカウント作成認証"
+
+#: application/controllers/PendingController.php:52
+msgid "password changed"
+msgstr "変更済みパスワード"
+
+#: application/controllers/PendingController.php:60
+msgid "request canceled"
+msgstr "キャンセル済みリクエスト"
+
+#: application/controllers/PendingController.php:64
+msgid "password reset validation"
+msgstr "パスワードリセット認証"
+
+#: application/forms/Newpwd.php:28 application/forms/Account.php:27
+#: application/forms/User.php:36
+msgid "email"
+msgstr "メールアドレス"
+
+#: application/forms/Newpwd.php:33
+#: application/forms/Pending/ResetPassword.php:16
+msgid "reset my password"
+msgstr "自分のパスワードをリセット"
+
+#: application/forms/Contact.php:27
+msgid "Value is required and can't be empty"
+msgstr "値が必要です"
+
+#: application/forms/Contact.php:36
+msgid "Email:"
+msgstr "メールアドレス:"
+
+#: application/forms/Contact.php:40
+msgid "Subject must be %max% characters long or less"
+msgstr "件名欄は %max% 文字までです"
+
+#: application/forms/Contact.php:45
+msgid "Subject:"
+msgstr "件名(英語で)"
+
+#: application/forms/Contact.php:49
+msgid "Message:"
+msgstr "メッセージ(英語で)"
+
+#: application/forms/Contact.php:56
+msgid "Send"
+msgstr "送信"
+
+#: application/forms/Contact.php:64
+msgid "Send a message"
+msgstr "メッセージを送信"
+
+#: application/forms/Login.php:9
+msgid "user"
+msgstr "ユーザ"
+
+#: application/forms/Login.php:10 application/forms/Account.php:35
+#: application/forms/User.php:23
+msgid "password"
+msgstr "パスワード"
+
+#: application/forms/Login.php:13
+msgid "remember me"
+msgstr "記憶する"
+
+#: application/forms/Login.php:20
+msgid "I forgot my password"
+msgstr "パスワードを忘れた"
+
+#: application/forms/Account.php:42 application/forms/User.php:30
+msgid "confirm password"
+msgstr "パスワードを確認"
+
+#: application/forms/Account.php:48
+msgid "current password"
+msgstr "現在のパスワード"
+
+#: application/forms/Account.php:50
+msgid "modify my informations"
+msgstr "自分の情報を変更"
+
+#: application/forms/User.php:10
+msgid "only letters, numbers, underscores or dots"
+msgstr "文字、数字、アンダースコア、ドットのいずれかのみ"
+
+#: application/forms/User.php:12
+msgid "user name"
+msgstr "ユーザ名"
+
+#: application/forms/User.php:37
+msgid ""
+"After creating your account, you will receive a confirmation email. You have "
+"7 days to confirm otherwise, your account will be deleted."
+msgstr ""
+"アカウント作成後、確認メールが届きます。７日以内に認証してください、そうしな"
+"ければアカウントは削除されます。"
+
+#: application/forms/User.php:46 application/forms/Geom.php:41
+#, php-format
+msgid "I've read and accepted %s"
+msgstr "私は %s を読んで承諾しました"
+
+#: application/forms/User.php:59
+msgid "create account"
+msgstr "アカウント作成"
+
+#: application/forms/Pending/ValidateCreation.php:11
+#, php-format
+msgid ""
+"Someone, probably you, has registered an account %s with email address %s on "
+"syj. To confirm this account creation, validate with following button."
+msgstr ""
+"誰か、おそらくあなた自身、がアカウント %s を %s というメールアドレスでSyj 上"
+"に登録しました。このアカウント作成を確認するには、次のボタンを認証してくださ"
+"い。"
+
+#: application/forms/Pending/ValidateCreation.php:17
+#: application/forms/Geom.php:50
+msgid "save"
+msgstr "保存"
+
+#: application/forms/Pending/ValidateCreation.php:24
+msgid ""
+"To cancel account creation, press following button. The account and all its "
+"data will be deleted."
+msgstr ""
+"アカウント作成をキャンセルするには、次のボタンを押してください。アカウントと"
+"そのデータは全て削除されます。"
+
+#: application/forms/Pending/ResetPassword.php:11
+#, php-format
+msgid ""
+"Hi %s. Someone, probably you, has asked to reset password for your account. "
+"To get a new password, validate with following button."
+msgstr ""
+"こんにちは、 %s さん、誰か、おそらくあなた自身、がアカウントのパスワードリ"
+"セットを要求しました新しいパスワードを取得するには、下記のボタンで認証してく"
+"ださい。"
+
+#: application/forms/Pending/ResetPassword.php:23
+msgid "cancel request"
+msgstr "リクエストをキャンセル"
+
+#: application/forms/Pending/ResetPassword.php:24
+msgid ""
+"To cancel this request, press following button. Your password will not "
+"change."
+msgstr ""
+"このリクエストをキャンセルするには、次のボタンを押してください。あなたのパス"
+"ワードは変更されません。"
+
+#: application/forms/Geom.php:17
+msgid "Draw journey on the map or choose one from a file"
+msgstr "マップ上に旅行記録を描くかファイルからひとつ選んでください"
+
+#: application/forms/Geom.php:28
+msgid "optional title for this journey"
+msgstr "この旅の任意の見出し"
 
 #: application/layouts/scripts/footer.phtml:27
 msgid "contact"
